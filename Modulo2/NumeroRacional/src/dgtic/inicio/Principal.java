@@ -8,7 +8,7 @@ public class Principal {
         Racional racUno = new Racional(1, 2);
         Racional racDos = new Racional(1, 3);
 
-        Racional resultado = Operaciones.suma(racUno, racDos);
+        Racional resultado = Operaciones.division(racUno, racDos);
         System.out.println(resultado);
     }
 }

@@ -3,10 +3,11 @@ package dgtic.recursos;
 import dgtic.modelo.Racional;
 
 public class Operaciones {
+
     public static Racional suma(Racional racionalUno, Racional racionalDos) {
         int numerador = racionalUno.getNumerador() * racionalDos.getDenominador() +
                 racionalDos.getNumerador() * racionalUno.getDenominador();
-        int denominador = racionalUno.getDenominador() * racionalDos.getNumerador();
+        int denominador = racionalUno.getDenominador() * racionalDos.getDenominador();
 
         return new Racional(numerador, denominador);
     }
@@ -14,7 +15,7 @@ public class Operaciones {
     public static Racional resta(Racional racionalUno, Racional racionalDos) {
         int numerador = racionalUno.getNumerador() * racionalDos.getDenominador() -
                 racionalDos.getNumerador() * racionalUno.getDenominador();
-        int denominador = racionalUno.getDenominador() * racionalDos.getNumerador();
+        int denominador = racionalUno.getDenominador() * racionalDos.getDenominador();
 
         return new Racional(numerador, denominador);
     }
