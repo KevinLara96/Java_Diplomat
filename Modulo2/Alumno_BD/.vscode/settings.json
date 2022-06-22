@@ -1,0 +1,14 @@
+{
+  "java.dependency.packagePresentation": "flat",
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "/opt/jdk-18.0.1.1/javafx-sdk-18.0.1/lib/javafx.base.jar",
+    "/opt/jdk-18.0.1.1/javafx-sdk-18.0.1/lib/javafx.controls.jar",
+    "/opt/jdk-18.0.1.1/javafx-sdk-18.0.1/lib/javafx.fxml.jar",
+    "/opt/jdk-18.0.1.1/javafx-sdk-18.0.1/lib/javafx.graphics.jar",
+    "/opt/jdk-18.0.1.1/javafx-sdk-18.0.1/lib/javafx.media.jar",
+    "/opt/jdk-18.0.1.1/javafx-sdk-18.0.1/lib/javafx.swing.jar",
+    "/opt/jdk-18.0.1.1/javafx-sdk-18.0.1/lib/javafx.web.jar",
+    "/opt/jdk-18.0.1.1/javafx-sdk-18.0.1/lib/javafx-swt.jar"
+  ]
+}

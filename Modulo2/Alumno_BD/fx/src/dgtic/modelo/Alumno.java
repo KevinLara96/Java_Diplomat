@@ -2,8 +2,6 @@ package dgtic.modelo;
 
 import java.util.ArrayList;
 
-import dgtic.modelo.Materia;
-
 public class Alumno {
     private String nombre;
     private ArrayList<Materia> materias = new ArrayList<>();

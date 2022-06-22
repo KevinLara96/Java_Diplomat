@@ -1,4 +1,4 @@
-package dgtic.servicio;
+package dgtic.repositorio;
 
 import java.util.ArrayList;
 import java.util.List;

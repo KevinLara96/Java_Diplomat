@@ -2,7 +2,6 @@ package dgtic.servicio;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import dgtic.modelo.Alumno;
 import dgtic.modelo.Materia;
