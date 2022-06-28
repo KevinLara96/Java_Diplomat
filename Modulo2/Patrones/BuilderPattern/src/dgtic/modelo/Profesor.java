@@ -10,7 +10,8 @@ public class Profesor {
     private List<Departamento> departamento = new ArrayList<>();
     private List<Materias> materias = new ArrayList<>();
 
-    private Profesor() {
+    private Profesor(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override
@@ -24,8 +25,7 @@ public class Profesor {
         private Profesor profesor;
 
         public Builder(String nombre) {
-            profesor = new Profesor();
-            profesor.nombre = nombre;
+            profesor = new Profesor(nombre);
         }
 
         public BuildBase setTipoBase(Tipo tipo) {

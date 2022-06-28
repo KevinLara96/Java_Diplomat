@@ -2,7 +2,6 @@ package vista;
 
 import java.util.Scanner;
 
-import modelo.empleado.*;
 import controlador.Agencia;
 
 public class Aplicacion {

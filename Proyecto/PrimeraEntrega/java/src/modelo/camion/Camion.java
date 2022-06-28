@@ -22,7 +22,11 @@ public class Camion {
     }
 
     public void setMarca(String marca) {
-        this.marca = marca;
+        try {
+            this.marca = marca;
+        } catch (Exception e) {
+            System.out.println("Valor no válido");
+        }
     }
 
     public String getModelo() {

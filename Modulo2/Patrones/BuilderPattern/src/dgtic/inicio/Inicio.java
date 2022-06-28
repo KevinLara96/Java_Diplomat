@@ -7,14 +7,14 @@ import dgtic.modelo.Tipo;
 
 public class Inicio {
     public static void main(String[] args) {
-        Profesor profesor = new Profesor.Builder("Juan").setTipoBase(Tipo.BASE)
+        Profesor profesorBase = new Profesor.Builder("Juan").setTipoBase(Tipo.BASE)
                 .setDepartamento(Departamento.COMPUTACION).build();
 
-        System.out.println(profesor);
+        System.out.println(profesorBase);
 
-        Profesor pr = new Profesor.Builder("Carlos").setTipoAsignatura(Tipo.ASIGNATURA)
+        Profesor profesorAsignatura = new Profesor.Builder("Carlos").setTipoAsignatura(Tipo.ASIGNATURA)
                 .setMaterias(Materias.ALGEBRA, Materias.CALCULO).build();
 
-        System.out.println(pr);
+        System.out.println(profesorAsignatura);
     }
 }
