@@ -1,5 +1,5 @@
 {
-  "java.dependency.packagePresentation": "flat",
+  "java.dependency.packagePresentation": "hierarchical",
   "java.project.referencedLibraries": [
     "lib/**/*.jar",
     "/opt/jdk-18.0.1.1/javafx-sdk-18.0.1/lib/javafx.base.jar",
