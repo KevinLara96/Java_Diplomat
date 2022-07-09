@@ -30,17 +30,41 @@ public class Agencia implements Serializable {
         return destinos;
     }
 
+    /*
+     * public void setDestinos(List<Viaje> destinos) {
+     * this.destinos = destinos;
+     * }
+     */
+
     public List<Conductor> getConductores() {
         return conductores;
     }
+
+    /*
+     * public void setConductores(List<Conductor> conductores) {
+     * this.conductores = conductores;
+     * }
+     */
 
     public List<Administrador> getAdministradores() {
         return administradores;
     }
 
+    /*
+     * public void setAdministradores(List<Administrador> administradores) {
+     * this.administradores = administradores;
+     * }
+     */
+
     public List<Autobus> getAutobuses() {
         return autobuses;
     }
+
+    /*
+     * public void setAutobuses(List<Autobus> autobuses) {
+     * this.autobuses = autobuses;
+     * }
+     */
 
     public synchronized static Agencia getInstancia() {
         if (INSTANCIA == null) {

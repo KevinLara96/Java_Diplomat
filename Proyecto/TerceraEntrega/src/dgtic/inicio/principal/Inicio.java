@@ -13,13 +13,13 @@ public class Inicio {
 
         System.out.println("Creando agencia...");
         Agencia agencia = Agencia.getInstancia();
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Agencia creada.\n");
 
         System.out.println("Creando administrador sys ...");
         Administrador sys = new Administrador("sys", "sys@sak.com", "system1",
                 "", 0.00f, Puesto.SYS, "sys123", 1);
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(1);
         agencia.getAdministradores().add(sys);
         System.out.println("Usuario sys creado.");
 

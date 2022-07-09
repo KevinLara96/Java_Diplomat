@@ -26,12 +26,7 @@ public class Empleado implements Serializable {
     }
 
     public void setNombre(String nombre) {
-        try {
-            this.nombre = nombre;
-        } catch (Exception e) {
-            System.out.println("Nombre inválido, deben ser puras letras.");
-            // return "Nombre inválido, solo se aceptan letras."
-        }
+        this.nombre = nombre;
     }
 
     public String getCorreo() {
