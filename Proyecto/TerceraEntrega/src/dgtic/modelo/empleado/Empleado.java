@@ -1,10 +1,12 @@
 package dgtic.modelo.empleado;
 
 import java.io.Serializable;
+import java.util.Random;
 
 import dgtic.modelo.empleado.puesto.Puesto;
 
 public class Empleado implements Serializable {
+    private String claveEmpleado;
     private String nombre;
     private String correo;
     private String contrasena;
@@ -12,13 +14,27 @@ public class Empleado implements Serializable {
     private float salario;
     private Puesto puesto;
 
-    public Empleado(String nombre, String correo, String contrasena, String rfc, float salario, Puesto puesto) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.contrasena = contrasena;
-        this.rfc = rfc;
-        this.salario = salario;
+    public Empleado(String claveEmpleado, String nombre, String correo, String contrasena, String rfc, float salario,
+            Puesto puesto) {
+        setNombre(nombre);
+        setClaveEmpleado(claveEmpleado);
+        setCorreo(correo);
+        setContrasena(contrasena);
+        setRfc(rfc);
+        setSalario(salario);
         this.puesto = puesto;
+    }
+
+    public String getClaveEmpleado() {
+        return this.claveEmpleado;
+    }
+
+    public void setClaveEmpleado(String claveEmpleado) {
+        if (claveEmpleado.length() <= 0) {
+            Random rand = new Random();
+            this.claveEmpleado = this.nombre.substring(0, 3) + rand.nextInt(999)
+                    + "R";
+        }
     }
 
     public String getNombre() {
@@ -26,7 +42,9 @@ public class Empleado implements Serializable {
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (nombre.length() <= 0) {
+            this.nombre = "Desconocido";
+        }
     }
 
     public String getCorreo() {
@@ -34,7 +52,9 @@ public class Empleado implements Serializable {
     }
 
     public void setCorreo(String correo) {
-        this.correo = correo;
+        if (correo.length() <= 0) {
+            this.correo = "desconocido@sak.com";
+        }
     }
 
     public String getContrasena() {
@@ -42,7 +62,9 @@ public class Empleado implements Serializable {
     }
 
     public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+        if (contrasena.length() <= 0) {
+            this.contrasena = "Usuario" + this.getNombre() + "1234#";
+        }
     }
 
     public String getRfc() {
@@ -50,7 +72,9 @@ public class Empleado implements Serializable {
     }
 
     public void setRfc(String rfc) {
-        this.rfc = rfc;
+        if (rfc.length() <= 0) {
+            this.rfc = "AAAA998877A99";
+        }
     }
 
     public float getSalario() {
@@ -58,7 +82,9 @@ public class Empleado implements Serializable {
     }
 
     public void setSalario(float salario) {
-        this.salario = salario;
+        if (salario <= 0) {
+            this.salario = 5000.00f;
+        }
     }
 
     public Puesto getPuesto() {
@@ -71,8 +97,8 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return "Empleado: " +
-                "nombre=" + nombre + ", puesto=" + puesto + ", correo= " + correo + ", rfc=" + rfc + ", salario="
+        return "Empleado: " + claveEmpleado +
+                "/ nombre=" + nombre + ", puesto=" + puesto + ", correo= " + correo + ", rfc=" + rfc + ", salario="
                 + salario;
     }
 }

@@ -13,13 +13,13 @@ public class Inicio {
 
         System.out.println("Creando agencia...");
         Agencia agencia = Agencia.getInstancia();
-        TimeUnit.SECONDS.sleep(1);
+        TimeUnit.SECONDS.sleep(2);
         System.out.println("Agencia creada.\n");
 
         System.out.println("Creando administrador sys ...");
-        Administrador sys = new Administrador("sys", "sys@sak.com", "system1",
-                "", 0.00f, Puesto.SYS, "sys123", 1);
-        TimeUnit.SECONDS.sleep(1);
+        Administrador sys = new Administrador("sys01", "sys", "sys@sak.com", "system1",
+                "", 0.00f, Puesto.SYS, 1);
+        TimeUnit.SECONDS.sleep(2);
         agencia.getAdministradores().add(sys);
         System.out.println("Usuario sys creado.");
 
@@ -30,6 +30,7 @@ public class Inicio {
             out.writeObject(agencia);
             out.close();
             fileOut.close();
+            System.out.println("Agencia creada.");
         } catch (Exception e) {
             System.out.println("No se pudo guardar la agencia.");
         }

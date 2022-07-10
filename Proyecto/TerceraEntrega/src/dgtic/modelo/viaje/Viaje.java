@@ -1,25 +1,26 @@
 package dgtic.modelo.viaje;
 
 import java.io.Serializable;
-//import java.sql.Date;
 import java.time.LocalDate;
 
+import dgtic.modelo.viaje.interfaces.TipoViaje;
+
 public class Viaje implements Serializable {
+    private int idViaje;
     private String origen;
     private String destino;
     private float precio;
     private int distancia;
     private LocalDate fecha;
+    private TipoViaje tipoViaje;
 
-    public Viaje(String origen, String destino, float precio, int distancia, LocalDate fecha) {
-        this.origen = origen;
-        this.destino = destino;
-        this.precio = precio;
-        this.distancia = distancia;
-        this.fecha = fecha;
-    }
-
-    public Viaje() {
+    public Viaje(String origen, String destino, float precio, int distancia, LocalDate fecha, TipoViaje tipoViaje) {
+        setTipoViaje(tipoViaje);
+        setOrigen(origen);
+        setDestino(destino);
+        setPrecio(precio);
+        setDistancia(distancia);
+        setFecha(fecha);
     }
 
     public String getOrigen() {
@@ -62,9 +63,17 @@ public class Viaje implements Serializable {
         this.fecha = fecha;
     }
 
+    public TipoViaje getTipoViaje() {
+        return tipoViaje;
+    }
+
+    public void setTipoViaje(TipoViaje tipoViaje) {
+        this.tipoViaje = tipoViaje;
+    }
+
     @Override
     public String toString() {
-        return "Viaje [" +
+        return "Viaje [" + idViaje + "]: " +
                 origen + " -> " + destino +
                 "\n distancia=" + distancia +
                 "\n fecha=" + fecha +

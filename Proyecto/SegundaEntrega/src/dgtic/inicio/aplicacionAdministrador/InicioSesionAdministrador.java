@@ -12,6 +12,7 @@ public class InicioSesionAdministrador {
     private String correo;
     private String contrasena;
     Scanner input = new Scanner(System.in);
+    private boolean recuperado;
 
     /* Constructor. Inicializa los datos de la agencia. */
     public InicioSesionAdministrador() {
@@ -21,8 +22,10 @@ public class InicioSesionAdministrador {
             this.agencia = (Agencia) in.readObject();
             in.close();
             fileIn.close();
+            recuperado = true;
         } catch (Exception e) {
             System.out.println("No se pudo recuperar la información.");
+            recuperado = false;
         }
     }
 
@@ -59,5 +62,9 @@ public class InicioSesionAdministrador {
         }
         System.out.println("Datos incorrectos");
         return false;
+    }
+
+    public boolean isRecuperado() {
+        return recuperado;
     }
 }

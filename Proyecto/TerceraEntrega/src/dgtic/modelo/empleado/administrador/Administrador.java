@@ -1,19 +1,20 @@
 package dgtic.modelo.empleado.administrador;
 
+import java.util.Random;
+
 import dgtic.modelo.agencia.Agencia;
 import dgtic.modelo.empleado.Empleado;
 import dgtic.modelo.empleado.puesto.Puesto;
 
 public class Administrador extends Empleado {
-    private String claveAdministrador;
-    private int idAdministrador;
+    private int claveAdministrador;
 
     /* Constructor */
-    public Administrador(String nombre, String correo, String contrasena, String rfc, float salario, Puesto puesto,
-            String claveAdministrador, int idAdministrador) {
-        super(nombre, correo, contrasena, rfc, salario, puesto);
-        this.claveAdministrador = claveAdministrador;
-        this.idAdministrador = idAdministrador;
+    public Administrador(String claveEmpleado, String nombre, String correo, String contrasena, String rfc,
+            float salario, Puesto puesto,
+            int claveAdministrador) {
+        super(claveEmpleado, nombre, correo, contrasena, rfc, salario, puesto);
+        setClaveAdministrador(claveAdministrador);
     }
 
     /* Operaciones administrador. */
@@ -32,25 +33,20 @@ public class Administrador extends Empleado {
     }
 
     /* Getters y Setters */
-    public String getClaveAdministrador() {
+    public int getClaveAdministrador() {
         return claveAdministrador;
     }
 
-    public void setClaveAdministrador(String claveAdministrador) {
-        this.claveAdministrador = claveAdministrador;
-    }
-
-    public int getIdAdministrador() {
-        return idAdministrador;
-    }
-
-    public void setIdAdministrador(int idAdministrador) {
-        this.idAdministrador = idAdministrador;
+    public void setClaveAdministrador(int claveAdministrador) {
+        if (claveAdministrador <= 0) {
+            Random rand = new Random();
+            this.claveAdministrador = rand.nextInt(100);
+        }
     }
 
     @Override
     public String toString() {
-        return super.toString() + ", idAdministrador=" + idAdministrador + "\n";
+        return super.toString() + ", claveAdministrador=" + claveAdministrador + "\n";
     }
 
 }

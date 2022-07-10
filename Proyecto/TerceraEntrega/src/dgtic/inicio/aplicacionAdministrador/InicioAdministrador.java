@@ -5,16 +5,16 @@ public class InicioAdministrador {
     private InicioSesionAdministrador inicioSesionAdministrador;
 
     public static void main(String[] args) {
-        InicioAdministrador mainAdministrador = new InicioAdministrador();
+        InicioAdministrador inicioAdministrador = new InicioAdministrador();
 
-        if (mainAdministrador.inicioSesion()) {
-            mainAdministrador.aplicacionAdministrador = new AplicacionAdminstrador();
-            mainAdministrador.aplicacionAdministrador.ejecutarAplicacion();
+        if (inicioAdministrador.inicioSesion()) {
+            inicioAdministrador.aplicacionAdministrador = new AplicacionAdminstrador();
+            inicioAdministrador.aplicacionAdministrador.ejecutarAplicacion();
         }
     }
 
     public boolean inicioSesion() {
-        this.inicioSesionAdministrador = new InicioSesionAdministrador();
+        this.inicioSesionAdministrador = new InicioSesionAdministrador();// Recupera el archivo SER.
         this.inicioSesionAdministrador.ingresarDatos();
         return this.inicioSesionAdministrador.iniciarSesion();
     }

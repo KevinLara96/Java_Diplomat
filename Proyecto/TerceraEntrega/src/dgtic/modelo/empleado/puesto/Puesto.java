@@ -1,5 +1,14 @@
 package dgtic.modelo.empleado.puesto;
 
 public enum Puesto {
-    SYS, ADMINISTRADOR, CONDUCTOR;
+    SYS(1),
+    ADMINISTRADOR(2),
+    CONDUCTOR(3);
+
+    final int ID_PUESTO;
+
+    Puesto(int ID_PUESTO) {
+        this.ID_PUESTO = ID_PUESTO;
+    }
+
 }

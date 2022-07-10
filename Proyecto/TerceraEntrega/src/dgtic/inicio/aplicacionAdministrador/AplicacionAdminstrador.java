@@ -142,7 +142,7 @@ public class AplicacionAdminstrador {
     }
 
     public void opcion3() {
-        Conductor conductor = new Conductor("Conductor1", "cond1@sak.com", "pwdCond1", "",
+        Conductor conductor = new Conductor("cond01", "Conductor1", "cond1@sak.com", "pwdCond1", "",
                 0.0f, Puesto.CONDUCTOR, 1, null, null);
         agencia.getConductores().add(conductor);
     }
@@ -156,8 +156,8 @@ public class AplicacionAdminstrador {
     }
 
     public void opcion5() {
-        Administrador administrador = new Administrador("Conductor1", "cond1@sak.com", "pwdCond1", "",
-                0.0f, Puesto.ADMINISTRADOR, "admin1", 1);
+        Administrador administrador = new Administrador("admin01", "Administrador1", "cond1@sak.com", "pwdCond1", "",
+                0.0f, Puesto.ADMINISTRADOR, 1);
         agencia.getAdministradores().add(administrador);
     }
 
@@ -170,13 +170,13 @@ public class AplicacionAdminstrador {
     }
 
     public void opcion7() {
-        Autobus autobus = new Autobus.Builder("Modelo1", "Marca1", 60).setTipoViaje(TipoUso.VIAJE)
+        Autobus autobus = new Autobus.Builder(1, "Modelo1", "Marca1", 60).setTipoViaje(TipoUso.VIAJE)
                 .setClase(Clase.EJECUTIVO).build();
         agencia.getAutobuses().add(autobus);
     }
 
     public void opcion8() {
-        Autobus autobus = new Autobus.Builder("Modelo1", "Marca1", 60).setTipoTour(TipoUso.TOUR)
+        Autobus autobus = new Autobus.Builder(2, "Modelo1", "Marca1", 60).setTipoTour(TipoUso.TOUR)
                 .setTipoTuribus(TipoTuribus.DOS_PISOS).build();
         agencia.getAutobuses().add(autobus);
     }
