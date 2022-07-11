@@ -2,7 +2,6 @@ package dgtic.inicio.aplicacionAdministrador;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
-//import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -11,26 +10,30 @@ import dgtic.modelo.autobus.Autobus;
 import dgtic.modelo.autobus.interfaces.Clase;
 import dgtic.modelo.autobus.interfaces.TipoTuribus;
 import dgtic.modelo.autobus.interfaces.TipoUso;
+import dgtic.modelo.empleado.Empleado;
 import dgtic.modelo.empleado.administrador.Administrador;
 import dgtic.modelo.empleado.conductor.Conductor;
 import dgtic.modelo.empleado.puesto.Puesto;
 import dgtic.modelo.viaje.Viaje;
 import dgtic.modelo.viaje.implementacion.FactoryViajeCorto;
 import dgtic.modelo.viaje.interfaces.AbstractFactory;
+import dgtic.modelo.viaje.interfaces.TipoViaje;
 import dgtic.modelo.viaje.interfaces.Viajes;
 
 public class AplicacionAdminstrador {
     private Agencia agencia;
     private int opcion = -1;
     private Scanner input = new Scanner(System.in);
+    private Administrador administrador;
 
-    public AplicacionAdminstrador() {
+    public AplicacionAdminstrador(Empleado administrador) {
         try {
             FileInputStream fileIn = new FileInputStream("src/dgtic/modelo/agencia/repositorio/Agencia.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             this.agencia = (Agencia) in.readObject();
             in.close();
             fileIn.close();
+            this.administrador = (Administrador) administrador;
         } catch (Exception e) {
             System.out.println("No se pudo recuperar la información.");
         }
@@ -127,10 +130,13 @@ public class AplicacionAdminstrador {
     }
 
     public void opcion1() {
+        // administrador.eliminarAdministrador();
         AbstractFactory factory = new FactoryViajeCorto();
         Viajes viajes = factory.crearViaje();
-        Viaje viaje = viajes.viaje("Origen", "Destino", 20.0f, 300, LocalDate.now());
+        Viaje viaje = viajes.viaje(1, "Origen", "Destino", 20.0f,
+                300, LocalDate.now().toString(), TipoViaje.CORTO);
         agencia.getDestinos().add(viaje);
+        administrador.
     }
 
     public void opcion2() {
