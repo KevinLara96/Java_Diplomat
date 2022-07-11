@@ -3,11 +3,12 @@ package dgtic.modelo.autobus.interfaces;
 public enum Clase {
     TURISTA(1),
     EJECUTIVO(2),
-    PRIMERA_CLASE(3);
+    PRIMERA_CLASE(3),
+    NA(0);
 
-    final int idClase;
+    public final int ID_CLASE;
 
     Clase(int idClase) {
-        this.idClase = idClase;
+        this.ID_CLASE = idClase;
     }
 }

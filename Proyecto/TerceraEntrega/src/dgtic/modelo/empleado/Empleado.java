@@ -2,6 +2,8 @@ package dgtic.modelo.empleado;
 
 import java.io.Serializable;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import dgtic.modelo.empleado.puesto.Puesto;
 
@@ -22,7 +24,7 @@ public class Empleado implements Serializable {
         setContrasena(contrasena);
         setRfc(rfc);
         setSalario(salario);
-        this.puesto = puesto;
+        setPuesto(puesto);
     }
 
     public String getClaveEmpleado() {
@@ -30,10 +32,12 @@ public class Empleado implements Serializable {
     }
 
     public void setClaveEmpleado(String claveEmpleado) {
-        if (claveEmpleado.length() <= 0) {
+        if (claveEmpleado.length() <= 0 || claveEmpleado == null) {
             Random rand = new Random();
             this.claveEmpleado = this.nombre.substring(0, 3) + rand.nextInt(999)
                     + "R";
+        } else {
+            this.claveEmpleado = claveEmpleado;
         }
     }
 
@@ -42,8 +46,10 @@ public class Empleado implements Serializable {
     }
 
     public void setNombre(String nombre) {
-        if (nombre.length() <= 0) {
+        if (nombre.length() <= 0 || nombre == null) {
             this.nombre = "Desconocido";
+        } else {
+            this.nombre = nombre;
         }
     }
 
@@ -52,8 +58,16 @@ public class Empleado implements Serializable {
     }
 
     public void setCorreo(String correo) {
-        if (correo.length() <= 0) {
-            this.correo = "desconocido@sak.com";
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(correo);
+        Random rand = new Random();
+
+        if (!matcher.matches() || correo == null) {
+            this.correo = "desconocido" + getNombre().substring(0, 3) +
+                    rand.nextInt(100) + "@sak.com";
+        } else {
+            this.correo = correo;
         }
     }
 
@@ -62,8 +76,10 @@ public class Empleado implements Serializable {
     }
 
     public void setContrasena(String contrasena) {
-        if (contrasena.length() <= 0) {
+        if (contrasena.length() <= 0 || contrasena == null) {
             this.contrasena = "Usuario" + this.getNombre() + "1234#";
+        } else {
+            this.contrasena = contrasena;
         }
     }
 
@@ -72,8 +88,10 @@ public class Empleado implements Serializable {
     }
 
     public void setRfc(String rfc) {
-        if (rfc.length() <= 0) {
+        if (rfc.length() <= 0 || rfc == null) {
             this.rfc = "AAAA998877A99";
+        } else {
+            this.rfc = rfc;
         }
     }
 
@@ -84,6 +102,8 @@ public class Empleado implements Serializable {
     public void setSalario(float salario) {
         if (salario <= 0) {
             this.salario = 5000.00f;
+        } else {
+            this.salario = salario;
         }
     }
 
@@ -92,7 +112,13 @@ public class Empleado implements Serializable {
     }
 
     public void setPuesto(Puesto puesto) {
-        this.puesto = puesto;
+        for (Puesto puest : Puesto.values()) {
+            if (puest == puesto) {
+                this.puesto = puesto;
+                return;
+            }
+        }
+        this.puesto = Puesto.CONDUCTOR;
     }
 
     @Override

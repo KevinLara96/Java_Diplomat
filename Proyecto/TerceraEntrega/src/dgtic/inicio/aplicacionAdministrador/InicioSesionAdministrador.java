@@ -48,16 +48,16 @@ public class InicioSesionAdministrador {
     }
 
     /* Método que verifica que exista el usuario en la base de datos. */
-    public boolean iniciarSesion() {
+    public Empleado iniciarSesion() {
         for (Empleado empleado : this.agencia.getAdministradores()) {
             if (empleado.getCorreo().equals(this.correo)) {
                 if (empleado.getContrasena().equals((this.contrasena))) {
                     System.out.println("Inicio de sesión con éxito.");
-                    return true;
+                    return empleado;
                 }
             }
         }
-        System.out.println("Datos incorrectos");
-        return false;
+        System.out.println("Datos incorrectos.");
+        return null;
     }
 }

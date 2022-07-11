@@ -5,7 +5,7 @@ public enum Puesto {
     ADMINISTRADOR(2),
     CONDUCTOR(3);
 
-    final int ID_PUESTO;
+    public final int ID_PUESTO;
 
     Puesto(int ID_PUESTO) {
         this.ID_PUESTO = ID_PUESTO;

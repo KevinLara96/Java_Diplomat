@@ -2,9 +2,11 @@ package dgtic.modelo.empleado.administrador;
 
 import java.util.Random;
 
+import dgtic.basedatos.servicio.escritura.Escritura;
 import dgtic.modelo.agencia.Agencia;
 import dgtic.modelo.empleado.Empleado;
 import dgtic.modelo.empleado.puesto.Puesto;
+import dgtic.modelo.viaje.Viaje;
 
 public class Administrador extends Empleado {
     private int claveAdministrador;
@@ -25,11 +27,18 @@ public class Administrador extends Empleado {
             return false;
         }
         agencia.getAdministradores().add(administrador);
+        Escritura.altaAdministrador(administrador);
         return true;
     }
 
     public boolean eliminarAdministrador() {
         return true;
+    }
+
+    public boolean anadirViaje(Viaje viaje) {
+        Agencia agencia = Agencia.getInstancia();
+        agencia.getDestinos().add(viaje);
+        return Escritura.altaViaje(viaje);
     }
 
     /* Getters y Setters */
@@ -41,6 +50,8 @@ public class Administrador extends Empleado {
         if (claveAdministrador <= 0) {
             Random rand = new Random();
             this.claveAdministrador = rand.nextInt(100);
+        } else {
+            this.claveAdministrador = claveAdministrador;
         }
     }
 

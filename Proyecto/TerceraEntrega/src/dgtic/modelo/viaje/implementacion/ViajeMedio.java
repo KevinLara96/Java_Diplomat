@@ -1,7 +1,5 @@
 package dgtic.modelo.viaje.implementacion;
 
-import java.time.LocalDate;
-
 import dgtic.modelo.viaje.Viaje;
 import dgtic.modelo.viaje.interfaces.TipoViaje;
 import dgtic.modelo.viaje.interfaces.Viajes;
@@ -9,9 +7,9 @@ import dgtic.modelo.viaje.interfaces.Viajes;
 public class ViajeMedio implements Viajes {
 
     @Override
-    public Viaje viaje(String origen, String destino, float precio, int distancia, LocalDate fecha,
+    public Viaje viaje(int idViaje, String origen, String destino, float precio, int distancia, String fecha,
             TipoViaje tipoViaje) {
-        return new Viaje(origen, destino, precio, distancia, fecha, tipoViaje);
+        return new Viaje(idViaje, origen, destino, precio, distancia, fecha, tipoViaje);
     }
 
 }

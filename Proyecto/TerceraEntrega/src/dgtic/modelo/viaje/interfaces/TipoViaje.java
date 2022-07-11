@@ -5,9 +5,9 @@ public enum TipoViaje {
     MEDIO(2),
     LARGO(3);
 
-    final int idTipoViaje;
+    public final int ID_TIPO_VIAJE;
 
     TipoViaje(int idTipoViaje) {
-        this.idTipoViaje = idTipoViaje;
+        this.ID_TIPO_VIAJE = idTipoViaje;
     }
 }

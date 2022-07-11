@@ -64,6 +64,18 @@ public class Autobus implements Serializable {
         }
     }
 
+    public Clase getClase() {
+        return clase;
+    }
+
+    public TipoUso getTipoUso() {
+        return tipoUso;
+    }
+
+    public TipoTuribus getTipoTuribus() {
+        return tipoTuribus;
+    }
+
     @Override
     public String toString() {
         return "Autobus [" +

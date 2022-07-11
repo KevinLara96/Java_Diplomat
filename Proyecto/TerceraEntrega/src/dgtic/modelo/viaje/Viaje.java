@@ -2,6 +2,7 @@ package dgtic.modelo.viaje;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Random;
 
 import dgtic.modelo.viaje.interfaces.TipoViaje;
 
@@ -11,10 +12,12 @@ public class Viaje implements Serializable {
     private String destino;
     private float precio;
     private int distancia;
-    private LocalDate fecha;
+    private String fecha;
     private TipoViaje tipoViaje;
 
-    public Viaje(String origen, String destino, float precio, int distancia, LocalDate fecha, TipoViaje tipoViaje) {
+    public Viaje(int idViaje, String origen, String destino, float precio, int distancia, String fecha,
+            TipoViaje tipoViaje) {
+        setIdViaje(idViaje);
         setTipoViaje(tipoViaje);
         setOrigen(origen);
         setDestino(destino);
@@ -23,12 +26,29 @@ public class Viaje implements Serializable {
         setFecha(fecha);
     }
 
+    public void setIdViaje(int idViaje) {
+        if (idViaje <= 0) {
+            Random rand = new Random();
+            this.idViaje = rand.nextInt(999);
+        } else {
+            this.idViaje = idViaje;
+        }
+    }
+
+    public int getIdViaje() {
+        return idViaje;
+    }
+
     public String getOrigen() {
         return origen;
     }
 
     public void setOrigen(String origen) {
-        this.origen = origen;
+        if (origen.length() <= 0 || origen == null) {
+            this.origen = "Ciudad de México";
+        } else {
+            this.origen = origen;
+        }
     }
 
     public String getDestino() {
@@ -36,7 +56,17 @@ public class Viaje implements Serializable {
     }
 
     public void setDestino(String destino) {
-        this.destino = destino;
+        if (destino.length() <= 0 || destino == null) {
+            if (this.getTipoViaje() == TipoViaje.CORTO) {
+                this.destino = "Ciudad de México";
+            } else if (this.getTipoViaje() == TipoViaje.MEDIO) {
+                this.destino = "Guadalajara";
+            } else {
+                this.destino = "Monterrey";
+            }
+        } else {
+            this.destino = destino;
+        }
     }
 
     public float getPrecio() {
@@ -44,7 +74,17 @@ public class Viaje implements Serializable {
     }
 
     public void setPrecio(float precio) {
-        this.precio = precio;
+        if (precio <= 0) {
+            if (this.getTipoViaje() == TipoViaje.CORTO) {
+                this.precio = 500.0f;
+            } else if (this.getTipoViaje() == TipoViaje.MEDIO) {
+                this.precio = 1500.0f;
+            } else {
+                this.precio = 4000.0f;
+            }
+        } else {
+            this.precio = precio;
+        }
     }
 
     public int getDistancia() {
@@ -52,15 +92,30 @@ public class Viaje implements Serializable {
     }
 
     public void setDistancia(int distancia) {
-        this.distancia = distancia;
+        if (distancia <= 0) {
+            if (this.getTipoViaje() == TipoViaje.CORTO) {
+                this.distancia = 50;
+            } else if (this.getTipoViaje() == TipoViaje.MEDIO) {
+                this.distancia = 400;
+            } else {
+                this.distancia = 800;
+            }
+        } else {
+            this.distancia = distancia;
+        }
+
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
+    public void setFecha(String fecha) {
+        if (fecha == null) {
+            this.fecha = LocalDate.now().toString();
+        } else {
+            this.fecha = fecha;
+        }
     }
 
     public TipoViaje getTipoViaje() {
@@ -68,7 +123,16 @@ public class Viaje implements Serializable {
     }
 
     public void setTipoViaje(TipoViaje tipoViaje) {
-        this.tipoViaje = tipoViaje;
+        // Si el tipo de viaje se especifica, se asigna al viaje.
+        for (TipoViaje viaje : TipoViaje.values()) {
+            if (viaje == tipoViaje) {
+                this.tipoViaje = tipoViaje;
+                return;
+            }
+        }
+        // Si no se especifica, se elige uno aleatorio del Enum.
+        Random rand = new Random();
+        this.tipoViaje = TipoViaje.values()[rand.nextInt(0, 2)];
     }
 
     @Override
