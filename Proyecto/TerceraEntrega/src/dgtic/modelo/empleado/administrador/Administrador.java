@@ -4,7 +4,9 @@ import java.util.Random;
 
 import dgtic.basedatos.servicio.escritura.Escritura;
 import dgtic.modelo.agencia.Agencia;
+import dgtic.modelo.autobus.Autobus;
 import dgtic.modelo.empleado.Empleado;
+import dgtic.modelo.empleado.conductor.Conductor;
 import dgtic.modelo.empleado.puesto.Puesto;
 import dgtic.modelo.viaje.Viaje;
 
@@ -37,8 +39,44 @@ public class Administrador extends Empleado {
 
     public boolean anadirViaje(Viaje viaje) {
         Agencia agencia = Agencia.getInstancia();
-        agencia.getDestinos().add(viaje);
-        return Escritura.altaViaje(viaje);
+        if (Escritura.altaViaje(viaje)) {
+            agencia.getDestinos().add(viaje);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean eliminarViaje() {
+        return true;
+    }
+
+    public boolean anadirConductor(Conductor conductor) {
+        Agencia agencia = Agencia.getInstancia();
+        if (Escritura.altaConductor(conductor)) {
+            agencia.getConductores().add(conductor);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean eliminarConductor() {
+        return true;
+    }
+
+    public boolean anadirAutobus(Autobus autobus) {
+        Agencia agencia = Agencia.getInstancia();
+        if (Escritura.altaAutobus(autobus)) {
+            agencia.getAutobuses().add(autobus);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean eliminarAutobus() {
+        return true;
     }
 
     /* Getters y Setters */

@@ -43,18 +43,18 @@ public class AplicacionAdminstrador {
         do {
             System.out.println("Elegir una operación.\n");
             System.out.println("1. Añadir destino.");
-            System.out.println("2. Eliminar destino.");
+            // System.out.println("2. Eliminar destino.");
             System.out.println("3. Contratar empleado.");
-            System.out.println("4. Despedir empleado.");
+            // System.out.println("4. Despedir empleado.");
             System.out.println("5. Contratar administrador.");
-            System.out.println("6. Despedir administrador.");
+            // System.out.println("6. Despedir administrador.");
             System.out.println("7. Agregar autobús.");
             System.out.println("8. Agregar Turibús.");
-            System.out.println("9. Vender autobús.");
-            System.out.println("10. Mostrar conductores.");
-            System.out.println("11. Mostrar administradores.");
-            System.out.println("12. Mostrar destinos.");
-            System.out.println("13. Mostrar autobuses.");
+            // System.out.println("9. Vender autobús.");
+            // System.out.println("10. Mostrar conductores.");
+            // System.out.println("11. Mostrar administradores.");
+            // System.out.println("12. Mostrar destinos.");
+            // System.out.println("13. Mostrar autobuses.");
             System.out.println("0. Salir.");
             System.out.print("Su opción: ");
 
@@ -130,13 +130,12 @@ public class AplicacionAdminstrador {
     }
 
     public void opcion1() {
-        // administrador.eliminarAdministrador();
         AbstractFactory factory = new FactoryViajeCorto();
-        Viajes viajes = factory.crearViaje();
-        Viaje viaje = viajes.viaje(1, "Origen", "Destino", 20.0f,
+        Viajes viajeCortoFactory = factory.crearViaje();
+        Viaje viaje = viajeCortoFactory.viaje(1, "Origen", "Destino", 20.0f,
                 300, LocalDate.now().toString(), TipoViaje.CORTO);
         agencia.getDestinos().add(viaje);
-        administrador.
+        administrador.anadirViaje(viaje);
     }
 
     public void opcion2() {
