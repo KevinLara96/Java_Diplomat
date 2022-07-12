@@ -96,18 +96,17 @@ public class Escritura {
         String instruccionSQL = "";
 
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
             Connection oConnection = DriverManager.getConnection(cadenaConexion, usuario, contrasena);
             Statement oStatement = oConnection.createStatement();
 
-            instruccionSQL += "INSERT INTO Empleado VALUES(" +
+            instruccionSQL += "INSERT INTO Viaje VALUES(" +
                     viaje.getIdViaje() + "," +
                     viaje.getTipoViaje().ID_TIPO_VIAJE + "," +
-                    viaje.getOrigen() + "," +
-                    viaje.getDestino() + "," +
+                    "'" + viaje.getOrigen() + "'" + "," +
+                    "'" + viaje.getDestino() + "'" + "," +
                     viaje.getPrecio() + "," +
                     viaje.getDistancia() + "," +
-                    viaje.getFecha() + ");";
+                    "'" + viaje.getFecha() + "'" + ");";
             oStatement.executeUpdate(instruccionSQL);
 
             oStatement.close();
