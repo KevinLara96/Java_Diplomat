@@ -2,6 +2,7 @@ package dgtic.modelo.empleado.administrador;
 
 import java.util.Random;
 
+import dgtic.basedatos.servicio.borrado.Borrado;
 import dgtic.basedatos.servicio.escritura.Escritura;
 import dgtic.modelo.agencia.Agencia;
 import dgtic.modelo.autobus.Autobus;
@@ -21,7 +22,7 @@ public class Administrador extends Empleado {
         setClaveAdministrador(claveAdministrador);
     }
 
-    /* Operaciones administrador. */
+    /**************** Operaciones administrador. ****************/
     public boolean anadirAdministrador(Administrador administrador) {
         Agencia agencia = Agencia.getInstancia();
         if (administrador.getNombre().toLowerCase().equals("sys")) {
@@ -33,8 +34,18 @@ public class Administrador extends Empleado {
         return true;
     }
 
-    public boolean eliminarAdministrador() {
-        return true;
+    public boolean eliminarAdministrador(String claveAdministrador) {
+        Agencia agencia = Agencia.getInstancia();
+        if (Borrado.bajaAdministrador(claveAdministrador)) {
+            for (Administrador itAdmin : agencia.getAdministradores()) {
+                if (itAdmin.getClaveEmpleado().equals(claveAdministrador)) {
+                    agencia.getAdministradores().remove(itAdmin);
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean anadirViaje(Viaje viaje) {
@@ -47,8 +58,18 @@ public class Administrador extends Empleado {
         }
     }
 
-    public boolean eliminarViaje() {
-        return true;
+    public boolean eliminarViaje(int idViaje) {
+        Agencia agencia = Agencia.getInstancia();
+        if (Borrado.bajaViaje(idViaje)) {
+            for (Viaje itViaje : agencia.getDestinos()) {
+                if (itViaje.getIdViaje() == idViaje) {
+                    agencia.getDestinos().remove(itViaje);
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean anadirConductor(Conductor conductor) {
@@ -61,8 +82,18 @@ public class Administrador extends Empleado {
         }
     }
 
-    public boolean eliminarConductor() {
-        return true;
+    public boolean eliminarConductor(String claveConductor) {
+        Agencia agencia = Agencia.getInstancia();
+        if (Borrado.bajaConductor(claveConductor)) {
+            for (Conductor itConductor : agencia.getConductores()) {
+                if (itConductor.getClaveEmpleado().equals(claveConductor)) {
+                    agencia.getConductores().remove(itConductor);
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean anadirAutobus(Autobus autobus) {
@@ -75,8 +106,50 @@ public class Administrador extends Empleado {
         }
     }
 
-    public boolean eliminarAutobus() {
-        return true;
+    public boolean eliminarAutobus(int claveAutobus) {
+        Agencia agencia = Agencia.getInstancia();
+        if (Borrado.bajaAutobus(claveAutobus)) {
+            for (Autobus itAutobus : agencia.getAutobuses()) {
+                if (itAutobus.getClaveAutobus() == claveAutobus) {
+                    agencia.getAutobuses().remove(itAutobus);
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean asignarViaje(String claveConductor, int idViaje) {
+        if (Escritura.asignarViaje(claveConductor, idViaje)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean asignarAutobus(String claveConductor, int idAutobus) {
+        if (Escritura.asignarAutobus(claveConductor, idAutobus)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean quitarAutobusConductor(String claveConductor, int claveAutobus) {
+        if (Borrado.removerAutobusConductor(claveConductor, claveAutobus)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean quitarViajeConductor(String claveConductor, int idViaje) {
+        if (Borrado.removerViajeConductor(claveConductor, idViaje)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /* Getters y Setters */

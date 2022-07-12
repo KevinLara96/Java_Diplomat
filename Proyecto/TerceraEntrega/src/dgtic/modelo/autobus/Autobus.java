@@ -12,9 +12,9 @@ public class Autobus implements Serializable {
     private String modelo;
     private String marca;
     private int capacidad;
-    private Clase clase;
-    private TipoUso tipoUso;
-    private TipoTuribus tipoTuribus;
+    public Clase clase;
+    public TipoUso tipoUso;
+    public TipoTuribus tipoTuribus;
 
     public Autobus(int claveAutobus, String modelo, String marca, int capacidad) {
         setClaveAutobus(claveAutobus);
@@ -31,6 +31,8 @@ public class Autobus implements Serializable {
         if (claveAutobus <= 0) {
             Random rand = new Random();
             this.claveAutobus = rand.nextInt(1000);
+        } else {
+            this.claveAutobus = claveAutobus;
         }
     }
 
@@ -41,6 +43,8 @@ public class Autobus implements Serializable {
     public void setModelo(String modelo) {
         if (modelo.length() <= 0) {
             this.modelo = "Desconocido";
+        } else {
+            this.modelo = modelo;
         }
     }
 
@@ -51,6 +55,8 @@ public class Autobus implements Serializable {
     public void setMarca(String marca) {
         if (marca.length() <= 0) {
             this.marca = "Desconocido";
+        } else {
+            this.marca = marca;
         }
     }
 
@@ -61,6 +67,8 @@ public class Autobus implements Serializable {
     public void setCapacidad(int capacidad) {
         if (capacidad <= 0) {
             this.capacidad = 30;
+        } else {
+            this.capacidad = capacidad;
         }
     }
 
@@ -80,30 +88,30 @@ public class Autobus implements Serializable {
     public String toString() {
         return "Autobus [" +
                 "\n claveAutobus: " + claveAutobus +
-                "\n clase=" + clase +
                 "\n marca=" + marca +
                 "\n modelo=" + modelo +
                 "\n capacidad=" + capacidad +
+                "\n clase=" + clase +
                 "\n tipoUso=" + tipoUso +
                 "\n tipoTuribus=" + tipoTuribus + "]";
 
     }
 
     public static class Builder {
-        private Autobus autobus;
+        private Autobus autobusBuilder;
 
         public Builder(int claveAutobus, String modelo, String marca, int capacidad) {
-            autobus = new Autobus(claveAutobus, modelo, marca, capacidad);
+            autobusBuilder = new Autobus(claveAutobus, modelo, marca, capacidad);
         }
 
         public BuildViaje setTipoViaje(TipoUso tipoUso) {
-            autobus.tipoUso = tipoUso;
-            return new BuildViaje(autobus);
+            autobusBuilder.tipoUso = tipoUso;
+            return new BuildViaje(autobusBuilder);
         }
 
         public BuildTour setTipoTour(TipoUso tipoUso) {
-            autobus.tipoUso = tipoUso;
-            return new BuildTour(autobus);
+            autobusBuilder.tipoUso = tipoUso;
+            return new BuildTour(autobusBuilder);
         }
     }
 
@@ -116,6 +124,7 @@ public class Autobus implements Serializable {
 
         public BuildViaje setClase(Clase clase) {
             this.autobus.clase = clase;
+            this.autobus.tipoTuribus = TipoTuribus.NA;
             return this;
         }
 
@@ -133,6 +142,7 @@ public class Autobus implements Serializable {
 
         public BuildTour setTipoTuribus(TipoTuribus tipoTuribus) {
             this.autobus.tipoTuribus = tipoTuribus;
+            this.autobus.clase = Clase.NA;
             return this;
         }
 

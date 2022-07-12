@@ -10,7 +10,7 @@ public class Inicio {
         Profesor profesorBase = new Profesor.Builder("Juan").setTipoBase(Tipo.BASE)
                 .setDepartamento(Departamento.COMPUTACION).build();
 
-        System.out.println(profesorBase);
+        System.out.print(profesorBase);
 
         Profesor profesorAsignatura = new Profesor.Builder("Carlos").setTipoAsignatura(Tipo.ASIGNATURA)
                 .setMaterias(Materias.ALGEBRA, Materias.CALCULO).build();

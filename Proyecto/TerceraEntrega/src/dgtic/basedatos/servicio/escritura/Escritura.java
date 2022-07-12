@@ -127,18 +127,71 @@ public class Escritura {
         String instruccionSQL = "";
 
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
             Connection oConnection = DriverManager.getConnection(cadenaConexion, usuario, contrasena);
             Statement oStatement = oConnection.createStatement();
 
             instruccionSQL += "INSERT INTO Autobus VALUES(" +
                     autobus.getClaveAutobus() + "," +
-                    autobus.getModelo() + "," +
-                    autobus.getMarca() + "," +
+                    "'" + autobus.getModelo() + "'" + "," +
+                    "'" + autobus.getMarca() + "'" + "," +
                     autobus.getCapacidad() + "," +
                     autobus.getTipoUso().ID_TIPO_USO + "," +
                     autobus.getClase().ID_CLASE + "," +
                     autobus.getTipoTuribus().ID_TURIBUS + ");";
+            oStatement.executeUpdate(instruccionSQL);
+
+            oStatement.close();
+            oConnection.close();
+            status = true;
+        } catch (Exception e) {
+            status = false;
+            e.printStackTrace();
+        }
+        return status;
+    }
+
+    /*
+     * Asigna un viaje a un conductor.
+     * Debe existir el conductor y el viaje en la base de datos.
+     */
+    public static boolean asignarViaje(String claveConductor, int idViaje) {
+        boolean status = false;
+        String instruccionSQL = "";
+
+        try {
+            Connection oConnection = DriverManager.getConnection(cadenaConexion, usuario, contrasena);
+            Statement oStatement = oConnection.createStatement();
+
+            instruccionSQL += "INSERT INTO Conductor_Viaje VALUES(" +
+                    "'" + claveConductor + "'," +
+                    idViaje + ");";
+            oStatement.executeUpdate(instruccionSQL);
+
+            oStatement.close();
+            oConnection.close();
+            status = true;
+        } catch (Exception e) {
+            status = false;
+            e.printStackTrace();
+        }
+        return status;
+    }
+
+    /*
+     * Asigna un autobús a un conductor.
+     * El conductor y el autobús deben existir en la base de datos.
+     */
+    public static boolean asignarAutobus(String claveConductor, int idAutobus) {
+        boolean status = false;
+        String instruccionSQL = "";
+
+        try {
+            Connection oConnection = DriverManager.getConnection(cadenaConexion, usuario, contrasena);
+            Statement oStatement = oConnection.createStatement();
+
+            instruccionSQL += "INSERT INTO Conductor_Autobus VALUES(" +
+                    "'" + claveConductor + "'," +
+                    idAutobus + ");";
             oStatement.executeUpdate(instruccionSQL);
 
             oStatement.close();

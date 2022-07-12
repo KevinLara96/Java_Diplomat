@@ -26,6 +26,7 @@ public class Profesor {
 
         public Builder(String nombre) {
             profesor = new Profesor(nombre);
+			System.out.print("AAA" + profesor); 
         }
 
         public BuildBase setTipoBase(Tipo tipo) {
