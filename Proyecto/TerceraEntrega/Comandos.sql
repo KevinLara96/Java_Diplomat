@@ -58,7 +58,8 @@ CREATE TABLE Viaje(
   PRIMARY KEY (idViaje)
 );
 CREATE TABLE Conductor(
-  claveEmpleado VARCHAR(5) NOT NULL UNIQUE,
+  claveEmpleado VARCHAR(5) NOT NULL,
+  CONSTRAINT fk_claveEmpleado FOREIGN KEY(claveEmpleado) REFERENCES Empleado(claveEmpleado),
   claveConductor INT NOT NULL,
   CONSTRAINT ck_claveCond CHECK(claveConductor > 0),
   PRIMARY KEY(claveEmpleado)

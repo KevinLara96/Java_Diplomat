@@ -11,7 +11,7 @@ import dgtic.modelo.viaje.Viaje;
 
 public class Escritura {
     private static String usuario = "root";
-    private static String contrasena = "MaPass";
+    private static String contrasena = "MaPassw";
     private static String cadenaConexion = "jdbc:mariadb://localhost/modulo03";
 
     /*
@@ -26,18 +26,18 @@ public class Escritura {
             Statement oStatement = oConnection.createStatement();
 
             instruccionSQL += "INSERT INTO Empleado VALUES(" +
-                    administrador.getClaveEmpleado() + "," +
+                    "'" + administrador.getClaveEmpleado() + "'" + "," +
                     administrador.getPuesto().ID_PUESTO + "," +
-                    administrador.getNombre() + "," +
-                    administrador.getCorreo() + "," +
-                    administrador.getContrasena() + "," +
-                    administrador.getRfc() + "," +
+                    "'" + administrador.getNombre() + "'" + "," +
+                    "'" + administrador.getCorreo() + "'" + "," +
+                    "'" + administrador.getContrasena() + "'" + "," +
+                    "'" + administrador.getRfc() + "'" + "," +
                     administrador.getSalario() + ");";
             oStatement.executeUpdate(instruccionSQL);
 
             instruccionSQL = "";
             instruccionSQL += "INSERT INTO Administrador VALUES(" +
-                    administrador.getClaveEmpleado() + "," +
+                    "'" + administrador.getClaveEmpleado() + "'" + "," +
                     administrador.getClaveAdministrador() + ");";
             oStatement.executeUpdate(instruccionSQL);
 
@@ -63,18 +63,18 @@ public class Escritura {
             Statement oStatement = oConnection.createStatement();
 
             instruccionSQL += "INSERT INTO Empleado VALUES(" +
-                    conductor.getClaveEmpleado() + "," +
+                    "'" + conductor.getClaveEmpleado() + "'" + "," +
                     conductor.getPuesto().ID_PUESTO + "," +
-                    conductor.getNombre() + "," +
-                    conductor.getCorreo() + "," +
-                    conductor.getContrasena() + "," +
-                    conductor.getRfc() + "," +
+                    "'" + conductor.getNombre() + "'" + "," +
+                    "'" + conductor.getCorreo() + "'" + "," +
+                    "'" + conductor.getContrasena() + "'" + "," +
+                    "'" + conductor.getRfc() + "'" + "," +
                     conductor.getSalario() + ");";
             oStatement.executeUpdate(instruccionSQL);
 
             instruccionSQL = "";
             instruccionSQL += "INSERT INTO Conductor VALUES(" +
-                    conductor.getClaveEmpleado() + "," +
+                    "'" + conductor.getClaveEmpleado() + "'" + "," +
                     conductor.getClaveConductor() + ");";
             oStatement.executeUpdate(instruccionSQL);
 
@@ -96,6 +96,7 @@ public class Escritura {
         String instruccionSQL = "";
 
         try {
+            Class.forName("org.mariadb.jdbc.Driver");
             Connection oConnection = DriverManager.getConnection(cadenaConexion, usuario, contrasena);
             Statement oStatement = oConnection.createStatement();
 
@@ -127,6 +128,7 @@ public class Escritura {
         String instruccionSQL = "";
 
         try {
+            Class.forName("org.mariadb.jdbc.Driver");
             Connection oConnection = DriverManager.getConnection(cadenaConexion, usuario, contrasena);
             Statement oStatement = oConnection.createStatement();
 

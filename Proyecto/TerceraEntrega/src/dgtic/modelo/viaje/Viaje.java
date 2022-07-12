@@ -132,7 +132,7 @@ public class Viaje implements Serializable {
         }
         // Si no se especifica, se elige uno aleatorio del Enum.
         Random rand = new Random();
-        this.tipoViaje = TipoViaje.values()[rand.nextInt(0, 2)];
+        this.tipoViaje = TipoViaje.values()[rand.nextInt(2)];
     }
 
     @Override
