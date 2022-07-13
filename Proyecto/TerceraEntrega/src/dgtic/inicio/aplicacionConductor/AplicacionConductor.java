@@ -4,8 +4,8 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.Scanner;
 
+import dgtic.basedatos.servicio.consulta.Consulta;
 import dgtic.modelo.agencia.Agencia;
-import dgtic.modelo.empleado.Empleado;
 
 public class AplicacionConductor {
     private Agencia agencia;
@@ -55,9 +55,8 @@ public class AplicacionConductor {
     }
 
     public void opcion1() {
-        for (Empleado conductor : agencia.getConductores()) {
-            System.out.println(conductor);
-        }
+        agencia.getConductores();
+        System.out.println(Consulta.consultaConductores());
     }
 
     public void opcion0() {
