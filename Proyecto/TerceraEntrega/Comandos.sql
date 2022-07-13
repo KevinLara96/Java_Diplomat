@@ -1,16 +1,6 @@
 DROP DATABASE if EXISTS modulo03;
 CREATE DATABASE modulo03;
 USE modulo03;
-DROP TABLE if EXISTS Empleado;
-DROP TABLE if EXISTS Puesto;
-DROP TABLE if EXISTS Administrador;
-DROP TABLE if EXISTS Conductor_Autobus;
-DROP TABLE if EXISTS Conductor;
-DROP TABLE if EXISTS Viaje;
-DROP TABLE if EXISTS Autobus;
-DROP TABLE if EXISTS Tipo_Uso;
-DROP TABLE if EXISTS Turibus;
-DROP TABLE if EXISTS Clase_Bus;
 CREATE TABLE Puesto(
   idPuesto INT NOT NULL,
   puesto VARCHAR(30) NOT NULL,
@@ -38,7 +28,7 @@ CREATE TABLE Administrador(
   claveAdministrador INT NOT NULL,
   PRIMARY KEY(claveEmpleado)
 );
-CREATE TABLE tipoViaje(
+CREATE TABLE Tipo_Viaje(
   idTipoViaje INT NOT NULL,
   tipoViaje VARCHAR(20) NOT NULL,
   CONSTRAINT ck_tipoViaje CHECK (tipoViaje in ('CORTO', 'MEDIO', 'LARGO')),

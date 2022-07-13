@@ -114,6 +114,7 @@ public class Escritura {
             status = true;
         } catch (Exception e) {
             status = false;
+            System.out.println("Error al registrar nuevo destino.");
             e.printStackTrace();
         }
         return status;

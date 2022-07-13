@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import dgtic.basedatos.servicio.consulta.Consulta;
 import dgtic.modelo.agencia.Agencia;
 import dgtic.modelo.autobus.Autobus;
 import dgtic.modelo.autobus.interfaces.Clase;
@@ -43,30 +44,30 @@ public class AplicacionAdminstrador {
         do {
             System.out.println("Elegir una operación.\n");
             System.out.println("1. Añadir destino.");
-            // System.out.println("2. Eliminar destino.");
-            System.out.println("3. Contratar empleado.");
-            // System.out.println("4. Despedir empleado.");
+            System.out.println("2. Eliminar destino.");
+            System.out.println("3. Contratar conductor.");
+            System.out.println("4. Despedir conductor.");
             System.out.println("5. Contratar administrador.");
-            // System.out.println("6. Despedir administrador.");
+            System.out.println("6. Despedir administrador.");
             System.out.println("7. Agregar autobús.");
             System.out.println("8. Agregar Turibús.");
-            // System.out.println("9. Vender autobús.");
-            // System.out.println("10. Mostrar conductores.");
-            // System.out.println("11. Mostrar administradores.");
-            // System.out.println("12. Mostrar destinos.");
-            // System.out.println("13. Mostrar autobuses.");
+            System.out.println("9. Vender autobús.");
+            System.out.println("10. Mostrar conductores.");
+            System.out.println("11. Mostrar administradores.");
+            System.out.println("12. Mostrar destinos.");
+            System.out.println("13. Mostrar autobuses.");
             System.out.println("14. Asignar viaje a conductor.");
             System.out.println("15. Asignar autobús a conductor.");
-            // System.out.println("16. Remover viaje a conductor.");
-            // System.out.println("17. Remover autobús a conductor.");
+            System.out.println("16. Remover viaje a conductor.");
+            System.out.println("17. Remover autobús a conductor.");
             System.out.println("0. Salir.");
             System.out.print("Su opción: ");
 
             try {
                 this.opcion = input.nextInt();
             } catch (Exception e) {
-                input.nextLine();
                 System.out.println("Ingrese un dato válido.");
+                input.nextLine();
             }
 
             switch (this.opcion) {
@@ -154,16 +155,13 @@ public class AplicacionAdminstrador {
         Viajes viajeCortoFactory = factory.crearViaje();
         Viaje viaje = viajeCortoFactory.viaje(1, "Origen", "Destino", 20.0f,
                 300, LocalDate.now().toString(), TipoViaje.CORTO);
-        agencia.getDestinos().add(viaje);
         administrador.anadirViaje(viaje);
     }
 
     public void opcion2() {
-        Scanner input = new Scanner(System.in);
         System.out.print("Ingrese el viaje que quiere eliminar: ");
         int idViaje = input.nextInt();
         administrador.eliminarViaje(idViaje);
-        input.close();
     }
 
     public void opcion3() {
@@ -174,11 +172,10 @@ public class AplicacionAdminstrador {
     }
 
     public void opcion4() {
-        Scanner input = new Scanner(System.in);
+        input.nextLine();
         System.out.print("Ingrese el conductor que quiere despedir: ");
         String claveConductor = input.nextLine();
-        agencia.getConductores().remove(opcion);
-        input.close();
+        // agencia.getConductores().remove(opcion);
         administrador.eliminarConductor(claveConductor);
     }
 
@@ -190,11 +187,10 @@ public class AplicacionAdminstrador {
     }
 
     public void opcion6() {
-        Scanner input = new Scanner(System.in);
+        input.nextLine();
         System.out.print("Ingrese el administrador que quiere despedir: ");
         String claveAdministrador = input.nextLine();
-        agencia.getConductores().remove(opcion);
-        input.close();
+        // agencia.getConductores().remove(opcion);
         administrador.eliminarAdministrador(claveAdministrador);
     }
 
@@ -203,7 +199,6 @@ public class AplicacionAdminstrador {
                 .setClase(Clase.EJECUTIVO).build();
         agencia.getAutobuses().add(autobus);
         administrador.anadirAutobus(autobus);
-        System.out.println(autobus);
     }
 
     public void opcion8() {
@@ -211,31 +206,29 @@ public class AplicacionAdminstrador {
                 .setTipoTuribus(TipoTuribus.DOS_PISOS).build();
         agencia.getAutobuses().add(autobus);
         administrador.anadirAutobus(autobus);
-        System.out.println(autobus);
     }
 
     public void opcion9() {
-        Scanner input = new Scanner(System.in);
         System.out.print("Ingrese el autobús que quiere vender: ");
-        int opcion = input.nextInt();
-        agencia.getAutobuses().remove(opcion);
-        input.close();
+        int claveAutobus = input.nextInt();
+        // agencia.getAutobuses().remove(opcion);
+        administrador.eliminarAutobus(claveAutobus);
     }
 
     public void opcion10() {
-        System.out.println(agencia.getConductores());
+        System.out.println(Consulta.consultaConductores());
     }
 
     public void opcion11() {
-        System.out.println(agencia.getAdministradores());
+        System.out.println(Consulta.consultaAdministradores());
     }
 
     public void opcion12() {
-        System.out.println(agencia.getDestinos());
+        System.out.println(Consulta.consultaViajes());
     }
 
     public void opcion13() {
-        System.out.println(agencia.getAutobuses());
+        System.out.println(Consulta.consultaAutobuses());
     }
 
     public void opcion14() {
@@ -257,14 +250,25 @@ public class AplicacionAdminstrador {
     }
 
     public void opcion16() {
-        System.out.println(agencia.getAutobuses());
+        System.out.print("Ingrese la clave de Conductor: ");
+        input.nextLine();
+        String claveConductor = input.nextLine();
+        System.out.print("\nIngrese el id del Viaje: ");
+        int idViaje = input.nextInt();
+        administrador.quitarViajeConductor(claveConductor, idViaje);
     }
 
     public void opcion17() {
-        System.out.println(agencia.getAutobuses());
+        System.out.print("Ingrese la clave de Conductor: ");
+        input.nextLine();
+        String claveConductor = input.nextLine();
+        System.out.print("\nIngrese el id del Autobús: ");
+        int idAutobus = input.nextInt();
+        administrador.quitarAutobusConductor(claveConductor, idAutobus);
     }
 
     public void opcion0() {
+        input.close();
         System.exit(0);
     }
 }

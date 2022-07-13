@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class Borrado {
     private static String usuario = "root";
-    private static String contrasena = "MaPass";
+    private static String contrasena = "MaPassw";
     private static String cadenaConexion = "jdbc:mariadb://localhost/modulo03";
 
     /*
@@ -20,13 +20,13 @@ public class Borrado {
             Connection oConnection = DriverManager.getConnection(cadenaConexion, usuario, contrasena);
             Statement oStatement = oConnection.createStatement();
 
-            instruccionSQL += "DELETE FROM Administrador WHERE" +
-                    "claveEmpleado = " + claveEmpleado;
+            instruccionSQL += "DELETE FROM Administrador WHERE " +
+                    "claveEmpleado = '" + claveEmpleado + "';";
             oStatement.executeUpdate(instruccionSQL);
 
             instruccionSQL = "";
-            instruccionSQL += "DELETE FROM Empleado WHERE" +
-                    "claveEmpleado = " + claveEmpleado;
+            instruccionSQL += "DELETE FROM Empleado WHERE " +
+                    "claveEmpleado = '" + claveEmpleado + "';";
             oStatement.executeUpdate(instruccionSQL);
 
             oStatement.close();
@@ -51,22 +51,22 @@ public class Borrado {
             Statement oStatement = oConnection.createStatement();
 
             instruccionSQL += "DELETE FROM Conductor_Viaje " +
-                    "WHERE claveConductor = " + claveEmpleado;
+                    "WHERE claveEmpleado = '" + claveEmpleado + "';";
             oStatement.executeUpdate(instruccionSQL);
 
             instruccionSQL = "";
             instruccionSQL += "DELETE FROM Conductor_Autobus " +
-                    "WHERE claveConductor = " + claveEmpleado;
+                    "WHERE claveEmpleado = '" + claveEmpleado + "';";
             oStatement.executeUpdate(instruccionSQL);
 
             instruccionSQL = "";
             instruccionSQL += "DELETE FROM Conductor " +
-                    "WHERE claveEmpleado = " + claveEmpleado;
+                    "WHERE claveEmpleado = '" + claveEmpleado + "';";
             oStatement.executeUpdate(instruccionSQL);
 
             instruccionSQL = "";
-            instruccionSQL += "DELETE FROM Empleado" +
-                    "WHERE claveEmpleado = " + claveEmpleado;
+            instruccionSQL += "DELETE FROM Empleado " +
+                    "WHERE claveEmpleado = '" + claveEmpleado + "';";
             oStatement.executeUpdate(instruccionSQL);
 
             oStatement.close();
@@ -151,7 +151,8 @@ public class Borrado {
             Statement oStatement = oConnection.createStatement();
 
             instruccionSQL += "DELETE FROM Conductor_Autobus " +
-                    "WHERE claveAutobus = " + claveAutobus;
+                    "WHERE claveAutobus = " + claveAutobus + " AND " +
+                    "claveEmpleado = '" + claveConductor + "'";
             oStatement.executeUpdate(instruccionSQL);
 
             oStatement.close();
@@ -175,8 +176,10 @@ public class Borrado {
             Connection oConnection = DriverManager.getConnection(cadenaConexion, usuario, contrasena);
             Statement oStatement = oConnection.createStatement();
 
-            instruccionSQL += "DELETE FROM Conductor_Autobus " +
-                    "WHERE idViaje = " + idViaje;
+            instruccionSQL += "DELETE FROM Conductor_Viaje " +
+                    "WHERE idViaje = " + idViaje + " AND " +
+                    "claveEmpleado = '" + claveConductor + "'";
+            System.out.println(instruccionSQL);
             oStatement.executeUpdate(instruccionSQL);
 
             oStatement.close();
