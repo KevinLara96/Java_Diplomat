@@ -2,7 +2,6 @@ package dgtic.inicio.aplicacionAdministrador;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
-import java.time.LocalDate;
 import java.util.Scanner;
 
 import dgtic.basedatos.servicio.consulta.Consulta;
@@ -151,35 +150,103 @@ public class AplicacionAdminstrador {
     }
 
     public void opcion1() {
+        System.out.print("Ingrese el origen: ");
+        String origen = input.nextLine();
+
+        System.out.print("Ingrese el destino: ");
+        String destino = input.nextLine();
+
+        System.out.print("Ingrese el precio: ");
+        input.nextLine();
+        float precio = input.nextFloat();
+
+        System.out.print("Ingrese la distancia: ");
+        input.nextFloat();
+        int distancia = input.nextInt();
+
+        System.out.print("Ingrese el identificador del viaje(número entero del 1 al 999): ");
+        int idViaje = input.nextInt();
+
+        System.out.print("Ingrese la fecha del viaje en formato MM/DD/YYYY: ");
+        input.nextInt();
+        String fecha = input.next();
+
         AbstractFactory factory = new FactoryViajeCorto();
         Viajes viajeCortoFactory = factory.crearViaje();
-        Viaje viaje = viajeCortoFactory.viaje(1, "Origen", "Destino", 20.0f,
-                300, LocalDate.now().toString(), TipoViaje.CORTO);
+        Viaje viaje = viajeCortoFactory.viaje(idViaje, origen, destino, precio, distancia,
+                fecha, TipoViaje.CORTO);
         administrador.anadirViaje(viaje);
     }
 
     public void opcion2() {
-        System.out.print("Ingrese el viaje que quiere eliminar: ");
+        System.out.print("Ingrese el identificador del viaje que quiere eliminar: ");
         int idViaje = input.nextInt();
         administrador.eliminarViaje(idViaje);
     }
 
     public void opcion3() {
-        Conductor conductor = new Conductor("cond1", "Conductor1", "cond1@sak.com", "pwdCond1", "",
-                0.0f, Puesto.CONDUCTOR, 1, null, null);
+        System.out.print("Ingrese el nombre completo: ");
+        String nombre = input.nextLine();
+
+        System.out.print("Ingrese el correo institucional: ");
+        String correo = input.nextLine();
+
+        System.out.print("Ingrese la contraseña: ");
+        String contrasena = input.nextLine();
+
+        System.out.print("Ingrese el rfc: ");
+        String rfc = input.nextLine();
+
+        System.out.print("Ingrese el salario del nuevo conductor: ");
+        float salario = input.nextFloat();
+
+        System.out.print("Ingrese la clave del Empleado (código de 3 letras y 2 números): ");
+        String claveEmpleado = input.nextLine();
+
+        System.out.print("Ingrese la clave del conductor(número entero del 0 al 999): ");
+        input.nextLine();
+        int claveConductor = input.nextInt();
+
+        Conductor conductor = new Conductor(claveEmpleado, nombre, correo, contrasena, rfc,
+                salario, Puesto.CONDUCTOR, claveConductor, null, null);
         agencia.getConductores().add(conductor);
         administrador.anadirConductor(conductor);
     }
 
     public void opcion4() {
         input.nextLine();
-        System.out.print("Ingrese el conductor que quiere despedir: ");
+        System.out.print("Ingrese la clave del conductor que quiere despedir: ");
         String claveConductor = input.nextLine();
-        // agencia.getConductores().remove(opcion);
         administrador.eliminarConductor(claveConductor);
     }
 
     public void opcion5() {
+        System.out.print("Ingrese el nombre completo: ");
+        String nombre = input.nextLine();
+
+        System.out.print("Ingrese el correo institucional: ");
+        String correo = input.nextLine();
+
+        System.out.print("Ingrese la contraseña: ");
+        String contrasena = input.nextLine();
+
+        System.out.print("Ingrese el rfc: ");
+        String rfc = input.nextLine();
+
+        System.out.print("Ingrese el salario del nuevo conductor: ");
+        float salario = input.nextFloat();
+
+        System.out.print("Ingrese la clave del Empleado (código de 3 letras y 2 números): ");
+        String claveEmpleado = input.nextLine();
+
+        System.out.print("Ingrese la clave del conductor(número entero del 0 al 999): ");
+        input.nextLine();
+        int claveConductor = input.nextInt();
+
+        Conductor conductor = new Conductor(claveEmpleado, nombre, correo, contrasena, rfc,
+                salario, Puesto.CONDUCTOR, claveConductor, null, null);
+        agencia.getConductores().add(conductor);
+        administrador.anadirConductor(conductor);
         Administrador admin = new Administrador("adm", "Administrador1", "cond1@sak.com", "pwdCond1", "",
                 0.0f, Puesto.ADMINISTRADOR, 1);
         agencia.getAdministradores().add(admin);
