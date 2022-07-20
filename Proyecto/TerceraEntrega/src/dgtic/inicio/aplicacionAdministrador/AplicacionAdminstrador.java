@@ -14,11 +14,6 @@ import dgtic.modelo.empleado.Empleado;
 import dgtic.modelo.empleado.administrador.Administrador;
 import dgtic.modelo.empleado.conductor.Conductor;
 import dgtic.modelo.empleado.puesto.Puesto;
-import dgtic.modelo.viaje.Viaje;
-import dgtic.modelo.viaje.implementacion.FactoryViajeCorto;
-import dgtic.modelo.viaje.interfaces.AbstractFactory;
-import dgtic.modelo.viaje.interfaces.TipoViaje;
-import dgtic.modelo.viaje.interfaces.Viajes;
 
 public class AplicacionAdminstrador {
     private Agencia agencia;
@@ -139,7 +134,8 @@ public class AplicacionAdminstrador {
                     break;
 
                 case 0:
-                    opcion0();
+                    input.close();
+                    Menu.opcion0(input);
                     break;
 
                 default:
@@ -150,32 +146,7 @@ public class AplicacionAdminstrador {
     }
 
     public void opcion1() {
-        System.out.print("Ingrese el origen: ");
-        String origen = input.nextLine();
-
-        System.out.print("Ingrese el destino: ");
-        String destino = input.nextLine();
-
-        System.out.print("Ingrese el precio: ");
-        input.nextLine();
-        float precio = input.nextFloat();
-
-        System.out.print("Ingrese la distancia: ");
-        input.nextFloat();
-        int distancia = input.nextInt();
-
-        System.out.print("Ingrese el identificador del viaje(número entero del 1 al 999): ");
-        int idViaje = input.nextInt();
-
-        System.out.print("Ingrese la fecha del viaje en formato MM/DD/YYYY: ");
-        input.nextInt();
-        String fecha = input.next();
-
-        AbstractFactory factory = new FactoryViajeCorto();
-        Viajes viajeCortoFactory = factory.crearViaje();
-        Viaje viaje = viajeCortoFactory.viaje(idViaje, origen, destino, precio, distancia,
-                fecha, TipoViaje.CORTO);
-        administrador.anadirViaje(viaje);
+        administrador.anadirViaje(Menu.opcion1());
     }
 
     public void opcion2() {
@@ -332,10 +303,5 @@ public class AplicacionAdminstrador {
         System.out.print("\nIngrese el id del Autobús: ");
         int idAutobus = input.nextInt();
         administrador.quitarAutobusConductor(claveConductor, idAutobus);
-    }
-
-    public void opcion0() {
-        input.close();
-        System.exit(0);
     }
 }
