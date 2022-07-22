@@ -1,7 +1,6 @@
 package dgtic.inicio.aplicacionAdministrador;
 
 import java.util.Scanner;
-import java.util.prefs.BackingStoreException;
 
 import dgtic.basedatos.servicio.consulta.Consulta;
 import dgtic.modelo.autobus.Autobus;
@@ -78,30 +77,49 @@ public class Menu {
     }
 
     static Conductor nuevoConductor() {
-        System.out.print("Ingrese el nombre completo: ");
-        String nombre = input.nextLine();
+        String nombre;
+        String correo;
+        String contrasena;
+        String rfc;
+        float salario;
+        String claveEmpleado;
+        int claveConductor;
+        Conductor conductor = null;
 
-        System.out.print("Ingrese el correo institucional: ");
-        String correo = input.nextLine();
+        boolean bandera = false;
 
-        System.out.print("Ingrese la contraseña: ");
-        String contrasena = input.nextLine();
+        do {
+            try {
+                System.out.print("Ingrese el nombre completo: ");
+                nombre = input.nextLine();
 
-        System.out.print("Ingrese el rfc: ");
-        String rfc = input.nextLine();
+                System.out.print("Ingrese el correo institucional: ");
+                correo = input.nextLine();
 
-        System.out.print("Ingrese el salario del nuevo conductor: ");
-        float salario = input.nextFloat();
+                System.out.print("Ingrese la contraseña: ");
+                contrasena = input.nextLine();
 
-        System.out.print("Ingrese la clave del Empleado (código de 3 letras y 2 números): ");
-        String claveEmpleado = input.nextLine();
+                System.out.print("Ingrese el rfc: ");
+                rfc = input.nextLine();
 
-        System.out.print("Ingrese la clave del conductor(número entero del 0 al 999): ");
-        input.nextLine();
-        int claveConductor = input.nextInt();
+                System.out.print("Ingrese el salario del nuevo conductor: ");
+                salario = Float.parseFloat(input.nextLine());
 
-        Conductor conductor = new Conductor(claveEmpleado, nombre, correo, contrasena, rfc,
-                salario, Puesto.CONDUCTOR, claveConductor, null, null);
+                System.out.print("Ingrese la clave del Empleado (código de 3 letras y 2 números): ");
+                claveEmpleado = input.nextLine();
+
+                System.out.print("Ingrese la clave del conductor(número entero del 0 al 999): ");
+                input.nextLine();
+                claveConductor = Integer.parseInt(input.nextLine());
+
+                conductor = new Conductor(claveEmpleado, nombre, correo, contrasena, rfc,
+                        salario, Puesto.CONDUCTOR, claveConductor, null, null);
+            } catch (Exception e) {
+                System.out.println("Datos no válidos, por favor, revise los datos y vuelva a ingresarlos.");
+                e.printStackTrace();
+            }
+
+        } while (bandera == false);
 
         return conductor;
     }
@@ -115,31 +133,48 @@ public class Menu {
     }
 
     static Administrador nuevoAdministrador() {
-        System.out.print("Ingrese el nombre completo: ");
-        String nombre = input.nextLine();
+        String nombre;
+        String correo;
+        String contrasena;
+        String rfc;
+        float salario;
+        String claveEmpleado;
+        int claveAdministrador;
+        Administrador administrador = null;
 
-        System.out.print("Ingrese el correo institucional: ");
-        String correo = input.nextLine();
+        boolean bandera = false;
 
-        System.out.print("Ingrese la contraseña: ");
-        String contrasena = input.nextLine();
+        do {
+            try {
+                System.out.print("Ingrese el nombre completo: ");
+                nombre = input.nextLine();
 
-        System.out.print("Ingrese el rfc: ");
-        String rfc = input.nextLine();
+                System.out.print("Ingrese el correo institucional: ");
+                correo = input.nextLine();
 
-        System.out.print("Ingrese el salario del nuevo administrador: ");
-        float salario = input.nextFloat();
+                System.out.print("Ingrese la contraseña: ");
+                contrasena = input.nextLine();
 
-        System.out.print("Ingrese la clave del Empleado (código de 3 letras y 2 números): ");
-        String claveEmpleado = input.nextLine();
+                System.out.print("Ingrese el rfc: ");
+                rfc = input.nextLine();
 
-        System.out.print("Ingrese la clave del administrador(número entero del 0 al 999): ");
-        input.nextLine();
-        int claveConductor = input.nextInt();
+                System.out.print("Ingrese el salario del nuevo administrador: ");
+                salario = input.nextFloat();
 
-        Administrador administrador = new Administrador(claveEmpleado, nombre, correo, contrasena, rfc,
-                salario, Puesto.ADMINISTRADOR, claveConductor);
+                System.out.print("Ingrese la clave del Empleado (código de 3 letras y 2 números): ");
+                claveEmpleado = input.nextLine();
 
+                System.out.print("Ingrese la clave del administrador(número entero del 0 al 999): ");
+                input.nextLine();
+                claveAdministrador = input.nextInt();
+
+                administrador = new Administrador(claveEmpleado, nombre, correo, contrasena, rfc,
+                        salario, Puesto.ADMINISTRADOR, claveAdministrador);
+            } catch (Exception e) {
+                System.out.println("Datos no válidos, por favor, revise los datos y vuelva a ingresarlos.");
+                e.printStackTrace();
+            }
+        } while (bandera == false);
         return administrador;
     }
 
@@ -150,7 +185,7 @@ public class Menu {
         return claveAdministrador;
     }
 
-    static Autobus nuevAutobus() {
+    static Autobus nuevoAutobus() {
         String modelo;
         String marca;
         int claveAutobus;
@@ -183,65 +218,158 @@ public class Menu {
         return autobus;
     }
 
-    public void opcion8() {
-        Autobus autobus = new Autobus.Builder(2, "Modelo1", "Marca1", 60).setTipoTour(TipoUso.TOUR)
-                .setTipoTuribus(TipoTuribus.DOS_PISOS).build();
+    static Autobus nuevoTuribus() {
+        String modelo;
+        String marca;
+        int claveAutobus;
+        int capacidad;
+        Autobus turibus = null;
+
+        boolean bandera = false;
+        do {
+            try {
+                System.out.print("Ingrese la marca del turibús: ");
+                marca = input.nextLine();
+
+                System.out.print("Ingrese el modelo del turibús: ");
+                modelo = input.nextLine();
+
+                System.out.print("Ingrese la clave del turibús(número entero del 1 al 999):");
+                claveAutobus = Integer.parseInt(input.nextLine());
+
+                System.out.print("Ingrese la capacidad del turibús: ");
+                capacidad = Integer.parseInt(input.nextLine());
+
+                turibus = new Autobus.Builder(claveAutobus, modelo, marca, capacidad).setTipoTour(TipoUso.TOUR)
+                        .setTipoTuribus(TipoTuribus.UN_PISO).build();
+
+                bandera = true;
+            } catch (Exception e) {
+                System.out.println("Datos inválidos, por favor, revise sus datos e ingrese de nuevo.");
+            }
+        } while (bandera == false);
+        return turibus;
     }
 
-    public void opcion9() {
+    static int quitarAutobus() {
         System.out.print("Ingrese el autobús que quiere vender: ");
         int claveAutobus = input.nextInt();
+        return claveAutobus;
     }
 
-    public void opcion10() {
-        System.out.println(Consulta.consultaConductores());
+    static String consultaConductores() {
+        return Consulta.consultaConductores();
     }
 
-    public void opcion11() {
-        System.out.println(Consulta.consultaAdministradores());
+    static String consultaAdministradores() {
+        return Consulta.consultaAdministradores();
     }
 
-    public void opcion12() {
-        System.out.println(Consulta.consultaViajes());
+    static String consultaViajes() {
+        return Consulta.consultaViajes();
     }
 
-    public void opcion13() {
-        System.out.println(Consulta.consultaAutobuses());
+    static String consultaAutobuses() {
+        return Consulta.consultaAutobuses();
     }
 
-    public void opcion14() {
-        System.out.print("Ingrese la clave de Conductor: ");
-        input.nextLine();
-        String claveConductor = input.nextLine();
-        System.out.print("\nIngrese el id del Viaje: ");
-        int idViaje = input.nextInt();
-        administrador.asignarViaje(claveConductor, idViaje);
+    static String[] asignarViaje() {
+        String claveConductor;
+        String idViaje;
+        String array[] = new String[2];
+
+        boolean bandera = false;
+
+        do {
+            try {
+                System.out.print("Ingrese la clave de Conductor: ");
+                claveConductor = input.nextLine();
+                System.out.print("\nIngrese el id del Viaje: ");
+                idViaje = input.nextLine();
+                array[0] = claveConductor;
+                array[1] = idViaje;
+                bandera = true;
+            } catch (Exception e) {
+                System.out.println("Datos inválidos, por favor verifique sus datos e intente de nuevo.");
+                e.printStackTrace();
+            }
+        } while (bandera == false);
+
+        return array;
     }
 
-    public void opcion15() {
-        System.out.print("Ingrese la clave de Conductor: ");
-        input.nextLine();
-        String claveConductor = input.nextLine();
-        System.out.print("\nIngrese el id del Autobús: ");
-        int idAutobus = input.nextInt();
-        administrador.asignarAutobus(claveConductor, idAutobus);
+    static String[] asignarAutobus() {
+        String claveConductor;
+        String idAutobus;
+        String array[] = new String[2];
+
+        boolean bandera = false;
+
+        do {
+            try {
+                System.out.print("Ingrese la clave de Conductor: ");
+                claveConductor = input.nextLine();
+                System.out.print("\nIngrese el id del Autobús: ");
+                idAutobus = input.nextLine();
+                array[0] = claveConductor;
+                array[1] = idAutobus;
+                bandera = true;
+            } catch (Exception e) {
+                System.out.println("Datos inválidos, por favor verifique sus datos e intente de nuevo.");
+                e.printStackTrace();
+            }
+        } while (bandera == false);
+
+        return array;
     }
 
-    public void opcion16() {
-        System.out.print("Ingrese la clave de Conductor: ");
-        input.nextLine();
-        String claveConductor = input.nextLine();
-        System.out.print("\nIngrese el id del Viaje: ");
-        int idViaje = input.nextInt();
-        administrador.quitarViajeConductor(claveConductor, idViaje);
+    static String[] removerViajeConductor() {
+        String claveConductor;
+        String idViaje;
+        String array[] = new String[2];
+
+        boolean bandera = false;
+
+        do {
+            try {
+                System.out.print("Ingrese la clave de Conductor: ");
+                claveConductor = input.nextLine();
+                System.out.print("\nIngrese el id del Viaje: ");
+                idViaje = input.nextLine();
+                array[0] = claveConductor;
+                array[1] = idViaje;
+                bandera = true;
+            } catch (Exception e) {
+                System.out.println("Datos inválidos, por favor verifique sus datos e intente de nuevo.");
+                e.printStackTrace();
+            }
+        } while (bandera == false);
+
+        return array;
     }
 
-    public void opcion17() {
-        System.out.print("Ingrese la clave de Conductor: ");
-        input.nextLine();
-        String claveConductor = input.nextLine();
-        System.out.print("\nIngrese el id del Autobús: ");
-        int idAutobus = input.nextInt();
-        administrador.quitarAutobusConductor(claveConductor, idAutobus);
+    static String[] removerAutobusConductor() {
+        String claveConductor;
+        String idAutobus;
+        String array[] = new String[2];
+
+        boolean bandera = false;
+
+        do {
+            try {
+                System.out.print("Ingrese la clave de Conductor: ");
+                claveConductor = input.nextLine();
+                System.out.print("\nIngrese el id del Autobús: ");
+                idAutobus = input.nextLine();
+                array[0] = claveConductor;
+                array[1] = idAutobus;
+                bandera = true;
+            } catch (Exception e) {
+                System.out.println("Datos inválidos, por favor verifique sus datos e intente de nuevo.");
+                e.printStackTrace();
+            }
+        } while (bandera == false);
+
+        return array;
     }
 }
