@@ -4,16 +4,9 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.Scanner;
 
-import dgtic.basedatos.servicio.consulta.Consulta;
 import dgtic.modelo.agencia.Agencia;
-import dgtic.modelo.autobus.Autobus;
-import dgtic.modelo.autobus.interfaces.Clase;
-import dgtic.modelo.autobus.interfaces.TipoTuribus;
-import dgtic.modelo.autobus.interfaces.TipoUso;
 import dgtic.modelo.empleado.Empleado;
 import dgtic.modelo.empleado.administrador.Administrador;
-import dgtic.modelo.empleado.conductor.Conductor;
-import dgtic.modelo.empleado.puesto.Puesto;
 
 public class AplicacionAdminstrador {
     private Agencia agencia;
@@ -66,76 +59,78 @@ public class AplicacionAdminstrador {
 
             switch (this.opcion) {
                 case 1:
-                    opcion1();
+                    administrador.anadirViaje(Menu.nuevoDestino());
                     break;
 
                 case 2:
-                    opcion2();
+                    administrador.eliminarViaje(Menu.quitarDestino());
                     break;
 
                 case 3:
-                    opcion3();
+                    administrador.anadirConductor(Menu.nuevoConductor());
                     break;
 
                 case 4:
-                    opcion4();
+                    administrador.eliminarConductor(Menu.quitarConductor());
                     break;
 
                 case 5:
-                    opcion5();
+                    administrador.anadirAdministrador(Menu.nuevoAdministrador());
                     break;
 
                 case 6:
-                    opcion6();
+                    administrador.eliminarAdministrador(Menu.quitarAdministrador());
                     break;
 
                 case 7:
-                    opcion7();
+                    administrador.anadirAutobus(Menu.nuevoAutobus());
                     break;
 
                 case 8:
-                    opcion8();
+                    administrador.anadirAutobus(Menu.nuevoTuribus());
                     break;
 
                 case 9:
-                    opcion9();
+                    administrador.eliminarAutobus(Menu.quitarAutobus());
                     break;
 
                 case 10:
-                    opcion10();
+                    System.out.println(Menu.consultaConductores());
                     break;
 
                 case 11:
-                    opcion11();
+                    System.out.println(Menu.consultaAdministradores());
                     break;
 
                 case 12:
-                    opcion12();
+                    System.out.println(Menu.consultaViajes());
                     break;
 
                 case 13:
-                    opcion13();
+                    System.out.println(Menu.consultaAutobuses());
                     break;
 
                 case 14:
-                    opcion14();
+                    administrador.asignarViaje(Menu.asignarViaje()[0], Integer.parseInt(Menu.asignarViaje()[1]));
                     break;
 
                 case 15:
-                    opcion15();
+                    administrador.asignarAutobus(Menu.asignarAutobus()[0], Integer.parseInt(Menu.asignarAutobus()[1]));
                     break;
 
                 case 16:
-                    opcion16();
+                    administrador.quitarViajeConductor(Menu.removerViajeConductor()[0],
+                            Integer.parseInt(Menu.removerViajeConductor()[1]));
                     break;
 
                 case 17:
-                    opcion17();
+                    administrador.quitarAutobusConductor(Menu.removerAutobusConductor()[0],
+                            Integer.parseInt(Menu.removerAutobusConductor()[1]));
                     break;
 
                 case 0:
                     input.close();
-                    Menu.opcion0(input);
+                    Menu.salir();
                     break;
 
                 default:
@@ -143,165 +138,5 @@ public class AplicacionAdminstrador {
                     break;
             }
         } while (opcion != 0);
-    }
-
-    public void opcion1() {
-        administrador.anadirViaje(Menu.opcion1());
-    }
-
-    public void opcion2() {
-        System.out.print("Ingrese el identificador del viaje que quiere eliminar: ");
-        int idViaje = input.nextInt();
-        administrador.eliminarViaje(idViaje);
-    }
-
-    public void opcion3() {
-        System.out.print("Ingrese el nombre completo: ");
-        String nombre = input.nextLine();
-
-        System.out.print("Ingrese el correo institucional: ");
-        String correo = input.nextLine();
-
-        System.out.print("Ingrese la contraseña: ");
-        String contrasena = input.nextLine();
-
-        System.out.print("Ingrese el rfc: ");
-        String rfc = input.nextLine();
-
-        System.out.print("Ingrese el salario del nuevo conductor: ");
-        float salario = input.nextFloat();
-
-        System.out.print("Ingrese la clave del Empleado (código de 3 letras y 2 números): ");
-        String claveEmpleado = input.nextLine();
-
-        System.out.print("Ingrese la clave del conductor(número entero del 0 al 999): ");
-        input.nextLine();
-        int claveConductor = input.nextInt();
-
-        Conductor conductor = new Conductor(claveEmpleado, nombre, correo, contrasena, rfc,
-                salario, Puesto.CONDUCTOR, claveConductor, null, null);
-        agencia.getConductores().add(conductor);
-        administrador.anadirConductor(conductor);
-    }
-
-    public void opcion4() {
-        input.nextLine();
-        System.out.print("Ingrese la clave del conductor que quiere despedir: ");
-        String claveConductor = input.nextLine();
-        administrador.eliminarConductor(claveConductor);
-    }
-
-    public void opcion5() {
-        System.out.print("Ingrese el nombre completo: ");
-        String nombre = input.nextLine();
-
-        System.out.print("Ingrese el correo institucional: ");
-        String correo = input.nextLine();
-
-        System.out.print("Ingrese la contraseña: ");
-        String contrasena = input.nextLine();
-
-        System.out.print("Ingrese el rfc: ");
-        String rfc = input.nextLine();
-
-        System.out.print("Ingrese el salario del nuevo conductor: ");
-        float salario = input.nextFloat();
-
-        System.out.print("Ingrese la clave del Empleado (código de 3 letras y 2 números): ");
-        String claveEmpleado = input.nextLine();
-
-        System.out.print("Ingrese la clave del conductor(número entero del 0 al 999): ");
-        input.nextLine();
-        int claveConductor = input.nextInt();
-
-        Conductor conductor = new Conductor(claveEmpleado, nombre, correo, contrasena, rfc,
-                salario, Puesto.CONDUCTOR, claveConductor, null, null);
-        agencia.getConductores().add(conductor);
-        administrador.anadirConductor(conductor);
-        Administrador admin = new Administrador("adm", "Administrador1", "cond1@sak.com", "pwdCond1", "",
-                0.0f, Puesto.ADMINISTRADOR, 1);
-        agencia.getAdministradores().add(admin);
-        administrador.anadirAdministrador(admin);
-    }
-
-    public void opcion6() {
-        input.nextLine();
-        System.out.print("Ingrese el administrador que quiere despedir: ");
-        String claveAdministrador = input.nextLine();
-        // agencia.getConductores().remove(opcion);
-        administrador.eliminarAdministrador(claveAdministrador);
-    }
-
-    public void opcion7() {
-        Autobus autobus = new Autobus.Builder(1, "Modelo1", "Marca1", 60).setTipoViaje(TipoUso.VIAJE)
-                .setClase(Clase.EJECUTIVO).build();
-        agencia.getAutobuses().add(autobus);
-        administrador.anadirAutobus(autobus);
-    }
-
-    public void opcion8() {
-        Autobus autobus = new Autobus.Builder(2, "Modelo1", "Marca1", 60).setTipoTour(TipoUso.TOUR)
-                .setTipoTuribus(TipoTuribus.DOS_PISOS).build();
-        agencia.getAutobuses().add(autobus);
-        administrador.anadirAutobus(autobus);
-    }
-
-    public void opcion9() {
-        System.out.print("Ingrese el autobús que quiere vender: ");
-        int claveAutobus = input.nextInt();
-        // agencia.getAutobuses().remove(opcion);
-        administrador.eliminarAutobus(claveAutobus);
-    }
-
-    public void opcion10() {
-        System.out.println(Consulta.consultaConductores());
-    }
-
-    public void opcion11() {
-        System.out.println(Consulta.consultaAdministradores());
-    }
-
-    public void opcion12() {
-        System.out.println(Consulta.consultaViajes());
-    }
-
-    public void opcion13() {
-        System.out.println(Consulta.consultaAutobuses());
-    }
-
-    public void opcion14() {
-        System.out.print("Ingrese la clave de Conductor: ");
-        input.nextLine();
-        String claveConductor = input.nextLine();
-        System.out.print("\nIngrese el id del Viaje: ");
-        int idViaje = input.nextInt();
-        administrador.asignarViaje(claveConductor, idViaje);
-    }
-
-    public void opcion15() {
-        System.out.print("Ingrese la clave de Conductor: ");
-        input.nextLine();
-        String claveConductor = input.nextLine();
-        System.out.print("\nIngrese el id del Autobús: ");
-        int idAutobus = input.nextInt();
-        administrador.asignarAutobus(claveConductor, idAutobus);
-    }
-
-    public void opcion16() {
-        System.out.print("Ingrese la clave de Conductor: ");
-        input.nextLine();
-        String claveConductor = input.nextLine();
-        System.out.print("\nIngrese el id del Viaje: ");
-        int idViaje = input.nextInt();
-        administrador.quitarViajeConductor(claveConductor, idViaje);
-    }
-
-    public void opcion17() {
-        System.out.print("Ingrese la clave de Conductor: ");
-        input.nextLine();
-        String claveConductor = input.nextLine();
-        System.out.print("\nIngrese el id del Autobús: ");
-        int idAutobus = input.nextInt();
-        administrador.quitarAutobusConductor(claveConductor, idAutobus);
     }
 }
