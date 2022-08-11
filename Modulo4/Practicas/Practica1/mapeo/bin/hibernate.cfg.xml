@@ -35,6 +35,7 @@
         <property name="hbm2ddl.auto">none</property>
 
         <mapping resource="mx/unam/tic/diplomado/hibernate/Tabla.hbm.xml"/>
+        <mapping resource="mx/unam/tic/diplomado/hibernate/Registro.hbm.xml"/>
 
     </session-factory>
 

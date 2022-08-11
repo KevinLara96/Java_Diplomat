@@ -50,7 +50,7 @@ public class MapeoAPP {
 
     public void creaRegistro() {
         System.out.println("Introduce el valor a guardar");
-        Scanner sn = new Scanner(System.in);
+        sn = new Scanner(System.in);
         String dato = sn.nextLine();
         try {
 
