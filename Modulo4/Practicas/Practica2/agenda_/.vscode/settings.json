@@ -1,8 +1,0 @@
-{
-  "java.project.sourcePaths": ["src"],
-  "java.project.outputPath": "bin",
-  "java.project.referencedLibraries": [
-    "lib/**/*.jar",
-    "/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Maria_DB/mariadb-java-client-3.0.5.jar"
-  ]
-}
