@@ -15,6 +15,7 @@
         <id name="id" column="col_ent">
             <generator class="identity"/>
         </id>
+        <!-- <property name="date" type="timestamp" column="EVENT_DATE"/>  -->
         <property name="texto" column="col_text"/>
     </class>
 

@@ -8,16 +8,17 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import mx.unam.tic.diplomado.hibernate.Tabla;
 
+
 public class MapeoAPP {
-
-    private SessionFactory sessionFactory;
-    private StandardServiceRegistry registry;
-
-    public void cargaMenu() {
-        Scanner sn = new Scanner(System.in);
+	
+	private SessionFactory sessionFactory;
+	private StandardServiceRegistry registry;
+	
+	public void cargaMenu() {
+		Scanner sn = new Scanner(System.in);
         boolean salir = false;
-        int opcion; // Guardaremos la opcion del usuario
-        do {
+        int opcion; //Guardaremos la opcion del usuario
+        do{
             System.out.println("1. Crear registro");
             System.out.println("2. Consultar registro");
             System.out.println("3. Salir");
@@ -34,85 +35,88 @@ public class MapeoAPP {
                         consultaRegistros();
                         break;
                     case 3:
-                        salir = true;
+                    	salir = true;
                         break;
                     default:
-                        System.out.println("Solo nï¿½meros entre 1 y 3");
+                        System.out.println("Solo números entre 1 y 3");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Debes insertar un nï¿½mero");
+                System.out.println("Debes insertar un número");
                 sn.next();
             }
-        } while (!salir);
-        sn.close();
-    }
-
-    public void creaRegistro() {
-        System.out.println("Introduce el valor a guardar");
-        Scanner sn = new Scanner(System.in);
-        String dato = sn.nextLine();
-        try {
-
-            Session session = this.sessionFactory.openSession();
-            // se obtiene la session hibernate
-            session = this.sessionFactory.openSession();
-            // se inicia una transaccion
-            session.beginTransaction();
-            Tabla tabla = new Tabla();
-            tabla.setTexto(dato);
-            session.save(tabla);
-            // se realiza el commit
-            session.getTransaction().commit();
-            // se cierra la session hibernate
-            session.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            StandardServiceRegistryBuilder.destroy(this.registry);
         }
-    }
-
-    public void consultaRegistros() {
-        try {
-
-            Session session = this.sessionFactory.openSession();
-            // se obtiene la session hibernate
-            // session = this.sessionFactory.openSession();
-            // se inicia una transaccion
-            session.beginTransaction();
-            List result = session.createQuery("from Tabla").list();
-            for (Tabla tabla : (List<Tabla>) result) {
-                System.out.println("Datos (" + tabla.getTexto() + ")");
-            }
-            // se realiza el commit
-            session.getTransaction().commit();
-            // se cierra la session hibernate
-            session.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            StandardServiceRegistryBuilder.destroy(this.registry);
-        }
-    }
-
-    public void init() {
-
+        while (!salir) ;
+	}
+	
+	public void creaRegistro() {
+		System.out.println("Introduce el valor a guardar");
+		Scanner sn = new Scanner(System.in);
+		String dato = sn.nextLine();
+		try {
+			
+			Session session = this.sessionFactory.openSession();
+			// se obtiene la session hibernate
+			session = this.sessionFactory.openSession();
+			// se inicia una transaccion
+			session.beginTransaction();
+			Tabla tabla = new Tabla();
+			tabla.setTexto(dato);
+			session.save(tabla);
+			// se realiza el commit
+			session.getTransaction().commit();
+			// se cierra la session hibernate
+			session.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			StandardServiceRegistryBuilder.destroy( this.registry );
+		}
+	}
+	
+	public void consultaRegistros() {
+		try {
+			
+			Session session = this.sessionFactory.openSession();
+			// se obtiene la session hibernate
+			//session = this.sessionFactory.openSession();
+			// se inicia una transaccion
+			session.beginTransaction();
+			List result = session.createQuery( "from Tabla" ).list();
+			for ( Tabla tabla : (List<Tabla>) result ) {
+				System.out.println( "Datos (" + tabla.getTexto() + ")");
+			}
+			// se realiza el commit
+			session.getTransaction().commit();
+			// se cierra la session hibernate
+			session.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			StandardServiceRegistryBuilder.destroy( this.registry );
+		}
+	}
+	
+	public void init() {		
+        
         registry = new StandardServiceRegistryBuilder()
-                .configure("hibernate.cfg.xml") // se carga la configuracion hibernate
-                .build();
-        try {
-            // se crea una fabrica de sessiones hibernate
-            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-        } catch (Exception e) {
-            e.printStackTrace();
-            StandardServiceRegistryBuilder.destroy(registry);
-        }
-    }
+				.configure("hibernate.cfg.xml") // se carga la configuracion hibernate
+				.build();
+		try {
+			// se crea una fabrica de sessiones hibernate
+			sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			StandardServiceRegistryBuilder.destroy( registry );
+		}
+	}
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        MapeoAPP mapeo = new MapeoAPP();
-        mapeo.init();
-        mapeo.cargaMenu();
+		MapeoAPP mapeo = new MapeoAPP();
+		mapeo.init();
+		mapeo.cargaMenu();
 
-    }
+	}
 
 }
