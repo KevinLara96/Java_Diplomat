@@ -20,6 +20,7 @@
         <property name="apellidos" column="vc_apellidos" length="200"/>
         <property name="edad" column="vi_edad" />
         <property name="direccion" column="vc_direccion"/>
+        <property name="estatus" column="vc_estatus"/>
         
         <many-to-one name="tipoContacto" column="id_tipo_contacto" lazy="false"
         	class="TipoContacto"/>
