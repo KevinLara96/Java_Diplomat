@@ -7,19 +7,20 @@ import mx.unam.tic.diplomado.agenda.servicios.ServiciosCatalogosImpl;
 
 public class CatalogosAPP {
 
-	public static void main(String[] args) {
-		
-		HibernateUtil.init(); 
-		CatalogosAPP catalogosAPP = new CatalogosAPP();
-		catalogosAPP.cargaMenu();
-	}
-	
-	
-	public void cargaMenu() {
-		Scanner sn = new Scanner(System.in);
+    private static Scanner sn = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        HibernateUtil.init();
+        CatalogosAPP catalogosAPP = new CatalogosAPP();
+        catalogosAPP.cargaMenu();
+    }
+
+    public void cargaMenu() {
+        sn = new Scanner(System.in);
         boolean salir = false;
-        int opcion; //Guardaremos la opcion del usuario
-        do{
+        int opcion; // Guardaremos la opcion del usuario
+        do {
             System.out.println("1. Agregar un Tipo Contacto");
             System.out.println("2. Consultar registros");
             System.out.println("3. Salir");
@@ -36,42 +37,41 @@ public class CatalogosAPP {
                         consultaRegistros();
                         break;
                     case 3:
-                    	salir = true;
+                        salir = true;
                         break;
                     default:
-                        System.out.println("Solo números entre 1 y 3");
+                        System.out.println("Solo nï¿½meros entre 1 y 3");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Debes insertar un número");
+                System.out.println("Debes insertar un nï¿½mero");
                 sn.next();
             }
-        }
-        while (!salir) ;
-	}
+        } while (!salir);
+        sn.close();
+    }
 
-	public void creaRegistro() {
-		ServiciosCatalogos servicioCatalogos = ServiciosCatalogosImpl.getInstance();
-		System.out.println("Introduce el valor a guardar");
-		Scanner sn = new Scanner(System.in);
-		String dato = sn.nextLine();
-		if (dato != null && ! dato.isEmpty()) {
-			TipoContacto tipoContacto = new TipoContacto();
-			tipoContacto.setNombre(dato);
-			tipoContacto.setEstatus("ACTIVO");
-			if (servicioCatalogos.guardaTipoContacto(tipoContacto)) {
-				System.out.println("Nuevo registro Tipo Catalogo...");
-			} else {
-				System.out.println("No se genero nuevo registro Tipo Catalogo...");
-			}
-		} else {
-			System.out.println("Nada que guardar...");
-		}
-	}
-	
-	public void consultaRegistros() {
-		ServiciosCatalogos servicioCatalogos = ServiciosCatalogosImpl.getInstance();
-		for (TipoContacto tipoContacto : servicioCatalogos.cargaTiposContacto()) {
-			System.out.println("Tipo Contacto:" + tipoContacto.getNombre());
-		}
-	}
+    public void creaRegistro() {
+        ServiciosCatalogos servicioCatalogos = ServiciosCatalogosImpl.getInstance();
+        System.out.println("Introduce el valor a guardar");
+        String dato = sn.nextLine();
+        if (dato != null && !dato.isEmpty()) {
+            TipoContacto tipoContacto = new TipoContacto();
+            tipoContacto.setNombre(dato);
+            tipoContacto.setEstatus("ACTIVO");
+            if (servicioCatalogos.guardaTipoContacto(tipoContacto)) {
+                System.out.println("Nuevo registro Tipo Catalogo...");
+            } else {
+                System.out.println("No se genero nuevo registro Tipo Catalogo...");
+            }
+        } else {
+            System.out.println("Nada que guardar...");
+        }
+    }
+
+    public void consultaRegistros() {
+        ServiciosCatalogos servicioCatalogos = ServiciosCatalogosImpl.getInstance();
+        for (TipoContacto tipoContacto : servicioCatalogos.cargaTiposContacto()) {
+            System.out.println("Tipo Contacto:" + tipoContacto.getNombre());
+        }
+    }
 }
