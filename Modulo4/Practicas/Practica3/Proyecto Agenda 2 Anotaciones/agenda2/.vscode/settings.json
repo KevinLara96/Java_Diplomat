@@ -1,0 +1,8 @@
+{
+  "java.project.referencedLibraries": {
+    "include": ["lib/**/*.jar"],
+    "exclude": [
+      "/agenda2/C:/Users/jorge/Downloads/hibernate-release-5.5.8.Final/hibernate-release-5.5.8.Final/lib/required/FastInfoset-1.2.15.jar"
+    ]
+  }
+}
