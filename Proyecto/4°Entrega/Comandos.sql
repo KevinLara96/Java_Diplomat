@@ -1,6 +1,6 @@
-DROP DATABASE if EXISTS modulo03;
-CREATE DATABASE modulo03;
-USE modulo03;
+DROP DATABASE if EXISTS modulo04;
+CREATE DATABASE modulo04;
+USE modulo04;
 CREATE TABLE Puesto(
   idPuesto INT NOT NULL,
   puesto VARCHAR(30) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE Tipo_Viaje(
 CREATE TABLE Viaje(
   idViaje INT NOT NULL,
   idTipoViaje INT NOT NULL,
-  CONSTRAINT fk_tipoViaje FOREIGN KEY (idTipoViaje) REFERENCES tipoViaje(idTipoViaje),
+  CONSTRAINT fk_tipoViaje FOREIGN KEY (idTipoViaje) REFERENCES Tipo_Viaje(idTipoViaje),
   origen VARCHAR(30) NOT NULL,
   destino VARCHAR(30) NOT NULL,
   precio FLOAT NOT NULL,
@@ -136,7 +136,7 @@ VALUES
   (1, 'VIAJE'),
   (2, 'TOUR');
 INSERT into
-  tipoViaje
+  Tipo_Viaje
 VALUES
   (1, 'CORTO'),
   (2, 'MEDIO'),
