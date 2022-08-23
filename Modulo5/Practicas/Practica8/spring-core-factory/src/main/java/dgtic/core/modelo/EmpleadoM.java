@@ -1,18 +1,17 @@
 package dgtic.core.modelo;
 
-public class Empleado {
+import java.util.Map;
+
+public class EmpleadoM {
     private String nombre;
     private Integer edad;
-    private Actividades actividad;
+    private Map<String, Actividades> actividad;
 
-    // public Empleado() {
-    // }
-
-    public Empleado(Actividades actividad) {
-        this.actividad = actividad;
+    public EmpleadoM() {
     }
 
-    public Empleado(String nombre) {
+    public EmpleadoM(String nombre) {
+        super();
         this.nombre = nombre;
     }
 
@@ -32,11 +31,11 @@ public class Empleado {
         this.edad = edad;
     }
 
-    public Actividades getActividad() {
+    public Map<String, Actividades> getActividad() {
         return actividad;
     }
 
-    public void setActividad(Actividades actividad) {
+    public void setActividad(Map<String, Actividades> actividad) {
         this.actividad = actividad;
     }
 

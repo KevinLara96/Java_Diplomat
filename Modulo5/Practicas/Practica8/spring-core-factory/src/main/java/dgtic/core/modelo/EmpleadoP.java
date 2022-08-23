@@ -1,18 +1,17 @@
 package dgtic.core.modelo;
 
-public class Empleado {
+import java.util.Properties;
+
+public class EmpleadoP {
     private String nombre;
     private Integer edad;
-    private Actividades actividad;
+    private Properties actividad;
 
-    // public Empleado() {
-    // }
-
-    public Empleado(Actividades actividad) {
-        this.actividad = actividad;
+    public EmpleadoP() {
     }
 
-    public Empleado(String nombre) {
+    public EmpleadoP(String nombre) {
+        super();
         this.nombre = nombre;
     }
 
@@ -32,11 +31,11 @@ public class Empleado {
         this.edad = edad;
     }
 
-    public Actividades getActividad() {
+    public Properties getActividad() {
         return actividad;
     }
 
-    public void setActividad(Actividades actividad) {
+    public void setActividad(Properties actividad) {
         this.actividad = actividad;
     }
 

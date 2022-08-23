@@ -1,18 +1,22 @@
 package dgtic.core.modelo;
 
-public class Empleado {
+import org.springframework.beans.factory.InitializingBean;
+
+public class Empleado implements InitializingBean {
     private String nombre;
     private Integer edad;
     private Actividades actividad;
 
-    // public Empleado() {
-    // }
+    public Empleado() {
+    }
 
     public Empleado(Actividades actividad) {
+        super();
         this.actividad = actividad;
     }
 
     public Empleado(String nombre) {
+        super();
         this.nombre = nombre;
     }
 
@@ -43,5 +47,14 @@ public class Empleado {
     @Override
     public String toString() {
         return "Empleado [nombre=" + nombre + ", edad=" + edad + "]";
+    }
+
+    public void limpiar() {
+        System.out.println("Liberando recursos de Empleado-----");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Iniciando Empleado-----");
     }
 }

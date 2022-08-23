@@ -5,8 +5,8 @@ public class Empleado {
     private Integer edad;
     private Actividades actividad;
 
-    // public Empleado() {
-    // }
+    public Empleado() {
+    }
 
     public Empleado(Actividades actividad) {
         this.actividad = actividad;

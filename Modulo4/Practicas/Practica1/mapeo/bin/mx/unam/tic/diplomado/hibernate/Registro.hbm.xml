@@ -12,7 +12,7 @@
 <hibernate-mapping package="mx.unam.tic.diplomado.hibernate">
 
     <class name="Registro" table="registros">
-        <id name="id" column="id">
+        <id name="id" column="d">
             <generator class="identity"/>
         </id>
         <property name="nombre" column="nombre"/>
