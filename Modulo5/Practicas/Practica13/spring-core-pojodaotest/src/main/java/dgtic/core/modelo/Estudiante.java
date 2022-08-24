@@ -47,7 +47,7 @@ public class Estudiante {
     }
 
     public void setMaterias(Materia... materias) {
-        this.materias = Arrays.asList(materias);
+        this.materias.addAll(Arrays.asList(materias));
     }
 
     @Override
@@ -68,4 +68,5 @@ public class Estudiante {
         return edad == other.edad && Objects.equals(materias, other.materias)
                 && Objects.equals(matricula, other.matricula) && Objects.equals(nombre, other.nombre);
     }
+
 }

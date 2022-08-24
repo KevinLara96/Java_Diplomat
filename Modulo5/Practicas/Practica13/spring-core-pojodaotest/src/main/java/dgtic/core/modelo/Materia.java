@@ -1,5 +1,7 @@
 package dgtic.core.modelo;
 
+import dgtic.core.excepciones.CreditosMenores;
+
 public class Materia {
     private String nombre;
     private Integer creditos;
@@ -23,7 +25,11 @@ public class Materia {
     }
 
     public void setCreditos(Integer creditos) {
-        this.creditos = creditos;
+        if (creditos < 0) {
+            throw new CreditosMenores("No creditos negativos");
+        } else {
+            this.creditos = creditos;
+        }
     }
 
     @Override
