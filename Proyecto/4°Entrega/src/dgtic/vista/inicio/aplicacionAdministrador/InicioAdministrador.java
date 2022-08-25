@@ -1,6 +1,6 @@
-package dgtic.inicio.aplicacionAdministrador;
+package dgtic.vista.inicio.aplicacionAdministrador;
 
-import dgtic.modelo.empleado.Empleado;
+import dgtic.modelo.entidades.empleado.Empleado;
 
 public class InicioAdministrador {
     private AplicacionAdminstrador aplicacionAdministrador;
@@ -14,7 +14,7 @@ public class InicioAdministrador {
 
         Empleado admin = inicioAdministrador.inicioSesion();
         if (admin != null) {
-            inicioAdministrador.aplicacionAdministrador = new AplicacionAdminstrador(admin);
+            inicioAdministrador.aplicacionAdministrador = new AplicacionAdminstrador();
             inicioAdministrador.aplicacionAdministrador.ejecutarAplicacion();
         } else {
             System.out.println("Fin de la aplicación.");

@@ -32,9 +32,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">none</property>
 
-        <mapping class="dgtic.modelo.empleado.Empleado" />
-        <mapping class="dgtic.modelo.empleado.administrador.Administrador" />
-        <mapping class="dgtic.modelo.empleado.conductor.Conductor" />
+        <mapping resource="dgtic/modelo/entidades/agencia/Agencia.hbm.xml" />
 
     </session-factory>
 

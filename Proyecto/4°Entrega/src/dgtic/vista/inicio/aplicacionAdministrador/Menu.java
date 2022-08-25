@@ -1,12 +1,10 @@
-package dgtic.inicio.aplicacionAdministrador;
+package dgtic.vista.inicio.aplicacionAdministrador;
 
 import java.util.List;
 import java.util.Scanner;
 
-import dgtic.basedatos.servicio.consulta.Consulta;
-import dgtic.modelo.empleado.administrador.Administrador;
-import dgtic.modelo.empleado.conductor.Conductor;
-import dgtic.modelo.empleado.puesto.Puesto;
+import dgtic.modelo.entidades.empleado.administrador.Administrador;
+import dgtic.modelo.entidades.empleado.conductor.Conductor;
 
 public class Menu {
     private static Scanner input = new Scanner(System.in);
@@ -21,9 +19,8 @@ public class Menu {
         String correo;
         String contrasena;
         String rfc;
-        float salario;
-        String claveEmpleado;
-        int claveConductor;
+        Float salario;
+        Integer claveConductor;
         Conductor conductor = null;
 
         boolean bandera = false;
@@ -45,14 +42,11 @@ public class Menu {
                 System.out.print("Ingrese el salario del nuevo conductor: ");
                 salario = Float.parseFloat(input.nextLine());
 
-                System.out.print("Ingrese la clave del Empleado (código de 3 letras y 2 números): ");
-                claveEmpleado = input.nextLine();
-
                 System.out.print("Ingrese la clave del conductor(número entero del 0 al 999): ");
                 claveConductor = Integer.parseInt(input.nextLine());
 
-                conductor = new Conductor(claveEmpleado, nombre, correo, contrasena, rfc,
-                        salario, Puesto.CONDUCTOR, claveConductor, null, null);
+                conductor = new Conductor(claveConductor, nombre, correo, contrasena, rfc,
+                        salario);
 
                 bandera = true;
             } catch (Exception e) {
@@ -78,7 +72,6 @@ public class Menu {
         String contrasena;
         String rfc;
         float salario;
-        String claveEmpleado;
         int claveAdministrador;
         Administrador administrador = null;
 
@@ -101,14 +94,11 @@ public class Menu {
                 System.out.print("Ingrese el salario del nuevo administrador: ");
                 salario = Float.parseFloat(input.nextLine());
 
-                System.out.print("Ingrese la clave del Empleado (código de 3 letras y 2 números): ");
-                claveEmpleado = input.nextLine();
-
                 System.out.print("Ingrese la clave del administrador(número entero del 0 al 999): ");
                 claveAdministrador = Integer.parseInt(input.nextLine());
 
-                administrador = new Administrador(claveEmpleado, nombre, correo, contrasena, rfc,
-                        salario, Puesto.ADMINISTRADOR, claveAdministrador);
+                administrador = new Administrador(claveAdministrador, nombre, correo, contrasena, rfc,
+                        salario);
                 bandera = true;
             } catch (Exception e) {
                 System.out.println("Datos no válidos, por favor, revise los datos y vuelva a ingresarlos.");
@@ -125,11 +115,11 @@ public class Menu {
     }
 
     static List<Conductor> consultaConductores() {
-        return Consulta.consultaConductores();
+        return null;
     }
 
     static List<Administrador> consultaAdministradores() {
-        return Consulta.consultaAdministradores();
+        return null;
     }
 
     public static Administrador actualizaAdministrador() {

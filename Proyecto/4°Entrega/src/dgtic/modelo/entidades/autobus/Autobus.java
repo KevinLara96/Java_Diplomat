@@ -1,20 +1,13 @@
-package dgtic.modelo.autobus;
+package dgtic.modelo.entidades.autobus;
 
 import java.io.Serializable;
 import java.util.Random;
-
-import dgtic.modelo.autobus.interfaces.Clase;
-import dgtic.modelo.autobus.interfaces.TipoTuribus;
-import dgtic.modelo.autobus.interfaces.TipoUso;
 
 public class Autobus implements Serializable {
     private int claveAutobus;
     private String modelo;
     private String marca;
     private int capacidad;
-    public Clase clase;
-    public TipoUso tipoUso;
-    public TipoTuribus tipoTuribus;
 
     public Autobus(int claveAutobus, String modelo, String marca, int capacidad) {
         setClaveAutobus(claveAutobus);
@@ -72,28 +65,13 @@ public class Autobus implements Serializable {
         }
     }
 
-    public Clase getClase() {
-        return clase;
-    }
-
-    public TipoUso getTipoUso() {
-        return tipoUso;
-    }
-
-    public TipoTuribus getTipoTuribus() {
-        return tipoTuribus;
-    }
-
     @Override
     public String toString() {
         return "Autobus [" +
                 "\n claveAutobus: " + claveAutobus +
                 "\n marca=" + marca +
                 "\n modelo=" + modelo +
-                "\n capacidad=" + capacidad +
-                "\n clase=" + clase +
-                "\n tipoUso=" + tipoUso +
-                "\n tipoTuribus=" + tipoTuribus + "]";
+                "\n capacidad=" + capacidad;
 
     }
 
@@ -104,13 +82,11 @@ public class Autobus implements Serializable {
             autobusBuilder = new Autobus(claveAutobus, modelo, marca, capacidad);
         }
 
-        public BuildViaje setTipoViaje(TipoUso tipoUso) {
-            autobusBuilder.tipoUso = tipoUso;
+        public BuildViaje setTipoViaje() {
             return new BuildViaje(autobusBuilder);
         }
 
-        public BuildTour setTipoTour(TipoUso tipoUso) {
-            autobusBuilder.tipoUso = tipoUso;
+        public BuildTour setTipoTour() {
             return new BuildTour(autobusBuilder);
         }
     }
@@ -122,9 +98,7 @@ public class Autobus implements Serializable {
             this.autobus = autobus;
         }
 
-        public BuildViaje setClase(Clase clase) {
-            this.autobus.clase = clase;
-            this.autobus.tipoTuribus = TipoTuribus.NA;
+        public BuildViaje setClase() {
             return this;
         }
 
@@ -140,9 +114,7 @@ public class Autobus implements Serializable {
             this.autobus = autobus;
         }
 
-        public BuildTour setTipoTuribus(TipoTuribus tipoTuribus) {
-            this.autobus.tipoTuribus = tipoTuribus;
-            this.autobus.clase = Clase.NA;
+        public BuildTour setTipoTuribus() {
             return this;
         }
 

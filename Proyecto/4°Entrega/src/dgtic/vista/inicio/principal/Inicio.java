@@ -1,12 +1,11 @@
-package dgtic.inicio.principal;
+package dgtic.vista.inicio.principal;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.concurrent.TimeUnit;
 
-import dgtic.modelo.agencia.Agencia;
-import dgtic.modelo.empleado.administrador.Administrador;
-import dgtic.modelo.empleado.puesto.Puesto;
+import dgtic.modelo.entidades.agencia.Agencia;
+import dgtic.modelo.entidades.empleado.administrador.Administrador;
 
 public class Inicio {
     public static void main(String[] args) throws InterruptedException {
@@ -17,8 +16,8 @@ public class Inicio {
         System.out.println("Agencia creada.\n");
 
         System.out.println("Creando administrador sys ...");
-        Administrador sys = new Administrador("sys01", "sys", "sys@sak.com", "system1",
-                "", 0.00f, Puesto.SYS, 1);
+        Administrador sys = new Administrador(1, "sys", "sys@sak.com", "system1",
+                "", 0.00f);
         TimeUnit.SECONDS.sleep(2);
         agencia.getAdministradores().add(sys);
         System.out.println("Usuario sys creado.");

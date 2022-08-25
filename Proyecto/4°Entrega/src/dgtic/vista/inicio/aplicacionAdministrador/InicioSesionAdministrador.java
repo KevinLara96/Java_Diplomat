@@ -1,11 +1,11 @@
-package dgtic.inicio.aplicacionAdministrador;
+package dgtic.vista.inicio.aplicacionAdministrador;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.Scanner;
 
-import dgtic.modelo.agencia.Agencia;
-import dgtic.modelo.empleado.Empleado;
+import dgtic.modelo.entidades.agencia.Agencia;
+import dgtic.modelo.entidades.empleado.Empleado;
 
 public class InicioSesionAdministrador {
     private Agencia agencia;

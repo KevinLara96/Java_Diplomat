@@ -1,24 +1,19 @@
-package dgtic.modelo.viaje;
+package dgtic.modelo.entidades.viaje;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Random;
 
-import dgtic.modelo.viaje.interfaces.TipoViaje;
-
 public class Viaje implements Serializable {
-    private int idViaje;
+    private Integer idViaje;
     private String origen;
     private String destino;
-    private float precio;
-    private int distancia;
+    private Float precio;
+    private Integer distancia;
     private String fecha;
-    private TipoViaje tipoViaje;
 
-    public Viaje(int idViaje, String origen, String destino, float precio, int distancia, String fecha,
-            TipoViaje tipoViaje) {
+    public Viaje(int idViaje, String origen, String destino, float precio, int distancia, String fecha) {
         setIdViaje(idViaje);
-        setTipoViaje(tipoViaje);
         setOrigen(origen);
         setDestino(destino);
         setPrecio(precio);
@@ -57,13 +52,7 @@ public class Viaje implements Serializable {
 
     public void setDestino(String destino) {
         if (destino.length() <= 0 || destino == null) {
-            if (this.getTipoViaje() == TipoViaje.CORTO) {
-                this.destino = "Ciudad de México";
-            } else if (this.getTipoViaje() == TipoViaje.MEDIO) {
-                this.destino = "Guadalajara";
-            } else {
-                this.destino = "Monterrey";
-            }
+            this.destino = "Monterrey";
         } else {
             this.destino = destino;
         }
@@ -75,13 +64,7 @@ public class Viaje implements Serializable {
 
     public void setPrecio(float precio) {
         if (precio <= 0) {
-            if (this.getTipoViaje() == TipoViaje.CORTO) {
-                this.precio = 500.0f;
-            } else if (this.getTipoViaje() == TipoViaje.MEDIO) {
-                this.precio = 1500.0f;
-            } else {
-                this.precio = 4000.0f;
-            }
+            this.precio = 1500.0f;
         } else {
             this.precio = precio;
         }
@@ -93,13 +76,7 @@ public class Viaje implements Serializable {
 
     public void setDistancia(int distancia) {
         if (distancia <= 0) {
-            if (this.getTipoViaje() == TipoViaje.CORTO) {
-                this.distancia = 50;
-            } else if (this.getTipoViaje() == TipoViaje.MEDIO) {
-                this.distancia = 400;
-            } else {
-                this.distancia = 800;
-            }
+            this.distancia = 800;
         } else {
             this.distancia = distancia;
         }
@@ -118,29 +95,83 @@ public class Viaje implements Serializable {
         }
     }
 
-    public TipoViaje getTipoViaje() {
-        return tipoViaje;
-    }
-
-    public void setTipoViaje(TipoViaje tipoViaje) {
-        // Si el tipo de viaje se especifica, se asigna al viaje.
-        for (TipoViaje viaje : TipoViaje.values()) {
-            if (viaje == tipoViaje) {
-                this.tipoViaje = tipoViaje;
-                return;
-            }
-        }
-        // Si no se especifica, se elige uno aleatorio del Enum.
-        Random rand = new Random();
-        this.tipoViaje = TipoViaje.values()[rand.nextInt(2)];
-    }
-
     @Override
     public String toString() {
-        return "Viaje [" + idViaje + "]: " +
-                origen + " -> " + destino +
-                "\n distancia=" + distancia +
-                "\n fecha=" + fecha +
-                "\n precio=" + precio + "]";
+        StringBuilder str = new StringBuilder("");
+        str.append("Viaje ").append(idViaje);
+        str.append("\nDestino: ").append(destino);
+        str.append("\nOrigen: ").append(origen);
+        str.append("\nPrecio: ").append(precio);
+        str.append("\nFecha: ").append(fecha);
+
+        return str.toString();
+    }
+
+    public static class Builder {
+        private Viaje viajeBuilder;
+
+        public Builder(int idViaje, String origen, String destino, float precio, int distancia, String fecha) {
+            viajeBuilder = new Viaje(idViaje, origen, destino, precio, distancia, fecha);
+        }
+
+        public BuildViajeCorto setViajeCorto() {
+            return new BuildViajeCorto(viajeBuilder);
+        }
+
+        public BuildViajeMedio setViajeMedio() {
+            return new BuildViajeMedio(viajeBuilder);
+        }
+
+        public BuildViajeLargo setViajeLargo() {
+            return new BuildViajeLargo(viajeBuilder);
+        }
+    }
+
+    public static class BuildViajeCorto {
+        private Viaje viaje;
+
+        public BuildViajeCorto(Viaje viaje) {
+            this.viaje = viaje;
+        }
+
+        public BuildViajeCorto setDuracionViaje() {
+            return this;
+        }
+
+        public Viaje build() {
+            return viaje;
+        }
+    }
+
+    public static class BuildViajeMedio {
+        private Viaje viaje;
+
+        public BuildViajeMedio(Viaje viaje) {
+            this.viaje = viaje;
+        }
+
+        public BuildViajeMedio setDuracionTour() {
+            return this;
+        }
+
+        public Viaje build() {
+            return viaje;
+        }
+    }
+
+    public static class BuildViajeLargo {
+        private Viaje viaje;
+
+        public BuildViajeLargo(Viaje viaje) {
+            this.viaje = viaje;
+        }
+
+        public BuildViajeLargo setDuracionTour() {
+            return this;
+        }
+
+        public Viaje build() {
+            return viaje;
+        }
     }
 }

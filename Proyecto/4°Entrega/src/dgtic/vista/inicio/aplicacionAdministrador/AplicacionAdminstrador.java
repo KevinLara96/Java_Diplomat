@@ -1,32 +1,12 @@
-package dgtic.inicio.aplicacionAdministrador;
+package dgtic.vista.inicio.aplicacionAdministrador;
 
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 import java.util.Scanner;
 
-import dgtic.basedatos.servicio.HibernateUtil;
-import dgtic.modelo.agencia.Agencia;
-import dgtic.modelo.empleado.Empleado;
-import dgtic.modelo.empleado.administrador.Administrador;
+import dgtic.modelo.hibernate.HibernateUtil;
 
 public class AplicacionAdminstrador {
-    private Agencia agencia;
     private int opcion = -1;
     private Scanner input = new Scanner(System.in);
-    private Administrador administrador;
-
-    public AplicacionAdminstrador(Empleado administrador) {
-        try {
-            FileInputStream fileIn = new FileInputStream("src/dgtic/modelo/agencia/repositorio/Agencia.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            this.agencia = (Agencia) in.readObject();
-            in.close();
-            fileIn.close();
-            this.administrador = (Administrador) administrador;
-        } catch (Exception e) {
-            System.out.println("No se pudo recuperar la información.");
-        }
-    }
 
     public void ejecutarAplicacion() {
         HibernateUtil.init();
@@ -52,35 +32,35 @@ public class AplicacionAdminstrador {
 
             switch (this.opcion) {
                 case 1:
-                    administrador.anadirAdministrador(Menu.nuevoAdministrador());
+
                     break;
 
                 case 2:
-                    administrador.eliminarAdministrador(Menu.quitarAdministrador());
+
                     break;
 
                 case 3:
-                    administrador.anadirConductor(Menu.nuevoConductor());
+
                     break;
 
                 case 4:
-                    administrador.eliminarConductor(Menu.quitarConductor());
+
                     break;
 
                 case 5:
-                    administrador.consultaAdministradores();
+
                     break;
 
                 case 6:
-                    administrador.consultaConductores();
+
                     break;
 
                 case 7:
-                    administrador.actualizaAdministrador(Menu.actualizaAdministrador());
+
                     break;
 
                 case 8:
-                    administrador.actualizaConductor(Menu.actualizaConductor());
+
                     break;
 
                 case 9:

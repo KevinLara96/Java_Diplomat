@@ -1,43 +1,22 @@
-package dgtic.modelo.empleado.conductor;
+package dgtic.modelo.entidades.empleado.conductor;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Random;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import dgtic.modelo.entidades.empleado.Empleado;
 
-import dgtic.modelo.empleado.Empleado;
-import dgtic.modelo.empleado.puesto.Puesto;
-import dgtic.modelo.autobus.Autobus;
-import dgtic.modelo.viaje.Viaje;
-import dgtic.modelo.viaje.implementacion.FactoryViajeCorto;
-import dgtic.modelo.viaje.interfaces.AbstractFactory;
-import dgtic.modelo.viaje.interfaces.TipoViaje;
-import dgtic.modelo.viaje.interfaces.Viajes;
-
-@Entity
-@Table(name = "Conductor")
 public class Conductor extends Empleado {
     private Integer claveConductor;
-    private List<Autobus> autobusesAsignados;
-    private Viaje viajeAsignado;
 
     public Conductor() {
         super();
     }
 
-    public Conductor(String claveEmpleado, String nombre, String correo, String contrasena, String rfc, float salario,
-            Puesto puesto,
-            int claveConductor, List<Autobus> autobusesAsignados, Viaje viajeAsignado) {
-        super(claveEmpleado, nombre, correo, contrasena, rfc, salario, puesto);
+    public Conductor(Integer claveConductor, String nombre, String correo, String contrasena, String rfc,
+            float salario) {
+        super(nombre, correo, contrasena, rfc, salario);
         setClaveConductor(claveConductor);
-        setViajeAsignado(viajeAsignado);
     }
 
-    @Column(name = "claveConductor")
     public Integer getClaveConductor() {
         return claveConductor;
     }
@@ -45,46 +24,54 @@ public class Conductor extends Empleado {
     public void setClaveConductor(int claveConductor) {
         if (claveConductor <= 0) {
             Random rand = new Random();
-            this.claveConductor = rand.nextInt(100);
+            this.claveConductor = rand.nextInt(1000);
         } else {
             this.claveConductor = claveConductor;
         }
     }
 
-    @Transient
-    public List<Autobus> getAutobusesAsignados() {
-        return autobusesAsignados;
+    public String getNombre() {
+        return super.getNombre();
     }
 
-    @Transient
-    public Viaje getViajeAsignado() {
-        return viajeAsignado;
+    public void setNombre(String nombre) {
+        super.setNombre(nombre);
     }
 
-    public void setViajeAsignado(Viaje viajeAsignado) {
-        if (viajeAsignado == null) {
-            Random rand = new Random();
-            AbstractFactory factory = new FactoryViajeCorto();
-            Viajes viajes = factory.crearViaje();
-            Viaje viaje = viajes.viaje(rand.nextInt(999), "Origen", "Destino",
-                    20.0f, 300, LocalDate.now().toString(), TipoViaje.CORTO);
-            this.viajeAsignado = viaje;
-        } else {
-            this.viajeAsignado = viajeAsignado;
-        }
+    public String getCorreo() {
+        return super.getCorreo();
     }
 
-    @Override
-    @Column(name = "claveEmpleado")
-    public String getClaveEmpleado() {
-        return super.getClaveEmpleado();
+    public void setCorreo(String correo) {
+        super.setCorreo(correo);
+    }
+
+    public String getContrasena() {
+        return super.getContrasena();
+    }
+
+    public void setContrasena(String contrasena) {
+        super.setContrasena(contrasena);
+    }
+
+    public String getRfc() {
+        return super.getRfc();
+    }
+
+    public void setRfc(String rfc) {
+        super.setRfc(rfc);
+    }
+
+    public Float getSalario() {
+        return super.getSalario();
+    }
+
+    public void setSalario(Float salario) {
+        super.setSalario(salario);
     }
 
     @Override
     public String toString() {
-        return super.toString() +
-                "\n claveConductor=" + claveConductor +
-                "\n autobusesAsignados=" + autobusesAsignados +
-                "\n viajeAsignado=" + viajeAsignado + "]";
+        return super.toString() + ", claveConductor=" + claveConductor;
     }
 }

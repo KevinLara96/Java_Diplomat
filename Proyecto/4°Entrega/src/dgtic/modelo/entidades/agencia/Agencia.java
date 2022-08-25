@@ -1,45 +1,31 @@
-package dgtic.modelo.agencia;
+package dgtic.modelo.entidades.agencia;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
-import dgtic.modelo.autobus.Autobus;
-import dgtic.modelo.empleado.administrador.Administrador;
-import dgtic.modelo.empleado.conductor.Conductor;
-import dgtic.modelo.viaje.Viaje;
+import dgtic.modelo.entidades.autobus.Autobus;
+import dgtic.modelo.entidades.empleado.administrador.Administrador;
+import dgtic.modelo.entidades.empleado.conductor.Conductor;
+import dgtic.modelo.entidades.viaje.Viaje;
 
 public class Agencia implements Serializable {
-    public String nombreAgencia;
-    private List<Viaje> destinos;
-    private List<Conductor> conductores;
-    private List<Administrador> administradores;
-    private List<Autobus> autobuses;
+    private Integer idAgencia;
+    private String nombreAgencia;
+    private String ubicacion;
+    private HashSet<Conductor> conductores;
+    private HashSet<Administrador> administradores;
+    private HashSet<Viaje> destinos;
+    private HashSet<Autobus> autobuses;
 
     private static Agencia INSTANCIA;
 
-    public Agencia() {
+    private Agencia() {
+        this.idAgencia = 1;
         this.nombreAgencia = "SAK";
-        this.destinos = new ArrayList<Viaje>();
-        this.conductores = new ArrayList<Conductor>();
-        this.administradores = new ArrayList<Administrador>();
-        this.autobuses = new ArrayList<Autobus>();
-    }
-
-    public List<Viaje> getDestinos() {
-        return destinos;
-    }
-
-    public List<Conductor> getConductores() {
-        return conductores;
-    }
-
-    public List<Administrador> getAdministradores() {
-        return administradores;
-    }
-
-    public List<Autobus> getAutobuses() {
-        return autobuses;
+        this.destinos = new HashSet<>();
+        this.conductores = new HashSet<>();
+        this.administradores = new HashSet<>();
+        this.autobuses = new HashSet<>();
     }
 
     public synchronized static Agencia getInstancia() {
@@ -49,13 +35,43 @@ public class Agencia implements Serializable {
         return INSTANCIA;
     }
 
+    public Integer getIdAgencia() {
+        return idAgencia;
+    }
+
+    public String getNombreAgencia() {
+        return nombreAgencia;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public HashSet<Viaje> getDestinos() {
+        return destinos;
+    }
+
+    public HashSet<Conductor> getConductores() {
+        return conductores;
+    }
+
+    public HashSet<Administrador> getAdministradores() {
+        return administradores;
+    }
+
+    public HashSet<Autobus> getAutobuses() {
+        return autobuses;
+    }
+
     @Override
     public String toString() {
-        return "Agencia " + nombreAgencia + ":" +
-                "\n administradores=" + administradores +
-                "\n autobuses=" + autobuses +
-                "\n conductores=" + conductores +
-                "\n destinos=" + destinos;
+        StringBuilder str = new StringBuilder("");
+        str.append("Agencia ").append(nombreAgencia);
+        str.append("\nadministradores: ").append(administradores);
+        str.append("\nconductores: ").append(conductores);
+        str.append("\ndestinos: ").append(destinos);
+        str.append("\nautobuses: ").append(autobuses);
+        return str.toString();
     }
 
 }

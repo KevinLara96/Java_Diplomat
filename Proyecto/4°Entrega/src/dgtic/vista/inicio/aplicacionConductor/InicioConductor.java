@@ -1,4 +1,4 @@
-package dgtic.inicio.aplicacionConductor;
+package dgtic.vista.inicio.aplicacionConductor;
 
 public class InicioConductor {
     private AplicacionConductor aplicacionConductor;

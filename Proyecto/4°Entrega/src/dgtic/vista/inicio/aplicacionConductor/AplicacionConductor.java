@@ -1,28 +1,10 @@
-package dgtic.inicio.aplicacionConductor;
+package dgtic.vista.inicio.aplicacionConductor;
 
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 import java.util.Scanner;
 
-import dgtic.basedatos.servicio.consulta.Consulta;
-import dgtic.modelo.agencia.Agencia;
-
 public class AplicacionConductor {
-    private Agencia agencia;
     private int opcion = -1;
     private Scanner input = new Scanner(System.in);
-
-    public AplicacionConductor() {
-        try {
-            FileInputStream fileIn = new FileInputStream("src/dgtic/modelo/agencia/repositorio/Agencia.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            this.agencia = (Agencia) in.readObject();
-            in.close();
-            fileIn.close();
-        } catch (Exception e) {
-            System.out.println("No se pudo recuperar la información.");
-        }
-    }
 
     public void ejecutarAplicacion() {
         do {
@@ -55,8 +37,7 @@ public class AplicacionConductor {
     }
 
     public void opcion1() {
-        agencia.getConductores();
-        System.out.println(Consulta.consultaConductores());
+
     }
 
     public void opcion0() {
