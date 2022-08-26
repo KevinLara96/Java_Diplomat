@@ -2,6 +2,8 @@ package dgtic.vista.inicio.principal;
 
 import java.util.concurrent.TimeUnit;
 
+import dgtic.controlador.servicio.tablas.ServiciosAgencia;
+import dgtic.controlador.servicio.tablas.ServiciosAgenciaImpl;
 import dgtic.modelo.entidades.agencia.Agencia;
 import dgtic.modelo.entidades.empleado.Empleado;
 import dgtic.modelo.hibernate.HibernateUtil;
@@ -27,5 +29,8 @@ public class Inicio {
         System.out.println("Usuario sys creado.");
 
         HibernateUtil.init();
+        ServiciosAgencia servicio = ServiciosAgenciaImpl.getInstance();
+        servicio.guardaAgencia(agencia);
+
     }
 }

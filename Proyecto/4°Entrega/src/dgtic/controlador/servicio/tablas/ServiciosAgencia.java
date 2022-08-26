@@ -1,11 +1,9 @@
-package dgtic.modelo.DAO.tablas;
+package dgtic.controlador.servicio.tablas;
 
 import dgtic.modelo.entidades.agencia.Agencia;
 
-public interface AgenciaDAO {
+public interface ServiciosAgencia {
     Agencia cargaAgencia();
-
-    // Agencia cargaAgenciaPorIdNQ(Integer id);
 
     void guardaAgencia(Agencia agencia);
 
