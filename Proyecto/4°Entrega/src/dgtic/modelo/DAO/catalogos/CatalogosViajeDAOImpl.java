@@ -24,7 +24,7 @@ public class CatalogosViajeDAOImpl implements CatalogosViajeDAO {
     }
 
     @Override
-    public List<TipoViaje> cargaTipoViaje() {
+    public List<TipoViaje> cargaTiposViaje() {
         List<TipoViaje> catalogo = null;
         try {
 
@@ -68,7 +68,7 @@ public class CatalogosViajeDAOImpl implements CatalogosViajeDAO {
     }
 
     @Override
-    public List<TipoTour> cargaTipoTour() {
+    public List<TipoTour> cargaTiposTour() {
         List<TipoTour> catalogo = null;
         try {
 

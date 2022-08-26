@@ -11,5 +11,5 @@ public interface CatalogosAutobusDAO {
 
     List<ClaseTuribus> cargaClasesTuribus();
 
-    ClaseTuribus cargaClaseTuribusPorId(Integer id);
+    ClaseTuribus cargaClasesTuribusPorId(Integer id);
 }

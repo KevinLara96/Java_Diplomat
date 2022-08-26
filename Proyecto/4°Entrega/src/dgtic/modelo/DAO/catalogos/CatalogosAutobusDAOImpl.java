@@ -92,7 +92,7 @@ public class CatalogosAutobusDAOImpl implements CatalogosAutobusDAO {
     }
 
     @Override
-    public ClaseTuribus cargaClaseTuribusPorId(Integer id) {
+    public ClaseTuribus cargaClasesTuribusPorId(Integer id) {
         ClaseTuribus claseTuribus = null;
         try {
 
