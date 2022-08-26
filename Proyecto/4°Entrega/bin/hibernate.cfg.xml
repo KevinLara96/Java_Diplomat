@@ -33,6 +33,16 @@
         <property name="hbm2ddl.auto">none</property>
 
         <mapping resource="dgtic/modelo/entidades/agencia/Agencia.hbm.xml" />
+        <mapping class="dgtic.modelo.entidades.agencia.asignaciones.AutobusAsignado" />
+        <mapping class="dgtic.modelo.entidades.agencia.asignaciones.ViajeAsignado" />
+        <mapping class="dgtic.modelo.entidades.autobus.Autobus" />
+        <mapping class="dgtic.modelo.entidades.autobus.ClaseBus" />
+        <mapping class="dgtic.modelo.entidades.autobus.ClaseTuribus" />
+        <mapping class="dgtic.modelo.entidades.empleado.Empleado" />
+        <mapping class="dgtic.modelo.entidades.puesto.Puesto" />
+        <mapping class="dgtic.modelo.entidades.viaje.TipoTour" />
+        <mapping class="dgtic.modelo.entidades.viaje.TipoViaje" />
+        <mapping class="dgtic.modelo.entidades.viaje.Viaje" />
 
     </session-factory>
 

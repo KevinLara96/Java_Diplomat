@@ -1,28 +1,46 @@
 package dgtic.modelo.entidades.empleado;
 
-import java.io.Serializable;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Empleado implements Serializable {
+import javax.persistence.*;
+
+import dgtic.modelo.entidades.agencia.Agencia;
+import dgtic.modelo.entidades.puesto.Puesto;
+
+@Entity
+@Table(name = "empleado")
+public class Empleado {
+    private Integer idEmpleado;
     private String nombre;
     private String correo;
     private String contrasena;
     private String rfc;
     private Float salario;
+    private Puesto puesto;
+    private Agencia agencia;
 
     public Empleado() {
     }
 
-    public Empleado(String nombre, String correo, String contrasena, String rfc, float salario) {
-        setNombre(nombre);
-        setCorreo(correo);
-        setContrasena(contrasena);
-        setRfc(rfc);
-        setSalario(salario);
+    @Id
+    @Column(name = "idEmpleado")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getIdEmpleado() {
+        return idEmpleado;
     }
 
+    public void setIdEmpleado(Integer idEmpleado) {
+        if (idEmpleado <= 0 || idEmpleado == null) {
+            Random rand = new Random();
+            this.idEmpleado = rand.nextInt(1000);
+        } else {
+            this.idEmpleado = idEmpleado;
+        }
+    }
+
+    @Column(name = "nombre")
     public String getNombre() {
         return nombre;
     }
@@ -35,6 +53,7 @@ public class Empleado implements Serializable {
         }
     }
 
+    @Column(name = "correo")
     public String getCorreo() {
         return correo;
     }
@@ -53,6 +72,7 @@ public class Empleado implements Serializable {
         }
     }
 
+    @Column(name = "contrasena")
     public String getContrasena() {
         return contrasena;
     }
@@ -65,6 +85,7 @@ public class Empleado implements Serializable {
         }
     }
 
+    @Column(name = "rfc")
     public String getRfc() {
         return rfc;
     }
@@ -77,6 +98,7 @@ public class Empleado implements Serializable {
         }
     }
 
+    @Column(name = "salario")
     public Float getSalario() {
         return salario;
     }
@@ -89,6 +111,26 @@ public class Empleado implements Serializable {
         }
     }
 
+    @OneToOne(targetEntity = Puesto.class, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "idPuesto", referencedColumnName = "idPuesto", nullable = false)
+    public Puesto getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(Puesto puesto) {
+        this.puesto = puesto;
+    }
+
+    @ManyToOne(targetEntity = Agencia.class)
+    @JoinColumn(name = "idAgencia", referencedColumnName = "idAgencia")
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
@@ -98,4 +140,5 @@ public class Empleado implements Serializable {
 
         return str.toString();
     }
+
 }

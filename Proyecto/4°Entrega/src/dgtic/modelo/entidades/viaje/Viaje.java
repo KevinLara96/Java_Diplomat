@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Random;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Viaje")
 public class Viaje implements Serializable {
     private Integer idViaje;
     private String origen;
@@ -11,8 +15,13 @@ public class Viaje implements Serializable {
     private Float precio;
     private Integer distancia;
     private String fecha;
+    private TipoTour tipoTour;
+    private TipoViaje tipoViaje;
 
-    public Viaje(int idViaje, String origen, String destino, float precio, int distancia, String fecha) {
+    public Viaje() {
+    }
+
+    public Viaje(Integer idViaje, String origen, String destino, float precio, int distancia, String fecha) {
         setIdViaje(idViaje);
         setOrigen(origen);
         setDestino(destino);
@@ -21,8 +30,15 @@ public class Viaje implements Serializable {
         setFecha(fecha);
     }
 
-    public void setIdViaje(int idViaje) {
-        if (idViaje <= 0) {
+    @Id
+    @Column(name = "idViaje")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getIdViaje() {
+        return idViaje;
+    }
+
+    public void setIdViaje(Integer idViaje) {
+        if (idViaje <= 0 || idViaje == null) {
             Random rand = new Random();
             this.idViaje = rand.nextInt(999);
         } else {
@@ -30,10 +46,7 @@ public class Viaje implements Serializable {
         }
     }
 
-    public int getIdViaje() {
-        return idViaje;
-    }
-
+    @Column(name = "origen")
     public String getOrigen() {
         return origen;
     }
@@ -46,6 +59,7 @@ public class Viaje implements Serializable {
         }
     }
 
+    @Column(name = "destino")
     public String getDestino() {
         return destino;
     }
@@ -58,11 +72,12 @@ public class Viaje implements Serializable {
         }
     }
 
-    public float getPrecio() {
+    @Column(name = "precio")
+    public Float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Float precio) {
         if (precio <= 0) {
             this.precio = 1500.0f;
         } else {
@@ -70,11 +85,12 @@ public class Viaje implements Serializable {
         }
     }
 
-    public int getDistancia() {
+    @Column(name = "distancia")
+    public Integer getDistancia() {
         return distancia;
     }
 
-    public void setDistancia(int distancia) {
+    public void setDistancia(Integer distancia) {
         if (distancia <= 0) {
             this.distancia = 800;
         } else {
@@ -83,6 +99,7 @@ public class Viaje implements Serializable {
 
     }
 
+    @Column(name = "fecha")
     public String getFecha() {
         return fecha;
     }
@@ -93,6 +110,26 @@ public class Viaje implements Serializable {
         } else {
             this.fecha = fecha;
         }
+    }
+
+    @OneToOne(targetEntity = TipoTour.class, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "idTipoTour", referencedColumnName = "idTipoTour", nullable = false)
+    public TipoTour getTipoTour() {
+        return tipoTour;
+    }
+
+    public void setTipoTour(TipoTour tipoTour) {
+        this.tipoTour = tipoTour;
+    }
+
+    @OneToOne(targetEntity = TipoViaje.class, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "idTipoViaje", referencedColumnName = "idTipoViaje", nullable = false)
+    public TipoViaje getTipoViaje() {
+        return tipoViaje;
+    }
+
+    public void setTipoViaje(TipoViaje tipoViaje) {
+        this.tipoViaje = tipoViaje;
     }
 
     @Override

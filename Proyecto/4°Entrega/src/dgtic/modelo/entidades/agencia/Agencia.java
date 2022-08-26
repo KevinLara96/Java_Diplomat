@@ -3,29 +3,25 @@ package dgtic.modelo.entidades.agencia;
 import java.io.Serializable;
 import java.util.HashSet;
 
+import dgtic.modelo.entidades.agencia.asignaciones.AutobusAsignado;
+import dgtic.modelo.entidades.agencia.asignaciones.ViajeAsignado;
 import dgtic.modelo.entidades.autobus.Autobus;
-import dgtic.modelo.entidades.empleado.administrador.Administrador;
-import dgtic.modelo.entidades.empleado.conductor.Conductor;
+import dgtic.modelo.entidades.empleado.Empleado;
 import dgtic.modelo.entidades.viaje.Viaje;
 
 public class Agencia implements Serializable {
     private Integer idAgencia;
     private String nombreAgencia;
     private String ubicacion;
-    private HashSet<Conductor> conductores;
-    private HashSet<Administrador> administradores;
-    private HashSet<Viaje> destinos;
-    private HashSet<Autobus> autobuses;
+    private HashSet<Empleado> empleados = new HashSet<>();
+    private HashSet<Viaje> destinos = new HashSet<>();
+    private HashSet<Autobus> autobuses = new HashSet<>();
+    private HashSet<ViajeAsignado> viajesAsignados = new HashSet<>();
+    private HashSet<AutobusAsignado> autobusesAsignados = new HashSet<>();
 
     private static Agencia INSTANCIA;
 
     private Agencia() {
-        this.idAgencia = 1;
-        this.nombreAgencia = "SAK";
-        this.destinos = new HashSet<>();
-        this.conductores = new HashSet<>();
-        this.administradores = new HashSet<>();
-        this.autobuses = new HashSet<>();
     }
 
     public synchronized static Agencia getInstancia() {
@@ -39,39 +35,82 @@ public class Agencia implements Serializable {
         return idAgencia;
     }
 
+    public void setIdAgencia(Integer idAgencia) {
+        this.idAgencia = idAgencia;
+    }
+
     public String getNombreAgencia() {
         return nombreAgencia;
+    }
+
+    public void setNombreAgencia(String nombreAgencia) {
+        this.nombreAgencia = nombreAgencia;
     }
 
     public String getUbicacion() {
         return ubicacion;
     }
 
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public HashSet<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(HashSet<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+
     public HashSet<Viaje> getDestinos() {
         return destinos;
     }
 
-    public HashSet<Conductor> getConductores() {
-        return conductores;
-    }
-
-    public HashSet<Administrador> getAdministradores() {
-        return administradores;
+    public void setDestinos(HashSet<Viaje> destinos) {
+        this.destinos = destinos;
     }
 
     public HashSet<Autobus> getAutobuses() {
         return autobuses;
     }
 
+    public void setAutobuses(HashSet<Autobus> autobuses) {
+        this.autobuses = autobuses;
+    }
+
+    public HashSet<ViajeAsignado> getViajesAsignados() {
+        return viajesAsignados;
+    }
+
+    public void setViajesAsignados(HashSet<ViajeAsignado> viajesAsignados) {
+        this.viajesAsignados = viajesAsignados;
+    }
+
+    public HashSet<AutobusAsignado> getAutobusesAsignados() {
+        return autobusesAsignados;
+    }
+
+    public void setAutobusesAsignados(HashSet<AutobusAsignado> autobusesAsignados) {
+        this.autobusesAsignados = autobusesAsignados;
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
         str.append("Agencia ").append(nombreAgencia);
-        str.append("\nadministradores: ").append(administradores);
-        str.append("\nconductores: ").append(conductores);
+        str.append("\nempleados: ").append(empleados);
         str.append("\ndestinos: ").append(destinos);
         str.append("\nautobuses: ").append(autobuses);
         return str.toString();
+    }
+
+    public static Agencia getINSTANCIA() {
+        return INSTANCIA;
+    }
+
+    public static void setINSTANCIA(Agencia iNSTANCIA) {
+        INSTANCIA = iNSTANCIA;
     }
 
 }

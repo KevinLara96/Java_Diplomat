@@ -1,10 +1,16 @@
 package dgtic.modelo.entidades.autobus;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "claseTuribus")
 public class ClaseTuribus {
     private Integer idClaseTuribus;
     private String claseTuribus;
-    private String estatus;
 
+    @Id
+    @Column(name = "idClaseTuribus")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getIdClaseTuribus() {
         return idClaseTuribus;
     }
@@ -13,6 +19,7 @@ public class ClaseTuribus {
         this.idClaseTuribus = idClaseTuribus;
     }
 
+    @Column(name = "claseTuribus")
     public String getClaseTuribus() {
         return claseTuribus;
     }
@@ -20,13 +27,4 @@ public class ClaseTuribus {
     public void setClaseTuribus(String claseTuribus) {
         this.claseTuribus = claseTuribus;
     }
-
-    public String getEstatus() {
-        return estatus;
-    }
-
-    public void setEstatus(String estatus) {
-        this.estatus = estatus;
-    }
-
 }

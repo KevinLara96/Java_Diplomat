@@ -49,7 +49,7 @@ public class InicioSesionAdministrador {
 
     /* Método que verifica que exista el usuario en la base de datos. */
     public Empleado iniciarSesion() {
-        for (Empleado empleado : this.agencia.getAdministradores()) {
+        for (Empleado empleado : this.agencia.getEmpleados()) {
             if (empleado.getCorreo().equals(this.correo)) {
                 if (empleado.getContrasena().equals((this.contrasena))) {
                     System.out.println("Inicio de sesión con éxito.");

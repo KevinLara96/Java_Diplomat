@@ -3,32 +3,48 @@ package dgtic.modelo.entidades.autobus;
 import java.io.Serializable;
 import java.util.Random;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "autobus")
 public class Autobus implements Serializable {
-    private int claveAutobus;
+    private Integer idAutobus;
     private String modelo;
     private String marca;
-    private int capacidad;
+    private Integer capacidad;
+    private Integer idClaseBus;
+    private Integer idClaseTuribus;
 
-    public Autobus(int claveAutobus, String modelo, String marca, int capacidad) {
-        setClaveAutobus(claveAutobus);
+    public Autobus() {
+    }
+
+    public Autobus(int claveAutobus, String modelo, String marca, int capacidad,
+            Integer idClaseBus, Integer idClaseTuribus) {
+        setIdAutobus(claveAutobus);
         setModelo(modelo);
         setMarca(marca);
         setCapacidad(capacidad);
+        setIdClaseBus(idClaseBus);
+        setIdClaseTuribus(idClaseTuribus);
     }
 
-    public int getClaveAutobus() {
-        return claveAutobus;
+    @Id
+    @Column(name = "idAutobus")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getIdAutobus() {
+        return idAutobus;
     }
 
-    public void setClaveAutobus(int claveAutobus) {
+    public void setIdAutobus(int claveAutobus) {
         if (claveAutobus <= 0) {
             Random rand = new Random();
-            this.claveAutobus = rand.nextInt(1000);
+            this.idAutobus = rand.nextInt(1000);
         } else {
-            this.claveAutobus = claveAutobus;
+            this.idAutobus = claveAutobus;
         }
     }
 
+    @Column(name = "modelo")
     public String getModelo() {
         return modelo;
     }
@@ -41,6 +57,7 @@ public class Autobus implements Serializable {
         }
     }
 
+    @Column(name = "marca")
     public String getMarca() {
         return marca;
     }
@@ -53,11 +70,8 @@ public class Autobus implements Serializable {
         }
     }
 
-    public int getCapacidad() {
-        return capacidad;
-    }
-
-    public void setCapacidad(int capacidad) {
+    @Column(name = "capacidad")
+    public void setCapacidad(Integer capacidad) {
         if (capacidad <= 0) {
             this.capacidad = 30;
         } else {
@@ -65,21 +79,49 @@ public class Autobus implements Serializable {
         }
     }
 
+    public Integer getCapacidad() {
+        return capacidad;
+    }
+
+    @OneToOne(targetEntity = ClaseBus.class, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "idClaseBus", referencedColumnName = "idClaseBus", nullable = false)
+    public Integer getIdClaseBus() {
+        return idClaseBus;
+    }
+
+    public void setIdClaseBus(Integer idClaseBus) {
+        this.idClaseBus = idClaseBus;
+    }
+
+    @OneToOne(targetEntity = ClaseTuribus.class, cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "idClaseTuribus", referencedColumnName = "idClaseTuribus", nullable = false)
+    public Integer getIdClaseTuribus() {
+        return idClaseTuribus;
+    }
+
+    public void setIdClaseTuribus(Integer idClaseTuribus) {
+        this.idClaseTuribus = idClaseTuribus;
+    }
+
     @Override
     public String toString() {
-        return "Autobus [" +
-                "\n claveAutobus: " + claveAutobus +
-                "\n marca=" + marca +
-                "\n modelo=" + modelo +
-                "\n capacidad=" + capacidad;
-
+        StringBuilder str = new StringBuilder("");
+        str.append("Autobus: ");
+        str.append("\nidAutobus: ").append(idAutobus);
+        str.append("\nMarca: ").append(marca);
+        str.append("\nModelo; ").append(modelo);
+        str.append("\nCapacidad: ").append(capacidad);
+        str.append("\nClaseBus: ").append(idClaseBus);
+        str.append("\nClaseTuribus: ").append(idClaseTuribus);
+        return str.toString();
     }
 
     public static class Builder {
         private Autobus autobusBuilder;
 
-        public Builder(int claveAutobus, String modelo, String marca, int capacidad) {
-            autobusBuilder = new Autobus(claveAutobus, modelo, marca, capacidad);
+        public Builder(Integer idAutobus, String modelo, String marca, int capacidad,
+                Integer idClaseBus, Integer idClaseTuribus) {
+            autobusBuilder = new Autobus(idAutobus, modelo, marca, capacidad, idClaseBus, idClaseTuribus);
         }
 
         public BuildViaje setTipoViaje() {

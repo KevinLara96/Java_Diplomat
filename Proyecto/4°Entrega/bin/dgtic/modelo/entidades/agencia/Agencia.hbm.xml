@@ -7,33 +7,37 @@
   -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="mx.unam.tic.diplomado.agenda.modelo.entidades">
+<hibernate-mapping package="dgtic.modelo.entidades.agencia">
 
     <class name="Agencia" table="agencia">
         <!-- Llave principal -->
-        <id name="idAgencia" column="id_contacto">
+        <id name="idAgencia" column="idAgencia">
             <generator class="identity" />
         </id>
 
         <!-- Atributos -->
-        <property name="nombreAgencia" column="nombre_agencia" length="50" />
-        <property name="ubicacion" column="ubicacion" length="50" />
+        <property name="nombreAgencia" column="nombreAgencia" length="50" />
+        <property name="ubicacion" column="ubicacion" length="100" />
 
-        <set name="conductores" cascade="all" lazy="false">
-            <key column="conductores" />
-            <one-to-many class="dgtic.modelo.entidades.empleado.conductor.Conductor" />
-        </set>
-        <set name="administradores" cascade="all" lazy="false">
-            <key column="administradores" />
-            <one-to-many class="dgtic.modelo.entidades.empleado.conductor.Administrador" />
+        <set name="empleados" cascade="all" lazy="false">
+            <key column="idAgencia" />
+            <one-to-many class="dgtic.modelo.entidades.empleado.Empleado" />
         </set>
         <set name="destinos" cascade="all" lazy="false">
-            <key column="conductores" />
-            <one-to-many class="dgtic.modelo.entidades.viajel.Viaje" />
+            <key column="idAgencia" />
+            <one-to-many class="dgtic.modelo.entidades.viaje.Viaje" />
         </set>
         <set name="autobuses" cascade="all" lazy="false">
-            <key column="autobuses" />
+            <key column="idAgencia" />
             <one-to-many class="dgtic.modelo.entidades.autobus.Autobus" />
+        </set>
+        <set name="viajesAsignados" cascade="all" lazy="false">
+            <key column="idAgencia" />
+            <one-to-many class="dgtic.modelo.entidades.agencia.asignaciones.ViajeAsignado" />
+        </set>
+        <set name="autobusesAsignados" cascade="all" lazy="false">
+            <key column="idAgencia" />
+            <one-to-many class="dgtic.modelo.entidades.agencia.asignaciones.AutobusAsignado" />
         </set>
     </class>
 

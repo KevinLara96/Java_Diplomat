@@ -1,10 +1,16 @@
 package dgtic.modelo.entidades.viaje;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tipoViaje")
 public class TipoViaje {
     private Integer idTipoViaje;
     private String tipoViaje;
-    private String estatus;
 
+    @Id
+    @Column(name = "idTipoViaje")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getIdTipoViaje() {
         return idTipoViaje;
     }
@@ -13,20 +19,13 @@ public class TipoViaje {
         this.idTipoViaje = idTipoViaje;
     }
 
+    @Column(name = "tipoViaje")
     public String getTipoViaje() {
         return tipoViaje;
     }
 
     public void setTipoViaje(String tipoViaje) {
         this.tipoViaje = tipoViaje;
-    }
-
-    public String getEstatus() {
-        return estatus;
-    }
-
-    public void setEstatus(String estatus) {
-        this.estatus = estatus;
     }
 
 }
