@@ -2,25 +2,38 @@ package dgtic.modelo.entidades.agencia;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.*;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import dgtic.modelo.entidades.agencia.asignaciones.ConductorViaje;
 import dgtic.modelo.entidades.autobus.Autobus;
 import dgtic.modelo.entidades.empleado.Empleado;
 import dgtic.modelo.entidades.viaje.Viaje;
 
+@Entity
+@Table(name = "agencia")
 public class Agencia implements Serializable {
     private Integer idAgencia;
     private String nombreAgencia;
     private String ubicacion;
-    private HashSet<Empleado> empleados = new HashSet<>();
-    private HashSet<Viaje> destinos = new HashSet<>();
-    private HashSet<Autobus> autobuses = new HashSet<>();
-    private HashSet<ConductorViaje> viajesAsignados = new HashSet<>();
-    private HashSet<ConductorViaje> autobusesAsignados = new HashSet<>();
+    private Set<Empleado> empleados;
+    private Set<Viaje> destinos;
+    private Set<Autobus> autobuses;
+    private Set<ConductorViaje> viajesAsignados;
+    private Set<ConductorViaje> autobusesAsignados;
 
     private static Agencia INSTANCIA;
 
     private Agencia() {
+        this.empleados = new HashSet<>();
+        this.destinos = new HashSet<>();
+        this.autobuses = new HashSet<>();
+        this.viajesAsignados = new HashSet<>();
+        this.autobusesAsignados = new HashSet<>();
     }
 
     public synchronized static Agencia getInstancia() {
@@ -30,6 +43,9 @@ public class Agencia implements Serializable {
         return INSTANCIA;
     }
 
+    @Id
+    @Column(name = "idAgencia")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getIdAgencia() {
         return idAgencia;
     }
@@ -38,6 +54,7 @@ public class Agencia implements Serializable {
         this.idAgencia = idAgencia;
     }
 
+    @Column(name = "nombreAgencia")
     public String getNombreAgencia() {
         return nombreAgencia;
     }
@@ -46,6 +63,7 @@ public class Agencia implements Serializable {
         this.nombreAgencia = nombreAgencia;
     }
 
+    @Column(name = "ubicacion")
     public String getUbicacion() {
         return ubicacion;
     }
@@ -54,43 +72,53 @@ public class Agencia implements Serializable {
         this.ubicacion = ubicacion;
     }
 
-    public HashSet<Empleado> getEmpleados() {
+    @OneToMany(mappedBy = "agencia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
+    public Set<Empleado> getEmpleados() {
         return empleados;
     }
 
-    public void setEmpleados(HashSet<Empleado> empleados) {
+    public void setEmpleados(Set<Empleado> empleados) {
         this.empleados = empleados;
     }
 
-    public HashSet<Viaje> getDestinos() {
+    @OneToMany(mappedBy = "agencia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
+    public Set<Viaje> getDestinos() {
         return destinos;
     }
 
-    public void setDestinos(HashSet<Viaje> destinos) {
+    public void setDestinos(Set<Viaje> destinos) {
         this.destinos = destinos;
     }
 
-    public HashSet<Autobus> getAutobuses() {
+    @OneToMany(mappedBy = "agencia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
+    public Set<Autobus> getAutobuses() {
         return autobuses;
     }
 
-    public void setAutobuses(HashSet<Autobus> autobuses) {
+    public void setAutobuses(Set<Autobus> autobuses) {
         this.autobuses = autobuses;
     }
 
-    public HashSet<ConductorViaje> getViajesAsignados() {
+    @OneToMany(mappedBy = "agencia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
+    public Set<ConductorViaje> getViajesAsignados() {
         return viajesAsignados;
     }
 
-    public void setViajesAsignados(HashSet<ConductorViaje> viajesAsignados) {
+    public void setViajesAsignados(Set<ConductorViaje> viajesAsignados) {
         this.viajesAsignados = viajesAsignados;
     }
 
-    public HashSet<ConductorViaje> getAutobusesAsignados() {
+    @OneToMany(mappedBy = "agencia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
+    public Set<ConductorViaje> getAutobusesAsignados() {
         return autobusesAsignados;
     }
 
-    public void setAutobusesAsignados(HashSet<ConductorViaje> autobusesAsignados) {
+    public void setAutobusesAsignados(Set<ConductorViaje> autobusesAsignados) {
         this.autobusesAsignados = autobusesAsignados;
     }
 

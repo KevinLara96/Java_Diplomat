@@ -32,7 +32,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">none</property>
 
-        <mapping resource="dgtic/modelo/entidades/agencia/Agencia.hbm.xml" />
+        <mapping class="dgtic.modelo.entidades.agencia.Agencia" />
         <mapping class="dgtic.modelo.entidades.agencia.asignaciones.ConductorAutobus" />
         <mapping class="dgtic.modelo.entidades.agencia.asignaciones.ConductorViaje" />
         <mapping class="dgtic.modelo.entidades.autobus.Autobus" />

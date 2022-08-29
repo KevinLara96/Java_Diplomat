@@ -5,6 +5,11 @@ import java.util.Random;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import dgtic.modelo.entidades.agencia.Agencia;
+
 @Entity
 @Table(name = "autobus")
 public class Autobus implements Serializable {
@@ -14,6 +19,7 @@ public class Autobus implements Serializable {
     private Integer capacidad;
     private ClaseBus claseBus;
     private ClaseTuribus claseTuribus;
+    private Agencia agencia;
 
     public Autobus() {
     }
@@ -98,6 +104,21 @@ public class Autobus implements Serializable {
 
     public void setClaseTuribus(ClaseTuribus claseTuribus) {
         this.claseTuribus = claseTuribus;
+    }
+
+    public void setIdAutobus(Integer idAutobus) {
+        this.idAutobus = idAutobus;
+    }
+
+    @ManyToOne(targetEntity = Agencia.class, optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "idAgencia", nullable = false)
+    @Fetch(FetchMode.JOIN)
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
     }
 
     @Override

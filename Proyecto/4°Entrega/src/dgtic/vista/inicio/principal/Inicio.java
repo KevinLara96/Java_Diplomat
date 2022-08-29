@@ -30,6 +30,8 @@ public class Inicio {
         TimeUnit.SECONDS.sleep(2);
         System.out.println("Iniciando Base de Datos...");
         HibernateUtil.init();
+        ServiciosAgencia servicio = ServiciosAgenciaImpl.getInstance();
+        servicio.guardaAgencia(agencia);
 
         /* Se crea el usuario administrador base. */
         System.out.println("\n");
@@ -50,7 +52,6 @@ public class Inicio {
         /* Se crea un nuevo destino. */
         Viaje viaje = new Viaje.Builder(1, "México", "Monterrey", 3500.00f, 700, LocalDate.now().toString())
                 .setViajeCorto().build();
-
         ServiciosCatalogosViajeImpl servicioViaje = ServiciosCatalogosViajeImpl.getInstance();
         viaje.setTipoViaje(servicioViaje.cargaTipoViajePorId(1));
         viaje.setTipoTour(servicioViaje.cargaTipoTourPorId(4));
@@ -63,8 +64,6 @@ public class Inicio {
         autobus.setClaseTuribus(servicioAutobus.cargaClaseTuribusPorId(4));
         agencia.getAutobuses().add(autobus);
 
-        ServiciosAgencia servicio = ServiciosAgenciaImpl.getInstance();
-        servicio.guardaAgencia(agencia);
         System.out.println("Agencia creada.\n");
 
     }

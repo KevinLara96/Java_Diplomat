@@ -121,8 +121,8 @@ public class Empleado {
         this.puesto = puesto;
     }
 
-    @ManyToOne(targetEntity = Agencia.class)
-    @JoinColumn(name = "idAgencia", referencedColumnName = "idAgencia")
+    @ManyToOne(targetEntity = Agencia.class, optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "idAgencia")
     public Agencia getAgencia() {
         return agencia;
     }

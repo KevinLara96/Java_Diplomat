@@ -2,12 +2,15 @@ package dgtic.modelo.entidades.agencia.asignaciones;
 
 import javax.persistence.*;
 
+import dgtic.modelo.entidades.agencia.Agencia;
+
 @Entity
 @Table(name = "conductor_autobus")
 public class ConductorAutobus {
     private Integer idAsignacionAutobus;
     private Integer idConductor;
     private Integer idAutobus;
+    private Agencia agencia;
 
     @Id
     @Column(name = "idAsignacionAutobus")
@@ -36,6 +39,16 @@ public class ConductorAutobus {
 
     public void setIdAutobus(Integer idAutobus) {
         this.idAutobus = idAutobus;
+    }
+
+    @ManyToOne(targetEntity = Agencia.class, optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "idAgencia", nullable = false)
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
     }
 
 }

@@ -6,6 +6,8 @@ import java.util.Random;
 
 import javax.persistence.*;
 
+import dgtic.modelo.entidades.agencia.Agencia;
+
 @Entity
 @Table(name = "viaje")
 public class Viaje implements Serializable {
@@ -17,6 +19,7 @@ public class Viaje implements Serializable {
     private String fecha;
     private TipoTour tipoTour;
     private TipoViaje tipoViaje;
+    private Agencia agencia;
 
     public Viaje() {
     }
@@ -132,6 +135,16 @@ public class Viaje implements Serializable {
         this.tipoViaje = tipoViaje;
     }
 
+    @ManyToOne(targetEntity = Agencia.class, optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "idAgencia", nullable = false)
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
@@ -232,4 +245,5 @@ public class Viaje implements Serializable {
             return viaje;
         }
     }
+
 }

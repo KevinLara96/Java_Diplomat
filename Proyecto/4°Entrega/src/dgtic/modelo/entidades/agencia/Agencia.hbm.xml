@@ -19,10 +19,10 @@
         <property name="nombreAgencia" column="nombreAgencia" length="50" />
         <property name="ubicacion" column="ubicacion" length="100" />
 
-        <set name="empleados" cascade="all" lazy="false">
+        <!--set name="empleados" cascade="all" lazy="false">
             <key column="idAgencia" />
             <one-to-many class="dgtic.modelo.entidades.empleado.Empleado" />
-        </set>
+        </set-->
         <set name="destinos" cascade="all" lazy="false">
             <key column="idAgencia" />
             <one-to-many class="dgtic.modelo.entidades.viaje.Viaje" />
