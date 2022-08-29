@@ -33,11 +33,11 @@
         </set>
         <set name="viajesAsignados" cascade="all" lazy="false">
             <key column="idAgencia" />
-            <one-to-many class="dgtic.modelo.entidades.agencia.asignaciones.ViajeAsignado" />
+            <one-to-many class="dgtic.modelo.entidades.agencia.asignaciones.ConductorViaje" />
         </set>
         <set name="autobusesAsignados" cascade="all" lazy="false">
             <key column="idAgencia" />
-            <one-to-many class="dgtic.modelo.entidades.agencia.asignaciones.AutobusAsignado" />
+            <one-to-many class="dgtic.modelo.entidades.agencia.asignaciones.ConductorAutobus" />
         </set>
     </class>
 

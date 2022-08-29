@@ -3,8 +3,7 @@ package dgtic.modelo.entidades.agencia;
 import java.io.Serializable;
 import java.util.HashSet;
 
-import dgtic.modelo.entidades.agencia.asignaciones.AutobusAsignado;
-import dgtic.modelo.entidades.agencia.asignaciones.ViajeAsignado;
+import dgtic.modelo.entidades.agencia.asignaciones.ConductorViaje;
 import dgtic.modelo.entidades.autobus.Autobus;
 import dgtic.modelo.entidades.empleado.Empleado;
 import dgtic.modelo.entidades.viaje.Viaje;
@@ -16,8 +15,8 @@ public class Agencia implements Serializable {
     private HashSet<Empleado> empleados = new HashSet<>();
     private HashSet<Viaje> destinos = new HashSet<>();
     private HashSet<Autobus> autobuses = new HashSet<>();
-    private HashSet<ViajeAsignado> viajesAsignados = new HashSet<>();
-    private HashSet<AutobusAsignado> autobusesAsignados = new HashSet<>();
+    private HashSet<ConductorViaje> viajesAsignados = new HashSet<>();
+    private HashSet<ConductorViaje> autobusesAsignados = new HashSet<>();
 
     private static Agencia INSTANCIA;
 
@@ -79,29 +78,31 @@ public class Agencia implements Serializable {
         this.autobuses = autobuses;
     }
 
-    public HashSet<ViajeAsignado> getViajesAsignados() {
+    public HashSet<ConductorViaje> getViajesAsignados() {
         return viajesAsignados;
     }
 
-    public void setViajesAsignados(HashSet<ViajeAsignado> viajesAsignados) {
+    public void setViajesAsignados(HashSet<ConductorViaje> viajesAsignados) {
         this.viajesAsignados = viajesAsignados;
     }
 
-    public HashSet<AutobusAsignado> getAutobusesAsignados() {
+    public HashSet<ConductorViaje> getAutobusesAsignados() {
         return autobusesAsignados;
     }
 
-    public void setAutobusesAsignados(HashSet<AutobusAsignado> autobusesAsignados) {
+    public void setAutobusesAsignados(HashSet<ConductorViaje> autobusesAsignados) {
         this.autobusesAsignados = autobusesAsignados;
     }
 
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
-        str.append("Agencia ").append(nombreAgencia);
-        str.append("\nempleados: ").append(empleados);
-        str.append("\ndestinos: ").append(destinos);
-        str.append("\nautobuses: ").append(autobuses);
+        str.append("\n\nAgencia ").append(nombreAgencia);
+        str.append("\nUbicación: ").append(ubicacion);
+        str.append("\n\nempleados:\n").append(empleados);
+        str.append("\n\ndestinos:\n").append(destinos);
+        str.append("\n\nautobuses:\n").append(autobuses);
+        str.append("\n\n");
         return str.toString();
     }
 

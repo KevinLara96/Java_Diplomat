@@ -12,20 +12,17 @@ public class Autobus implements Serializable {
     private String modelo;
     private String marca;
     private Integer capacidad;
-    private Integer idClaseBus;
-    private Integer idClaseTuribus;
+    private ClaseBus claseBus;
+    private ClaseTuribus claseTuribus;
 
     public Autobus() {
     }
 
-    public Autobus(int claveAutobus, String modelo, String marca, int capacidad,
-            Integer idClaseBus, Integer idClaseTuribus) {
+    public Autobus(int claveAutobus, String modelo, String marca, int capacidad) {
         setIdAutobus(claveAutobus);
         setModelo(modelo);
         setMarca(marca);
         setCapacidad(capacidad);
-        setIdClaseBus(idClaseBus);
-        setIdClaseTuribus(idClaseTuribus);
     }
 
     @Id
@@ -85,22 +82,22 @@ public class Autobus implements Serializable {
 
     @OneToOne(targetEntity = ClaseBus.class, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "idClaseBus", referencedColumnName = "idClaseBus", nullable = false)
-    public Integer getIdClaseBus() {
-        return idClaseBus;
+    public ClaseBus getClaseBus() {
+        return claseBus;
     }
 
-    public void setIdClaseBus(Integer idClaseBus) {
-        this.idClaseBus = idClaseBus;
+    public void setClaseBus(ClaseBus claseBus) {
+        this.claseBus = claseBus;
     }
 
     @OneToOne(targetEntity = ClaseTuribus.class, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "idClaseTuribus", referencedColumnName = "idClaseTuribus", nullable = false)
-    public Integer getIdClaseTuribus() {
-        return idClaseTuribus;
+    public ClaseTuribus getClaseTuribus() {
+        return claseTuribus;
     }
 
-    public void setIdClaseTuribus(Integer idClaseTuribus) {
-        this.idClaseTuribus = idClaseTuribus;
+    public void setClaseTuribus(ClaseTuribus claseTuribus) {
+        this.claseTuribus = claseTuribus;
     }
 
     @Override
@@ -108,39 +105,38 @@ public class Autobus implements Serializable {
         StringBuilder str = new StringBuilder("");
         str.append("Autobus: ");
         str.append("\nidAutobus: ").append(idAutobus);
-        str.append("\nMarca: ").append(marca);
-        str.append("\nModelo; ").append(modelo);
-        str.append("\nCapacidad: ").append(capacidad);
-        str.append("\nClaseBus: ").append(idClaseBus);
-        str.append("\nClaseTuribus: ").append(idClaseTuribus);
+        str.append(" / Marca: ").append(marca);
+        str.append(" / Modelo; ").append(modelo);
+        str.append(" / Capacidad: ").append(capacidad);
+        str.append(" / ClaseBus: ").append(claseBus.getIdClaseAutobus());
+        str.append(" / ClaseTuribus: ").append(claseTuribus.getIdClaseTuribus());
         return str.toString();
     }
 
     public static class Builder {
         private Autobus autobusBuilder;
 
-        public Builder(Integer idAutobus, String modelo, String marca, int capacidad,
-                Integer idClaseBus, Integer idClaseTuribus) {
-            autobusBuilder = new Autobus(idAutobus, modelo, marca, capacidad, idClaseBus, idClaseTuribus);
+        public Builder(Integer idAutobus, String modelo, String marca, int capacidad) {
+            autobusBuilder = new Autobus(idAutobus, modelo, marca, capacidad);
         }
 
-        public BuildViaje setTipoViaje() {
-            return new BuildViaje(autobusBuilder);
+        public BuildBus setClaseBus() {
+            return new BuildBus(autobusBuilder);
         }
 
-        public BuildTour setTipoTour() {
-            return new BuildTour(autobusBuilder);
+        public BuildTuribus setClaseTuribus() {
+            return new BuildTuribus(autobusBuilder);
         }
     }
 
-    public static class BuildViaje {
+    public static class BuildBus {
         private Autobus autobus;
 
-        public BuildViaje(Autobus autobus) {
+        public BuildBus(Autobus autobus) {
             this.autobus = autobus;
         }
 
-        public BuildViaje setClase() {
+        public BuildBus setClaseBus() {
             return this;
         }
 
@@ -149,14 +145,14 @@ public class Autobus implements Serializable {
         }
     }
 
-    public static class BuildTour {
+    public static class BuildTuribus {
         private Autobus autobus;
 
-        public BuildTour(Autobus autobus) {
+        public BuildTuribus(Autobus autobus) {
             this.autobus = autobus;
         }
 
-        public BuildTour setTipoTuribus() {
+        public BuildTuribus setClaseTuribus() {
             return this;
         }
 

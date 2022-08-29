@@ -7,7 +7,7 @@ import java.util.Random;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Viaje")
+@Table(name = "viaje")
 public class Viaje implements Serializable {
     private Integer idViaje;
     private String origen;
@@ -135,11 +135,12 @@ public class Viaje implements Serializable {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
-        str.append("Viaje ").append(idViaje);
-        str.append("\nDestino: ").append(destino);
-        str.append("\nOrigen: ").append(origen);
-        str.append("\nPrecio: ").append(precio);
-        str.append("\nFecha: ").append(fecha);
+        str.append("Viaje: ");
+        str.append("\nidViaje: ").append(idViaje);
+        str.append(" / Destino: ").append(destino);
+        str.append(" / Origen: ").append(origen);
+        str.append(" / Precio: ").append(precio);
+        str.append(" / Fecha: ").append(fecha);
 
         return str.toString();
     }
@@ -161,6 +162,10 @@ public class Viaje implements Serializable {
 
         public BuildViajeLargo setViajeLargo() {
             return new BuildViajeLargo(viajeBuilder);
+        }
+
+        public BuildTour setTour() {
+            return new BuildTour(viajeBuilder);
         }
     }
 
@@ -187,7 +192,7 @@ public class Viaje implements Serializable {
             this.viaje = viaje;
         }
 
-        public BuildViajeMedio setDuracionTour() {
+        public BuildViajeMedio setDuracionViaje() {
             return this;
         }
 
@@ -203,7 +208,23 @@ public class Viaje implements Serializable {
             this.viaje = viaje;
         }
 
-        public BuildViajeLargo setDuracionTour() {
+        public BuildViajeLargo setDuracionViaje() {
+            return this;
+        }
+
+        public Viaje build() {
+            return viaje;
+        }
+    }
+
+    public static class BuildTour {
+        private Viaje viaje;
+
+        public BuildTour(Viaje viaje) {
+            this.viaje = viaje;
+        }
+
+        public BuildTour setDuracionTour() {
             return this;
         }
 

@@ -92,7 +92,7 @@ public class Empleado {
 
     public void setRfc(String rfc) {
         if (rfc.length() <= 0 || rfc == null) {
-            this.rfc = "AAAA998877A99";
+            this.rfc = "";
         } else {
             this.rfc = rfc;
         }
@@ -104,7 +104,7 @@ public class Empleado {
     }
 
     public void setSalario(Float salario) {
-        if (salario <= 0) {
+        if (salario < 0) {
             this.salario = 5000.00f;
         } else {
             this.salario = salario;
