@@ -1,19 +1,27 @@
-package dgtic.vista.inicio.aplicacionAdministrador;
+package dgtic.vista.aplicacion;
 
 import java.util.List;
 import java.util.Scanner;
 
+import dgtic.controlador.servicio.catalogos.ServiciosCatalogoPuestoImpl;
+import dgtic.controlador.servicio.tablas.ServiciosAgenciaImpl;
+import dgtic.controlador.servicio.tablas.ServiciosEmpleadoImpl;
 import dgtic.modelo.entidades.empleado.Empleado;
+import dgtic.modelo.hibernate.HibernateUtil;
 
 public class Menu {
     private static Scanner input = new Scanner(System.in);
+
+    public Menu() {
+        HibernateUtil.init();
+    }
 
     static void salir() {
         input.close();
         System.exit(0);
     }
 
-    public static Empleado nuevoEmpleado() {
+    public boolean nuevoEmpleado() {
         String nombre;
         String correo;
         String contrasena;
@@ -21,8 +29,7 @@ public class Menu {
         Float salario;
         Integer idEmpleado;
         Empleado empleado = null;
-
-        boolean bandera = false;
+        Integer puesto;
 
         do {
             try {
@@ -44,16 +51,37 @@ public class Menu {
                 System.out.print("Ingrese la clave del Empleado(número entero del 0 al 999 irrepetible): ");
                 idEmpleado = Integer.parseInt(input.nextLine());
 
-                // empleado = new Empleado(idEmpleado, nombre, correo, contrasena, rfc,
-                // salario);
+                System.out.println("Ingrese el puesto:");
+                System.out.println("1. SYS.");
+                System.out.println("2. Administrador.");
+                System.out.println("3. Conductor.");
+                System.out.println("4. Programador.");
+                System.out.println("5. Recursos Humanos.");
+                System.out.print("Su opción: ");
+                puesto = Integer.parseInt(input.nextLine());
+                ServiciosCatalogoPuestoImpl serviciosPuesto = ServiciosCatalogoPuestoImpl.getInstance();
+
+                ServiciosAgenciaImpl servicioAgencia = ServiciosAgenciaImpl.getInstance();
+
                 empleado = new Empleado();
-                bandera = true;
+                empleado.setNombre(nombre);
+                empleado.setCorreo(correo);
+                empleado.setContrasena(contrasena);
+                empleado.setRfc(rfc);
+                empleado.setSalario(salario);
+                empleado.setIdEmpleado(idEmpleado);
+                empleado.setPuesto(serviciosPuesto.cargaPuestoPorId(puesto));
+                empleado.setAgencia(servicioAgencia.cargaAgencia());
+
+                ServiciosEmpleadoImpl servicioEmpleado = ServiciosEmpleadoImpl.getInstance();
+                servicioEmpleado.guardaEmpleado(empleado);
+
+                return true;
             } catch (Exception e) {
                 System.out.println("Datos no válidos, por favor, revise los datos y vuelva a ingresarlos.");
-                e.printStackTrace();
+                return false;
             }
-        } while (bandera == false);
-        return empleado;
+        } while (true);
     }
 
     public static Empleado quitarEmpleado() {

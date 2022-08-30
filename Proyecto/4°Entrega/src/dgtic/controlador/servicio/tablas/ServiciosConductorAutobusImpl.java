@@ -7,7 +7,7 @@ import dgtic.modelo.DAO.tablas.ConductorAutobusDAOImpl;
 import dgtic.modelo.entidades.agencia.asignaciones.ConductorAutobus;
 
 public class ServiciosConductorAutobusImpl implements ServiciosConductorAutobus {
-    public static ServiciosConductorAutobusImpl instance;
+    private static ServiciosConductorAutobusImpl instance;
 
     private ServiciosConductorAutobusImpl() {
 

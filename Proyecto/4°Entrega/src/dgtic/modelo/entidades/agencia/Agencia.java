@@ -26,21 +26,12 @@ public class Agencia implements Serializable {
     private Set<ConductorViaje> viajesAsignados;
     private Set<ConductorViaje> autobusesAsignados;
 
-    private static Agencia INSTANCIA;
-
-    private Agencia() {
+    public Agencia() {
         this.empleados = new HashSet<>();
         this.destinos = new HashSet<>();
         this.autobuses = new HashSet<>();
         this.viajesAsignados = new HashSet<>();
         this.autobusesAsignados = new HashSet<>();
-    }
-
-    public synchronized static Agencia getInstancia() {
-        if (INSTANCIA == null) {
-            INSTANCIA = new Agencia();
-        }
-        return INSTANCIA;
     }
 
     @Id
@@ -133,13 +124,4 @@ public class Agencia implements Serializable {
         str.append("\n\n");
         return str.toString();
     }
-
-    public static Agencia getINSTANCIA() {
-        return INSTANCIA;
-    }
-
-    public static void setINSTANCIA(Agencia iNSTANCIA) {
-        INSTANCIA = iNSTANCIA;
-    }
-
 }

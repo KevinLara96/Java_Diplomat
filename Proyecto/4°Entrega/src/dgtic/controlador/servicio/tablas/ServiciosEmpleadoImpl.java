@@ -8,7 +8,7 @@ import dgtic.modelo.entidades.empleado.Empleado;
 
 public class ServiciosEmpleadoImpl implements ServiciosEmpleado {
 
-    public static ServiciosEmpleadoImpl instance;
+    private static ServiciosEmpleadoImpl instance;
 
     private ServiciosEmpleadoImpl() {
 

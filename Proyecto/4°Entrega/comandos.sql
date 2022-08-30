@@ -42,9 +42,11 @@ CREATE TABLE autobus (
   capacidad INT NOT NULL,
   idClaseBus INT NOT NULL,
   idClaseTuribus INT NOT NULL,
+  idAgencia INT NOT NULL,
   CONSTRAINT autobus_pk PRIMARY KEY (idAutobus),
   CONSTRAINT autobus_clasebus_fk FOREIGN KEY (idClaseBus) REFERENCES claseBus (idClaseBus),
-  CONSTRAINT autobus_claseturibus_fk FOREIGN KEY (idClaseTuribus) REFERENCES claseTuribus (idClaseTuribus)
+  CONSTRAINT autobus_claseturibus_fk FOREIGN KEY (idClaseTuribus) REFERENCES claseTuribus (idClaseTuribus),
+  CONSTRAINT autobus_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia)
 );
 CREATE TABLE tipoViaje (
   idTipoViaje INT NOT NULL AUTO_INCREMENT,
@@ -65,21 +67,27 @@ CREATE TABLE viaje (
   fecha VARCHAR(50) NOT NULL,
   idTipoViaje INT NOT NULL,
   idTipoTour INT NOT NULL,
+  idAgencia INT NOT NULL,
   CONSTRAINT viaje_pk PRIMARY KEY(idViaje),
   CONSTRAINT viaje_tipoviaje_fk FOREIGN KEY (idTipoViaje) REFERENCES tipoViaje(idTipoViaje),
-  CONSTRAINT viaje_tipotour_fk FOREIGN KEY (idTipoTour) REFERENCES tipoTour(idTipoTour)
+  CONSTRAINT viaje_tipotour_fk FOREIGN KEY (idTipoTour) REFERENCES tipoTour(idTipoTour),
+  CONSTRAINT viaje_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia)
 );
 CREATE TABLE conductor_viaje(
   idAsignacionViaje INT NOT NULL AUTO_INCREMENT,
   idConductor INT NOT NULL,
   idViaje INT NOT NULL,
-  CONSTRAINT conductor_viaje_pk PRIMARY KEY (idAsignacionViaje)
+  idAgencia INT NOT NULL,
+  CONSTRAINT conductor_viaje_pk PRIMARY KEY (idAsignacionViaje),
+  CONSTRAINT cond_viaje_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia (idAgencia)
 );
 CREATE TABLE conductor_autobus (
   idAsignacionAutobus INT NOT NULL AUTO_INCREMENT,
   idConductor INT NOT NULL,
   idAutobus INT NOT NULL,
-  CONSTRAINT conductor_autobus_pk PRIMARY KEY(idAsignacionAutobus)
+  idAgencia INT NOT NULL,
+  CONSTRAINT conductor_autobus_pk PRIMARY KEY(idAsignacionAutobus),
+  CONSTRAINT cond_autobus_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia (idAgencia)
 );
 INSERT INTO
   claseBus

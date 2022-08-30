@@ -110,7 +110,7 @@ public class Autobus implements Serializable {
         this.idAutobus = idAutobus;
     }
 
-    @ManyToOne(targetEntity = Agencia.class, optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Agencia.class, optional = false, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "idAgencia", nullable = false)
     @Fetch(FetchMode.JOIN)
     public Agencia getAgencia() {

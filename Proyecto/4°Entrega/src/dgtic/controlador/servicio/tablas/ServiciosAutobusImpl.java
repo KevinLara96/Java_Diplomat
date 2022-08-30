@@ -7,7 +7,7 @@ import dgtic.modelo.DAO.tablas.AutobusDAOImpl;
 import dgtic.modelo.entidades.autobus.Autobus;
 
 public class ServiciosAutobusImpl implements ServiciosAutobus {
-    public static ServiciosAutobusImpl instance;
+    private static ServiciosAutobusImpl instance;
 
     private ServiciosAutobusImpl() {
 

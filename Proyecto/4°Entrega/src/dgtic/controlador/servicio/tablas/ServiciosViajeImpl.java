@@ -7,7 +7,7 @@ import dgtic.modelo.DAO.tablas.ViajeDAOImpl;
 import dgtic.modelo.entidades.viaje.Viaje;
 
 public class ServiciosViajeImpl implements ServiciosViaje {
-    public static ServiciosViajeImpl instance;
+    private static ServiciosViajeImpl instance;
 
     private ServiciosViajeImpl() {
 

@@ -5,7 +5,7 @@ import dgtic.modelo.DAO.tablas.AgenciaDAOImpl;
 import dgtic.modelo.entidades.agencia.Agencia;
 
 public class ServiciosAgenciaImpl implements ServiciosAgencia {
-    public static ServiciosAgenciaImpl instance;
+    private static ServiciosAgenciaImpl instance;
 
     private ServiciosAgenciaImpl() {
 

@@ -2,16 +2,16 @@ package dgtic.controlador.servicio.tablas;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.agencia.asignaciones.ConductorAutobus;
+import dgtic.modelo.entidades.agencia.asignaciones.ConductorViaje;
 
 public interface ServiciosConductorViaje {
-    ConductorAutobus cargaConductorAutobusPorId(Integer id);
+    ConductorViaje cargaConductorViajePorId(Integer id);
 
-    List<ConductorAutobus> cargaConductorAutobuss();
+    List<ConductorViaje> cargaConductorViajes();
 
-    void guardaConductorAutobus(ConductorAutobus conductorAutobus);
+    void guardaConductorViaje(ConductorViaje conductorViaje);
 
-    void actualizaConductorAutobus(ConductorAutobus conductorAutobus);
+    void actualizaConductorViaje(ConductorViaje conductorViaje);
 
-    void eliminaConductorAutobus(ConductorAutobus conductorAutobus);
+    void eliminaConductorViaje(ConductorViaje conductorViaje);
 }
