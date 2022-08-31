@@ -1,4 +1,4 @@
-package dgtic;
+package dgtic.core;
 
 import com.jayway.restassured.RestAssured;
 import org.junit.Before;
@@ -18,7 +18,7 @@ import static org.hamcrest.CoreMatchers.is;
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 @IntegrationTest({"server.port:0",
-        "spring.datasource.url:jdbc:h2:mem:ejercicio-spring;DB_CLOSE_ON_EXIT=FALSE"})
+        "spring.datasource.url:jdbc:h2:mem:ejercicio1;DB_CLOSE_ON_EXIT=FALSE"})
 public class HelloControllerTest {
     @Value("${local.server.port}")
     int port;
