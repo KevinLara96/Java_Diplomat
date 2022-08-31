@@ -3,7 +3,6 @@ package dgtic.core;
 import org.springframework.beans.factory.UnsatisfiedDependencyException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import dgtic.core.modelo.Empleado;
 
 public class Inicio {
@@ -13,10 +12,10 @@ public class Inicio {
             contexto = new ClassPathXmlApplicationContext(new String[] { "/dgtic/core/xml/bean-configuration.xml" });
             Empleado emp = (Empleado) contexto.getBean("empleado");
             System.out.println(emp.toString());
-            if (emp.getActividad() != null) {
-                emp.getActividad().realiza();
+            if (emp.getUno() != null) {
+                emp.getUno().realiza();
             } else {
-                System.out.println(emp.getActividad());
+                System.out.println(emp.getUno());
             }
             System.out.println("-----");
         } catch (UnsatisfiedDependencyException ex) {

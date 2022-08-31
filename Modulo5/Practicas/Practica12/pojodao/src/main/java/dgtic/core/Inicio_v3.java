@@ -2,7 +2,6 @@ package dgtic.core;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import dgtic.core.modelo.Estudiante;
 import dgtic.core.repositorio.intf.BaseDeDatosDAO;
 import dgtic.core.servicio.ServicioDAO;

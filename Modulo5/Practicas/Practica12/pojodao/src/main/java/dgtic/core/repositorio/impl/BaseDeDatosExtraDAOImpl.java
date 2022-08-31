@@ -1,9 +1,8 @@
 package dgtic.core.repositorio.impl;
 
 import java.util.List;
-
+//import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-
 import dgtic.core.modelo.Estudiante;
 import dgtic.core.repositorio.BaseDeDatos;
 import dgtic.core.repositorio.intf.BaseDeDatosDAO;

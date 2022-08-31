@@ -2,14 +2,15 @@ package dgtic.core;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import dgtic.core.modelo.Estudiante;
 import dgtic.core.modelo.Materia;
 import dgtic.core.servicio.ConfiguracionServicio;
 
 public class Inicio {
     public static void main(String[] args) {
-        ConfigurableApplicationContext contexto = new AnnotationConfigApplicationContext(ConfiguracionServicio.class);
+        // ConfigurableApplicationContext contexto = new
+        // AnnotationConfigApplicationContext(ConfiguracionServicio.class);
+        ConfigurableApplicationContext contexto = new AnnotationConfigApplicationContext("dgtic.core");
         Estudiante estudiante = (Estudiante) contexto.getBean("estudiante", Estudiante.class);
         Estudiante estudianteDos = (Estudiante) contexto.getBean("estudiante", Estudiante.class);
         System.out.println(estudiante.toString());

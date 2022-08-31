@@ -40,10 +40,8 @@ public class Aplicacion {
             switch (opcion) {
                 case 0:
                     input.close();
-                    Menu.salir();
+                    menu.salir();
                 case 1:
-                    if (menu.nuevoEmpleado())
-                        System.out.println("Empleado registrado con éxito.");
                     break;
 
                 case 2:
@@ -75,6 +73,28 @@ public class Aplicacion {
                     break;
 
                 case 9:
+                    break;
+
+                case 10:
+                    for (Empleado e : menu.consultaEmpleados()) {
+                        System.out.println(e);
+                    }
+                    break;
+
+                case 11:
+
+                    break;
+
+                case 12:
+
+                    break;
+
+                case 13:
+
+                    break;
+
+                case 14:
+
                     break;
 
                 default:

@@ -3,13 +3,13 @@ package dgtic.core.modelo;
 public class Empleado {
     private String nombre;
     private Integer edad;
-    private Actividades actividad;
+    private Actividades uno;
 
-    // public Empleado() {
-    // }
+    public Empleado() {
+    }
 
     public Empleado(Actividades actividad) {
-        this.actividad = actividad;
+        this.uno = actividad;
     }
 
     public Empleado(String nombre) {
@@ -32,12 +32,12 @@ public class Empleado {
         this.edad = edad;
     }
 
-    public Actividades getActividad() {
-        return actividad;
+    public Actividades getUno() {
+        return uno;
     }
 
-    public void setActividad(Actividades actividad) {
-        this.actividad = actividad;
+    public void setUno(Actividades actividad) {
+        this.uno = actividad;
     }
 
     @Override

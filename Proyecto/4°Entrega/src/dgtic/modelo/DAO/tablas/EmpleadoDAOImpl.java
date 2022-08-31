@@ -77,7 +77,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 
             // se inicia una transaccion
             session.beginTransaction();
-            catalogo = session.createQuery("from empleado", Empleado.class).getResultList();
+            catalogo = session.createQuery("from Empleado", Empleado.class).getResultList();
             // se realiza el commit
             session.getTransaction().commit();
             // se cierra la session hibernate

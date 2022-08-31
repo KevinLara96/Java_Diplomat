@@ -5,7 +5,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Scope;
-
 import dgtic.core.modelo.Estudiante;
 
 @Configuration
@@ -21,3 +20,17 @@ public class ConfiguracionServicio {
         return est;
     }
 }
+
+/*
+ * @Bean(name = "materia")
+ * 
+ * @Scope("prototype")
+ * public Materia servicioMateria() {
+ * Materia materia = new Materia();
+ * materia.setNombre("EDA");
+ * materia.setCreditos(10);
+ * 
+ * return materia;
+ * }
+ * }
+ */

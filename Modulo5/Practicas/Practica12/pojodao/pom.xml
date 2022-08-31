@@ -6,7 +6,8 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>Ejemplo de configuracion POCO con DAO en Spring</name>
-    <description>Ejemplo de configuracion POCO con DAO en Spring</description>
+    <description>Ejemplo de configuracion POCO con DAO en Spring
+    </description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -10,6 +10,7 @@ import dgtic.core.modelo.Materia;
 public class BaseDeDatos {
     public static Map<String, List<Estudiante>> carreras = new HashMap<>();
     static {
+        /* Estudiantes de la carrera de Ing. Computación. */
         List<Estudiante> estudiantes = new ArrayList<>();
         Estudiante est = new Estudiante("123", "Rosa", 20);
         est.setMaterias(new Materia("Cálculo", 9), new Materia("Programación", 10),
@@ -21,6 +22,7 @@ public class BaseDeDatos {
         estudiantes.add(est);
         carreras.put("ico", estudiantes);
         //////////////////////////////////
+        /* Estudiantes de la carrera de Ing. Electrónica. */
         estudiantes = new ArrayList<>();
         est = new Estudiante("125", "Mario", 20);
         est.setMaterias(new Materia("Cálculo", 9), new Materia("Circuitos Lógicos", 10),

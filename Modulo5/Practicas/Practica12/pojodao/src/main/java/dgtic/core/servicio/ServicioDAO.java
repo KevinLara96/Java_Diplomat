@@ -10,11 +10,16 @@ import java.util.stream.Collectors;
 @Component
 @ComponentScan(basePackages = "dgtic.core")
 public class ServicioDAO {
+    @Autowired
+    @Qualifier("baseDeDatosDAOExtra")
     private BaseDeDatosDAO servicioDAO;
 
     @Autowired
-    public void setServicioDAO(
-            @Qualifier("baseDeDatosDAOExtra") BaseDeDatosDAO servicioDAO) {
+    public ServicioDAO(BaseDeDatosDAO servicioDAO) {
+        this.servicioDAO = servicioDAO;
+    }
+
+    public void setServicioDAO(BaseDeDatosDAO servicioDAO) {
         this.servicioDAO = servicioDAO;
     }
 

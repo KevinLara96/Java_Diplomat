@@ -16,7 +16,7 @@ public class Menu {
         HibernateUtil.init();
     }
 
-    static void salir() {
+    public void salir() {
         input.close();
         System.exit(0);
     }
@@ -84,17 +84,18 @@ public class Menu {
         } while (true);
     }
 
-    public static Empleado quitarEmpleado() {
+    public boolean quitarEmpleado() {
         System.out.print("Ingrese el empleado que quiere despedir: ");
         // String claveAdministrador = input.nextLine();
-        return null;
+        return false;
     }
 
-    static List<Empleado> consultaEmpleados() {
-        return null;
+    public List<Empleado> consultaEmpleados() {
+        ServiciosEmpleadoImpl servicioEmpleadoImpl = ServiciosEmpleadoImpl.getInstance();
+        return servicioEmpleadoImpl.cargaEmpleados();
     }
 
-    public static Empleado actualizaEmpleado() {
+    public Empleado actualizaEmpleado() {
         return null;
     }
 }

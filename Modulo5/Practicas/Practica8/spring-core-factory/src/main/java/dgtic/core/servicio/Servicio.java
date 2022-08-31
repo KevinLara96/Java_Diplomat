@@ -9,7 +9,7 @@ public class Servicio {
     private Servicio() {
     }
 
-    public static Servicio getInstance() {
+    public static Servicio getInstancia() {
         return servicio;
     }
 
