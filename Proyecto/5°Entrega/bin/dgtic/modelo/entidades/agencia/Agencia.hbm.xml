@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="dgtic.modelo.entidades.agencia">
+
+    <class name="Agencia" table="agencia">
+        <!-- Llave principal -->
+        <id name="idAgencia" column="idAgencia">
+            <generator class="identity" />
+        </id>
+
+        <!-- Atributos -->
+        <property name="nombreAgencia" column="nombreAgencia" length="50" />
+        <property name="ubicacion" column="ubicacion" length="100" />
+
+        <!--set name="empleados" cascade="all" lazy="false">
+            <key column="idAgencia" />
+            <one-to-many class="dgtic.modelo.entidades.empleado.Empleado" />
+        </set-->
+        <set name="destinos" cascade="all" lazy="false">
+            <key column="idAgencia" />
+            <one-to-many class="dgtic.modelo.entidades.viaje.Viaje" />
+        </set>
+        <set name="autobuses" cascade="all" lazy="false">
+            <key column="idAgencia" />
+            <one-to-many class="dgtic.modelo.entidades.autobus.Autobus" />
+        </set>
+        <set name="viajesAsignados" cascade="all" lazy="false">
+            <key column="idAgencia" />
+            <one-to-many class="dgtic.modelo.entidades.agencia.asignaciones.ConductorViaje" />
+        </set>
+        <set name="autobusesAsignados" cascade="all" lazy="false">
+            <key column="idAgencia" />
+            <one-to-many class="dgtic.modelo.entidades.agencia.asignaciones.ConductorAutobus" />
+        </set>
+    </class>
+
+</hibernate-mapping>
