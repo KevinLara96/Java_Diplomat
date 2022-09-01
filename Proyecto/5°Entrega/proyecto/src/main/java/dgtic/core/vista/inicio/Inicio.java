@@ -17,6 +17,13 @@ import dgtic.core.modelo.entidades.viaje.Viaje;
 import dgtic.core.modelo.hibernate.HibernateUtil;
 
 public class Inicio {
+    /**
+     * Este método se usa únicamente para la persistencia con hibernate.
+     * Para la ejecucicón del proyecto, referirse a la Clase Inicio_v2.
+     * 
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
 
         /*

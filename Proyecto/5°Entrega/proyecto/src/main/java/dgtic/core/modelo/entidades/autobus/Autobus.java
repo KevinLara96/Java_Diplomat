@@ -107,15 +107,19 @@ public class Autobus implements Serializable {
         str.append("\nAutobus: \n");
         str.append("idAutobus: ").append(idAutobus);
         str.append(" / Marca: ").append(marca);
-        str.append(" / Modelo; ").append(modelo);
+        str.append(" / Modelo: ").append(modelo);
         str.append(" / Capacidad: ").append(capacidad);
-        str.append(" / ClaseBus: ").append(claseBus.getIdClaseAutobus());
-        str.append(" / ClaseTuribus: ").append(claseTuribus.getIdClaseTuribus());
+        // str.append(" / ClaseBus: ").append(claseBus.getIdClaseAutobus());
+        // str.append(" / ClaseTuribus: ").append(claseTuribus.getIdClaseTuribus());
         return str.toString();
     }
 
     public static class Builder {
         private Autobus autobusBuilder;
+
+        public Builder() {
+            autobusBuilder = new Autobus();
+        }
 
         public Builder(Integer idAutobus, String modelo, String marca, int capacidad) {
             autobusBuilder = new Autobus(idAutobus, modelo, marca, capacidad);

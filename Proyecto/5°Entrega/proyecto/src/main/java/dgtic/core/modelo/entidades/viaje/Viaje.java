@@ -143,6 +143,10 @@ public class Viaje implements Serializable {
     public static class Builder {
         private Viaje viajeBuilder;
 
+        public Builder() {
+            viajeBuilder = new Viaje();
+        }
+
         public Builder(int idViaje, String origen, String destino, float precio, int distancia, String fecha) {
             viajeBuilder = new Viaje(idViaje, origen, destino, precio, distancia, fecha);
         }

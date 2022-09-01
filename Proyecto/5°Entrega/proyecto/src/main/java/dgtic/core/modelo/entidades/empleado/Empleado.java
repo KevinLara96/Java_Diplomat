@@ -127,8 +127,9 @@ public class Empleado {
     public String toString() {
         StringBuilder str = new StringBuilder("");
         str.append("\nEmpleado: \n");
-        str.append("nombre=").append(this.nombre);
-        str.append(", correo=").append(this.correo);
+        str.append("idEmpleado: ").append(idEmpleado);
+        str.append(", nombre: ").append(this.nombre);
+        str.append(", correo: ").append(this.correo);
         str.append(", rfc=" + this.rfc + ", salario=" + this.salario);
 
         return str.toString();
