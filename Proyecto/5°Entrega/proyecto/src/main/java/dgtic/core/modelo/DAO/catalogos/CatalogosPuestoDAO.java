@@ -1,8 +1,8 @@
-package dgtic.modelo.DAO.catalogos;
+package dgtic.core.modelo.DAO.catalogos;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.puesto.Puesto;
+import dgtic.core.modelo.entidades.puesto.Puesto;
 
 public interface CatalogosPuestoDAO {
     List<Puesto> cargaPuestos();

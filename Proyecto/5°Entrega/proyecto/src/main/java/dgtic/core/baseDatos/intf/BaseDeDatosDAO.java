@@ -1,17 +1,16 @@
-package dgtic.baseDatos.intf;
+package dgtic.core.baseDatos.intf;
 
-import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
-import dgtic.modelo.entidades.autobus.Autobus;
-import dgtic.modelo.entidades.empleado.Empleado;
-import dgtic.modelo.entidades.viaje.Viaje;
+import dgtic.core.modelo.entidades.autobus.Autobus;
+import dgtic.core.modelo.entidades.empleado.Empleado;
+import dgtic.core.modelo.entidades.viaje.Viaje;
 
 public interface BaseDeDatosDAO {
-    public List<Empleado> getEmpleados();
+    public Set<Empleado> getEmpleados();
 
-    public List<Autobus> getAutobuses();
+    public Set<Autobus> getAutobuses();
 
-    public Map<Empleado, Viaje> getViajesAsignados();
+    public Set<Viaje> getDestinos();
 
 }

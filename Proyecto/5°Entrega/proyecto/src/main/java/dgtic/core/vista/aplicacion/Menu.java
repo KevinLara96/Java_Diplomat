@@ -1,13 +1,13 @@
-package dgtic.vista.aplicacion;
+package dgtic.core.vista.aplicacion;
 
 import java.util.List;
 import java.util.Scanner;
 
-import dgtic.controlador.servicio.catalogos.ServiciosCatalogoPuestoImpl;
-import dgtic.controlador.servicio.tablas.ServiciosAgenciaImpl;
-import dgtic.controlador.servicio.tablas.ServiciosEmpleadoImpl;
-import dgtic.modelo.entidades.empleado.Empleado;
-import dgtic.modelo.hibernate.HibernateUtil;
+import dgtic.core.controlador.servicio.catalogos.ServiciosCatalogoPuestoImpl;
+import dgtic.core.controlador.servicio.tablas.ServiciosAgenciaImpl;
+import dgtic.core.controlador.servicio.tablas.ServiciosEmpleadoImpl;
+import dgtic.core.modelo.entidades.empleado.Empleado;
+import dgtic.core.modelo.hibernate.HibernateUtil;
 
 public class Menu {
     private static Scanner input = new Scanner(System.in);

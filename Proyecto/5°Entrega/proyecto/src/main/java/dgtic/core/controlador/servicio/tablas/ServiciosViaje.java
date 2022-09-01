@@ -1,8 +1,8 @@
-package dgtic.controlador.servicio.tablas;
+package dgtic.core.controlador.servicio.tablas;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.viaje.Viaje;
+import dgtic.core.modelo.entidades.viaje.Viaje;
 
 public interface ServiciosViaje {
     Viaje cargaViajePorId(Integer id);

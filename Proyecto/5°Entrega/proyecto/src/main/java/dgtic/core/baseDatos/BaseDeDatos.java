@@ -1,60 +1,115 @@
-package dgtic.baseDatos;
+package dgtic.core.baseDatos;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
-import dgtic.modelo.entidades.autobus.Autobus;
-import dgtic.modelo.entidades.empleado.Empleado;
-import dgtic.modelo.entidades.viaje.Viaje;
+import dgtic.core.modelo.entidades.agencia.Agencia;
+import dgtic.core.modelo.entidades.autobus.Autobus;
+import dgtic.core.modelo.entidades.autobus.ClaseBus;
+import dgtic.core.modelo.entidades.autobus.ClaseTuribus;
+import dgtic.core.modelo.entidades.empleado.Empleado;
+import dgtic.core.modelo.entidades.viaje.TipoTour;
+import dgtic.core.modelo.entidades.viaje.TipoViaje;
+import dgtic.core.modelo.entidades.viaje.Viaje;
 
 public class BaseDeDatos {
-    public static List<Empleado> empleados = new ArrayList<>();
-    public static List<Autobus> autobuses = new ArrayList<>();
-    public static Map<Empleado, Viaje> conductorViaje = new HashMap<>();
+    public static Set<Empleado> empleados = new HashSet<>();
+    public static Set<Autobus> autobuses = new HashSet<>();
+    public static Set<Viaje> destinos = new HashSet<>();
+    public static Agencia agencia = new Agencia();
 
     static {
         Empleado empleado;
         Autobus autobus;
         Viaje viaje;
 
+        /* Conductores */
         empleado = new Empleado("Empleado 1", "correo1@sak.com", "contrasena1", "rfc1", 10000.0f);
-        viaje = new Viaje(1, "Origen 1", "Destino 1", 1000.0f, 100, LocalDate.now().toString());
+        empleado.setAgencia(agencia);
         empleados.add(empleado);
-        conductorViaje.put(empleado, viaje);
 
         empleado = new Empleado("Empleado 2", "correo2@sak.com", "contrasena2", "rfc2", 20000.0f);
-        viaje = new Viaje(1, "Origen 2", "Destino 2", 2000.0f, 200, LocalDate.now().toString());
+        empleado.setAgencia(agencia);
         empleados.add(empleado);
-        conductorViaje.put(empleado, viaje);
 
         empleado = new Empleado("Empleado 3", "correo3@sak.com", "contrasena3", "rfc3", 30000.0f);
-        viaje = new Viaje(1, "Origen 3", "Destino 3", 3000.0f, 300, LocalDate.now().toString());
+        empleado.setAgencia(agencia);
         empleados.add(empleado);
-        conductorViaje.put(empleado, viaje);
 
         empleado = new Empleado("Empleado 4", "correo4@sak.com", "contrasena4", "rfc4", 40000.0f);
-        viaje = new Viaje(1, "Origen 4", "Destino 4", 4000.0f, 400, LocalDate.now().toString());
+        empleado.setAgencia(agencia);
         empleados.add(empleado);
-        conductorViaje.put(empleado, viaje);
 
         empleado = new Empleado("Empleado 5", "correo5@sak.com", "contrasena5", "rfc5", 50000.0f);
-        viaje = new Viaje(1, "Origen 5", "Destino 5", 5000.0f, 500, LocalDate.now().toString());
+        empleado.setAgencia(agencia);
         empleados.add(empleado);
-        conductorViaje.put(empleado, viaje);
 
-        autobus = new Autobus(1, "Modelo1", "Marca1", 100);
-        autobuses.add(autobus);
-        autobus = new Autobus(1, "Modelo2", "Marca2", 200);
-        autobuses.add(autobus);
-        autobus = new Autobus(1, "Modelo3", "Marca3", 300);
-        autobuses.add(autobus);
-        autobus = new Autobus(1, "Modelo4", "Marca4", 400);
-        autobuses.add(autobus);
-        autobus = new Autobus(1, "Modelo5", "Marca5", 500);
+        /* Destinos */
+        viaje = new Viaje(1, "México", "Monterrey", 1000.0f, 100, LocalDate.now().toString());
+        viaje.setTipoTour(new TipoTour());
+        viaje.setTipoViaje(new TipoViaje());
+        viaje.setAgencia(agencia);
+        destinos.add(viaje);
+
+        viaje = new Viaje(1, "México", "Guadalajara", 2000.0f, 200, LocalDate.now().toString());
+        viaje.setTipoTour(new TipoTour());
+        viaje.setTipoViaje(new TipoViaje());
+        viaje.setAgencia(agencia);
+        destinos.add(viaje);
+
+        viaje = new Viaje(1, "México", "Tijuana", 3000.0f, 300, LocalDate.now().toString());
+        viaje.setTipoTour(new TipoTour());
+        viaje.setTipoViaje(new TipoViaje());
+        viaje.setAgencia(agencia);
+        destinos.add(viaje);
+
+        viaje = new Viaje(1, "México", "Oaxaca", 4000.0f, 400, LocalDate.now().toString());
+        viaje.setTipoTour(new TipoTour());
+        viaje.setTipoViaje(new TipoViaje());
+        viaje.setAgencia(agencia);
+        destinos.add(viaje);
+
+        viaje = new Viaje(1, "México", "Ciudad Juárez", 5000.0f, 500, LocalDate.now().toString());
+        viaje.setTipoTour(new TipoTour());
+        viaje.setTipoViaje(new TipoViaje());
+        viaje.setAgencia(agencia);
+        destinos.add(viaje);
+
+        /* Autobuses. */
+        autobus = new Autobus(1, "Sigma", "Mercedes Benz", 100);
+        autobus.setClaseBus(new ClaseBus());
+        autobus.setClaseTuribus(new ClaseTuribus());
+        autobus.setAgencia(agencia);
         autobuses.add(autobus);
 
+        autobus = new Autobus(1, "Torino", "Mercedes Benz", 200);
+        autobus.setClaseBus(new ClaseBus());
+        autobus.setClaseTuribus(new ClaseTuribus());
+        autobus.setAgencia(agencia);
+        autobuses.add(autobus);
+
+        autobus = new Autobus(1, "9800", "Volvo", 300);
+        autobus.setClaseBus(new ClaseBus());
+        autobus.setClaseTuribus(new ClaseTuribus());
+        autobus.setAgencia(agencia);
+        autobuses.add(autobus);
+
+        autobus = new Autobus(1, "9700", "Volvo", 400);
+        autobus.setClaseBus(new ClaseBus());
+        autobus.setClaseTuribus(new ClaseTuribus());
+        autobus.setAgencia(agencia);
+        autobuses.add(autobus);
+
+        autobus = new Autobus(1, "ProCity", "Volvo", 500);
+        autobus.setClaseBus(new ClaseBus());
+        autobus.setClaseTuribus(new ClaseTuribus());
+        autobus.setAgencia(agencia);
+        autobuses.add(autobus);
+
+        /* Agencia */
+        agencia.setAutobuses(autobuses);
+        agencia.setEmpleados(empleados);
+        agencia.setDestinos(destinos);
     }
 }

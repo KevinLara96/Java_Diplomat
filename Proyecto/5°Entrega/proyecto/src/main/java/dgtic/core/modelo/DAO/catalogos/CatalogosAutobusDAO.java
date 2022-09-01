@@ -1,8 +1,8 @@
-package dgtic.modelo.DAO.catalogos;
+package dgtic.core.modelo.DAO.catalogos;
 
 import java.util.*;
 
-import dgtic.modelo.entidades.autobus.*;
+import dgtic.core.modelo.entidades.autobus.*;
 
 public interface CatalogosAutobusDAO {
     List<ClaseBus> cargaClasesBus();

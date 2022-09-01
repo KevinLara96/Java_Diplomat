@@ -1,8 +1,8 @@
-package dgtic.modelo.DAO.tablas;
+package dgtic.core.modelo.DAO.tablas;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.empleado.Empleado;
+import dgtic.core.modelo.entidades.empleado.Empleado;
 
 public interface EmpleadoDAO {
     Empleado cargaEmpleadoPorId(Integer id);

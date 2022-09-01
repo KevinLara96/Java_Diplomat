@@ -1,9 +1,9 @@
-package dgtic.modelo.DAO.catalogos;
+package dgtic.core.modelo.DAO.catalogos;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.viaje.TipoTour;
-import dgtic.modelo.entidades.viaje.TipoViaje;
+import dgtic.core.modelo.entidades.viaje.TipoTour;
+import dgtic.core.modelo.entidades.viaje.TipoViaje;
 
 public interface CatalogosViajeDAO {
     List<TipoViaje> cargaTiposViaje();

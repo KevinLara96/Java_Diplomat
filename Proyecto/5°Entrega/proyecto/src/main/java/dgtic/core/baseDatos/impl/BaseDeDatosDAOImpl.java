@@ -1,32 +1,31 @@
-package dgtic.baseDatos.impl;
+package dgtic.core.baseDatos.impl;
 
-import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.*;
 
-import dgtic.baseDatos.BaseDeDatos;
-import dgtic.baseDatos.intf.BaseDeDatosDAO;
-import dgtic.modelo.entidades.autobus.Autobus;
-import dgtic.modelo.entidades.empleado.Empleado;
-import dgtic.modelo.entidades.viaje.Viaje;
+import dgtic.core.baseDatos.BaseDeDatos;
+import dgtic.core.baseDatos.intf.BaseDeDatosDAO;
+import dgtic.core.modelo.entidades.autobus.Autobus;
+import dgtic.core.modelo.entidades.empleado.Empleado;
+import dgtic.core.modelo.entidades.viaje.Viaje;
 
-@Component
+@Component("BaseDeDatosDAO")
 public class BaseDeDatosDAOImpl implements BaseDeDatosDAO {
 
     @Override
-    public List<Empleado> getEmpleados() {
+    public Set<Empleado> getEmpleados() {
         return BaseDeDatos.empleados;
     }
 
     @Override
-    public List<Autobus> getAutobuses() {
+    public Set<Autobus> getAutobuses() {
         return BaseDeDatos.autobuses;
     }
 
     @Override
-    public Map<Empleado, Viaje> getViajesAsignados() {
-        return BaseDeDatos.conductorViaje;
+    public Set<Viaje> getDestinos() {
+        return BaseDeDatos.destinos;
     }
 
 }

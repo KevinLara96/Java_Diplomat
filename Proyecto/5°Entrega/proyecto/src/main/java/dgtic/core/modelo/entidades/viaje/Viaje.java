@@ -1,10 +1,10 @@
-package dgtic.modelo.entidades.viaje;
+package dgtic.core.modelo.entidades.viaje;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Random;
 
-import dgtic.modelo.entidades.agencia.Agencia;
+import dgtic.core.modelo.entidades.agencia.Agencia;
 
 public class Viaje implements Serializable {
     private Integer idViaje;
@@ -130,8 +130,8 @@ public class Viaje implements Serializable {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
-        str.append("Viaje: ");
-        str.append("\nidViaje: ").append(idViaje);
+        str.append("\nViaje: \n");
+        str.append("idViaje: ").append(idViaje);
         str.append(" / Destino: ").append(destino);
         str.append(" / Origen: ").append(origen);
         str.append(" / Precio: ").append(precio);

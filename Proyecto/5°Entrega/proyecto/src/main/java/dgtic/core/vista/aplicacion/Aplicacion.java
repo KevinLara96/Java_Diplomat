@@ -1,8 +1,8 @@
-package dgtic.vista.aplicacion;
+package dgtic.core.vista.aplicacion;
 
 import java.util.Scanner;
 
-import dgtic.modelo.entidades.empleado.Empleado;
+import dgtic.core.modelo.entidades.empleado.Empleado;
 
 public class Aplicacion {
 

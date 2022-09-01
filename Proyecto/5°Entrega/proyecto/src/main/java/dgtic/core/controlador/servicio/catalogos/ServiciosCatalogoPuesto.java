@@ -1,8 +1,8 @@
-package dgtic.controlador.servicio.catalogos;
+package dgtic.core.controlador.servicio.catalogos;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.puesto.Puesto;
+import dgtic.core.modelo.entidades.puesto.Puesto;
 
 public interface ServiciosCatalogoPuesto {
     List<Puesto> cargaPuestos();

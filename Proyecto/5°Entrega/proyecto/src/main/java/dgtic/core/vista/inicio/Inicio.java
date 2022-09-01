@@ -1,20 +1,20 @@
-package dgtic.vista.inicio;
+package dgtic.core.vista.inicio;
 
 import java.time.LocalDate;
 
-import dgtic.controlador.servicio.catalogos.ServiciosCatalogoPuestoImpl;
-import dgtic.controlador.servicio.catalogos.ServiciosCatalogosAutobusImpl;
-import dgtic.controlador.servicio.catalogos.ServiciosCatalogosViajeImpl;
-import dgtic.controlador.servicio.tablas.ServiciosAgencia;
-import dgtic.controlador.servicio.tablas.ServiciosAgenciaImpl;
-import dgtic.controlador.servicio.tablas.ServiciosAutobusImpl;
-import dgtic.controlador.servicio.tablas.ServiciosEmpleadoImpl;
-import dgtic.controlador.servicio.tablas.ServiciosViajeImpl;
-import dgtic.modelo.entidades.agencia.Agencia;
-import dgtic.modelo.entidades.autobus.Autobus;
-import dgtic.modelo.entidades.empleado.Empleado;
-import dgtic.modelo.entidades.viaje.Viaje;
-import dgtic.modelo.hibernate.HibernateUtil;
+import dgtic.core.controlador.servicio.catalogos.ServiciosCatalogoPuestoImpl;
+import dgtic.core.controlador.servicio.catalogos.ServiciosCatalogosAutobusImpl;
+import dgtic.core.controlador.servicio.catalogos.ServiciosCatalogosViajeImpl;
+import dgtic.core.controlador.servicio.tablas.ServiciosAgencia;
+import dgtic.core.controlador.servicio.tablas.ServiciosAgenciaImpl;
+import dgtic.core.controlador.servicio.tablas.ServiciosAutobusImpl;
+import dgtic.core.controlador.servicio.tablas.ServiciosEmpleadoImpl;
+import dgtic.core.controlador.servicio.tablas.ServiciosViajeImpl;
+import dgtic.core.modelo.entidades.agencia.Agencia;
+import dgtic.core.modelo.entidades.autobus.Autobus;
+import dgtic.core.modelo.entidades.empleado.Empleado;
+import dgtic.core.modelo.entidades.viaje.Viaje;
+import dgtic.core.modelo.hibernate.HibernateUtil;
 
 public class Inicio {
     public static void main(String[] args) throws InterruptedException {

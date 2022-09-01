@@ -1,13 +1,13 @@
-package dgtic.modelo.entidades.agencia;
+package dgtic.core.modelo.entidades.agencia;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import dgtic.modelo.entidades.agencia.asignaciones.ConductorViaje;
-import dgtic.modelo.entidades.autobus.Autobus;
-import dgtic.modelo.entidades.empleado.Empleado;
-import dgtic.modelo.entidades.viaje.Viaje;
+import dgtic.core.modelo.entidades.agencia.asignaciones.ConductorViaje;
+import dgtic.core.modelo.entidades.autobus.Autobus;
+import dgtic.core.modelo.entidades.empleado.Empleado;
+import dgtic.core.modelo.entidades.viaje.Viaje;
 
 public class Agencia implements Serializable {
     private Integer idAgencia;

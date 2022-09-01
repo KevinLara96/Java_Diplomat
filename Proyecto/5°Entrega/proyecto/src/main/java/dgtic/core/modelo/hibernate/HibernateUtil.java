@@ -1,4 +1,4 @@
-package dgtic.modelo.hibernate;
+package dgtic.core.modelo.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

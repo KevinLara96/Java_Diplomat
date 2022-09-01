@@ -1,6 +1,6 @@
-package dgtic.vista.aplicacion;
+package dgtic.core.vista.aplicacion;
 
-import dgtic.modelo.hibernate.HibernateUtil;
+import dgtic.core.modelo.hibernate.HibernateUtil;
 
 public class InicioAplicacion {
     public static void main(String[] args) {

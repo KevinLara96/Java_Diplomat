@@ -1,8 +1,8 @@
-package dgtic.modelo.DAO.tablas;
+package dgtic.core.modelo.DAO.tablas;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.viaje.Viaje;
+import dgtic.core.modelo.entidades.viaje.Viaje;
 
 public interface ViajeDAO {
     Viaje cargaViajePorId(Integer id);

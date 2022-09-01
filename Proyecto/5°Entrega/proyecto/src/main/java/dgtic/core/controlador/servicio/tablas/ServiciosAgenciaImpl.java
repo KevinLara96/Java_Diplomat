@@ -1,8 +1,8 @@
-package dgtic.controlador.servicio.tablas;
+package dgtic.core.controlador.servicio.tablas;
 
-import dgtic.modelo.DAO.tablas.AgenciaDAO;
-import dgtic.modelo.DAO.tablas.AgenciaDAOImpl;
-import dgtic.modelo.entidades.agencia.Agencia;
+import dgtic.core.modelo.DAO.tablas.AgenciaDAO;
+import dgtic.core.modelo.DAO.tablas.AgenciaDAOImpl;
+import dgtic.core.modelo.entidades.agencia.Agencia;
 
 public class ServiciosAgenciaImpl implements ServiciosAgencia {
     private static ServiciosAgenciaImpl instance;

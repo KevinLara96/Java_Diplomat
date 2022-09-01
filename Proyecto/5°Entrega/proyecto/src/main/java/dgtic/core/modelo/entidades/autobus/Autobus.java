@@ -1,9 +1,9 @@
-package dgtic.modelo.entidades.autobus;
+package dgtic.core.modelo.entidades.autobus;
 
 import java.io.Serializable;
 import java.util.Random;
 
-import dgtic.modelo.entidades.agencia.Agencia;
+import dgtic.core.modelo.entidades.agencia.Agencia;
 
 public class Autobus implements Serializable {
     private Integer idAutobus;
@@ -104,8 +104,8 @@ public class Autobus implements Serializable {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
-        str.append("Autobus: ");
-        str.append("\nidAutobus: ").append(idAutobus);
+        str.append("\nAutobus: \n");
+        str.append("idAutobus: ").append(idAutobus);
         str.append(" / Marca: ").append(marca);
         str.append(" / Modelo; ").append(modelo);
         str.append(" / Capacidad: ").append(capacidad);

@@ -1,6 +1,6 @@
-package dgtic.controlador.servicio.tablas;
+package dgtic.core.controlador.servicio.tablas;
 
-import dgtic.modelo.entidades.agencia.Agencia;
+import dgtic.core.modelo.entidades.agencia.Agencia;
 
 public interface ServiciosAgencia {
     Agencia cargaAgencia();

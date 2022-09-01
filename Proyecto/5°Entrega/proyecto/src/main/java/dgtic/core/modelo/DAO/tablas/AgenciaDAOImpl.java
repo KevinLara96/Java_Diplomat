@@ -1,10 +1,10 @@
-package dgtic.modelo.DAO.tablas;
+package dgtic.core.modelo.DAO.tablas;
 
 import org.hibernate.Session;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import dgtic.modelo.entidades.agencia.Agencia;
-import dgtic.modelo.hibernate.HibernateUtil;
+import dgtic.core.modelo.entidades.agencia.Agencia;
+import dgtic.core.modelo.hibernate.HibernateUtil;
 
 public class AgenciaDAOImpl implements AgenciaDAO {
     private static AgenciaDAOImpl instance;

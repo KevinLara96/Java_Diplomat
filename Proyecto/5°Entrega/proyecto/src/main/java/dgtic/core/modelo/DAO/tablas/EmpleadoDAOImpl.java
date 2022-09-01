@@ -1,12 +1,12 @@
-package dgtic.modelo.DAO.tablas;
+package dgtic.core.modelo.DAO.tablas;
 
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import dgtic.modelo.entidades.empleado.Empleado;
-import dgtic.modelo.hibernate.HibernateUtil;
+import dgtic.core.modelo.entidades.empleado.Empleado;
+import dgtic.core.modelo.hibernate.HibernateUtil;
 
 public class EmpleadoDAOImpl implements EmpleadoDAO {
     private static EmpleadoDAOImpl instance;

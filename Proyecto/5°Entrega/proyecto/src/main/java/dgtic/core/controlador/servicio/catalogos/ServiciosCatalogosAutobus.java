@@ -1,9 +1,9 @@
-package dgtic.controlador.servicio.catalogos;
+package dgtic.core.controlador.servicio.catalogos;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.autobus.ClaseBus;
-import dgtic.modelo.entidades.autobus.ClaseTuribus;
+import dgtic.core.modelo.entidades.autobus.ClaseBus;
+import dgtic.core.modelo.entidades.autobus.ClaseTuribus;
 
 public interface ServiciosCatalogosAutobus {
     List<ClaseBus> cargaClasesBus();

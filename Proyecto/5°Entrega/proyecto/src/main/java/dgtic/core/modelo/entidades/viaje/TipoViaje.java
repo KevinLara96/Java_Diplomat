@@ -1,4 +1,4 @@
-package dgtic.modelo.entidades.viaje;
+package dgtic.core.modelo.entidades.viaje;
 
 public class TipoViaje {
     private Integer idTipoViaje;

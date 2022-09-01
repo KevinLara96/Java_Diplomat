@@ -1,9 +1,9 @@
-package dgtic.vista.aplicacion;
+package dgtic.core.vista.aplicacion;
 
 import java.util.Scanner;
 
-import dgtic.controlador.servicio.tablas.ServiciosEmpleadoImpl;
-import dgtic.modelo.entidades.empleado.Empleado;
+import dgtic.core.controlador.servicio.tablas.ServiciosEmpleadoImpl;
+import dgtic.core.modelo.entidades.empleado.Empleado;
 
 public class InicioSesion {
 

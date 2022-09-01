@@ -1,8 +1,8 @@
-package dgtic.modelo.DAO.tablas;
+package dgtic.core.modelo.DAO.tablas;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.autobus.Autobus;
+import dgtic.core.modelo.entidades.autobus.Autobus;
 
 public interface AutobusDAO {
     Autobus cargaAutobusPorId(Integer id);

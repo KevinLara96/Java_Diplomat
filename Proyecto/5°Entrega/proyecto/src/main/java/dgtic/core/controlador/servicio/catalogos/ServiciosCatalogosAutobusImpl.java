@@ -1,11 +1,11 @@
-package dgtic.controlador.servicio.catalogos;
+package dgtic.core.controlador.servicio.catalogos;
 
 import java.util.List;
 
-import dgtic.modelo.DAO.catalogos.CatalogosAutobusDAO;
-import dgtic.modelo.DAO.catalogos.CatalogosAutobusDAOImpl;
-import dgtic.modelo.entidades.autobus.ClaseBus;
-import dgtic.modelo.entidades.autobus.ClaseTuribus;
+import dgtic.core.modelo.DAO.catalogos.CatalogosAutobusDAO;
+import dgtic.core.modelo.DAO.catalogos.CatalogosAutobusDAOImpl;
+import dgtic.core.modelo.entidades.autobus.ClaseBus;
+import dgtic.core.modelo.entidades.autobus.ClaseTuribus;
 
 public class ServiciosCatalogosAutobusImpl implements ServiciosCatalogosAutobus {
 

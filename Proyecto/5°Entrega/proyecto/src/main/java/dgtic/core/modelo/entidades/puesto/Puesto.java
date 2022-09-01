@@ -1,4 +1,4 @@
-package dgtic.modelo.entidades.puesto;
+package dgtic.core.modelo.entidades.puesto;
 
 public class Puesto {
     private Integer idPuesto;

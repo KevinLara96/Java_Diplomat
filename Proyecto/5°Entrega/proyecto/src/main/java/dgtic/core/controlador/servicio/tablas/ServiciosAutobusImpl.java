@@ -1,10 +1,10 @@
-package dgtic.controlador.servicio.tablas;
+package dgtic.core.controlador.servicio.tablas;
 
 import java.util.List;
 
-import dgtic.modelo.DAO.tablas.AutobusDAO;
-import dgtic.modelo.DAO.tablas.AutobusDAOImpl;
-import dgtic.modelo.entidades.autobus.Autobus;
+import dgtic.core.modelo.DAO.tablas.AutobusDAO;
+import dgtic.core.modelo.DAO.tablas.AutobusDAOImpl;
+import dgtic.core.modelo.entidades.autobus.Autobus;
 
 public class ServiciosAutobusImpl implements ServiciosAutobus {
     private static ServiciosAutobusImpl instance;

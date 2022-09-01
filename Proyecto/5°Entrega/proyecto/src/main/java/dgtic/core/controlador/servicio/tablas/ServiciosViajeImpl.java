@@ -1,10 +1,10 @@
-package dgtic.controlador.servicio.tablas;
+package dgtic.core.controlador.servicio.tablas;
 
 import java.util.List;
 
-import dgtic.modelo.DAO.tablas.ViajeDAO;
-import dgtic.modelo.DAO.tablas.ViajeDAOImpl;
-import dgtic.modelo.entidades.viaje.Viaje;
+import dgtic.core.modelo.DAO.tablas.ViajeDAO;
+import dgtic.core.modelo.DAO.tablas.ViajeDAOImpl;
+import dgtic.core.modelo.entidades.viaje.Viaje;
 
 public class ServiciosViajeImpl implements ServiciosViaje {
     private static ServiciosViajeImpl instance;

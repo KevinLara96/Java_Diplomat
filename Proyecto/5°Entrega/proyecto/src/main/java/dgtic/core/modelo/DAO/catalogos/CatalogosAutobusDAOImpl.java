@@ -1,13 +1,13 @@
-package dgtic.modelo.DAO.catalogos;
+package dgtic.core.modelo.DAO.catalogos;
 
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import dgtic.modelo.entidades.autobus.ClaseBus;
-import dgtic.modelo.entidades.autobus.ClaseTuribus;
-import dgtic.modelo.hibernate.HibernateUtil;
+import dgtic.core.modelo.entidades.autobus.ClaseBus;
+import dgtic.core.modelo.entidades.autobus.ClaseTuribus;
+import dgtic.core.modelo.hibernate.HibernateUtil;
 
 public class CatalogosAutobusDAOImpl implements CatalogosAutobusDAO {
 

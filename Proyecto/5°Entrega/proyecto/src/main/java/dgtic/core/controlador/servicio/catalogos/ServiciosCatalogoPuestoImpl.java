@@ -1,10 +1,10 @@
-package dgtic.controlador.servicio.catalogos;
+package dgtic.core.controlador.servicio.catalogos;
 
 import java.util.List;
 
-import dgtic.modelo.DAO.catalogos.CatalogosPuestoDAO;
-import dgtic.modelo.DAO.catalogos.CatalogosPuestoDAOImpl;
-import dgtic.modelo.entidades.puesto.Puesto;
+import dgtic.core.modelo.DAO.catalogos.CatalogosPuestoDAO;
+import dgtic.core.modelo.DAO.catalogos.CatalogosPuestoDAOImpl;
+import dgtic.core.modelo.entidades.puesto.Puesto;
 
 public class ServiciosCatalogoPuestoImpl implements ServiciosCatalogoPuesto {
     private static ServiciosCatalogoPuestoImpl instance;

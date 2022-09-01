@@ -1,6 +1,6 @@
-package dgtic.modelo.entidades.agencia.asignaciones;
+package dgtic.core.modelo.entidades.agencia.asignaciones;
 
-import dgtic.modelo.entidades.agencia.Agencia;
+import dgtic.core.modelo.entidades.agencia.Agencia;
 
 public class ConductorAutobus {
     private Integer idAsignacionAutobus;

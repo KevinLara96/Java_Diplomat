@@ -1,8 +1,8 @@
-package dgtic.modelo.DAO.tablas;
+package dgtic.core.modelo.DAO.tablas;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.agencia.asignaciones.ConductorViaje;
+import dgtic.core.modelo.entidades.agencia.asignaciones.ConductorViaje;
 
 public interface ConductorViajeDAO {
 

@@ -1,12 +1,12 @@
-package dgtic.modelo.DAO.tablas;
+package dgtic.core.modelo.DAO.tablas;
 
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import dgtic.modelo.entidades.viaje.Viaje;
-import dgtic.modelo.hibernate.HibernateUtil;
+import dgtic.core.modelo.entidades.viaje.Viaje;
+import dgtic.core.modelo.hibernate.HibernateUtil;
 
 public class ViajeDAOImpl implements ViajeDAO {
 

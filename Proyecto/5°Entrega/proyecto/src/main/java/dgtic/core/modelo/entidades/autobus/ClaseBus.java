@@ -1,4 +1,4 @@
-package dgtic.modelo.entidades.autobus;
+package dgtic.core.modelo.entidades.autobus;
 
 public class ClaseBus {
     private Integer idClaseAutobus;

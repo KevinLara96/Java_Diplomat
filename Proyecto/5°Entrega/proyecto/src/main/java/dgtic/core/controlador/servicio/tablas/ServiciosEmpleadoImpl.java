@@ -1,10 +1,10 @@
-package dgtic.controlador.servicio.tablas;
+package dgtic.core.controlador.servicio.tablas;
 
 import java.util.List;
 
-import dgtic.modelo.DAO.tablas.EmpleadoDAO;
-import dgtic.modelo.DAO.tablas.EmpleadoDAOImpl;
-import dgtic.modelo.entidades.empleado.Empleado;
+import dgtic.core.modelo.DAO.tablas.EmpleadoDAO;
+import dgtic.core.modelo.DAO.tablas.EmpleadoDAOImpl;
+import dgtic.core.modelo.entidades.empleado.Empleado;
 
 public class ServiciosEmpleadoImpl implements ServiciosEmpleado {
 

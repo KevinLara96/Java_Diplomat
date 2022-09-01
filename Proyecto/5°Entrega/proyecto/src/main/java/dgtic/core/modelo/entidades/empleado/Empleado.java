@@ -1,11 +1,11 @@
-package dgtic.modelo.entidades.empleado;
+package dgtic.core.modelo.entidades.empleado;
 
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import dgtic.modelo.entidades.agencia.Agencia;
-import dgtic.modelo.entidades.puesto.Puesto;
+import dgtic.core.modelo.entidades.agencia.Agencia;
+import dgtic.core.modelo.entidades.puesto.Puesto;
 
 public class Empleado {
     private Integer idEmpleado;
@@ -126,7 +126,8 @@ public class Empleado {
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
-        str.append("Empleado: \nnombre=").append(this.nombre);
+        str.append("\nEmpleado: \n");
+        str.append("nombre=").append(this.nombre);
         str.append(", correo=").append(this.correo);
         str.append(", rfc=" + this.rfc + ", salario=" + this.salario);
 

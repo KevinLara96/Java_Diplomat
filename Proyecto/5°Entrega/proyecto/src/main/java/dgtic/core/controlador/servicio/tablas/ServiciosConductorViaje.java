@@ -1,8 +1,8 @@
-package dgtic.controlador.servicio.tablas;
+package dgtic.core.controlador.servicio.tablas;
 
 import java.util.List;
 
-import dgtic.modelo.entidades.agencia.asignaciones.ConductorViaje;
+import dgtic.core.modelo.entidades.agencia.asignaciones.ConductorViaje;
 
 public interface ServiciosConductorViaje {
     ConductorViaje cargaConductorViajePorId(Integer id);
