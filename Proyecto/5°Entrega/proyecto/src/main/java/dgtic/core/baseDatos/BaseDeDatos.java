@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import dgtic.core.modelo.entidades.agencia.Agencia;
+import dgtic.core.modelo.entidades.agencia.asignaciones.ConductorAutobus;
+import dgtic.core.modelo.entidades.agencia.asignaciones.ConductorViaje;
 import dgtic.core.modelo.entidades.autobus.Autobus;
 import dgtic.core.modelo.entidades.autobus.ClaseBus;
 import dgtic.core.modelo.entidades.autobus.ClaseTuribus;
@@ -18,6 +20,8 @@ public class BaseDeDatos {
     public static Set<Autobus> autobuses = new HashSet<>();
     public static Set<Viaje> destinos = new HashSet<>();
     public static Agencia agencia = new Agencia();
+    public static Set<ConductorAutobus> conductorAutobus = new HashSet<>();
+    public static Set<ConductorViaje> conductorViaje = new HashSet<>();
 
     static {
         Empleado empleado;

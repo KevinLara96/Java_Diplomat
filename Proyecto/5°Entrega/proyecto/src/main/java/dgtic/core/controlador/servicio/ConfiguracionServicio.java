@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.context.annotation.*;
 
+import dgtic.core.modelo.entidades.agencia.Agencia;
 import dgtic.core.modelo.entidades.autobus.Autobus;
 import dgtic.core.modelo.entidades.empleado.Empleado;
 import dgtic.core.modelo.entidades.viaje.Viaje;
@@ -11,6 +12,16 @@ import dgtic.core.modelo.entidades.viaje.Viaje;
 @Configuration
 @ComponentScan("dgtic.core")
 public class ConfiguracionServicio {
+
+    @Bean(name = "agencia")
+    @Scope("singleton")
+    public Agencia servicioAgencia() {
+        Agencia agencia = new Agencia();
+        agencia.setIdAgencia(1);
+        agencia.setNombreAgencia("Autobuses Kevin");
+        agencia.setUbicacion("Ciudad de México");
+        return agencia;
+    }
 
     @Bean(name = "empleado")
     @Scope("prototype")

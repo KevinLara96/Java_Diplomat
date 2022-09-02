@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import dgtic.core.excepciones.AgenciaVacia;
 import dgtic.core.modelo.entidades.agencia.asignaciones.ConductorViaje;
 import dgtic.core.modelo.entidades.autobus.Autobus;
 import dgtic.core.modelo.entidades.empleado.Empleado;
@@ -35,8 +36,12 @@ public class Agencia implements Serializable {
         this.idAgencia = idAgencia;
     }
 
-    public String getNombreAgencia() {
-        return nombreAgencia;
+    public String getNombreAgencia() throws AgenciaVacia {
+        if (nombreAgencia == null || nombreAgencia.equals("")) {
+            throw new AgenciaVacia("Agencia sin nombre.");
+        } else {
+            return nombreAgencia;
+        }
     }
 
     public void setNombreAgencia(String nombreAgencia) {
@@ -89,6 +94,48 @@ public class Agencia implements Serializable {
 
     public void setAutobusesAsignados(Set<ConductorViaje> autobusesAsignados) {
         this.autobusesAsignados = autobusesAsignados;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((autobuses == null) ? 0 : autobuses.hashCode());
+        result = prime * result + ((autobusesAsignados == null) ? 0 : autobusesAsignados.hashCode());
+        result = prime * result + ((destinos == null) ? 0 : destinos.hashCode());
+        result = prime * result + ((empleados == null) ? 0 : empleados.hashCode());
+        result = prime * result + ((idAgencia == null) ? 0 : idAgencia.hashCode());
+        result = prime * result + ((nombreAgencia == null) ? 0 : nombreAgencia.hashCode());
+        result = prime * result + ((ubicacion == null) ? 0 : ubicacion.hashCode());
+        result = prime * result + ((viajesAsignados == null) ? 0 : viajesAsignados.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Agencia other = (Agencia) obj;
+        if (idAgencia == null) {
+            if (other.idAgencia != null)
+                return false;
+        } else if (!idAgencia.equals(other.idAgencia))
+            return false;
+        if (nombreAgencia == null) {
+            if (other.nombreAgencia != null)
+                return false;
+        } else if (!nombreAgencia.equals(other.nombreAgencia))
+            return false;
+        if (ubicacion == null) {
+            if (other.ubicacion != null)
+                return false;
+        } else if (!ubicacion.equals(other.ubicacion))
+            return false;
+        return true;
     }
 
     @Override

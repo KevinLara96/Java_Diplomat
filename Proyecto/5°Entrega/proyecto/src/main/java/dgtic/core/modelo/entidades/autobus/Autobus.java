@@ -102,6 +102,49 @@ public class Autobus implements Serializable {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((capacidad == null) ? 0 : capacidad.hashCode());
+        result = prime * result + ((idAutobus == null) ? 0 : idAutobus.hashCode());
+        result = prime * result + ((marca == null) ? 0 : marca.hashCode());
+        result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Autobus other = (Autobus) obj;
+        if (capacidad == null) {
+            if (other.capacidad != null)
+                return false;
+        } else if (!capacidad.equals(other.capacidad))
+            return false;
+        if (idAutobus == null) {
+            if (other.idAutobus != null)
+                return false;
+        } else if (!idAutobus.equals(other.idAutobus))
+            return false;
+        if (marca == null) {
+            if (other.marca != null)
+                return false;
+        } else if (!marca.equals(other.marca))
+            return false;
+        if (modelo == null) {
+            if (other.modelo != null)
+                return false;
+        } else if (!modelo.equals(other.modelo))
+            return false;
+        return true;
+    }
+
+    @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
         str.append("\nAutobus: \n");

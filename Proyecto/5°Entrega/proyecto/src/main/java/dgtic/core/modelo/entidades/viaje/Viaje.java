@@ -128,6 +128,49 @@ public class Viaje implements Serializable {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((destino == null) ? 0 : destino.hashCode());
+        result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
+        result = prime * result + ((idViaje == null) ? 0 : idViaje.hashCode());
+        result = prime * result + ((origen == null) ? 0 : origen.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Viaje other = (Viaje) obj;
+        if (destino == null) {
+            if (other.destino != null)
+                return false;
+        } else if (!destino.equals(other.destino))
+            return false;
+        if (fecha == null) {
+            if (other.fecha != null)
+                return false;
+        } else if (!fecha.equals(other.fecha))
+            return false;
+        if (idViaje == null) {
+            if (other.idViaje != null)
+                return false;
+        } else if (!idViaje.equals(other.idViaje))
+            return false;
+        if (origen == null) {
+            if (other.origen != null)
+                return false;
+        } else if (!origen.equals(other.origen))
+            return false;
+        return true;
+    }
+
+    @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
         str.append("\nViaje: \n");

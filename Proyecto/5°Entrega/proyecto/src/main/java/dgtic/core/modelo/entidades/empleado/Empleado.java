@@ -124,6 +124,43 @@ public class Empleado {
     }
 
     @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((correo == null) ? 0 : correo.hashCode());
+        result = prime * result + ((idEmpleado == null) ? 0 : idEmpleado.hashCode());
+        result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Empleado other = (Empleado) obj;
+        if (correo == null) {
+            if (other.correo != null)
+                return false;
+        } else if (!correo.equals(other.correo))
+            return false;
+        if (idEmpleado == null) {
+            if (other.idEmpleado != null)
+                return false;
+        } else if (!idEmpleado.equals(other.idEmpleado))
+            return false;
+        if (nombre == null) {
+            if (other.nombre != null)
+                return false;
+        } else if (!nombre.equals(other.nombre))
+            return false;
+        return true;
+    }
+
+    @Override
     public String toString() {
         StringBuilder str = new StringBuilder("");
         str.append("\nEmpleado: \n");
