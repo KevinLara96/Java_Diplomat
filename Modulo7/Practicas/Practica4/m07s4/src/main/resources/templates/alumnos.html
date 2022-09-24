@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Alumnos</title>
+  </head>
+  <body>
+    <h1>Omar Mendoza González</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><a class="orden" href="">matricula</a></th>
+          <th><a class="orden" href="">nombre</a></th>
+          <th><a class="orden" href="">paterno</a></th>
+          <th><a class="orden" href="">fnac</a></th>
+          <th><a class="orden" href="">estatura</a></th>
+          <th>editar</th>
+          <th>eliminar</th>
+        </tr>
+      </thead>
+
+      <tr th:each="alumno: ${alumnos}">
+        <td th:text="${alumno.matricula}" />
+        <td th:text="${alumno.nombre}" />
+        <td th:text="${alumno.paterno}" />
+        <td th:text="${alumno.fnac}" />
+        <td th:text="${alumno.estatura}" />
+      </tr>
+    </table>
+  </body>
+</html>
