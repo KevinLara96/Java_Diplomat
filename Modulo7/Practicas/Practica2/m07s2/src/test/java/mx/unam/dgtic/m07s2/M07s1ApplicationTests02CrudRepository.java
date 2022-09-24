@@ -1,4 +1,4 @@
-package mx.unam.dgtic.m07s1;
+package mx.unam.dgtic.m07s2;
 
 import java.util.ArrayList;
 import java.util.Date;
