@@ -7,9 +7,11 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+//import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface AlumnoRepositorio extends CrudRepository<Alumno, String> {// Clase y el tipo de la llave primaria
+public interface AlumnoRepositorio extends PagingAndSortingRepository<Alumno, String> {// Clase y el tipo de la llave
+                                                                                       // primaria
 
     // Consultas derivadas.
     // Búsquedas.
