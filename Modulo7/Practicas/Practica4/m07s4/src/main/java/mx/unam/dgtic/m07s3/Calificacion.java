@@ -6,6 +6,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Calificaciones")
 public class Calificacion {
@@ -16,6 +18,7 @@ public class Calificacion {
     private int calificacion;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "alumnos_matricula")
     private Alumno alumno;
 
@@ -61,6 +64,14 @@ public class Calificacion {
 
     public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
+    }
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
     @Override

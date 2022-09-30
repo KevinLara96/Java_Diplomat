@@ -75,6 +75,8 @@ public interface AlumnoRepositorio extends PagingAndSortingRepository<Alumno, St
 
     public List<Alumno> findByPaternoContaining(String contiene);
 
+    public List<Alumno> findByNombreContaining(String contiene);
+
     public List<Alumno> findByPaternoLike(String contiene);
 
     public List<Alumno> findByPaternoNotLike(String contiene);
