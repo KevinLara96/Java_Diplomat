@@ -1,4 +1,4 @@
-package unam.dgtic.core.ejercicio1;
+package unam.dgtic.core.ejercicio2;
 
 import java.util.Properties;
 

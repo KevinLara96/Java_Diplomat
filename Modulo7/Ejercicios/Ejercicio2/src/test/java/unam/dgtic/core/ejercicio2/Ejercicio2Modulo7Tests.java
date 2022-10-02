@@ -1,4 +1,4 @@
-package unam.dgtic.core.ejercicio1;
+package unam.dgtic.core.ejercicio2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class Ejercicio1Modulo7Tests {
+public class Ejercicio2Modulo7Tests {
 
     @Autowired
     AutomovilRepositorio repositorioAutomovil;
