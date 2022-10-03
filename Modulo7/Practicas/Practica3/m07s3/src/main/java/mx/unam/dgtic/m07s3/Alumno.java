@@ -36,7 +36,7 @@ public class Alumno {
     private String paterno;
     private Date fnac;
     private double estatura;
-    @OneToMany
+    @OneToMany(mappedBy = "alumno")
     private List<Calificacion> calificaciones = new ArrayList<>();
 
     public Alumno() {

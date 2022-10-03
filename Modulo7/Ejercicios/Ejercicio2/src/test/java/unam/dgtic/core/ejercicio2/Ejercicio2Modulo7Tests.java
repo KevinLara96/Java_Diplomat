@@ -29,6 +29,12 @@ public class Ejercicio2Modulo7Tests {
     }
 
     @Test
+    void pruebaMarcaAndModeloTest() {
+        Iterable<Automovil> iterable = repositorioAutomovil.getByMarcaAndModelo("Subaru", "BRZ");
+        iterable.forEach(System.out::println);
+    }
+
+    @Test
     void pruebaListaIdTest() {
         List<Integer> ids = new ArrayList<>();
         ids.add(1);
@@ -134,7 +140,7 @@ public class Ejercicio2Modulo7Tests {
 
     @Test
     void eliminarElementoTest() {
-        repositorioAutomovil.deleteById(8);
+        repositorioAutomovil.deleteById(20);
     }
 
     @Test

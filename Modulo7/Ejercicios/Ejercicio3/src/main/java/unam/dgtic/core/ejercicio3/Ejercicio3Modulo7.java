@@ -1,4 +1,4 @@
-package unam.dgtic.core.ejercicio2;
+package unam.dgtic.core.ejercicio3;
 
 import java.util.Properties;
 
@@ -14,10 +14,10 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @SpringBootApplication
-public class Ejercicio1Modulo7 {
+public class Ejercicio3Modulo7 {
 
     public static void main(String[] args) {
-        SpringApplication.run(Ejercicio1Modulo7.class, args);
+        SpringApplication.run(Ejercicio3Modulo7.class, args);
     }
 
     @Bean
@@ -37,7 +37,7 @@ public class Ejercicio1Modulo7 {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setPackagesToScan("unam.dgtic.core.ejercicio2");
+        entityManagerFactoryBean.setPackagesToScan("unam.dgtic.core.ejercicio3");
 
         Properties jpaProperties = new Properties();
 
