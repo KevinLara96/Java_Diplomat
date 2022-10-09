@@ -7,10 +7,10 @@
         <version>2.7.3</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
-    <groupId>mx.unam.dgtic</groupId>
-    <artifactId>m07s1</artifactId>
+    <groupId>unam.dgtic.core</groupId>
+    <artifactId>ejercicio4</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>m07s1</name>
+    <name>ejercicio4</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>18</java.version>
