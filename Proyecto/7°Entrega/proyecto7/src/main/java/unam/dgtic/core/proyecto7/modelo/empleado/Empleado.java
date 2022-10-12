@@ -6,8 +6,7 @@ import java.util.regex.Pattern;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -28,7 +27,6 @@ import unam.dgtic.core.proyecto7.modelo.puesto.Puesto;
 public class Empleado {
 
     @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEmpleado;
     private String nombre;
     private String correo;
@@ -36,15 +34,13 @@ public class Empleado {
     private String rfc;
     private Float salario;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPuesto", referencedColumnName = "idPuesto")
-    // @Transient
     private Puesto puesto;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinColumn(name = "idAgencia")
-    // @Transient
     private Agencia agencia;
 
     @Transient

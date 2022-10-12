@@ -1,12 +1,10 @@
 package unam.dgtic.core.proyecto7.modelo.puesto;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-//import javax.persistence.Transient;
 
 import unam.dgtic.core.proyecto7.modelo.empleado.Empleado;
 
@@ -15,11 +13,9 @@ import unam.dgtic.core.proyecto7.modelo.empleado.Empleado;
 public class Puesto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPuesto;
 
-    @OneToOne(mappedBy = "puesto")
-    // @Transient
+    @OneToOne(mappedBy = "puesto", fetch = FetchType.LAZY)
     private Empleado empleado;
 
     private String puesto;

@@ -71,18 +71,22 @@
               <input class="form-control" type="text" th:field="*{salario}" />
             </td>
           </tr>
-          <!--tr>
+          <tr>
             <td>idAgencia</td>
             <td>
-              <input class="form-control" type="text" th:object="${agencia}" />
+              <input
+                class="form-control"
+                type="text"
+                th:field="*{idAgenciaE}"
+              />
             </td>
           </tr>
           <tr>
             <td>idPuesto</td>
             <td>
-              <input class="form-control" type="text" th:object="${puesto}" />
+              <input class="form-control" type="text" th:field="*{idPuestoE}" />
             </td>
-          </tr-->
+          </tr>
           <tr>
             <td colspan="2">
               <button class="btn btn-primary" type="submit">Guardar</button>

@@ -35,7 +35,7 @@ public class Viaje {
     private TipoTour tipoTour;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idTipoTuribus", referencedColumnName = "idTipoViaje")
+    @JoinColumn(name = "idTipoViaje", referencedColumnName = "idTipoViaje")
     private TipoViaje tipoViaje;
 
     @ManyToOne

@@ -6,8 +6,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import unam.dgtic.core.proyecto7.modelo.agencia.Agencia;
 
 @Entity
@@ -20,8 +18,7 @@ public class ConductorAutobus {
     private Integer idAutobus;
 
     @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "autobusesAsignados")
+    @JoinColumn(name = "idAgencia")
     private Agencia agencia;
 
     public Integer getIdAsignacionAutobus() {

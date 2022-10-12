@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 //import javax.persistence.Transient;
 
+import unam.dgtic.core.proyecto7.modelo.agencia.asignaciones.ConductorAutobus;
 import unam.dgtic.core.proyecto7.modelo.agencia.asignaciones.ConductorViaje;
 import unam.dgtic.core.proyecto7.modelo.autobus.Autobus;
 import unam.dgtic.core.proyecto7.modelo.empleado.Empleado;
@@ -26,24 +28,26 @@ public class Agencia {
     private String nombreAgencia;
     private String ubicacion;
 
-    @OneToMany(mappedBy = "agencia")
+    @OneToMany(mappedBy = "agencia", fetch = FetchType.EAGER)
     private Set<Viaje> destinos;
 
-    @OneToMany(mappedBy = "agencia")
+    @OneToMany(mappedBy = "agencia", fetch = FetchType.EAGER)
     // @Transient
     private Set<Empleado> empleados;
 
-    @OneToMany(mappedBy = "agencia")
+    @OneToMany(mappedBy = "agencia", fetch = FetchType.EAGER)
     private Set<Autobus> autobuses;
 
-    @OneToMany(mappedBy = "agencia")
+    @OneToMany(mappedBy = "agencia", fetch = FetchType.EAGER)
     private Set<ConductorViaje> viajesAsignados;
 
-    @OneToMany(mappedBy = "agencia")
-    private Set<ConductorViaje> autobusesAsignados;
+    @OneToMany(mappedBy = "agencia", fetch = FetchType.LAZY)
+    private Set<ConductorAutobus> autobusesAsignados;
 
-    public Agencia(Integer idAgencia) {
+    public Agencia(Integer idAgencia, String nombre, String ubicacion) {
         this.idAgencia = idAgencia;
+        this.nombreAgencia = nombre;
+        this.ubicacion = ubicacion;
     }
 
     public Agencia() {
@@ -114,11 +118,11 @@ public class Agencia {
         this.viajesAsignados = viajesAsignados;
     }
 
-    public Set<ConductorViaje> getAutobusesAsignados() {
+    public Set<ConductorAutobus> getAutobusesAsignados() {
         return autobusesAsignados;
     }
 
-    public void setAutobusesAsignados(Set<ConductorViaje> autobusesAsignados) {
+    public void setAutobusesAsignados(Set<ConductorAutobus> autobusesAsignados) {
         this.autobusesAsignados = autobusesAsignados;
     }
 

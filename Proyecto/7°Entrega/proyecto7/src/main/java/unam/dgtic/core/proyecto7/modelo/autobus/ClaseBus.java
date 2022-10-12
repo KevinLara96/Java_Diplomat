@@ -1,6 +1,8 @@
 package unam.dgtic.core.proyecto7.modelo.autobus;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -10,26 +12,26 @@ import javax.persistence.Table;
 public class ClaseBus {
 
     @Id
-    private Integer idClaseAutobus;
+    private Integer idClaseBus;
 
-    @OneToOne(mappedBy = "claseAutobus")
+    @OneToOne(mappedBy = "claseAutobus", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Autobus autobus;
 
     private String claseAutobus;
 
-    public Integer getIdClaseAutobus() {
-        return idClaseAutobus;
+    public Integer getIdClaseBus() {
+        return idClaseBus;
     }
 
-    public void setIdClaseAutobus(Integer idClaseAutobus) {
-        this.idClaseAutobus = idClaseAutobus;
+    public void setIdClaseBus(Integer idClaseBus) {
+        this.idClaseBus = idClaseBus;
     }
 
-    public String getClaseAutobus() {
+    public String getClaseBus() {
         return claseAutobus;
     }
 
-    public void setClaseAutobus(String claseAutobus) {
+    public void setClaseBus(String claseAutobus) {
         this.claseAutobus = claseAutobus;
     }
 }

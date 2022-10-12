@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import unam.dgtic.core.proyecto7.controlador.repositorios.AgenciaRepositorio;
 import unam.dgtic.core.proyecto7.controlador.repositorios.EmpleadoRepositorio;
+import unam.dgtic.core.proyecto7.controlador.repositorios.PuestoRepositorio;
 import unam.dgtic.core.proyecto7.modelo.empleado.Empleado;
 import unam.dgtic.core.proyecto7.modelo.agencia.Agencia;
 import unam.dgtic.core.proyecto7.modelo.puesto.Puesto;
@@ -22,6 +24,10 @@ public class EmpleadoController {
 
     @Autowired
     EmpleadoRepositorio repositorioEmpleado;
+    @Autowired
+    AgenciaRepositorio repositorioAgencia;
+    @Autowired
+    PuestoRepositorio repositorioPuesto;
 
     @RequestMapping(value = "buscarTodos")
     public String buscarTodos(Model model) {
@@ -84,9 +90,20 @@ public class EmpleadoController {
     public String guardar(@ModelAttribute("empleado") Empleado empleado) {
         // Crear un repositorio para puesto y agencia.
         // Buscar los ids y asignarlos al objeto empleado.
-        empleado.setAgencia(new Agencia(1));
-        empleado.setPuesto(new Puesto(2, "tmp"));
-        repositorioEmpleado.save(empleado);
+        Optional<Agencia> optionalAgencia = repositorioAgencia.findByIdAgencia(empleado.getIdAgenciaE());
+        Optional<Puesto> optionalPuesto = repositorioPuesto.findByIdPuesto(empleado.getIdPuestoE());
+
+        if (optionalAgencia.isPresent() && optionalPuesto.isPresent()) {
+            empleado.setAgencia(optionalAgencia.get());
+            empleado.setPuesto(optionalPuesto.get());
+
+            repositorioEmpleado.save(empleado);
+
+        } else {
+            empleado.setAgencia(new Agencia(1, "Agencia default", "Ciudad de México"));
+            empleado.setPuesto(new Puesto(1, "Puesto temporal"));
+            repositorioEmpleado.save(empleado);
+        }
 
         return "redirect:buscarTodos";
     }

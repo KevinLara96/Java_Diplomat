@@ -2,8 +2,8 @@ package unam.dgtic.core.proyecto7.modelo.autobus;
 
 import java.util.Random;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,15 +27,15 @@ public class Autobus {
     private String marca;
     private Integer capacidad;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idClaseBus", referencedColumnName = "idClaseAutobus")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idClaseBus")
     private ClaseBus claseAutobus;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idClaseTuribus", referencedColumnName = "idClaseTuribus")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idClaseTuribus")
     private ClaseTuribus claseTuribus;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
     @JoinColumn(name = "idAgencia")
     private Agencia agencia;
