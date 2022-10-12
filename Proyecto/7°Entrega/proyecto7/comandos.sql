@@ -127,3 +127,12 @@ VALUES
   (3, 'Conductor'),
   (4, 'Programador'),
   (5, 'Recursos Humanos');
+INSERT INTO
+  agencia
+VALUES
+  (1, 'Agencia 1', 'Ciudad de México');
+INSERT INTO
+  empleado
+VALUES
+  (1, 'SYS', 'sys@sak.com', 'sys1', '-', 0.0, 1, 1);
+commit;

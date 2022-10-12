@@ -25,7 +25,7 @@ public class Proyecto7Application {
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.mariadb.jdbc.Driver ");
-        dataSource.setUrl("jdbc:mariadb://localhost:3306/modulo07");
+        dataSource.setUrl("jdbc:mariadb://localhost:3306/modulo04");
         dataSource.setUsername("root");
         dataSource.setPassword("MaPassw");
         return dataSource;
@@ -37,7 +37,7 @@ public class Proyecto7Application {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setPackagesToScan("unam.dgtic.core.proyecto7");
+        entityManagerFactoryBean.setPackagesToScan("unam.dgtic.core");
 
         Properties jpaProperties = new Properties();
 
