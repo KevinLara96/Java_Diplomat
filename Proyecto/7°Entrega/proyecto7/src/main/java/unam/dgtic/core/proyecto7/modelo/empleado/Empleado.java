@@ -15,8 +15,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import unam.dgtic.core.proyecto7.modelo.agencia.Agencia;
 import unam.dgtic.core.proyecto7.modelo.puesto.Puesto;
 
@@ -38,15 +36,14 @@ public class Empleado {
     @JoinColumn(name = "idPuesto", referencedColumnName = "idPuesto")
     private Puesto puesto;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "idAgencia")
     private Agencia agencia;
 
     @Transient
-    private Integer idAgenciaE;
+    private int idAgenciaE;
     @Transient
-    private Integer idPuestoE;
+    private int idPuestoE;
 
     public Empleado() {
     }
@@ -162,11 +159,11 @@ public class Empleado {
         this.idPuestoE = idPuestoE;
     }
 
-    public Integer getIdAgenciaE() {
+    public int getIdAgenciaE() {
         return idAgenciaE;
     }
 
-    public void setIdAgencia(Integer idAgenciaE) {
+    public void setIdAgenciaE(int idAgenciaE) {
         this.idAgenciaE = idAgenciaE;
     }
 
@@ -177,7 +174,7 @@ public class Empleado {
         str.append("idEmpleado: ").append(idEmpleado);
         str.append(", nombre: ").append(this.nombre);
         str.append(", correo: ").append(this.correo);
-        str.append(", rfc=" + this.rfc + ", salario=" + this.salario);
+        str.append(", rfc=" + this.rfc + ", salario=" + this.salario + "\n");
 
         return str.toString();
     }

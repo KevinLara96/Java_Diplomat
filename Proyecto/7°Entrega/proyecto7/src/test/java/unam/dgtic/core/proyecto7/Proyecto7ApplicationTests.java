@@ -24,6 +24,7 @@ class Proyecto7ApplicationTests {
         Optional<Agencia> optional = repositorioAgencia.findByIdAgencia(1);
         if (optional.isPresent()) {
             System.out.println(optional.get());
+            System.out.println("\n\n");
         } else {
             System.out.println("No está");
         }

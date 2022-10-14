@@ -3,14 +3,12 @@ package unam.dgtic.core.proyecto7.modelo.agencia;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-//import javax.persistence.Transient;
 
 import unam.dgtic.core.proyecto7.modelo.agencia.asignaciones.ConductorAutobus;
 import unam.dgtic.core.proyecto7.modelo.agencia.asignaciones.ConductorViaje;
@@ -23,22 +21,20 @@ import unam.dgtic.core.proyecto7.modelo.viaje.Viaje;
 public class Agencia {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAgencia;
     private String nombreAgencia;
     private String ubicacion;
 
-    @OneToMany(mappedBy = "agencia", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "agencia", fetch = FetchType.LAZY)
     private Set<Viaje> destinos;
 
-    @OneToMany(mappedBy = "agencia", fetch = FetchType.EAGER)
-    // @Transient
+    @OneToMany(mappedBy = "agencia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Empleado> empleados;
 
-    @OneToMany(mappedBy = "agencia", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "agencia", fetch = FetchType.LAZY)
     private Set<Autobus> autobuses;
 
-    @OneToMany(mappedBy = "agencia", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "agencia", fetch = FetchType.LAZY)
     private Set<ConductorViaje> viajesAsignados;
 
     @OneToMany(mappedBy = "agencia", fetch = FetchType.LAZY)
@@ -92,6 +88,8 @@ public class Agencia {
 
     public void setEmpleados(Set<Empleado> empleados) {
         this.empleados = empleados;
+        // this.empleados.retainAll(empleados);
+        // this.empleados.addAll(empleados);
     }
 
     public Set<Viaje> getDestinos() {

@@ -24,8 +24,10 @@ public class EmpleadoController {
 
     @Autowired
     EmpleadoRepositorio repositorioEmpleado;
+
     @Autowired
     AgenciaRepositorio repositorioAgencia;
+
     @Autowired
     PuestoRepositorio repositorioPuesto;
 
@@ -88,22 +90,23 @@ public class EmpleadoController {
 
     @RequestMapping(value = "guardar", method = RequestMethod.POST)
     public String guardar(@ModelAttribute("empleado") Empleado empleado) {
-        // Crear un repositorio para puesto y agencia.
-        // Buscar los ids y asignarlos al objeto empleado.
+
         Optional<Agencia> optionalAgencia = repositorioAgencia.findByIdAgencia(empleado.getIdAgenciaE());
-        Optional<Puesto> optionalPuesto = repositorioPuesto.findByIdPuesto(empleado.getIdPuestoE());
-
-        if (optionalAgencia.isPresent() && optionalPuesto.isPresent()) {
+        if (optionalAgencia.isPresent()) {
             empleado.setAgencia(optionalAgencia.get());
-            empleado.setPuesto(optionalPuesto.get());
-
-            repositorioEmpleado.save(empleado);
-
         } else {
-            empleado.setAgencia(new Agencia(1, "Agencia default", "Ciudad de México"));
-            empleado.setPuesto(new Puesto(1, "Puesto temporal"));
-            repositorioEmpleado.save(empleado);
+            empleado.setAgencia(new Agencia(3, "Prueba", "Prueba"));
         }
+        Optional<Puesto> optionalPuesto = repositorioPuesto.findByIdPuesto(empleado.getIdPuestoE());
+        if (optionalPuesto.isPresent()) {
+            empleado.setPuesto(optionalPuesto.get());
+        } else {
+            empleado.setPuesto(new Puesto(3, "Prueba"));
+        }
+
+        // empleado.setPuesto(new Puesto(empleado.getIdPuestoE(), ""));
+
+        repositorioEmpleado.save(empleado);
 
         return "redirect:buscarTodos";
     }

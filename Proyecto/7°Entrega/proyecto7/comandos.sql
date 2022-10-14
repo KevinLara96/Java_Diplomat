@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS modulo04;
 CREATE DATABASE modulo04 DEFAULT CHARACTER SET = 'utf8mb4';
 USE modulo04;
 create table agencia(
-  idAgencia INT AUTO_INCREMENT,
+  idAgencia INT NOT NULL,
   nombreAgencia VARCHAR(50) NOT NULL,
   ubicacion VARCHAR(100) NOT NULL,
   CONSTRAINT Agencia_PK PRIMARY KEY (idAgencia)
@@ -14,7 +14,7 @@ CREATE TABLE puesto(
   CONSTRAINT puesto_pk PRIMARY KEY(idPuesto)
 );
 CREATE TABLE empleado(
-  idEmpleado INT AUTO_INCREMENT,
+  idEmpleado INT,
   nombre VARCHAR(50) NOT NULL,
   correo VARCHAR(30) NOT NULL,
   contrasena VARCHAR(30) NOT NULL,
@@ -27,17 +27,17 @@ CREATE TABLE empleado(
   CONSTRAINT empleado_puesto_fk FOREIGN KEY (idPuesto) REFERENCES puesto(idPuesto)
 );
 CREATE TABLE claseBus (
-  idClaseBus INT NOT NULL AUTO_INCREMENT,
+  idClaseBus INT NOT NULL,
   claseBus VARCHAR(30) NOT NULL,
   CONSTRAINT claseBus_pk PRIMARY KEY (idClaseBus)
 );
 CREATE TABLE claseTuribus (
-  idClaseTuribus INT NOT NULL AUTO_INCREMENT,
+  idClaseTuribus INT NOT NULL,
   claseTuribus VARCHAR(30) NOT NULL,
   CONSTRAINT claseTuribus_pk PRIMARY KEY(idClaseTuribus)
 );
 CREATE TABLE autobus (
-  idAutobus INT NOT NULL AUTO_INCREMENT,
+  idAutobus INT NOT NULL,
   modelo VARCHAR(30) NOT NULL,
   marca VARCHAR(30) NOT NULL,
   capacidad INT NOT NULL,
@@ -50,17 +50,17 @@ CREATE TABLE autobus (
   CONSTRAINT autobus_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia)
 );
 CREATE TABLE tipoViaje (
-  idTipoViaje INT NOT NULL AUTO_INCREMENT,
+  idTipoViaje INT NOT NULL,
   tipoViaje VARCHAR(20) NOT NULL,
   CONSTRAINT tipoviaje_pk PRIMARY KEY (idTipoViaje)
 );
 CREATE TABLE tipoTour (
-  idTipoTour INT NOT NULL AUTO_INCREMENT,
+  idTipoTour INT NOT NULL,
   tipoTour VARCHAR(20) NOT NULL,
   CONSTRAINT tipotour_pk PRIMARY KEY (idTipoTour)
 );
 CREATE TABLE viaje (
-  idViaje INT NOT NULL AUTO_INCREMENT,
+  idViaje INT NOT NULL,
   origen VARCHAR(50) NOT NULL,
   destino VARCHAR(50) NOT NULL,
   precio FLOAT NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE viaje (
   CONSTRAINT viaje_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia)
 );
 CREATE TABLE conductor_viaje(
-  idAsignacionViaje INT NOT NULL AUTO_INCREMENT,
+  idAsignacionViaje INT NOT NULL,
   idAgencia INT NOT NULL,
   idConductor INT NOT NULL,
   idViaje INT NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE conductor_viaje(
   CONSTRAINT cond_viaje_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia (idAgencia)
 );
 CREATE TABLE conductor_autobus (
-  idAsignacionAutobus INT NOT NULL AUTO_INCREMENT,
+  idAsignacionAutobus INT NOT NULL,
   idAgencia INT NOT NULL,
   idConductor INT NOT NULL,
   idAutobus INT NOT NULL,
