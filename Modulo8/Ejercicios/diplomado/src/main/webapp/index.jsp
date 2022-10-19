@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <a href="<c:url value="/login"/>">Ingresar a Aplicaci&oacute;n</a>
+        <a href="<c:url value="/login"/>">Ingresar a Aplicaci&oacute;n</a> <!--Tiene una referencia al servlet llamado "Login" en la clase "LoginServlet"-->
     </body>
 </html>
