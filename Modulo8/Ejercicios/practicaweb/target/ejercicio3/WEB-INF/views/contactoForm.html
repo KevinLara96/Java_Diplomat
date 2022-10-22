@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Contacto Form</title>
+</head>
+<body>
+
+	<form th:action="@{/contactos/guardaContacto}" method="post" th:object="${contacto}">
+		<table border="1">
+			<tr>
+				<td>Nombre</td>
+				<td><input type="text" th:field="*{nombre}" /></td>
+			</tr>
+			<tr>
+				<td>Apellidos</td>
+				<td><input type="text" th:field="*{apellidos}" /></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="Enviar" />
+					&nbsp;
+					<a th:href="@{/contactos/inicio}">
+						Cancelar
+					</a>
+				</td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
