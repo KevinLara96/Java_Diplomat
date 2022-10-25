@@ -18,7 +18,7 @@
   xmlns:h="http://xmlns.jcp.org/jsf/html"
 >
   <h:head>
-    <title>Facelets Hello Greeting</title>
+    <title>Reclutamiento</title>
   </h:head>
   <h:body>
     <h:form>
@@ -26,8 +26,21 @@
         url="#{resource['images:duke.waving.gif']}"
         alt="Duke waving his hand"
       />
-      <h:commandButton id="submit" value="Ingresar" action="response" />
-      <h:commandButton id="reset" value="Limpiar" type="reset" />
+      <h:commandLink
+        id="registroCandidato"
+        value="Registrar Candidato"
+        action="candidato"
+      />
+      <h:commandLink
+        id="registroCurriculum"
+        value="Registrar Curriculum"
+        type="registroCurriculum"
+      />
+      <h:commandLink
+        id="listaCandidatos"
+        value="Listar Candidatos"
+        action="listaCandidatos"
+      />
     </h:form>
   </h:body>
 </html>

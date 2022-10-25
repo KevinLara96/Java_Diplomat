@@ -27,17 +27,28 @@
         alt="Duke waving his hand"
       />
       <h2>Registro</h2>
+
       <p></p>
-      <label>Nombre</label>
-      <h:inputText id="nombre" value="#{candidato.nombre}">
+      <label
+        >Nombre
+        <h:inputText value="#{candidato.nombre}" />
+      </label>
 
-      <label>Telefono</label>
-      <h:inputText id="telefono" value="#{candidato.telefono}">
+      <label
+        >Telefono
+        <h:inputText value="#{candidato.telefono}" />
+      </label>
 
-      <label>Correo</label>
-      <h:inputText id="correo" value="#{candidato.correo}">
+      <label
+        >Correo
+        <h:inputText value="#{candidato.correo}" />
+      </label>
 
-      <h:commandButton id="agregar" value="Agregar" action="#{candidato.agregar}" />
+      <h:commandButton
+        id="agregar"
+        value="Agregar"
+        action="#{candidato.agregar}"
+      />
     </h:form>
   </h:body>
 </html>
