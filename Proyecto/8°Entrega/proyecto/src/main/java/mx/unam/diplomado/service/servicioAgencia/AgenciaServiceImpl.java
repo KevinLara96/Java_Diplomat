@@ -14,13 +14,23 @@ public class AgenciaServiceImpl implements AgenciaService {
     private AgenciaRepositorio repositorioAgencia;
 
     @Override
-    public Optional<Agencia> findByIdAgencia(Integer idAgencia) {
+    public List<Agencia> cargaAgencias() {
+        return null;
+    }
+
+    @Override
+    public void guardaAgencia(Agencia autobus) {
+
+    }
+
+    @Override
+    public Optional<Agencia> cargaAgencia(Integer idAgencia) {
         return Optional.empty();
     }
 
     @Override
-    public List<Agencia> findAllByIdAgencia(Integer idAgencia) {
-        return null;
+    public void eliminaAgencia(Integer idAgencia) {
+
     }
 
 }

@@ -1,5 +1,5 @@
 package mx.unam.diplomado.modelo.repository.puestoRepositorio;
 
-public class PuestoRepositorio {
+public interface PuestoRepositorio {
 
 }
