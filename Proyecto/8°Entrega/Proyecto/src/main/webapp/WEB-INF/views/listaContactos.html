@@ -51,17 +51,6 @@
                 <td th:text="${contacto.edad}" />
                 <td th:text="${contacto.tipoContacto.nombre}" />
                 <td>
-                  <ul>
-                    <li th:each="contactoMedio: ${contacto.contactosMedios}">
-                      <span
-                        th:text="${contactoMedio.medioContacto.nombre}"
-                      ></span>
-                      &nbsp;
-                      <span th:text="${contactoMedio.valor}"></span>
-                    </li>
-                  </ul>
-                </td>
-                <td>
                   <a
                     th:href="@{/contactos/actualizar/{contactoId}(contactoId=${contacto.id})}"
                     class="btn btn-primary"
