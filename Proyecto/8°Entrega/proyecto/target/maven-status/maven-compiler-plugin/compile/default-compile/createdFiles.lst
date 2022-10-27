@@ -1,0 +1,5 @@
+mx/unam/diplomado/modelo/entidades/agencia/autobus/Autobus.class
+mx/unam/diplomado/modelo/entidades/agencia/asignaciones/ConductorAutobus.class
+mx/unam/diplomado/modelo/entidades/agencia/asignaciones/ConductorViaje.class
+mx/unam/diplomado/modelo/entidades/agencia/autobus/ClaseTuribus.class
+mx/unam/diplomado/modelo/entidades/agencia/autobus/ClaseBus.class
