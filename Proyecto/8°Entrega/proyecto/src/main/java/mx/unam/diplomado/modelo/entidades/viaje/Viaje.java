@@ -7,12 +7,19 @@ import javax.persistence.CascadeType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+//import javax.persistence.Entity;
+//import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import mx.unam.diplomado.modelo.entidades.agencia.Agencia;
 
+@NamedQuery(name = "Viaje.buscarTodos", query = "Select v from Viaje v")
+
+// @Entity
+// @Table(name = "viaje")
 public class Viaje {
 
     @Id
