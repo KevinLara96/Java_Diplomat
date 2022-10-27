@@ -22,118 +22,112 @@ import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "t_contacto")
-@NamedQueries(
-		{@NamedQuery(name = "contactosAll", query = "FROM Contacto"),
-		@NamedQuery(name = "contactoById", query = "SELECT c FROM Contacto c WHERE c.id = :id"),
-		@NamedQuery(name ="contactosByTipo", query = "SELECT c FROM Contacto c WHERE c.tipoContacto.id = :idTipoContacto")
-		})
+@NamedQueries({ @NamedQuery(name = "contactosAll", query = "FROM Contacto"),
+        @NamedQuery(name = "contactoById", query = "SELECT c FROM Contacto c WHERE c.id = :id"),
+        @NamedQuery(name = "contactosByTipo", query = "SELECT c FROM Contacto c WHERE c.tipoContacto.id = :idTipoContacto")
+})
 public class Contacto {
-	
-	private Integer id;
-	private String nombre;
-	private String apellidos;
-	private Integer edad;
-	private String direccion;
-	private TipoContacto tipoContacto;
-	private Set<ContactoMedio> contactosMedios;
-	
-	@Id
-	@Column(name = "id_contacto")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer getId() {
-		return id;
-	}
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	@Column(name = "vc_nombre", length = 50)
-	public String getNombre() {
-		return nombre;
-	}
-	
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
-	@Column(name = "vc_apellidos", length = 200)
-	public String getApellidos() {
-		return apellidos;
-	}
-	
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-	
-	@Column(name = "vi_edad")
-	public Integer getEdad() {
-		return edad;
-	}
-	
-	public void setEdad(Integer edad) {
-		this.edad = edad;
-	}
-	
-	@Column(name = "vc_direccion")
-	public String getDireccion() {
-		return direccion;
-	}
-	
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-	
-	@ManyToOne(targetEntity = TipoContacto.class, optional = false, fetch = FetchType.LAZY) //indica el tipo de clase
-	@JoinColumn(name = "id_tipo_contacto", nullable = false)//indicar la columna de la relacion de B
-	@Fetch(FetchMode.JOIN)
-	public TipoContacto getTipoContacto() {
-		return tipoContacto;
-	}
-	
-	public void setTipoContacto(TipoContacto tipoContacto) {
-		this.tipoContacto = tipoContacto;
-	}
-	
 
-	@OneToMany(mappedBy = "contacto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
-	public Set<ContactoMedio> getContactosMedios() {
-		return contactosMedios;
-	}
-	
-	public void setContactosMedios(Set<ContactoMedio> contactosMedios) {
-		this.contactosMedios = contactosMedios;
-	}
-	
-	
+    private Integer id;
+    private String nombre;
+    private String apellidos;
+    private Integer edad;
+    private String direccion;
+    private TipoContacto tipoContacto;
+    private Set<ContactoMedio> contactosMedios;
 
-	@Override
-	public String toString() {
-		return "Contacto [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad
-				+ ", direccion=" + direccion + ", tipoContacto=" + tipoContacto + "]";
-	}
+    @Id
+    @Column(name = "id_contacto")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getId() {
+        return id;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(apellidos, direccion, edad, id, nombre, tipoContacto);
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Contacto other = (Contacto) obj;
-		return Objects.equals(apellidos, other.apellidos)
-				&& Objects.equals(direccion, other.direccion) && Objects.equals(edad, other.edad)
-				&& Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(tipoContacto, other.tipoContacto);
-	}
-	
-	
+    @Column(name = "vc_nombre", length = 50)
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Column(name = "vc_apellidos", length = 200)
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    @Column(name = "vi_edad")
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+    @Column(name = "vc_direccion")
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    @ManyToOne(targetEntity = TipoContacto.class, optional = false, fetch = FetchType.LAZY) // indica el tipo de clase
+    @JoinColumn(name = "id_tipo_contacto", nullable = false) // indicar la columna de la relacion de B
+    @Fetch(FetchMode.JOIN)
+    public TipoContacto getTipoContacto() {
+        return tipoContacto;
+    }
+
+    public void setTipoContacto(TipoContacto tipoContacto) {
+        this.tipoContacto = tipoContacto;
+    }
+
+    @OneToMany(mappedBy = "contacto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
+    public Set<ContactoMedio> getContactosMedios() {
+        return contactosMedios;
+    }
+
+    public void setContactosMedios(Set<ContactoMedio> contactosMedios) {
+        this.contactosMedios = contactosMedios;
+    }
+
+    @Override
+    public String toString() {
+        return "Contacto [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad
+                + ", direccion=" + direccion + ", tipoContacto=" + tipoContacto + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(apellidos, direccion, edad, id, nombre, tipoContacto);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Contacto other = (Contacto) obj;
+        return Objects.equals(apellidos, other.apellidos)
+                && Objects.equals(direccion, other.direccion) && Objects.equals(edad, other.edad)
+                && Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre)
+                && Objects.equals(tipoContacto, other.tipoContacto);
+    }
 
 }

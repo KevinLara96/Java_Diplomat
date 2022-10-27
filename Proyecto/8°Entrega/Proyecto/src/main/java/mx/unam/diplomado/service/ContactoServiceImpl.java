@@ -10,27 +10,27 @@ import mx.unam.diplomado.modelo.repository.ContactoRepository;
 
 @Service
 public class ContactoServiceImpl implements ContactoService {
-	
-	@Autowired
-	private ContactoRepository contactoRepository;
 
-	@Override
-	public List<Contacto> cargaContactos() {
-		return contactoRepository.findAll();
-	}
-	
-	@Override
-	public void guardaContacto(Contacto contacto) {
-		contactoRepository.save(contacto);
-	}	
-	
-	@Override
-	public Contacto cargaContacto(Integer id) {
-		return contactoRepository.findById(id).orElse(null);
-	}
-	
-	@Override
-	public void eliminaContacto(Integer id) {
-		contactoRepository.deleteById(id);
-	}
+    @Autowired
+    private ContactoRepository contactoRepository;
+
+    @Override
+    public List<Contacto> cargaContactos() {
+        return contactoRepository.findAll();
+    }
+
+    @Override
+    public void guardaContacto(Contacto contacto) {
+        contactoRepository.save(contacto);
+    }
+
+    @Override
+    public Contacto cargaContacto(Integer id) {
+        return contactoRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void eliminaContacto(Integer id) {
+        contactoRepository.deleteById(id);
+    }
 }

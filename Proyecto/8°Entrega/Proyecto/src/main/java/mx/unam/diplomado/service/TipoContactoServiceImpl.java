@@ -11,26 +11,26 @@ import mx.unam.diplomado.modelo.repository.TipoContactoRepository;
 
 @Service
 public class TipoContactoServiceImpl implements TipoContactoService {
-	
-	@Autowired
+
+    @Autowired
     private TipoContactoRepository tipoContactoRepository;
-	
-	@Override
-	public List<TipoContacto> getListaTipoContacto() {
-		return tipoContactoRepository.findAll();
-	}
-	
-	@Override
-	public TipoContacto cargaPorNombre(String nombre) {
-		TipoContacto encontrado = null;
-		TipoContacto tipoContactoExample = new TipoContacto();
-		tipoContactoExample.setNombre(nombre);
-		Example<TipoContacto> tCExample = Example.of(tipoContactoExample);
-		Iterable<TipoContacto> it = tipoContactoRepository.findAll(tCExample);
-		for (TipoContacto tipocontacto : it) {
-			encontrado = tipocontacto;
-		}
-		return encontrado; 
-	}
+
+    @Override
+    public List<TipoContacto> getListaTipoContacto() {
+        return tipoContactoRepository.findAll();
+    }
+
+    @Override
+    public TipoContacto cargaPorNombre(String nombre) {
+        TipoContacto encontrado = null;
+        TipoContacto tipoContactoExample = new TipoContacto();
+        tipoContactoExample.setNombre(nombre);
+        Example<TipoContacto> tCExample = Example.of(tipoContactoExample);
+        Iterable<TipoContacto> it = tipoContactoRepository.findAll(tCExample);
+        for (TipoContacto tipocontacto : it) {
+            encontrado = tipocontacto;
+        }
+        return encontrado;
+    }
 
 }

@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import mx.unam.diplomado.modelo.entidades.TipoContacto;
 
 @Repository("tipoContactoRepository")
-public interface TipoContactoRepository extends JpaRepository<TipoContacto, Integer>, 
-	QueryByExampleExecutor<TipoContacto> {
+public interface TipoContactoRepository extends JpaRepository<TipoContacto, Integer>,
+        QueryByExampleExecutor<TipoContacto> {
 }
