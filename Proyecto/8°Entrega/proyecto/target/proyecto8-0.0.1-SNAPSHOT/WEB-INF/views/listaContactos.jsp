@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title><spring:message code="label.titulo.contactos" /></title>
+<title><spring:message code="label.titulo.empleados" /></title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
 <%@ page isELIgnored="false"%>
@@ -27,24 +27,26 @@
 			<hr />
 
 			<input type="button"
-				value='<spring:message code="label.contacto.agregar" />'
+				value='<spring:message code="label.empleado.agregar" />'
 				onclick="window.location.href='contactoForm'; return false;"
 				class="btn btn-primary" /> <br /> <br />
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title">
-						<spring:message code="label.titulo.contactos" />
+						<spring:message code="label.titulo.empleados" />
 					</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-striped table-bordered">
 						<tr>
-							<th><spring:message code="label.contacto.nombre" /></th>
-							<th><spring:message code="label.contacto.apellidos" /></th>
-							<th><spring:message code="label.contacto.edad" /></th>
-							<th><spring:message code="label.contacto.tipo.contacto" /></th>
-							<th><spring:message code="label.contacto.medio.contacto" /></th>
-							<th><spring:message code="label.contacto.accion" /></th>
+							<th><spring:message code="label.empleado.id" /></th>
+							<th><spring:message code="label.empleado.nombre" /></th>
+							<th><spring:message code="label.empleado.correo" /></th>
+							<th><spring:message code="label.empleado.rfc" /></th>
+							<th><spring:message code="label.empleado.salario" /></th>
+							<th><spring:message code="label.empleado.agencia" /></th>
+							<th><spring:message code="label.empleado.puesto" /></th>
+							<th><spring:message code="label.empleado.accion" /></th>
 						</tr>
 
 						<c:forEach var="contacto" items="${contactos}">
@@ -60,20 +62,16 @@
 								<td>${contacto.nombre}</td>
 								<td>${contacto.apellidos}</td>
 								<td>${contacto.edad}</td>
+								<td>${contacto.edad}</td>
+								<td>${contacto.edad}</td>
+								<td>${contacto.edad}</td>
 								<td>${contacto.tipoContacto.nombre}</td>
-								<td>
-									<ul>
-										<c:forEach items="${contacto.contactosMedios}" var="contactoMedio">
-											<li>${contactoMedio.medioContacto.nombre} &nbsp;${contactoMedio.valor}</li>
-										</c:forEach>
-									</ul>
-								</td>
 								<td><a href="${updateLink}" class="btn btn-primary"
-									role="button"><spring:message code="label.contacto.editar" />
+									role="button"><spring:message code="label.empleado.editar" />
 								</a>&nbsp; <a href="${deleteLink}" class="btn btn-danger"
 									role="button"
-									onclick="if (!(confirm('<spring:message code="label.contacto.eliminar.pregunta" />'))) return false">
-										<spring:message code="label.contacto.eliminar" />
+									onclick="if (!(confirm('<spring:message code="label.empleado.eliminar.pregunta" />'))) return false">
+										<spring:message code="label.empleado.eliminar" />
 								</a></td>
 							</tr>
 						</c:forEach>

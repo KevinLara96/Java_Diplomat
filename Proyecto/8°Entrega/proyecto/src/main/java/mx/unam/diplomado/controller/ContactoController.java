@@ -29,7 +29,7 @@ import mx.unam.diplomado.service.MedioContactoService;
 import mx.unam.diplomado.service.TipoContactoService;
 
 @Controller
-@RequestMapping("/contactos")
+@RequestMapping("/empleados")
 public class ContactoController {
 
     @Autowired

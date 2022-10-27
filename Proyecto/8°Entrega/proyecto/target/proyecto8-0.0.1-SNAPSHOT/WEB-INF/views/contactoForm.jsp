@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title><spring:message code="label.titulo.contactos" /></title>
+<title><spring:message code="label.titulo.empleados" /></title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
@@ -23,7 +23,7 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title">
-						<spring:message code="label.contacto.agregar" />
+						<spring:message code="label.empleado.agregar" />
 					</div>
 				</div>
 				<div class="panel-body">
@@ -37,7 +37,7 @@
 
 						<div class="form-group">
 							<form:label path="nombre" class="col-md-3 control-label">
-								<spring:message code="label.contacto.nombre" />
+								<spring:message code="label.empleado.id" />
 							</form:label>
 							<div class="col-md-9">
 								<form:input path="nombre" cssClass="form-control" />
@@ -46,9 +46,10 @@
 								<form:errors path="nombre" />
 							</div>
 						</div>
+
 						<div class="form-group">
-							<label for="apellidos" class="col-md-3 control-label"> <spring:message
-									code="label.contacto.apellidos" />
+							<label for="apellidos" class="col-md-3 control-label"> 
+                                <spring:message	code="label.empleado.nombre" />
 							</label>
 							<div class="col-md-9">
 								<form:input path="apellidos" cssClass="form-control" />
@@ -59,8 +60,32 @@
 						</div>
 
 						<div class="form-group">
-							<label for="edad" class="col-md-3 control-label"> <spring:message
-									code="label.contacto.edad" />
+							<label for="edad" class="col-md-3 control-label"> 
+                                <spring:message	code="label.empleado.correo" />
+							</label>
+							<div class="col-md-3">
+								<form:input path="edad" cssClass="form-control" />
+							</div>
+							<div class="col-md-3">
+								<form:errors path="edad" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="edad" class="col-md-3 control-label"> 
+                                <spring:message	code="label.empleado.rfc" />
+							</label>
+							<div class="col-md-3">
+								<form:input path="edad" cssClass="form-control" />
+							</div>
+							<div class="col-md-3">
+								<form:errors path="edad" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="edad" class="col-md-3 control-label"> 
+                                <spring:message	code="label.empleado.salario" />
 							</label>
 							<div class="col-md-3">
 								<form:input path="edad" cssClass="form-control" />
@@ -72,7 +97,7 @@
 
 						<div class="form-group">
 							<label for="tipoContacto" class="col-md-3 control-label">
-								<spring:message code="label.contacto.tipo.contacto" />
+								<spring:message code="label.empleado.agencia" />
 							</label>
 							<div class="col-md-6">
 								<form:select path="tipoContacto" cssClass="form-control">
@@ -85,21 +110,10 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label for="direccion" class="col-md-3 control-label"> <spring:message
-									code="label.contacto.direccion" />
-							</label>
-							<div class="col-md-9">
-								<form:input path="direccion" cssClass="form-control" />
-							</div>
-							<div class="col-md-9">
-								<form:errors path="direccion" />
-							</div>
-						</div>
 
 						<div class="form-group">
 							<label for="medioContacto" class="col-md-3 control-label">
-								<spring:message code="label.contacto.medio.contacto" />
+								<spring:message code="label.empleado.puesto" />
 							</label>
 							<div class="col-md-6">
 								<form:select path="medioContacto" cssClass="form-control">
@@ -112,28 +126,15 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label for="medio" class="col-md-3 control-label"> <spring:message
-									code="label.contacto.medio" />
-							</label>
-							<div class="col-md-9">
-								<form:input path="medio" cssClass="form-control" />
-							</div>
-							<div class="col-md-9">
-								<form:errors path="medio" />
-							</div>
-						</div>
-
-
 
 						<div class="form-group">
 							<!-- Button -->
 							<div class="col-md-offset-3 col-md-9">
 								<input class="btn btn-primary" type="submit"
-									value='<spring:message code="label.contacto.enviar" />' />
+									value='<spring:message code="label.empleado.enviar" />' />
 								&nbsp; <a href="${urlRegresar}" class="btn btn-primary"
 									role="button"> <spring:message
-										code="label.contacto.cancelar" />
+										code="label.empleado.cancelar" />
 								</a>
 							</div>
 						</div>
