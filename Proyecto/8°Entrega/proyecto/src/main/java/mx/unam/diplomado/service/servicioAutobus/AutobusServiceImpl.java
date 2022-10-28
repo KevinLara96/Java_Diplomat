@@ -20,17 +20,17 @@ public class AutobusServiceImpl implements AutobusService {
 
     @Override
     public void guardaAutobus(Autobus autobus) {
-
+        repositorioAutobus.save(autobus);
     }
 
     @Override
     public Optional<Autobus> cargaAutobus(Integer idAutobus) {
-        return null;
+        return repositorioAutobus.findById(idAutobus);
     }
 
     @Override
     public void eliminaAutobus(Integer idAutobus) {
-
+        repositorioAutobus.deleteById(idAutobus);
     }
 
 }

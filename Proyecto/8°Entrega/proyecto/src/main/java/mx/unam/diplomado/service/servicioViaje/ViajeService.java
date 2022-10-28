@@ -1,6 +1,7 @@
 package mx.unam.diplomado.service.servicioViaje;
 
 import java.util.List;
+import java.util.Optional;
 
 import mx.unam.diplomado.modelo.entidades.viaje.Viaje;
 
@@ -10,7 +11,7 @@ public interface ViajeService {
 
     void guardaViaje(Viaje viaje);
 
-    Viaje cargaViaje(Integer id);
+    Optional<Viaje> cargaViaje(Integer id);
 
     void eliminaViaje(Integer id);
 }

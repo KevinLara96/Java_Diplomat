@@ -1,6 +1,7 @@
 package mx.unam.diplomado.service.servicioPuesto;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,16 +19,16 @@ public class PuestoServiceImpl implements PuestoService {
 
     @Override
     public void guardaPuesto(Puesto puesto) {
-
+        repositorioPuesto.save(puesto);
     }
 
     @Override
-    public Puesto cargaPuesto(Integer id) {
-        return null;
+    public Optional<Puesto> cargaPuesto(Integer idPuesto) {
+        return repositorioPuesto.findById(idPuesto);
     }
 
     @Override
-    public void eliminaPuesto(Integer id) {
-
+    public void eliminaPuesto(Integer idPuesto) {
+        repositorioPuesto.deleteById(idPuesto);
     }
 }

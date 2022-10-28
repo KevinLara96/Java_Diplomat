@@ -31,6 +31,7 @@
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/modelo/repository/viajeRepositorio/ViajeRepositorio.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/modelo/entidades/autobus/Autobus.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/service/servicioEmpleado/EmpleadoServiceImpl.java
+/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/controller/home/HomeController.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/modelo/entidades/autobus/ClaseBus.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/controller/autobus/AutobusController.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/service/servicioEmpleado/EmpleadoService.java

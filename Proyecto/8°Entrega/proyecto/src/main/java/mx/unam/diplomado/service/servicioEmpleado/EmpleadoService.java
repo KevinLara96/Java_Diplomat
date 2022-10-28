@@ -1,6 +1,7 @@
 package mx.unam.diplomado.service.servicioEmpleado;
 
 import java.util.List;
+import java.util.Optional;
 
 import mx.unam.diplomado.modelo.entidades.empleado.Empleado;
 
@@ -10,7 +11,7 @@ public interface EmpleadoService {
 
     void guardaEmpleado(Empleado empleado);
 
-    Empleado cargaEmpleado(Integer id);
+    Optional<Empleado> cargaEmpleado(Integer idEmpleado);
 
-    void eliminaEmpleado(Integer id);
+    void eliminaEmpleado(Integer idEmpleado);
 }

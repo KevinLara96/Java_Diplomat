@@ -1,6 +1,7 @@
 package mx.unam.diplomado.service.servicioViaje;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,17 +20,17 @@ public class ViajeServiceImpl implements ViajeService {
 
     @Override
     public void guardaViaje(Viaje viaje) {
-
+        repositorioViaje.save(viaje);
     }
 
     @Override
-    public Viaje cargaViaje(Integer id) {
-        return null;
+    public Optional<Viaje> cargaViaje(Integer idViaje) {
+        return repositorioViaje.findById(idViaje);
     }
 
     @Override
-    public void eliminaViaje(Integer id) {
-
+    public void eliminaViaje(Integer idViaje) {
+        repositorioViaje.deleteById(idViaje);
     }
 
 }

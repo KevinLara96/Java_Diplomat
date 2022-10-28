@@ -19,18 +19,18 @@ public class AgenciaServiceImpl implements AgenciaService {
     }
 
     @Override
-    public void guardaAgencia(Agencia autobus) {
-
+    public void guardaAgencia(Agencia agencia) {
+        repositorioAgencia.save(agencia);
     }
 
     @Override
     public Optional<Agencia> cargaAgencia(Integer idAgencia) {
-        return Optional.empty();
+        return repositorioAgencia.findById(idAgencia);
     }
 
     @Override
     public void eliminaAgencia(Integer idAgencia) {
-
+        repositorioAgencia.deleteById(idAgencia);
     }
 
 }

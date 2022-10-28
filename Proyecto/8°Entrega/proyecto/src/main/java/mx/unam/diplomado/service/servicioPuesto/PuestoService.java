@@ -1,6 +1,7 @@
 package mx.unam.diplomado.service.servicioPuesto;
 
 import java.util.List;
+import java.util.Optional;
 
 import mx.unam.diplomado.modelo.entidades.puesto.Puesto;
 
@@ -10,7 +11,7 @@ public interface PuestoService {
 
     void guardaPuesto(Puesto puesto);
 
-    Puesto cargaPuesto(Integer id);
+    Optional<Puesto> cargaPuesto(Integer id);
 
     void eliminaPuesto(Integer id);
 }

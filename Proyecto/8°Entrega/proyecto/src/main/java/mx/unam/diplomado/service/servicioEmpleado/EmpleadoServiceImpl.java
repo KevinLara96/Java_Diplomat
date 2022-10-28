@@ -1,6 +1,7 @@
 package mx.unam.diplomado.service.servicioEmpleado;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,17 +20,17 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     public void guardaEmpleado(Empleado empleado) {
-
+        repositorioEmpleado.save(empleado);
     }
 
     @Override
-    public Empleado cargaEmpleado(Integer id) {
-        return null;
+    public Optional<Empleado> cargaEmpleado(Integer idEmpleado) {
+        return repositorioEmpleado.findById(idEmpleado);
     }
 
     @Override
-    public void eliminaEmpleado(Integer id) {
-
+    public void eliminaEmpleado(Integer idEmpleado) {
+        repositorioEmpleado.deleteById(idEmpleado);
     }
 
 }
