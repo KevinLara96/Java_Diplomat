@@ -53,19 +53,19 @@ public class ContactoController {
         return "listaEmpleados";
     }
 
-    @RequestMapping("/contactoForm")
+    @RequestMapping("/empleadoForm")
     public String contactoForm(Model model) {
         model.addAttribute("contacto", new ContactoForm());
         return "contactoForm";
     }
 
-    @RequestMapping(value = "/guardaContacto", method = RequestMethod.POST)
+    @RequestMapping(value = "/guardaEmpleado", method = RequestMethod.POST)
     public ModelAndView guardaContacto(@ModelAttribute("contacto") @Valid ContactoForm contactoForm,
             BindingResult result) {
         ModelAndView vista = new ModelAndView();
         if (result.hasErrors()) {
             vista.addObject(contactoForm);
-            vista.setViewName("contactoForm");
+            vista.setViewName("empleadoForm");
         } else {
             Contacto contacto = contactoForm.getId() != null ? contactoService.cargaContacto(contactoForm.getId())
                     : new Contacto();
@@ -115,13 +115,13 @@ public class ContactoController {
         } else {
             model.addAttribute("contacto", new ContactoForm());
         }
-        return "contactoForm";
+        return "empleadoForm";
     }
 
     @RequestMapping("eliminar")
     public String eliminaContacto(@RequestParam("contactoId") Integer idContacto) {
         contactoService.eliminaContacto(idContacto);
-        return "redirect:/contactos/listar";
+        return "redirect:/empleados/listar";
     }
 
 }
