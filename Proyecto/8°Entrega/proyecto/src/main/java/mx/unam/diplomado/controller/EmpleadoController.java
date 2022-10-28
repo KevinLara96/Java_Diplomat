@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,6 +23,7 @@ import mx.unam.diplomado.service.AgenciaService;
 import mx.unam.diplomado.service.EmpleadoService;
 import mx.unam.diplomado.service.PuestoService;
 
+@RequestMapping("/tmp")
 public class EmpleadoController {
 
     @Autowired
@@ -101,5 +103,11 @@ public class EmpleadoController {
             model.addAttribute("empleado", new EmpleadoForm());
         }
         return "empleadoForm";
+    }
+
+    @RequestMapping("eliminar")
+    public String eliminaEmpleado(@RequestParam("empleadoId") Integer idEmpleado) {
+        empleadoService.eliminaEmpleado(idEmpleado);
+        return "redirect:/empleado/listar";
     }
 }
