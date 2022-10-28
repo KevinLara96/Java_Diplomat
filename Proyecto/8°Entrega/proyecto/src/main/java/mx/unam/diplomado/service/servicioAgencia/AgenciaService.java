@@ -14,4 +14,8 @@ public interface AgenciaService {
     Optional<Agencia> cargaAgencia(Integer idAgencia);
 
     void eliminaAgencia(Integer idAgencia);
+
+    List<Agencia> getListaAgencia();
+
+    Agencia cargaPorNombre(String nombre);
 }

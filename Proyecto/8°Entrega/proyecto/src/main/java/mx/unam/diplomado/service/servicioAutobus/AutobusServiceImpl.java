@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 
 import mx.unam.diplomado.modelo.entidades.autobus.Autobus;
 import mx.unam.diplomado.modelo.repository.autobusRepositorio.AutobusRepositorio;
@@ -31,6 +32,24 @@ public class AutobusServiceImpl implements AutobusService {
     @Override
     public void eliminaAutobus(Integer idAutobus) {
         repositorioAutobus.deleteById(idAutobus);
+    }
+
+    @Override
+    public List<Autobus> getListaAutobus() {
+        return repositorioAutobus.findAll();
+    }
+
+    @Override
+    public Autobus cargaPorNombre(String nombre) {
+        Autobus encontrado = null;
+        Autobus medioContactoExample = new Autobus();
+        medioContactoExample.setModelo(nombre);
+        Example<Autobus> tCExample = Example.of(medioContactoExample);
+        Iterable<Autobus> it = repositorioAutobus.findAll(tCExample);
+        for (Autobus mediocontacto : it) {
+            encontrado = mediocontacto;
+        }
+        return encontrado;
     }
 
 }

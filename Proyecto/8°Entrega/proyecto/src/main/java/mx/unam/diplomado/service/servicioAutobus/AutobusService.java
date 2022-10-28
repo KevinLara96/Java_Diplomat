@@ -14,4 +14,8 @@ public interface AutobusService {
     Optional<Autobus> cargaAutobus(Integer idAutobus);
 
     void eliminaAutobus(Integer idAutobus);
+
+    List<Autobus> getListaAutobus();
+
+    Autobus cargaPorNombre(String nombre);
 }

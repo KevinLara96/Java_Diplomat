@@ -14,4 +14,8 @@ public interface PuestoService {
     Optional<Puesto> cargaPuesto(Integer id);
 
     void eliminaPuesto(Integer id);
+
+    List<Puesto> getListaPuesto();
+
+    Puesto cargaPorNombre(String nombre);
 }

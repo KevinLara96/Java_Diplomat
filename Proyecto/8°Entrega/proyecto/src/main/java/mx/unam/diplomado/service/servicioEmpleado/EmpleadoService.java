@@ -14,4 +14,8 @@ public interface EmpleadoService {
     Optional<Empleado> cargaEmpleado(Integer idEmpleado);
 
     void eliminaEmpleado(Integer idEmpleado);
+
+    List<Empleado> getListaEmpleado();
+
+    Empleado cargaPorNombre(String nombre);
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 
 import mx.unam.diplomado.modelo.entidades.agencia.Agencia;
 import mx.unam.diplomado.modelo.repository.agenciaRepositorio.AgenciaRepositorio;
@@ -31,6 +32,24 @@ public class AgenciaServiceImpl implements AgenciaService {
     @Override
     public void eliminaAgencia(Integer idAgencia) {
         repositorioAgencia.deleteById(idAgencia);
+    }
+
+    @Override
+    public List<Agencia> getListaAgencia() {
+        return repositorioAgencia.findAll();
+    }
+
+    @Override
+    public Agencia cargaPorNombre(String nombre) {
+        Agencia encontrado = null;
+        Agencia medioContactoExample = new Agencia();
+        medioContactoExample.setNombreAgencia(nombre);
+        Example<Agencia> tCExample = Example.of(medioContactoExample);
+        Iterable<Agencia> it = repositorioAgencia.findAll(tCExample);
+        for (Agencia mediocontacto : it) {
+            encontrado = mediocontacto;
+        }
+        return encontrado;
     }
 
 }

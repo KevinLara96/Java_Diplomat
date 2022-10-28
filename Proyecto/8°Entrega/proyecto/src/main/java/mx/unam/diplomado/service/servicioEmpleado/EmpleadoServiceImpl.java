@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 
 import mx.unam.diplomado.modelo.entidades.empleado.Empleado;
 import mx.unam.diplomado.modelo.repository.empleadoRepositorio.EmpleadoRepositorio;
@@ -31,6 +32,24 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     @Override
     public void eliminaEmpleado(Integer idEmpleado) {
         repositorioEmpleado.deleteById(idEmpleado);
+    }
+
+    @Override
+    public List<Empleado> getListaEmpleado() {
+        return repositorioEmpleado.findAll();
+    }
+
+    @Override
+    public Empleado cargaPorNombre(String nombre) {
+        Empleado encontrado = null;
+        Empleado medioContactoExample = new Empleado();
+        medioContactoExample.setNombre(nombre);
+        Example<Empleado> tCExample = Example.of(medioContactoExample);
+        Iterable<Empleado> it = repositorioEmpleado.findAll(tCExample);
+        for (Empleado mediocontacto : it) {
+            encontrado = mediocontacto;
+        }
+        return encontrado;
     }
 
 }
