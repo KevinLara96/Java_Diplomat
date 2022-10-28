@@ -1,4 +1,4 @@
-package mx.unam.diplomado.service.servicioAgencia;
+package mx.unam.diplomado.service;
 
 import java.util.List;
 import java.util.Optional;

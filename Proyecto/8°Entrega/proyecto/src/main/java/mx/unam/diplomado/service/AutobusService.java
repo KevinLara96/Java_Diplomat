@@ -1,4 +1,4 @@
-package mx.unam.diplomado.service.servicioAutobus;
+package mx.unam.diplomado.service;
 
 import java.util.List;
 import java.util.Optional;

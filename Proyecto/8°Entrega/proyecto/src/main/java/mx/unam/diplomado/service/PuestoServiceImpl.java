@@ -1,4 +1,4 @@
-package mx.unam.diplomado.service.servicioPuesto;
+package mx.unam.diplomado.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 
 import mx.unam.diplomado.modelo.entidades.puesto.Puesto;
-import mx.unam.diplomado.modelo.repository.puestoRepositorio.PuestoRepositorio;
+import mx.unam.diplomado.modelo.repository.PuestoRepositorio;
 
 public class PuestoServiceImpl implements PuestoService {
     @Autowired

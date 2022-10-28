@@ -1,4 +1,4 @@
-package mx.unam.diplomado.service.servicioAutobus;
+package mx.unam.diplomado.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 
 import mx.unam.diplomado.modelo.entidades.autobus.Autobus;
-import mx.unam.diplomado.modelo.repository.autobusRepositorio.AutobusRepositorio;
+import mx.unam.diplomado.modelo.repository.AutobusRepositorio;
 
 public class AutobusServiceImpl implements AutobusService {
 

@@ -20,9 +20,9 @@ import mx.unam.diplomado.forms.empleado.EmpleadoForm;
 import mx.unam.diplomado.modelo.entidades.agencia.Agencia;
 import mx.unam.diplomado.modelo.entidades.empleado.Empleado;
 import mx.unam.diplomado.modelo.entidades.puesto.Puesto;
-import mx.unam.diplomado.service.servicioAgencia.AgenciaService;
-import mx.unam.diplomado.service.servicioEmpleado.EmpleadoService;
-import mx.unam.diplomado.service.servicioPuesto.PuestoService;
+import mx.unam.diplomado.service.EmpleadoService;
+import mx.unam.diplomado.service.AgenciaService;
+import mx.unam.diplomado.service.PuestoService;
 
 @Controller
 @RequestMapping("/tmp")

@@ -1,4 +1,4 @@
-package mx.unam.diplomado.service.servicioViaje;
+package mx.unam.diplomado.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import mx.unam.diplomado.modelo.entidades.viaje.Viaje;
-import mx.unam.diplomado.modelo.repository.viajeRepositorio.ViajeRepositorio;
+import mx.unam.diplomado.modelo.repository.ViajeRepositorio;
 
 public class ViajeServiceImpl implements ViajeService {
 
