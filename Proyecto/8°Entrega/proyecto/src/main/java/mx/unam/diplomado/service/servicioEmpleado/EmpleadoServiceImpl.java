@@ -14,7 +14,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     public List<Empleado> cargaEmpleados() {
-        return null;
+        return repositorioEmpleado.findAll();
     }
 
     @Override

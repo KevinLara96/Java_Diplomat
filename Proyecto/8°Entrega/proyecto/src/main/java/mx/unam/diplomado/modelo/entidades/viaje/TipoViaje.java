@@ -2,11 +2,11 @@ package mx.unam.diplomado.modelo.entidades.viaje;
 
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-//import javax.persistence.Table;
-//import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Entity;
 
-//@Entity
-//@Table(name = "tipoViaje")
+@Entity
+@Table(name = "tipoViaje")
 public class TipoViaje {
 
     @Id

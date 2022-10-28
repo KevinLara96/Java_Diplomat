@@ -9,11 +9,11 @@ import mx.unam.diplomado.modelo.repository.puestoRepositorio.PuestoRepositorio;
 
 public class PuestoServiceImpl implements PuestoService {
     @Autowired
-    private PuestoRepositorio contactoRepository;
+    private PuestoRepositorio repositorioPuesto;
 
     @Override
     public List<Puesto> cargaPuestos() {
-        return null;
+        return repositorioPuesto.findAll();
     }
 
     @Override

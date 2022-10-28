@@ -3,13 +3,13 @@ package mx.unam.diplomado.modelo.entidades.agencia.asignaciones;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-//import javax.persistence.Table;
-//import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Entity;
 
 import mx.unam.diplomado.modelo.entidades.agencia.Agencia;
 
-//@Entity
-//@Table(name = "conductor_viaje")
+@Entity
+@Table(name = "conductor_viaje")
 public class ConductorViaje {
 
     @Id

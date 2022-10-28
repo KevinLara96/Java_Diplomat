@@ -15,7 +15,7 @@ public class AgenciaServiceImpl implements AgenciaService {
 
     @Override
     public List<Agencia> cargaAgencias() {
-        return null;
+        return repositorioAgencia.findAll();
     }
 
     @Override

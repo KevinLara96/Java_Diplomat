@@ -7,12 +7,16 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Entity;
 
 import mx.unam.diplomado.modelo.entidades.empleado.Empleado;
 import mx.unam.diplomado.modelo.entidades.agencia.asignaciones.*;
 import mx.unam.diplomado.modelo.entidades.viaje.*;
 import mx.unam.diplomado.modelo.entidades.autobus.*;
 
+@Entity
+@Table(name = "agencia")
 public class Agencia {
 
     @Id

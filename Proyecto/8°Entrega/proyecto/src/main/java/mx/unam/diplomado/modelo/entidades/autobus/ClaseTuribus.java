@@ -4,11 +4,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-//import javax.persistence.Table;
-//import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Entity;
 
-//@Entity
-//@Table(name = "claseTuribus")
+@Entity
+@Table(name = "claseTuribus")
 public class ClaseTuribus {
 
     @Id

@@ -15,7 +15,7 @@ public class AutobusServiceImpl implements AutobusService {
 
     @Override
     public List<Autobus> cargaAutobuses() {
-        return null;
+        return repositorioAutobus.findAll();
     }
 
     @Override
