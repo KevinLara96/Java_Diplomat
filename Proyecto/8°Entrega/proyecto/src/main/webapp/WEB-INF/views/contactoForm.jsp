@@ -18,6 +18,7 @@
 	<div class="container">
 		<div class="col-md-offset-2 col-md-7">
 			<h3 class="text-center">
+
 				<spring:message code="label.titulo.aplicacion" />
 			</h3>
 			<div class="panel panel-info">
@@ -28,8 +29,9 @@
 				</div>
 				<div class="panel-body">
 
-					<spring:url value="/contactos/guardaContacto" var="urlGuardar" />
-					<spring:url value="/contactos/listar" var="urlRegresar" />
+
+					<spring:url value="/empleados/guardaContacto" var="urlGuardar" />
+					<spring:url value="/empleados/listar" var="urlRegresar" />
 					<form:form action="${urlGuardar}" cssClass="form-horizontal"
 						method="post" modelAttribute="contacto">
 						
@@ -48,9 +50,9 @@
 						</div>
 
 						<div class="form-group">
-							<label for="apellidos" class="col-md-3 control-label"> 
+							<form:label path="apellidos" class="col-md-3 control-label"> 
                                 <spring:message	code="label.empleado.nombre" />
-							</label>
+							</form:label>
 							<div class="col-md-9">
 								<form:input path="apellidos" cssClass="form-control" />
 							</div>

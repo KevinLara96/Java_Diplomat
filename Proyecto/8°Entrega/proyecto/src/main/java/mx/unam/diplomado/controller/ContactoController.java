@@ -50,7 +50,7 @@ public class ContactoController {
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public String cargaContacto(Model model) {
         model.addAttribute("contactos", contactoService.cargaContactos());
-        return "listaContactos";
+        return "listaEmpleados";
     }
 
     @RequestMapping("/contactoForm")
