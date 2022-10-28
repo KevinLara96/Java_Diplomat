@@ -3,7 +3,7 @@ package mx.unam.diplomado.service;
 import java.util.List;
 import java.util.Optional;
 
-import mx.unam.diplomado.modelo.entidades.puesto.Puesto;
+import mx.unam.diplomado.modelo.entidades.Puesto;
 
 public interface PuestoService {
 

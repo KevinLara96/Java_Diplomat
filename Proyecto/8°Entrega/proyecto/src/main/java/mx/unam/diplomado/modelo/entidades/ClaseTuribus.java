@@ -1,4 +1,4 @@
-package mx.unam.diplomado.modelo.entidades.autobus;
+package mx.unam.diplomado.modelo.entidades;
 
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;

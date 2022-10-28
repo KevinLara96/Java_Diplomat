@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 
-import mx.unam.diplomado.modelo.entidades.agencia.Agencia;
+import mx.unam.diplomado.modelo.entidades.Agencia;
 import mx.unam.diplomado.modelo.repository.AgenciaRepositorio;
 
 public class AgenciaServiceImpl implements AgenciaService {

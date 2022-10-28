@@ -1,4 +1,4 @@
-package mx.unam.diplomado.modelo.entidades.viaje;
+package mx.unam.diplomado.modelo.entidades;
 
 import java.time.LocalDate;
 import java.util.Random;
@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import mx.unam.diplomado.modelo.entidades.agencia.Agencia;
 
 @NamedQuery(name = "Viaje.buscarTodos", query = "Select v from Viaje v")
 

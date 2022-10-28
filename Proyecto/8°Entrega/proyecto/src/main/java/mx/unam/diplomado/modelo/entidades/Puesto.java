@@ -1,12 +1,10 @@
-package mx.unam.diplomado.modelo.entidades.puesto;
+package mx.unam.diplomado.modelo.entidades;
 
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Entity;
-
-import mx.unam.diplomado.modelo.entidades.empleado.Empleado;
 
 @Entity
 @Table(name = "puesto")

@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import mx.unam.diplomado.forms.EmpleadoForm;
-import mx.unam.diplomado.modelo.entidades.agencia.Agencia;
-import mx.unam.diplomado.modelo.entidades.empleado.Empleado;
-import mx.unam.diplomado.modelo.entidades.puesto.Puesto;
+import mx.unam.diplomado.modelo.entidades.Agencia;
+import mx.unam.diplomado.modelo.entidades.Empleado;
+import mx.unam.diplomado.modelo.entidades.Puesto;
 import mx.unam.diplomado.service.EmpleadoService;
 import mx.unam.diplomado.service.AgenciaService;
 import mx.unam.diplomado.service.PuestoService;

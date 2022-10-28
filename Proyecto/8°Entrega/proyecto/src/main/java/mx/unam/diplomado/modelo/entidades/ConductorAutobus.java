@@ -6,8 +6,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import mx.unam.diplomado.modelo.entidades.agencia.Agencia;
-
 @Entity
 @Table(name = "conductor_autobus")
 public class ConductorAutobus {

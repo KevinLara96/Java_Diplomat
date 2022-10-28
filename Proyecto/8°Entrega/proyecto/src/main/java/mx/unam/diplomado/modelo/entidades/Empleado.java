@@ -1,4 +1,4 @@
-package mx.unam.diplomado.modelo.entidades.empleado;
+package mx.unam.diplomado.modelo.entidades;
 
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -14,9 +14,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
-
-import mx.unam.diplomado.modelo.entidades.agencia.Agencia;
-import mx.unam.diplomado.modelo.entidades.puesto.Puesto;
 
 @NamedQuery(name = "Empleado.buscarTodos", query = "Select e from Empleado e")
 

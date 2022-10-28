@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 
-import mx.unam.diplomado.modelo.entidades.autobus.Autobus;
+import mx.unam.diplomado.modelo.entidades.Autobus;
 import mx.unam.diplomado.modelo.repository.AutobusRepositorio;
 
 public class AutobusServiceImpl implements AutobusService {

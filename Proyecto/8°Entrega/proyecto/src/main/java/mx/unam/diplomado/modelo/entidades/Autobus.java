@@ -1,4 +1,4 @@
-package mx.unam.diplomado.modelo.entidades.autobus;
+package mx.unam.diplomado.modelo.entidades;
 
 import java.util.Random;
 
@@ -12,8 +12,6 @@ import javax.persistence.Table;
 import javax.persistence.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import mx.unam.diplomado.modelo.entidades.agencia.Agencia;
 
 @NamedQuery(name = "Autobus.buscarTodos", query = "Select a from Autobus a")
 

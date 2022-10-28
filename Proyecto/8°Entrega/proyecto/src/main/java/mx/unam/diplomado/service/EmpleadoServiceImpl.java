@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 
-import mx.unam.diplomado.modelo.entidades.empleado.Empleado;
+import mx.unam.diplomado.modelo.entidades.Empleado;
 import mx.unam.diplomado.modelo.repository.EmpleadoRepositorio;
 
 public class EmpleadoServiceImpl implements EmpleadoService {

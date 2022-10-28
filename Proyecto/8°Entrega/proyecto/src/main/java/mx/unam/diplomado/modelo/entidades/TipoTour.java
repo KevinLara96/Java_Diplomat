@@ -1,4 +1,4 @@
-package mx.unam.diplomado.modelo.entidades.viaje;
+package mx.unam.diplomado.modelo.entidades;
 
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
