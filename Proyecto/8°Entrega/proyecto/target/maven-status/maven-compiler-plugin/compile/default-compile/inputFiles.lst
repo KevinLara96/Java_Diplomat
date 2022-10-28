@@ -16,7 +16,6 @@
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/service/ViajeServiceImpl.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/modelo/entidades/puesto/Puesto.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/modelo/entidades/viaje/Viaje.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/forms/empleado/EmpleadoForm.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/forms/ContactoForm.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/service/MedioContactoServiceImpl.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/controller/HomeController.java
@@ -37,6 +36,7 @@
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/service/AutobusServiceImpl.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/service/PuestoServiceImpl.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/controller/home/HomeController.java
+/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/forms/EmpleadoForm.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/modelo/repository/PuestoRepositorio.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/modelo/entidades/autobus/ClaseBus.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/8°Entrega/proyecto/src/main/java/mx/unam/diplomado/modelo/repository/EmpleadoRepositorio.java

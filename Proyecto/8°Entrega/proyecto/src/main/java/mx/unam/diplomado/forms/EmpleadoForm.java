@@ -1,4 +1,4 @@
-package mx.unam.diplomado.forms.empleado;
+package mx.unam.diplomado.forms;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
