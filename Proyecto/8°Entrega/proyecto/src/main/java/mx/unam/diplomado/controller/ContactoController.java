@@ -50,13 +50,13 @@ public class ContactoController {
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public String cargaContacto(Model model) {
         model.addAttribute("contactos", contactoService.cargaContactos());
-        return "listaEmpleados";
+        return "listaContactos";
     }
 
     @RequestMapping("/empleadoForm")
     public String contactoForm(Model model) {
         model.addAttribute("contacto", new ContactoForm());
-        return "contactoForm";
+        return "empleadoForm";
     }
 
     @RequestMapping(value = "/guardaEmpleado", method = RequestMethod.POST)
@@ -118,7 +118,7 @@ public class ContactoController {
         return "empleadoForm";
     }
 
-    @RequestMapping("eliminar")
+    @RequestMapping("/eliminar")
     public String eliminaContacto(@RequestParam("contactoId") Integer idContacto) {
         contactoService.eliminaContacto(idContacto);
         return "redirect:/empleados/listar";

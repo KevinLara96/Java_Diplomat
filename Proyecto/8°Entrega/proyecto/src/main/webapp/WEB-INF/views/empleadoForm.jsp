@@ -28,101 +28,94 @@
 				</div>
 				<div class="panel-body">
 
-					<spring:url value="/tmp/guardaContacto" var="urlGuardar" />
-					<spring:url value="/tmp/listar" var="urlRegresar" />
+					<spring:url value="/empleados/guardaEmpleado" var="urlGuardar" />
+					<spring:url value="/empleados/listar" var="urlRegresar" />
 					<form:form action="${urlGuardar}" cssClass="form-horizontal"
 						method="post" modelAttribute="contacto">
 						
 						<form:hidden path="id" />
 
 						<div class="form-group">
-							<form:label path="idEmpleado" class="col-md-3 control-label">
+							<label for="idEmpleado" class="col-md-3 control-label">
 								<spring:message code="label.empleado.id" />
-							</form:label>
+							</label>
 							<div class="col-md-3">
-								<form:input path="idEmpleado" cssClass="form-control" />
+								<input for="idEmpleado" cssClass="form-control" />
 							</div>
 							<div class="col-md-3">
-								<form:errors path="idEmpleado" />
+								<errors for="idEmpleado" />
 							</div>
 						</div>
 
 						<div class="form-group">
-							<form:label for="nombre" class="col-md-3 control-label"> 
+							<label for="nombre" class="col-md-3 control-label"> 
                                 <spring:message	code="label.empleado.nombre" />
-							</form:label>
+							</label>
 							<div class="col-md-9">
-								<form:input path="nombre" cssClass="form-control" />
+								<input for="nombre" cssClass="form-control" />
 							</div>
 							<div class="col-md-9">
-								<form:errors path="nombre" />
+								<errors for="nombre" />
 							</div>
 						</div>
 
 						<div class="form-group">
-							<form:label for="correo" class="col-md-3 control-label"> 
+							<label for="correo" class="col-md-3 control-label"> 
                                 <spring:message	code="label.empleado.correo" />
-							</form:label>
+							</label>
 							<div class="col-md-9">
-								<form:input path="correo" cssClass="form-control" />
+								<input for="correo" cssClass="form-control" />
 							</div>
 							<div class="col-md-9">
-								<form:errors path="correo" />
+								<errors for="correo" />
 							</div>
 						</div>
 
 						<div class="form-group">
-							<form:label for="rfc" class="col-md-3 control-label"> 
+							<label for="rfc" class="col-md-3 control-label"> 
                                 <spring:message	code="label.empleado.rfc" />
-							</form:label>
+							</label>
 							<div class="col-md-9">
-								<form:input path="rfc" cssClass="form-control" />
+								<input for="rfc" cssClass="form-control" />
 							</div>
 							<div class="col-md-9">
-								<form:errors path="rfc" />
+								<errors for="rfc" />
 							</div>
 						</div>
 
 						<div class="form-group">
-							<form:label for="salario" class="col-md-3 control-label"> 
+							<label for="salario" class="col-md-3 control-label"> 
                                 <spring:message	code="label.empleado.salario" />
-							</form:label>
+							</label>
 							<div class="col-md-3">
-								<form:input path="salario" cssClass="form-control" />
+								<input for="salario" cssClass="form-control" />
 							</div>
 							<div class="col-md-3">
-								<form:errors path="salario" />
+								<errors for="salario" />
 							</div>
 						</div>
 
 						<div class="form-group">
-							<form:label for="agencia" class="col-md-3 control-label">
-								<spring:message code="label.empleado.agencia" />
-							</form:label>
-							<div class="col-md-6">
-								<form:select path="agencia" cssClass="form-control">
-									<form:option value="">--SELECT--</form:option>
-									<form:options items="${applicationScope.agenciaList}"></form:options>
-								</form:select>
+							<label for="agencia" class="col-md-3 control-label"> 
+                                <spring:message	code="label.empleado.agencia" />
+							</label>
+							<div class="col-md-3">
+								<input for="agencia" cssClass="form-control" />
 							</div>
-							<div class="col-md-6">
-								<form:errors path="agencia" />
+							<div class="col-md-3">
+								<errors for="agencia" />
 							</div>
 						</div>
 
-
-						<div class="form-group">
-							<form:label for="puesto" class="col-md-3 control-label">
-								<spring:message code="label.empleado.puesto" />
-							</form:label>
-							<div class="col-md-6">
-								<form:select path="puesto" cssClass="form-control">
-									<form:option value="">--SELECT--</form:option>
-									<form:options items="${applicationScope.puestoList}"></form:options>
-								</form:select>
+   						<div class="form-group">
+							<label for="puesto" class="col-md-3 control-label"> 
+                                <spring:message	code="label.empleado.puesto" />
+							</label>
+							<div class="col-md-3">
+								<input for="puesto" cssClass="form-control" />
 							</div>
-							<div class="col-md-6">
-								<form:errors path="puesto" />
+							<div class="col-md-3">
+								<errors for="puesto" />
 							</div>
 						</div>
 

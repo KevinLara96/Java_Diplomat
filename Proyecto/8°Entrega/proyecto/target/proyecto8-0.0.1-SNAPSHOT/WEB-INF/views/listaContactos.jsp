@@ -28,7 +28,7 @@
 
 			<input type="button"
 				value='<spring:message code="label.empleado.agregar" />'
-				onclick="window.location.href='contactoForm'; return false;"
+				onclick="window.location.href='empleadoForm'; return false;"
 				class="btn btn-primary" /> <br /> <br />
 			<div class="panel panel-info">
 				<div class="panel-heading">
@@ -52,9 +52,9 @@
 						<c:forEach var="contacto" items="${contactos}">
 
 							<c:url var="updateLink"
-								value="/contactos/actualizar/${contacto.id}" />
+								value="/empleados/actualizar/${contacto.id}" />
 
-							<c:url var="deleteLink" value="/contactos/eliminar">
+							<c:url var="deleteLink" value="/empleados/eliminar">
 								<c:param name="contactoId" value="${contacto.id}" />
 							</c:url>
 
