@@ -16,35 +16,23 @@ public class AgenciaBean implements Serializable {
     private Integer idAgencia;
     private String nombreAgencia;
     private String ubicación;
-    private Set<EmpleadoBean> empleados;
+    private Set<EmpleadoEntity> empleados;
 
     public AgenciaBean() {
-        this.idAgencia = 1;
         this.nombreAgencia = "Agencia 1";
-        this.ubicación = "  Ciudad de México";
+        this.ubicación = "Ciudad de México";
         this.empleados = new HashSet<>();
 
-        EmpleadoBean empleado = new EmpleadoBean();
-        empleado.setIdEmpleado(5);
-        empleado.setNombre("Kevin Lara");
-        empleado.setCorreo("kevin96");
-        empleado.setContrasena("1HOla");
-        empleado.setRfc("LAKS");
-        empleado.setSalario(30.0f);
-        empleado.setAgencia(this);
+        EmpleadoEntity emp = new EmpleadoEntity();
+        emp.setIdEmpleado(1);
+        emp.setNombre("SYS");
+        emp.setCorreo("sys@sak.com");
+        emp.setContrasena("system1");
+        emp.setRfc("-");
+        emp.setSalario(0.0f);
+        emp.setAgencia(this);
 
-        this.empleados.add(empleado);
-
-        empleado = new EmpleadoBean();
-        empleado.setIdEmpleado(1);
-        empleado.setNombre("Kevin Lara");
-        empleado.setCorreo("kevin96");
-        empleado.setContrasena("1HOla");
-        empleado.setRfc("LAKS");
-        empleado.setSalario(30.0f);
-        empleado.setAgencia(this);
-
-        this.empleados.add(empleado);
+        empleados.add(emp);
     }
 
     public Integer getIdAgencia() {
@@ -71,12 +59,26 @@ public class AgenciaBean implements Serializable {
         this.ubicación = ubicación;
     }
 
-    public Set<EmpleadoBean> getEmpleados() {
+    public Set<EmpleadoEntity> getEmpleados() {
         return empleados;
     }
 
-    public void setEmpleados(Set<EmpleadoBean> empleados) {
+    public void setEmpleados(Set<EmpleadoEntity> empleados) {
         this.empleados = empleados;
     }
 
+    public String agregarEmpleado(EmpleadoBean empleado) {
+        EmpleadoEntity emp = new EmpleadoEntity();
+        emp.setIdEmpleado(empleado.getIdEmpleado());
+        emp.setNombre(empleado.getNombre());
+        emp.setCorreo(empleado.getCorreo());
+        emp.setContrasena(empleado.getContrasena());
+        emp.setRfc(empleado.getRfc());
+        emp.setSalario(empleado.getSalario());
+        emp.setAgencia(this);
+
+        empleados.add(emp);
+
+        return "confirmacion";
+    }
 }

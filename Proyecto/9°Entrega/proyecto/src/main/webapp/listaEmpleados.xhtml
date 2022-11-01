@@ -20,11 +20,12 @@
   <h:body>
     <h:outputStylesheet name="css/stylesheet.css" target="head" />
 
-    <h:form>
+    <h:form id="listaEmpleados" value="#{empleadoBean.empleados}" var="empleado">
       <h1>Gestión de empleados.</h1>
 
       <div id="divEmpleados">
         <h:dataTable
+          id="empeadosList"
           value="#{agenciaBean.empleados}"
           var="empleado"
           styleClass="tablaEmpleados"
@@ -59,7 +60,7 @@
 
           <h:column>
             <f:facet name="header">Agencia</f:facet>
-            #{empleado.agencia.nombreAgencia}
+            #{empleado.agencia.ubicación}
           </h:column>
 
           <h:column>
@@ -67,6 +68,10 @@
             SYS
           </h:column>
         </h:dataTable>
+
+        <br />
+        <br />
+        <h:commandButton id="back" value="Atras" action="index" />
       </div>
     </h:form>
   </h:body>

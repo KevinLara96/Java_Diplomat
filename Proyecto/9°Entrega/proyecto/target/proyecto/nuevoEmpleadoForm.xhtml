@@ -16,11 +16,110 @@
   xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
   xmlns:jsf="http://xmlns.jcp.org/jsf"
 >
-  <h:head></h:head>
+  <h:head>
+    <title>Empleado formulario</title>
+  </h:head>
+
   <h:body>
     <h:outputStylesheet name="css/stylesheet.css" target="head" />
-    <h:form>
-      <h1>Hola</h1>
+
+
+    <h:form id="empleadosList" value="#{agenciaBean.empleados}" >
+      <h1>Registro de empleados</h1>
+      <p>Ingrese los datos del nuevo empleado</p>
+
+      <div id="datosLabel">
+        <label>Id Empleado:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="idEmpeadoTxt" value="#{empleadoBean.idEmpleado}" />
+        </label>
+      </div>
+
+      <br />
+      <div id="datosLabel">
+        <label>Nombre completo:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="nombreTxt" value="#{empleadoBean.nombre}" />
+        </label>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>Correo electrónico:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="correoTxt" value="#{empleadoBean.correo}" />
+        </label>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>Contraseña:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="contrasenaTxt" value="#{empleadoBean.contrasena}" />
+        </label>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>RFC:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="rfcTxt" value="#{empleadoBean.rfc}" />
+        </label>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>Salario:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="salarioTxt" value="#{empleadoBean.salario}" />
+        </label>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>Agencia:</label>
+      </div>
+      <div id="datosInput">
+        <h:selectOneMenu value="#{agenciaBean.idAgencia}" width="20px">
+            <f:selectItem itemValue="1" itemLabel="Ciudad de México" />
+            <f:selectItem itemValue="2" itemLabel="Monterrey" />
+            <f:selectItem itemValue="3" itemLabel="Guadalajara" />
+        </h:selectOneMenu>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>Puesto:</label>
+      </div>
+      <div id="datosInput">
+        <h:selectOneMenu value="#{agenciaBean.idAgencia}" width="20px">
+            <f:selectItem itemValue="2" itemLabel="Administrador" />
+            <f:selectItem itemValue="3" itemLabel="Conductor" />
+            <f:selectItem itemValue="4" itemLabel="Programador" />
+            <f:selectItem itemValue="5" itemLabel="Recursos Humanos" />
+        </h:selectOneMenu>
+      </div>
+      <br />
+
+      <div id="datosInput">
+        <h:commandButton value="Agregar empleado" action="#{agenciaBean.agregarEmpleado(empleadoBean)}"/>
+        <h:commandButton value="Limpiar" type="reset" />
+        <h:commandButton value="Atras" action="index" immediate="true"/>
+      </div>
     </h:form>
   </h:body>
 </html>
+
+

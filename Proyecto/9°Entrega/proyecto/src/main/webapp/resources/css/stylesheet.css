@@ -18,6 +18,24 @@ h3 {
   text-align: center;
 }
 
+p{
+    text-align: center;
+    border-bottom: 1px solid #afafaf;
+}
+
+#datosLabel{
+    text-align: left;
+    width: 11%;
+    margin: auto;
+}
+
+#datosInput{
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    width: 50%;
+}
+
 #boton {
   margin: auto;
   text-align: center;

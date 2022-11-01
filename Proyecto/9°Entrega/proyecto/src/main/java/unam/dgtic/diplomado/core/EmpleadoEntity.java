@@ -1,19 +1,6 @@
 package unam.dgtic.diplomado.core;
 
-import java.io.Serializable;
-//import java.util.ArrayList;
-import java.util.HashSet;
-//import java.util.List;
-import java.util.Set;
-
-import jakarta.enterprise.context.SessionScoped;
-import jakarta.inject.Named;
-
-@Named
-@SessionScoped
-public class EmpleadoBean implements Serializable {
-
-    private static final long serialVersionUID = -7258677092121565610L;
+public class EmpleadoEntity {
 
     private Integer idEmpleado;
     private String nombre;
@@ -23,11 +10,26 @@ public class EmpleadoBean implements Serializable {
     private Float salario;
 
     private AgenciaBean agencia;
-    private Set<EmpleadoEntity> empleados;
-    // private PuestoBean puesto;
 
-    public EmpleadoBean() {
-        this.empleados = new HashSet<>();
+    public EmpleadoEntity(
+            Integer idEmpleado,
+            String nombre,
+            String correo,
+            String contrasena,
+            String rfc,
+            Float salario,
+            AgenciaBean agencia) {
+        this.idEmpleado = idEmpleado;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.contrasena = contrasena;
+        this.rfc = rfc;
+        this.salario = salario;
+        this.agencia = agencia;
+    }
+
+    public EmpleadoEntity() {
+
     }
 
     public Integer getIdEmpleado() {
@@ -85,33 +87,5 @@ public class EmpleadoBean implements Serializable {
     public void setAgencia(AgenciaBean agencia) {
         this.agencia = agencia;
     }
-
-    public Set<EmpleadoEntity> getEmpleados() {
-        return empleados;
-    }
-
-    public void setEmpleados(Set<EmpleadoEntity> empleados) {
-        this.empleados = empleados;
-    }
-
-    /*
-     * public String agregarEmpleado() {
-     * 
-     * EmpleadoEntity empleadoBean = new EmpleadoEntity();
-     * empleadoBean.setIdEmpleado(this.idEmpleado);
-     * empleadoBean.setNombre(this.nombre);
-     * empleadoBean.setCorreo(this.correo);
-     * empleadoBean.setContrasena(this.contrasena);
-     * empleadoBean.setRfc(this.rfc);
-     * empleadoBean.setSalario(this.salario);
-     * empleadoBean.setAgencia(new AgenciaBean());
-     * 
-     * empleados.add(empleadoBean);
-     * 
-     * // empleados.add(this);
-     * 
-     * return "confirmacion";
-     * }
-     */
 
 }

@@ -44,11 +44,10 @@
       <h:commandButton id="agregar" value="Agregar">
         <f:ajax
           execute="nombre correo telefono"
-          listener="#{candidat.agregar}"
-          render="candidatos"
+          listener="#{candidato.agregar}"
+          render="@all"
         />
       </h:commandButton>
-    </h:form>
 
     <h:dataTable
       id="candidatos"
@@ -73,5 +72,9 @@
       </h:column>
     </h:dataTable>
     <h:commandLink id="Index" value="Index" action="index" />
+
+    </h:form>
+
+
   </h:body>
 </html>

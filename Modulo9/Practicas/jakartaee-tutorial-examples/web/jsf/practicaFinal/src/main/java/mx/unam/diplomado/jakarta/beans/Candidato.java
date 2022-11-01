@@ -56,7 +56,7 @@ public class Candidato implements Serializable {
         this.candidatos = candidatos;
     }
 
-    public void agregar(AjaxBehaviorEvent event) throws AbortProcessingException {
+    public String agregar(AjaxBehaviorEvent event) throws AbortProcessingException {
 
         candidatos.add(this);
 
@@ -69,7 +69,7 @@ public class Candidato implements Serializable {
          * candidatos.add(candidato);
          * System.out.println(candidatos.size());
          * 
-         * return "index";
          */
+        return "index";
     }
 }
