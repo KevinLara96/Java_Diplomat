@@ -76,3 +76,10 @@ p{
   border: 1px solid black;
   margin: auto;
 }
+
+#divViajes{
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  width: 90%;
+}

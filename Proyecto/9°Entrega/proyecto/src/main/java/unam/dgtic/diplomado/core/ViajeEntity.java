@@ -8,6 +8,7 @@ public class ViajeEntity {
     private Float precio;
     private Integer distancia;
     private String fecha;
+    private String tipoViaje;
 
     private AgenciaEntity agenciaEntity;
 
@@ -66,4 +67,13 @@ public class ViajeEntity {
     public void setAgenciaEntity(AgenciaEntity agenciaEntity) {
         this.agenciaEntity = agenciaEntity;
     }
+
+    public String getTipoViaje() {
+        return tipoViaje;
+    }
+
+    public void setTipoViaje(String tipoViaje) {
+        this.tipoViaje = tipoViaje;
+    }
+
 }

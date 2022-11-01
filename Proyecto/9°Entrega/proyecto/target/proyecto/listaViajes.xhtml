@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Copyright (c) 2014, 2019 Oracle and/or its affiliates. All rights reserved.
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+    SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+>
+  <h:head></h:head>
+  <h:body>
+    <h:outputStylesheet name="css/stylesheet.css" target="head" />
+
+    <h:form id="listaViajes" value="#{agenciaBean.destinos}" var="viaje">
+      <h1>Gestión de Viajes.</h1>
+
+      <div id="divViajes">
+        <h:dataTable
+          id="viajesList"
+          value="#{agenciaBean.destinos}"
+          var="viaje"
+          styleClass="tablaEmpleados"
+          headerClass="cabeceraEmpleados"
+          rowClasses="empleadoPar, empleadoImpar"
+          style="width: 100%"
+        >
+          <h:column>
+            <f:facet name="header">IdViaje</f:facet>
+            #{viaje.idViaje}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Origen</f:facet>
+            #{viaje.origen}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Destino</f:facet>
+            #{viaje.destino}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Precio</f:facet>
+            #{viaje.precio}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Distancia</f:facet>
+            #{viaje.distancia}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Fecha</f:facet>
+            #{viaje.fecha}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Tipo Viaje</f:facet>
+            #{viaje.tipoViaje}
+          </h:column>
+        </h:dataTable>
+
+
+        <br />
+        <br />
+        <h:commandButton id="back" value="Atras" action="index" />
+      </div>
+    </h:form>
+  </h:body>
+</html>

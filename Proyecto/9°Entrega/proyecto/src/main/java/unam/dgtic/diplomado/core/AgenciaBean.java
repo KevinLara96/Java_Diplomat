@@ -24,6 +24,7 @@ public class AgenciaBean implements Serializable {
         this.nombreAgencia = "Agencia 1";
         this.ubicacion = "Ciudad de México";
         this.empleados = new ArrayList<>();
+        this.destinos = new ArrayList<>();
 
         EmpleadoEntity emp = new EmpleadoEntity();
         emp.setIdEmpleado(1);
@@ -108,7 +109,24 @@ public class AgenciaBean implements Serializable {
         empleados.add(emp);
         empleados.sort(Comparator.comparing(EmpleadoEntity::getIdEmpleado));
 
-        return "confirmacion";
+        return "confirmacionEmpleado";
+    }
+
+    public String agregarViaje(ViajeBean viajeBean) {
+
+        ViajeEntity viaje = new ViajeEntity();
+        viaje.setIdViaje(viajeBean.getIdViaje());
+        viaje.setOrigen(viajeBean.getOrigen());
+        viaje.setDestino(viajeBean.getDestino());
+        viaje.setPrecio(viajeBean.getPrecio());
+        viaje.setDistancia(viajeBean.getDistancia());
+        viaje.setFecha(viajeBean.getFecha());
+        viaje.setTipoViaje(viajeBean.getTipoViaje());
+
+        this.destinos.add(viaje);
+        destinos.sort(Comparator.comparing(ViajeEntity::getIdViaje));
+
+        return "index";
     }
 
 }

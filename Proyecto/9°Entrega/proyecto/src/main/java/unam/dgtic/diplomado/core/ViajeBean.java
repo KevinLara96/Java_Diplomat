@@ -17,6 +17,7 @@ public class ViajeBean implements Serializable {
     private Float precio;
     private Integer distancia;
     private String fecha;
+    private String tipoViaje;
 
     private AgenciaBean agenciaBean;
 
@@ -74,6 +75,14 @@ public class ViajeBean implements Serializable {
 
     public void setAgenciaBean(AgenciaBean agenciaBean) {
         this.agenciaBean = agenciaBean;
+    }
+
+    public String getTipoViaje() {
+        return tipoViaje;
+    }
+
+    public void setTipoViaje(String tipoViaje) {
+        this.tipoViaje = tipoViaje;
     }
 
 }
