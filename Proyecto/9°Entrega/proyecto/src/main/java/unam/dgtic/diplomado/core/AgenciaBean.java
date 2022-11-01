@@ -1,8 +1,9 @@
 package unam.dgtic.diplomado.core;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -15,13 +16,14 @@ public class AgenciaBean implements Serializable {
 
     private Integer idAgencia;
     private String nombreAgencia;
-    private String ubicación;
-    private Set<EmpleadoEntity> empleados;
+    private String ubicacion;
+    private List<EmpleadoEntity> empleados;
+    private List<ViajeEntity> destinos;
 
     public AgenciaBean() {
         this.nombreAgencia = "Agencia 1";
-        this.ubicación = "Ciudad de México";
-        this.empleados = new HashSet<>();
+        this.ubicacion = "Ciudad de México";
+        this.empleados = new ArrayList<>();
 
         EmpleadoEntity emp = new EmpleadoEntity();
         emp.setIdEmpleado(1);
@@ -30,7 +32,15 @@ public class AgenciaBean implements Serializable {
         emp.setContrasena("system1");
         emp.setRfc("-");
         emp.setSalario(0.0f);
-        emp.setAgencia(this);
+
+        AgenciaEntity agencia = new AgenciaEntity();
+        agencia.setIdAgencia(this.getIdAgencia());
+        agencia.setNombreAgencia(this.getNombreAgencia());
+        agencia.setUbicacion(this.getUbicacion());
+        emp.setAgencia(agencia);
+
+        PuestoEntity puesto = new PuestoEntity(1, "SYS");
+        emp.setPuesto(puesto);
 
         empleados.add(emp);
     }
@@ -51,34 +61,54 @@ public class AgenciaBean implements Serializable {
         this.nombreAgencia = nombreAgencia;
     }
 
-    public String getUbicación() {
-        return ubicación;
+    public String getUbicacion() {
+        return ubicacion;
     }
 
-    public void setUbicación(String ubicación) {
-        this.ubicación = ubicación;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
-    public Set<EmpleadoEntity> getEmpleados() {
+    public List<EmpleadoEntity> getEmpleados() {
         return empleados;
     }
 
-    public void setEmpleados(Set<EmpleadoEntity> empleados) {
+    public void setEmpleados(List<EmpleadoEntity> empleados) {
         this.empleados = empleados;
     }
 
-    public String agregarEmpleado(EmpleadoBean empleado) {
+    public List<ViajeEntity> getDestinos() {
+        return destinos;
+    }
+
+    public void setDestinos(List<ViajeEntity> destinos) {
+        this.destinos = destinos;
+    }
+
+    public String agregarEmpleado(EmpleadoBean empleadoBean, PuestoBean puestoBean) {
         EmpleadoEntity emp = new EmpleadoEntity();
-        emp.setIdEmpleado(empleado.getIdEmpleado());
-        emp.setNombre(empleado.getNombre());
-        emp.setCorreo(empleado.getCorreo());
-        emp.setContrasena(empleado.getContrasena());
-        emp.setRfc(empleado.getRfc());
-        emp.setSalario(empleado.getSalario());
-        emp.setAgencia(this);
+        emp.setIdEmpleado(empleadoBean.getIdEmpleado());
+        emp.setNombre(empleadoBean.getNombre());
+        emp.setCorreo(empleadoBean.getCorreo());
+        emp.setContrasena(empleadoBean.getContrasena());
+        emp.setRfc(empleadoBean.getRfc());
+        emp.setSalario(empleadoBean.getSalario());
+
+        AgenciaEntity agencia = new AgenciaEntity();
+        agencia.setIdAgencia(this.getIdAgencia());
+        agencia.setNombreAgencia(this.getNombreAgencia());
+        agencia.setUbicacion(this.getUbicacion());
+        emp.setAgencia(agencia);
+
+        PuestoEntity puesto = new PuestoEntity();
+        puesto.setIdPuesto(1);
+        puesto.setPuesto(puestoBean.getPuesto());
+        emp.setPuesto(puesto);
 
         empleados.add(emp);
+        empleados.sort(Comparator.comparing(EmpleadoEntity::getIdEmpleado));
 
         return "confirmacion";
     }
+
 }

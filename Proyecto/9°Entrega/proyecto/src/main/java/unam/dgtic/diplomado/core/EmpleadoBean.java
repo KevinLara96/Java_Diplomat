@@ -1,10 +1,6 @@
 package unam.dgtic.diplomado.core;
 
 import java.io.Serializable;
-//import java.util.ArrayList;
-import java.util.HashSet;
-//import java.util.List;
-import java.util.Set;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -23,11 +19,9 @@ public class EmpleadoBean implements Serializable {
     private Float salario;
 
     private AgenciaBean agencia;
-    private Set<EmpleadoEntity> empleados;
-    // private PuestoBean puesto;
+    private PuestoBean puesto;
 
     public EmpleadoBean() {
-        this.empleados = new HashSet<>();
     }
 
     public Integer getIdEmpleado() {
@@ -86,32 +80,12 @@ public class EmpleadoBean implements Serializable {
         this.agencia = agencia;
     }
 
-    public Set<EmpleadoEntity> getEmpleados() {
-        return empleados;
+    public PuestoBean getPuesto() {
+        return puesto;
     }
 
-    public void setEmpleados(Set<EmpleadoEntity> empleados) {
-        this.empleados = empleados;
+    public void setPuesto(PuestoBean puesto) {
+        this.puesto = puesto;
     }
-
-    /*
-     * public String agregarEmpleado() {
-     * 
-     * EmpleadoEntity empleadoBean = new EmpleadoEntity();
-     * empleadoBean.setIdEmpleado(this.idEmpleado);
-     * empleadoBean.setNombre(this.nombre);
-     * empleadoBean.setCorreo(this.correo);
-     * empleadoBean.setContrasena(this.contrasena);
-     * empleadoBean.setRfc(this.rfc);
-     * empleadoBean.setSalario(this.salario);
-     * empleadoBean.setAgencia(new AgenciaBean());
-     * 
-     * empleados.add(empleadoBean);
-     * 
-     * // empleados.add(this);
-     * 
-     * return "confirmacion";
-     * }
-     */
 
 }

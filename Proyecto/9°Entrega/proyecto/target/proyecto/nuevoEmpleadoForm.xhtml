@@ -92,10 +92,10 @@
         <label>Agencia:</label>
       </div>
       <div id="datosInput">
-        <h:selectOneMenu value="#{agenciaBean.idAgencia}" width="20px">
-            <f:selectItem itemValue="1" itemLabel="Ciudad de México" />
-            <f:selectItem itemValue="2" itemLabel="Monterrey" />
-            <f:selectItem itemValue="3" itemLabel="Guadalajara" />
+        <h:selectOneMenu value="#{agenciaBean.ubicacion}" width="20px">
+            <f:selectItem itemValue="Ciudad de México" itemLabel="Ciudad de México" />
+            <f:selectItem itemValue="Monterrey" itemLabel="Monterrey" />
+            <f:selectItem itemValue="Guadalajara" itemLabel="Guadalajara" />
         </h:selectOneMenu>
       </div>
       <br />
@@ -104,17 +104,17 @@
         <label>Puesto:</label>
       </div>
       <div id="datosInput">
-        <h:selectOneMenu value="#{agenciaBean.idAgencia}" width="20px">
-            <f:selectItem itemValue="2" itemLabel="Administrador" />
-            <f:selectItem itemValue="3" itemLabel="Conductor" />
-            <f:selectItem itemValue="4" itemLabel="Programador" />
-            <f:selectItem itemValue="5" itemLabel="Recursos Humanos" />
+        <h:selectOneMenu value="#{puestoBean.puesto}" width="20px">
+            <f:selectItem itemValue="Administrador" itemLabel="Administrador" />
+            <f:selectItem itemValue="Conductor" itemLabel="Conductor" />
+            <f:selectItem itemValue="Programador" itemLabel="Programador" />
+            <f:selectItem itemValue="Recursos Humanos" itemLabel="Recursos Humanos" />
         </h:selectOneMenu>
       </div>
       <br />
 
       <div id="datosInput">
-        <h:commandButton value="Agregar empleado" action="#{agenciaBean.agregarEmpleado(empleadoBean)}"/>
+        <h:commandButton value="Agregar empleado" action="#{agenciaBean.agregarEmpleado(empleadoBean, puestoBean)}"/>
         <h:commandButton value="Limpiar" type="reset" />
         <h:commandButton value="Atras" action="index" immediate="true"/>
       </div>

@@ -9,24 +9,8 @@ public class EmpleadoEntity {
     private String rfc;
     private Float salario;
 
-    private AgenciaBean agencia;
-
-    public EmpleadoEntity(
-            Integer idEmpleado,
-            String nombre,
-            String correo,
-            String contrasena,
-            String rfc,
-            Float salario,
-            AgenciaBean agencia) {
-        this.idEmpleado = idEmpleado;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.contrasena = contrasena;
-        this.rfc = rfc;
-        this.salario = salario;
-        this.agencia = agencia;
-    }
+    private AgenciaEntity agencia;
+    private PuestoEntity puesto;
 
     public EmpleadoEntity() {
 
@@ -80,12 +64,20 @@ public class EmpleadoEntity {
         this.salario = salario;
     }
 
-    public AgenciaBean getAgencia() {
+    public AgenciaEntity getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(AgenciaBean agencia) {
+    public void setAgencia(AgenciaEntity agencia) {
         this.agencia = agencia;
+    }
+
+    public PuestoEntity getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(PuestoEntity puesto) {
+        this.puesto = puesto;
     }
 
 }

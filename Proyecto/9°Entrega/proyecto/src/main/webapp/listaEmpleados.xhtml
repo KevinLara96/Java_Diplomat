@@ -20,7 +20,7 @@
   <h:body>
     <h:outputStylesheet name="css/stylesheet.css" target="head" />
 
-    <h:form id="listaEmpleados" value="#{empleadoBean.empleados}" var="empleado">
+    <h:form id="listaEmpleados" value="#{agenciaBean.empleados}" var="empleado">
       <h1>Gestión de empleados.</h1>
 
       <div id="divEmpleados">
@@ -60,12 +60,12 @@
 
           <h:column>
             <f:facet name="header">Agencia</f:facet>
-            #{empleado.agencia.ubicación}
+            #{empleado.agencia.ubicacion}
           </h:column>
 
           <h:column>
             <f:facet name="header">Puesto</f:facet>
-            SYS
+            #{empleado.puesto.puesto}
           </h:column>
         </h:dataTable>
 

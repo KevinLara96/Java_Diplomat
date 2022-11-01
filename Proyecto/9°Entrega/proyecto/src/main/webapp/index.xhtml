@@ -23,7 +23,6 @@
     <h:form prependId="false">
       <!--Título-->
       <h1>Servicio de autobuses</h1>
-      <br />
 
       <!--Empleados-->
       <h3>Gestión de empleados.</h3>
@@ -37,6 +36,24 @@
         <h:commandButton
           value="Ingresar empleados"
           action="nuevoEmpleadoForm"
+          styleClass="boton"
+          style="float: center"
+        />
+      </div>
+      <br />
+
+            <!--Destinos-->
+      <h3>Gestión de viajes.</h3>
+      <div id="boton">
+        <h:commandButton
+          value="Ver destinos"
+          action="listaViajes"
+          styleClass="boton"
+          style="float: center"
+        />
+        <h:commandButton
+          value="Ingresar viajes"
+          action="nuevoViajeForm"
           styleClass="boton"
           style="float: center"
         />
