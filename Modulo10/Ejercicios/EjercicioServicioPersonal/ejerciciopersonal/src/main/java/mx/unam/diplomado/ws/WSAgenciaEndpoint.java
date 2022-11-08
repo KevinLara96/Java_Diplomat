@@ -1,6 +1,7 @@
 package mx.unam.diplomado.ws;
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -39,5 +40,17 @@ public class WSAgenciaEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response postAgencia(AgenciaPojo agencia) {
         return Response.status(201).entity(agencia).build();
+    }
+
+    @DELETE
+    @Path("/borrarAgencia/{idAgencia}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteAgencia(@PathParam("idAgencia") Integer idAgencia) {
+        if (idAgencia == 1) {
+            return Response.status(200).entity("Agencia borrada").build();
+        } else {
+            return Response.status(200).entity("Agencia no borrada").build();
+        }
     }
 }
