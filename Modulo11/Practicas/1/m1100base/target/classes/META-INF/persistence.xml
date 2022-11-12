@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+    version="3.0">
+    <!-- Unidad donde se persistirán las unidades-->
+    <persistence-unit name="modulo11">
+        <class>unam.dgtic.diplomado.m1100base.dominio.Alumno</class>
+        <class>unam.dgtic.diplomado.m1100base.dominio.Employee</class>
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/modulo11" />
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="MaPassw" />
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="modulo7">
+        <class>unam.dgtic.diplomado.m1100base.dominio.Alumno</class>
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/modulo7" />
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="MaPassw" />
+        </properties>
+    </persistence-unit>
+</persistence>
