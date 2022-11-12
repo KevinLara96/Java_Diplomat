@@ -25,7 +25,7 @@ public class MicroServiciosTipoViaje {
 
     @GetMapping(value = "/tipoViaje", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TipoViaje> consultaTipoViaje() {
-        return tipoViajeDAO.consultaTipoViaje();
+        return tipoViajeDAO.consultaTiposViaje();
     }
 
     @DeleteMapping(value = "borrarTipoViaje/{idTipoViaje}", produces = MediaType.APPLICATION_JSON_VALUE)

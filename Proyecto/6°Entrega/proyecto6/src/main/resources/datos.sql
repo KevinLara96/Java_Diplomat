@@ -31,27 +31,3 @@ VALUES
     '26/Dic/2022',
     1
   );
-insert INTO
-  tours
-values
-  (
-    1,
-    'Ciudad de México',
-    500.0,
-    '24/Dic/2022',
-    1
-  ),
-  (
-    2,
-    'Guadalajara',
-    800.0,
-    '24/Dic/2022',
-    2
-  ),
-  (
-    6,
-    'Monterrey',
-    1300.0,
-    '24/Dic/2022',
-    3
-  );

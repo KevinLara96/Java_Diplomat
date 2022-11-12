@@ -1,52 +1,42 @@
-package dgtic.core.proyecto6.persistencia.modelo.viaje;
+package dgtic.core.proyecto6.persistencia.modelo.tour;
 
 import dgtic.core.proyecto6.persistencia.modelo.agencia.Agencia;
 
-public class Viaje {
+public class Tour {
 
-    private Integer idViaje;
-    private String origen;
-    private String destino;
+    private Integer idTour;
+    private String ciudad;
     private Float precio;
     private String fecha;
 
     private Agencia agencia;
 
-    public Viaje() {
+    public Tour() {
 
     }
 
-    public Viaje(Integer idViaje, String origen, String destino, Float precio, String fecha, Agencia agencia) {
-        this.idViaje = idViaje;
-        this.origen = origen;
-        this.destino = destino;
+    public Tour(Integer idTour, String ciudad, Float precio, String fecha, Agencia agencia) {
+        this.idTour = idTour;
+        this.ciudad = ciudad;
         this.precio = precio;
         this.fecha = fecha;
         this.agencia = agencia;
     }
 
-    public Integer getIdViaje() {
-        return idViaje;
+    public Integer getIdTour() {
+        return idTour;
     }
 
-    public void setIdViaje(Integer idViaje) {
-        this.idViaje = idViaje;
+    public void setIdTour(Integer idTour) {
+        this.idTour = idTour;
     }
 
-    public String getOrigen() {
-        return origen;
+    public String getCiudad() {
+        return ciudad;
     }
 
-    public void setOrigen(String origen) {
-        this.origen = origen;
-    }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
     public Float getPrecio() {
@@ -77,9 +67,8 @@ public class Viaje {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((idViaje == null) ? 0 : idViaje.hashCode());
-        result = prime * result + ((origen == null) ? 0 : origen.hashCode());
-        result = prime * result + ((destino == null) ? 0 : destino.hashCode());
+        result = prime * result + ((idTour == null) ? 0 : idTour.hashCode());
+        result = prime * result + ((ciudad == null) ? 0 : ciudad.hashCode());
         result = prime * result + ((precio == null) ? 0 : precio.hashCode());
         result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
         result = prime * result + ((agencia == null) ? 0 : agencia.hashCode());
@@ -94,21 +83,16 @@ public class Viaje {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Viaje other = (Viaje) obj;
-        if (idViaje == null) {
-            if (other.idViaje != null)
+        Tour other = (Tour) obj;
+        if (idTour == null) {
+            if (other.idTour != null)
                 return false;
-        } else if (!idViaje.equals(other.idViaje))
+        } else if (!idTour.equals(other.idTour))
             return false;
-        if (origen == null) {
-            if (other.origen != null)
+        if (ciudad == null) {
+            if (other.ciudad != null)
                 return false;
-        } else if (!origen.equals(other.origen))
-            return false;
-        if (destino == null) {
-            if (other.destino != null)
-                return false;
-        } else if (!destino.equals(other.destino))
+        } else if (!ciudad.equals(other.ciudad))
             return false;
         if (precio == null) {
             if (other.precio != null)
@@ -130,8 +114,8 @@ public class Viaje {
 
     @Override
     public String toString() {
-        return "Viaje [idViaje=" + idViaje + ", origen=" + origen + ", destino=" + destino + ", precio=" + precio
-                + ", fecha=" + fecha + ", agencia=" + agencia + "]";
+        return "Tour [idTour=" + idTour + ", ciudad=" + ciudad + ", precio=" + precio + ", fecha=" + fecha
+                + ", agencia=" + agencia + "]";
     }
 
 }

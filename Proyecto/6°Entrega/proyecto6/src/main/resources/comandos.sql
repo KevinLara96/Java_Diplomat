@@ -48,27 +48,6 @@ CREATE TABLE autobus (
   CONSTRAINT autobus_claseturibus_fk FOREIGN KEY (idClaseTuribus) REFERENCES claseTuribus (idClaseTuribus),
   CONSTRAINT autobus_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia)
 );
-CREATE TABLE tours (
-  idTour INT NOT NULL,
-  ciudad VARCHAR(50) NOT NULL,
-  precio FLOAT NOT NULL,
-  fecha VARCHAR(50) NOT NULL,
-  idAgencia INT NOT NULL,
-  CONSTRAINT tour_pk PRIMARY KEY(idTour),
-  CONSTRAINT tour_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia)
-);
-CREATE TABLE tipoTour (
-  idTipoTour INT NOT NULL,
-  tipoTour VARCHAR(20) NOT NULL,
-  CONSTRAINT tipotour_pk PRIMARY KEY (idTipoTour)
-);
-CREATE TABLE tours_tipoTour(
-  idTour INT NOT NULL,
-  idTipoTour INT NOT NULL,
-  CONSTRAINT tours_tipoTour_PK PRIMARY KEY (idTour, idTipoTour),
-  CONSTRAINT tour_fk FOREIGN KEY (idTour) REFERENCES tours (idTour),
-  CONSTRAINT tipoTour_fk FOREIGN KEY (idTipoTour) REFERENCES tipoTour (idTipoTour)
-);
 CREATE TABLE viajes (
   idViaje INT NOT NULL,
   origen VARCHAR(50) NOT NULL,
