@@ -1,7 +1,7 @@
 package dgtic.core.proyecto6.persistencia.modelo.agencia;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import dgtic.core.proyecto6.persistencia.modelo.viaje.Viaje;
 
@@ -11,7 +11,7 @@ public class Agencia {
     private String nombreAgencia;
     private String ubicacion;
 
-    private Set<Viaje> destinos;
+    private List<Viaje> destinos;
 
     public Agencia() {
     }
@@ -20,7 +20,7 @@ public class Agencia {
         this.idAgencia = idAgencia;
         this.nombreAgencia = nombre;
         this.ubicacion = ubicacion;
-        this.destinos = new HashSet<>();
+        this.destinos = new ArrayList<>();
     }
 
     public Integer getIdAgencia() {
@@ -51,11 +51,11 @@ public class Agencia {
         this.ubicacion = ubicacion;
     }
 
-    public Set<Viaje> getDestinos() {
+    public List<Viaje> getDestinos() {
         return destinos;
     }
 
-    public void setDestinos(Set<Viaje> destinos) {
+    public void setDestinos(List<Viaje> destinos) {
         this.destinos = destinos;
     }
 

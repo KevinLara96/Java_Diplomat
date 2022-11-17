@@ -9,12 +9,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import dgtic.core.proyecto6.persistencia.dao.interfaces.TipoViajeDAO;
+import dgtic.core.proyecto6.persistencia.dao.interfaces.ViajesDAO;
 import dgtic.core.proyecto6.persistencia.modelo.viaje.TipoViaje;
 
 @Repository
 public class TipoViajeRepository implements TipoViajeDAO {
 
     private JdbcTemplate jdbc;
+
+    // @Autowired
+    // private ViajesDAO viajesDAO;
 
     @Autowired
     public TipoViajeRepository(JdbcTemplate jdbc) {
@@ -26,21 +30,20 @@ public class TipoViajeRepository implements TipoViajeDAO {
     public List<TipoViaje> consultaTiposViaje() {
         String query = "SELECT * FROM tipoViaje\n" +
                 "ORDER BY idTipoViaje";
-
         return jdbc.query(query, this::mapRowToTipoViaje);
     }
 
     @Override
     public TipoViaje consultaIdTipoViaje(Integer idTipoViaje) {
         String query = "SELECT * FROM tipoViaje\n" +
-                "WHERE idTipoViaje=" + idTipoViaje + ";";
+                "WHERE idTipoViaje = " + idTipoViaje;
 
         return jdbc.query(query, this::mapRowToTipoViaje).get(0);
     }
 
     @Override
     public void insertarTipoViaje(TipoViaje nuevoTipoViaje) {
-        String query = "INSERT INTO tipoViaje VALUES (?,?)";
+        String query = "INSERT INTO tipoViaje VALUES(?, ?)";
 
         jdbc.update(query, nuevoTipoViaje.getIdTipoViaje(), nuevoTipoViaje.getTipoViaje());
     }
@@ -48,22 +51,24 @@ public class TipoViajeRepository implements TipoViajeDAO {
     @Override
     public void cambiarTipoViaje(TipoViaje nuevoTipoViaje) {
         String query = "UPDATE tipoViaje SET\n" +
-                "tipoViaje=?\n" +
-                "WHERE idTipoViaje=? ;";
+                "tipoViaje = ?\n" +
+                "WHERE idTipoViaje = ?";
+
         jdbc.update(query, nuevoTipoViaje.getTipoViaje(), nuevoTipoViaje.getIdTipoViaje());
     }
 
     @Override
-    public void borrarTipoViaje(TipoViaje tipoViaje) {
-        String query = "DELETE FROM tipoViaje WHERE idTipoViaje=?";
+    public void borrarTipoViaje(TipoViaje nuevoTipoViaje) {
+        String query = "DELETE FROM tipoViaje WHERE idTipoViaje = ?";
 
-        jdbc.update(query, tipoViaje.getIdTipoViaje());
+        jdbc.update(query, nuevoTipoViaje.getIdTipoViaje());
     }
 
     private TipoViaje mapRowToTipoViaje(ResultSet rs, int row) throws SQLException {
         TipoViaje tipoViaje = new TipoViaje();
         tipoViaje.setIdTipoViaje(rs.getInt(1));
         tipoViaje.setTipoViaje(rs.getString(2));
+        tipoViaje.setViajes(null);
 
         return tipoViaje;
     }

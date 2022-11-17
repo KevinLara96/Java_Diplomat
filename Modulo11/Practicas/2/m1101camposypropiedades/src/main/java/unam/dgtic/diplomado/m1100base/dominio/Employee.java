@@ -1,17 +1,27 @@
 package unam.dgtic.diplomado.m1100base.dominio;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
+@Access(AccessType.FIELD)
 @Entity
 @Table(name = "Employee")
 public class Employee {
+
+    private static final String LADA = "(55)";
 
     @Id
     private Integer id;
     private String name;
     private Long salary;
+
+    @Transient
+    private String phoneNum;
 
     public Employee() {
 
@@ -52,9 +62,36 @@ public class Employee {
         this.salary = salary;
     }
 
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    @Access(AccessType.PROPERTY)
+    @Column(name = "PHONE")
+    public String getPhoneNumLada() {
+        if (phoneNum != null && phoneNum.length() > 0) {
+            return phoneNum;
+        } else {
+            return LADA + phoneNum;
+        }
+    }
+
+    public void setPhoneNumLada(String num) {
+        if (num.startsWith(LADA)) {
+            phoneNum = num.substring(4);
+        } else {
+            this.phoneNum = num;
+        }
+    }
+
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+        return "Employee [id=" + id + ", name=" + name + ", salary=" + salary +
+                ", phone=" + getPhoneNumLada() + "]";
     }
 
     @Override

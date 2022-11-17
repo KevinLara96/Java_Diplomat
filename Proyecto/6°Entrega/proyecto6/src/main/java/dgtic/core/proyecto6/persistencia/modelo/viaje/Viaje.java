@@ -10,8 +10,6 @@ public class Viaje {
     private Float precio;
     private String fecha;
 
-    private Agencia agencia;
-
     public Viaje() {
 
     }
@@ -22,7 +20,6 @@ public class Viaje {
         this.destino = destino;
         this.precio = precio;
         this.fecha = fecha;
-        this.agencia = agencia;
     }
 
     public Integer getIdViaje() {
@@ -65,14 +62,6 @@ public class Viaje {
         this.fecha = fecha;
     }
 
-    public Agencia getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(Agencia agencia) {
-        this.agencia = agencia;
-    }
-
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -82,7 +71,7 @@ public class Viaje {
         result = prime * result + ((destino == null) ? 0 : destino.hashCode());
         result = prime * result + ((precio == null) ? 0 : precio.hashCode());
         result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
-        result = prime * result + ((agencia == null) ? 0 : agencia.hashCode());
+
         return result;
     }
 
@@ -120,18 +109,13 @@ public class Viaje {
                 return false;
         } else if (!fecha.equals(other.fecha))
             return false;
-        if (agencia == null) {
-            if (other.agencia != null)
-                return false;
-        } else if (!agencia.equals(other.agencia))
-            return false;
         return true;
     }
 
     @Override
     public String toString() {
         return "Viaje [idViaje=" + idViaje + ", origen=" + origen + ", destino=" + destino + ", precio=" + precio
-                + ", fecha=" + fecha + ", agencia=" + agencia + "]";
+                + ", fecha=" + fecha + "]";
     }
 
 }

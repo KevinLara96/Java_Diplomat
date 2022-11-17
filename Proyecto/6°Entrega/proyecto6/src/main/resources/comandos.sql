@@ -48,6 +48,11 @@ CREATE TABLE autobus (
   CONSTRAINT autobus_claseturibus_fk FOREIGN KEY (idClaseTuribus) REFERENCES claseTuribus (idClaseTuribus),
   CONSTRAINT autobus_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia)
 );
+CREATE TABLE tipoViaje (
+  idTipoViaje INT NOT NULL,
+  tipoViaje VARCHAR(20) NOT NULL,
+  CONSTRAINT tipoviaje_pk PRIMARY KEY (idTipoViaje)
+);
 CREATE TABLE viajes (
   idViaje INT NOT NULL,
   origen VARCHAR(50) NOT NULL,
@@ -55,20 +60,10 @@ CREATE TABLE viajes (
   precio FLOAT NOT NULL,
   fecha VARCHAR(50) NOT NULL,
   idAgencia INT NOT NULL,
+  idTipoViaje INT NOT NULL,
   CONSTRAINT viaje_pk PRIMARY KEY(idViaje),
-  CONSTRAINT viaje_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia)
-);
-CREATE TABLE tipoViaje (
-  idTipoViaje INT NOT NULL,
-  tipoViaje VARCHAR(20) NOT NULL,
-  CONSTRAINT tipoviaje_pk PRIMARY KEY (idTipoViaje)
-);
-CREATE TABLE viajes_tipoViaje(
-  idViaje INT NOT NULL,
-  idTipoViaje INT NOT NULL,
-  CONSTRAINT viajes_tipoViaje_PK PRIMARY KEY (idViaje, idTipoViaje),
-  CONSTRAINT viaje_fk FOREIGN KEY (idViaje) REFERENCES viajes (idViaje),
-  CONSTRAINT tipoViaje_fk FOREIGN KEY (idTipoViaje) REFERENCES tipoViaje (idTipoViaje)
+  CONSTRAINT viaje_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia),
+  CONSTRAINT viaje_tipoViaje_fk FOREIGN KEY (idTipoViaje) REFERENCES tipoViaje(idTipoViaje)
 );
 CREATE TABLE conductor_viaje(
   idAsignacionViaje INT NOT NULL,
@@ -107,13 +102,6 @@ VALUES
   (1, 'Viaje Corto'),
   (2, 'Viaje Medio'),
   (3, 'Viaje Largo'),
-  (4, 'N.A.');
-INSERT INTO
-  tipoTour
-VALUES
-  (1, 'Un día'),
-  (2, 'Dos días'),
-  (3, 'Tres días'),
   (4, 'N.A.');
 INSERT INTO
   puesto

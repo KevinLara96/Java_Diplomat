@@ -13,6 +13,7 @@ VALUES
     'Cuernavaca',
     500.0,
     '24/Dic/2022',
+    1,
     1
   ),
   (
@@ -21,7 +22,8 @@ VALUES
     'Guadalajara',
     750.0,
     '25/Dic/2022',
-    1
+    1,
+    2
   ),
   (
     3,
@@ -29,5 +31,15 @@ VALUES
     'Monterrey',
     1500.0,
     '26/Dic/2022',
-    1
+    1,
+    3
+  ),
+  (
+    4,
+    'Monterrey',
+    'Tijuana',
+    600.0,
+    '28/Dic/2022',
+    3,
+    2
   );

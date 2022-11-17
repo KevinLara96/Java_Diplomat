@@ -12,7 +12,7 @@ public interface ViajesDAO {
 
     public void insertarViaje(Viaje nuevoViaje);
 
-    public void cambiararViaje(Viaje nuevoViaje);
+    public void cambiarViaje(Viaje nuevoViaje);
 
     public void borrarViaje(Viaje nuevoViaje);
 }
