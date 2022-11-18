@@ -21,26 +21,26 @@ import dgtic.core.proyecto6.persistencia.modelo.agencia.Agencia;
 public class MicroServiciosAgencia {
 
     @Autowired
-    private AgenciaDAO tipoViajeDAO;
+    private AgenciaDAO agenciaDAO;
 
     @GetMapping(value = "/agencia", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Agencia> consultaAgencia() {
-        return tipoViajeDAO.consultaAgencias();
+        return agenciaDAO.consultaAgencias();
     }
 
     @DeleteMapping(value = "borrarAgencia/{idAgencia}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void eliminarAgencia(@PathVariable("idAgencia") String idAgencia) {
-        tipoViajeDAO.borrarAgencia(tipoViajeDAO.consultaIdAgencia(Integer.parseInt(idAgencia)));
+        agenciaDAO.borrarAgencia(agenciaDAO.consultaIdAgencia(Integer.parseInt(idAgencia)));
     }
 
     @PutMapping(value = "/cambiarAgencia", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void cambiartipoTourDao(@RequestBody Agencia tipoViajeNuevo) {
-        tipoViajeDAO.cambiarAgencia(tipoViajeNuevo);
+    public void cambiartipoTourDao(@RequestBody Agencia agenciaNuevo) {
+        agenciaDAO.cambiarAgencia(agenciaNuevo);
     }
 
     @PostMapping(value = "/nuevaAgencia", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void nuevotipoTourDao(@RequestBody Agencia tipoViajeNuevo) {
-        tipoViajeDAO.insertarAgencia(tipoViajeNuevo);
+    public void nuevotipoTourDao(@RequestBody Agencia agenciaNuevo) {
+        agenciaDAO.insertarAgencia(agenciaNuevo);
     }
 
 }

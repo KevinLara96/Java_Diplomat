@@ -2,6 +2,7 @@ package dgtic.core.proyecto6.persistencia.dao.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +12,15 @@ import org.springframework.stereotype.Repository;
 import dgtic.core.proyecto6.persistencia.dao.interfaces.TipoViajeDAO;
 import dgtic.core.proyecto6.persistencia.dao.interfaces.ViajesDAO;
 import dgtic.core.proyecto6.persistencia.modelo.viaje.TipoViaje;
+import dgtic.core.proyecto6.persistencia.modelo.viaje.Viaje;
 
 @Repository
 public class TipoViajeRepository implements TipoViajeDAO {
 
     private JdbcTemplate jdbc;
 
-    // @Autowired
-    // private ViajesDAO viajesDAO;
+    @Autowired
+    private ViajesDAO viajesDAO;
 
     @Autowired
     public TipoViajeRepository(JdbcTemplate jdbc) {
@@ -66,9 +68,12 @@ public class TipoViajeRepository implements TipoViajeDAO {
 
     private TipoViaje mapRowToTipoViaje(ResultSet rs, int row) throws SQLException {
         TipoViaje tipoViaje = new TipoViaje();
+
         tipoViaje.setIdTipoViaje(rs.getInt(1));
         tipoViaje.setTipoViaje(rs.getString(2));
-        tipoViaje.setViajes(null);
+        List<Viaje> tmp = new ArrayList<>();
+        tmp.addAll(((ViajeRepository) viajesDAO).joinViajeTipoViaje(tipoViaje.getIdTipoViaje()));
+        tipoViaje.setViajes(tmp);
 
         return tipoViaje;
     }

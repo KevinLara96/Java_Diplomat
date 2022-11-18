@@ -10,6 +10,9 @@ public class Viaje {
     private Float precio;
     private String fecha;
 
+    private Integer idAgencia;
+    private Integer idTipoViaje;
+
     public Viaje() {
 
     }
@@ -62,6 +65,22 @@ public class Viaje {
         this.fecha = fecha;
     }
 
+    public Integer getIdAgencia() {
+        return idAgencia;
+    }
+
+    public void setIdAgencia(Integer idAgencia) {
+        this.idAgencia = idAgencia;
+    }
+
+    public Integer getIdTipoViaje() {
+        return idTipoViaje;
+    }
+
+    public void setIdTipoViaje(Integer idTipoViaje) {
+        this.idTipoViaje = idTipoViaje;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -71,7 +90,8 @@ public class Viaje {
         result = prime * result + ((destino == null) ? 0 : destino.hashCode());
         result = prime * result + ((precio == null) ? 0 : precio.hashCode());
         result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
-
+        result = prime * result + ((idAgencia == null) ? 0 : idAgencia.hashCode());
+        result = prime * result + ((idTipoViaje == null) ? 0 : idTipoViaje.hashCode());
         return result;
     }
 
@@ -109,13 +129,23 @@ public class Viaje {
                 return false;
         } else if (!fecha.equals(other.fecha))
             return false;
+        if (idAgencia == null) {
+            if (other.idAgencia != null)
+                return false;
+        } else if (!idAgencia.equals(other.idAgencia))
+            return false;
+        if (idTipoViaje == null) {
+            if (other.idTipoViaje != null)
+                return false;
+        } else if (!idTipoViaje.equals(other.idTipoViaje))
+            return false;
         return true;
     }
 
     @Override
     public String toString() {
         return "Viaje [idViaje=" + idViaje + ", origen=" + origen + ", destino=" + destino + ", precio=" + precio
-                + ", fecha=" + fecha + "]";
+                + ", fecha=" + fecha + ", idAgencia=" + idAgencia + ", idTipoViaje=" + idTipoViaje + "]";
     }
 
 }

@@ -2,6 +2,7 @@ package dgtic.core.proyecto6.persistencia.dao.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +12,15 @@ import org.springframework.stereotype.Repository;
 import dgtic.core.proyecto6.persistencia.dao.interfaces.AgenciaDAO;
 import dgtic.core.proyecto6.persistencia.dao.interfaces.ViajesDAO;
 import dgtic.core.proyecto6.persistencia.modelo.agencia.Agencia;
+import dgtic.core.proyecto6.persistencia.modelo.viaje.Viaje;
 
 @Repository
 public class AgenciaRepository implements AgenciaDAO {
 
     private JdbcTemplate jdbc;
 
-    // @Autowired
-    // private ViajesDAO viajesDAO;
+    @Autowired
+    private ViajesDAO viajesDAO;
 
     @Autowired
     public AgenciaRepository(JdbcTemplate jdbc) {
@@ -69,10 +71,13 @@ public class AgenciaRepository implements AgenciaDAO {
 
     private Agencia mapRowToAgencia(ResultSet rs, int row) throws SQLException {
         Agencia agencia = new Agencia();
+
         agencia.setIdAgencia(rs.getInt(1));
         agencia.setNombreAgencia(rs.getString(2));
         agencia.setUbicacion(rs.getString(3));
-        agencia.setDestinos(null);
+        List<Viaje> tmp = new ArrayList<>();
+        tmp.addAll(((ViajeRepository) viajesDAO).joinViajeAgencia(agencia.getIdAgencia()));
+        agencia.setDestinos(tmp);
 
         return agencia;
     }
