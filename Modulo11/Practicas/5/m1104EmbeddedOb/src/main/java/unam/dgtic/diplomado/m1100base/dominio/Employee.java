@@ -1,5 +1,8 @@
 package unam.dgtic.diplomado.m1100base.dominio;
 
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +20,10 @@ public class Employee {
     private long salary;
 
     @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "state", column = @Column(name = "PROVINCIA")),
+            @AttributeOverride(name = "zip", column = @Column(name = "POSTAL_CODE")),
+    })
     private Address address;
 
     public Employee() {

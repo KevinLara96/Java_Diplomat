@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import unam.dgtic.diplomado.m1100base.dominio.Address;
 import unam.dgtic.diplomado.m1100base.dominio.Employee;
 
 public class EmployeeService {
@@ -26,11 +27,18 @@ public class EmployeeService {
         return (Collection<Employee>) query.getResultList();
     }
 
-    public Employee createEmployee(Integer id, String name, Long salary) {
+    public Employee createEmployee(String name, Long salary,
+            String street, String state, String city, String zip) {
         Employee employee = new Employee();
-        employee.setId(id);
+        Address address = new Address();
+        address.setStreet(street);
+        address.setCity(city);
+        address.setState(state);
+        address.setZip(zip);
+
         employee.setName(name);
         employee.setSalary(salary);
+        employee.setAddress(address);
 
         em.getTransaction().begin();
         em.persist(employee);
