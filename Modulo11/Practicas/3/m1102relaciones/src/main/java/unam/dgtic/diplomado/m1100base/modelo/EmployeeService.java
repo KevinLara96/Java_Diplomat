@@ -2,6 +2,7 @@ package unam.dgtic.diplomado.m1100base.modelo;
 
 import java.util.Collection;
 
+import org.eclipse.persistence.jpa.jpql.parser.AdditionExpression;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
