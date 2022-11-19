@@ -5,6 +5,7 @@ import java.util.Collection;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.m1100base.dominio.Employee;
+import unam.dgtic.diplomado.m1100base.dominio.Project;
 
 public class EmployeeService {
 
@@ -24,6 +25,19 @@ public class EmployeeService {
         Query query = em.createQuery("SELECT e from Employee e");
 
         return (Collection<Employee>) query.getResultList();
+    }
+
+    public Employee createEmployee(Integer id, String name, Long salary) {
+        Employee employee = new Employee();
+        employee.setId(id);
+        employee.setName(name);
+        employee.setSalary(salary);
+
+        em.getTransaction().begin();
+        em.persist(employee);
+        em.getTransaction().commit();
+
+        return employee;
     }
 
     public Employee createEmployee(Employee e) {
@@ -51,6 +65,14 @@ public class EmployeeService {
             employee = em.merge(employeeParam);
             em.getTransaction().commit();
         }
+
+        return employee;
+    }
+
+    public Employee addEmployeeProject(Integer idEmp, Integer idProj) {
+        Employee employee = findEmployee(idEmp);
+        Project project = em.find(Project.class, idProj);
+        project.addEmployee(employee);
 
         return employee;
     }

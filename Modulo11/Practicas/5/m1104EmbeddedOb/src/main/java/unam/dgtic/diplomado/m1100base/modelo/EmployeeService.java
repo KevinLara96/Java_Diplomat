@@ -26,6 +26,19 @@ public class EmployeeService {
         return (Collection<Employee>) query.getResultList();
     }
 
+    public Employee createEmployee(Integer id, String name, Long salary) {
+        Employee employee = new Employee();
+        employee.setId(id);
+        employee.setName(name);
+        employee.setSalary(salary);
+
+        em.getTransaction().begin();
+        em.persist(employee);
+        em.getTransaction().commit();
+
+        return employee;
+    }
+
     public Employee createEmployee(Employee e) {
 
         em.getTransaction().begin();
@@ -51,6 +64,12 @@ public class EmployeeService {
             employee = em.merge(employeeParam);
             em.getTransaction().commit();
         }
+
+        return employee;
+    }
+
+    public Employee addEmployeeProject(Integer idEmp, Integer idProj) {
+        Employee employee = findEmployee(idEmp);
 
         return employee;
     }

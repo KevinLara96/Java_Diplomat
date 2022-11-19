@@ -6,20 +6,19 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import unam.dgtic.diplomado.m1100base.dominio.Employee;
+import unam.dgtic.diplomado.m1100base.dominio.ParkingSpace;
 import unam.dgtic.diplomado.m1100base.modelo.EmployeeService;
+import unam.dgtic.diplomado.m1100base.modelo.ParkingSpaceService;
 
-public class PruebaEmpoyee12OneToOne {
+public class PruebaEmployee16OneToOneBidireccional {
+
     public static void main(String[] args) {
+
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("modulo11");
         EntityManager em = emf.createEntityManager();
 
-        System.out.println("Ingresar empleado");
         EmployeeService service = new EmployeeService(em);
-
-        // Employee emp = new Employee("Omar Mendoza", 5000);
-        // Address address = new Address("Rancho Seco", "Neza", "Edo Mex", "56000");
-
-        // service.createEmployeeWithAddress(emp, address);
+        ParkingSpaceService service2 = new ParkingSpaceService(em);
 
         System.out.println("KEVIN ARTURO LARA SALA");
 
@@ -32,6 +31,18 @@ public class PruebaEmpoyee12OneToOne {
                 System.out.println(e);
             }
         }
-    }
 
+        Collection<ParkingSpace> parkingSpaces = service2.findAllParkingSpace();
+        if (parkingSpaces.isEmpty()) {
+            System.out.println("No se encontraron Espacios de estacionamiento");
+        } else {
+            System.out.println("Espacios localizados:");
+            for (ParkingSpace p : parkingSpaces) {
+                System.out.println(p);
+                if (p.getEmployee() != null) {
+                    System.out.println("Pertenece a: " + p.getEmployee().getName());
+                }
+            }
+        }
+    }
 }

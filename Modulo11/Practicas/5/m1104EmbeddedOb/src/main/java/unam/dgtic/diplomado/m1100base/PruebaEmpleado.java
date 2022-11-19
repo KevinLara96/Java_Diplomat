@@ -8,20 +8,24 @@ import jakarta.persistence.Persistence;
 import unam.dgtic.diplomado.m1100base.dominio.Employee;
 import unam.dgtic.diplomado.m1100base.modelo.EmployeeService;
 
-public class PruebaEmpoyee10AutoIncrement {
+public class PruebaEmpleado {
+
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("modulo11");
         EntityManager em = emf.createEntityManager();
 
         EmployeeService service = new EmployeeService(em);
 
+        System.out.println("KEVIN ARTURO LARA SALA");
         System.out.println("Insertar empleado");
-        Employee emp = new Employee("Kevin Lara", 5000);
-        service.createEmployee(emp);
+        Employee employee = service.createEmployee("Kevin Lara", 5000L,
+                "Rancho Seco",
+                "Aragon",
+                "Edo Mex",
+                "56300");
+        System.out.println(employee);
 
-        System.out.println("Kevin Arturo Lara Sala");
         Collection<Employee> employees = service.findAllEmployees();
-
         if (employees.isEmpty()) {
             System.out.println("No se localizaron empleados");
         } else {
@@ -31,5 +35,4 @@ public class PruebaEmpoyee10AutoIncrement {
             }
         }
     }
-
 }

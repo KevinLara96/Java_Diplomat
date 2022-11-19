@@ -1,20 +1,23 @@
 package unam.dgtic.diplomado.m1100base.dominio;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 
 @Entity
 // @Table(name = "EMP", schema = "modulo11")
 public class Employee {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private long salary;
 
-    @OneToOne(mappedBy = "employee")
-    private ParkingSpace parkingSpace;
+    @Embedded
+    private Address address;
 
     public Employee() {
     }
@@ -48,17 +51,17 @@ public class Employee {
         this.salary = salary;
     }
 
-    public ParkingSpace getParkingSpace() {
-        return parkingSpace;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setParkingSpace(ParkingSpace parkingSpace) {
-        this.parkingSpace = parkingSpace;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", parkingSpace=" + parkingSpace + "]";
+        return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", address=" + address + "]";
     }
 
 }

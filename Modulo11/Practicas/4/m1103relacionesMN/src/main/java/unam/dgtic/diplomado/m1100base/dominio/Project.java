@@ -1,28 +1,27 @@
 package unam.dgtic.diplomado.m1100base.dominio;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
-public class Department {
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
+    protected int id;
+    protected String name;
 
-    // @OneToMany(mappedBy = "department")
+    @ManyToMany(mappedBy = "projects")
     private Collection<Employee> employees;
 
-    public Department() {
-    }
-
-    public Department(String name) {
-        this.name = name;
+    public Project() {
+        this.employees = new ArrayList<>();
     }
 
     public int getId() {
@@ -45,9 +44,22 @@ public class Department {
         return employees;
     }
 
-    @Override
-    public String toString() {
-        return "Department [id=" + id + ", name=" + name + "]";
+    public void setEmployees(Collection<Employee> employees) {
+        this.employees = employees;
     }
 
+    public void addEmployee(Employee employee) {
+        if (!getEmployees().contains(employee)) {
+            getEmployees().add(employee);
+        }
+
+        if (!employee.getProjects().contains(this)) {
+            employee.getProjects().add(this);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Project [id=" + id + ", name=" + name + ", employees=" + getEmployees().size() + "]";
+    }
 }

@@ -3,6 +3,8 @@ package unam.dgtic.diplomado.m1100base.dominio;
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,13 +16,9 @@ import jakarta.persistence.ManyToOne;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private long salary;
-
-    @ManyToOne
-    private Department department;
 
     public Employee() {
     }
@@ -52,14 +50,6 @@ public class Employee {
 
     public void setSalary(long salary) {
         this.salary = salary;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
     }
 
     @Override

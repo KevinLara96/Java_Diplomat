@@ -1,35 +1,27 @@
 package unam.dgtic.diplomado.m1100base.dominio;
 
-import java.util.Collection;
-
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Department {
+public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
+    Integer id;
+    String name;
 
-    // @OneToMany(mappedBy = "department")
-    private Collection<Employee> employees;
+    @Embedded
+    private Address address;
 
-    public Department() {
-    }
-
-    public Department(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -41,13 +33,17 @@ public class Department {
         this.name = name;
     }
 
-    public Collection<Employee> getEmployees() {
-        return employees;
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "Department [id=" + id + ", name=" + name + "]";
+        return "Company [id=" + id + ", name=" + name + ", address=" + address + "]";
     }
 
 }
