@@ -1,0 +1,4 @@
+mx\unam\diplomado\agendaweblocal\vo\Contacto.class
+mx\unam\diplomado\agendaweblocal\ejblocal\ContactoEJB.class
+mx\unam\diplomado\agendaweblocal\ejblocal\IContactoEJBLocal.class
+mx\unam\diplomado\agendaweblocal\bean\AgendaBean.class
