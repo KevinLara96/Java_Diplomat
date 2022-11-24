@@ -1,0 +1,6 @@
+unam/dgtic/diplomado/core/wsejb2/ejb/ServicioPersona.class
+unam/dgtic/diplomado/core/wsejb2/ws/api/WSRestApp.class
+unam/dgtic/diplomado/core/wsejb2/dao/DAOPersonaDummy.class
+unam/dgtic/diplomado/core/wsejb2/pojo/Persona.class
+unam/dgtic/diplomado/core/wsejb2/ws/WSApplicationConfig.class
+unam/dgtic/diplomado/core/wsejb2/dao/IDAOPersona.class
