@@ -48,7 +48,8 @@ public class AgendaDAOJDBC implements IAgendaDAO {
                 contacto.setEdad(rs.getInt("vi_edad"));
                 contacto.setDireccion(rs.getString("vc_direccion"));
                 contacto.setIdTipoContacto(rs.getInt("id_tipo_contacto"));
-                contacto.setTipoContacto(cargaTipoContactos().get(contacto.getIdTipoContacto()));
+                // contacto.setTipoContacto(cargaTipoContactos().get(contacto.getIdTipoContacto()));
+                contacto.setTipoContacto(cargaTipoContactos(contacto.getIdTipoContacto()));
                 contacto.setEstatus(rs.getString("vc_estatus"));
 
                 contactos.add(contacto);
@@ -60,29 +61,26 @@ public class AgendaDAOJDBC implements IAgendaDAO {
         return contactos;
     }
 
-    @Override
-    public List<TipoContacto> cargaTipoContactos() {
+    public TipoContacto cargaTipoContactos(Integer idTipoContacto) {
 
         DBConnection db = JDBCUtil.getInstance();
-        List<TipoContacto> tipoContactos = null;
+        TipoContacto tipoContacto = new TipoContacto();
 
-        String query = "SELECT * FROM c_tipo_contacto";
+        String query = "SELECT * FROM c_tipo_contacto\n" +
+                "WHERE id_tipo_contacto = " + idTipoContacto;
         try (Connection conn = db.getConnection();
                 PreparedStatement ps = conn.prepareStatement(query.toString());
                 ResultSet rs = ps.executeQuery();) {
-            tipoContactos = new ArrayList<>();
             while (rs.next()) {
-                TipoContacto tipoContacto = new TipoContacto();
                 tipoContacto.setIdTipoContacto(rs.getInt("id_tipo_contacto"));
                 tipoContacto.setNombre(rs.getString("vc_nombre"));
                 tipoContacto.setEstatus(rs.getString("vc_estatus"));
 
-                tipoContactos.add(tipoContacto);
             }
         } catch (SQLException sqlx) {
 
         }
 
-        return tipoContactos;
+        return tipoContacto;
     }
 }

@@ -5,7 +5,6 @@ import jakarta.ejb.Stateless;
 import mx.unam.diplomado.agenda.dao.AgendaDAOJDBC;
 import mx.unam.diplomado.agenda.dao.IAgendaDAO;
 import mx.unam.diplomado.agendafaces.vo.Contacto;
-import mx.unam.diplomado.agendafaces.vo.TipoContacto;
 
 /**
  * Session Bean implementation class AgendaEJB
@@ -18,12 +17,6 @@ public class AgendaEJB implements IAgendaEJBLocal {
     public List<Contacto> cargaContactos() {
         daoAgenda = AgendaDAOJDBC.getInstance();
         return daoAgenda.cargaContactos();
-    }
-
-    @Override
-    public List<TipoContacto> cargaTipoContactos() {
-        daoAgenda = AgendaDAOJDBC.getInstance();
-        return daoAgenda.cargaTipoContactos();
     }
 
 }

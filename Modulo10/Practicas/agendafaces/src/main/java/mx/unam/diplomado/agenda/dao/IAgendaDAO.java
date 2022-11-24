@@ -7,6 +7,4 @@ public interface IAgendaDAO {
 
     List<Contacto> cargaContactos();
 
-    List<TipoContacto> cargaTipoContactos();
-
 }
