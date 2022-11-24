@@ -9,6 +9,12 @@
 <body>
 
 	<p:dataTable value="#{cargaContactos}" var="contacto" paginator="true" rows="10">
+        
+        <p:column>    				
+        	<f:facet name = "header">Id Contacto</f:facet>    				
+             #{contacto.idContacto}
+        </p:column>
+
 		<p:column>    				
         	<f:facet name = "header">Nombre</f:facet>    				
              #{contacto.nombre}
@@ -22,6 +28,42 @@
         <p:column>    				
         	<f:facet name = "header">Edad</f:facet>    				
              #{contacto.edad}
+        </p:column>
+        
+        <p:column>    				
+        	<f:facet name = "header">Dirección</f:facet>    				
+             #{contacto.direccion}
+        </p:column>
+        
+        <p:column>    				
+        	<f:facet name = "header">Tipo Contacto</f:facet>    				
+             #{contacto.tipoContacto.nombre}
+        </p:column>
+        
+        <!--p:column>    				
+        	<f:facet name = "header">Tipo Contacto</f:facet>    				
+            <p:dataTable value="#{cargaTipoContactos}" var="tipoContacto">
+                <p:column>
+                    <f:facet name="header">Id Tipo Contacto</f:facet>
+                    #{tipoContacto.idTipoContacto}
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Tipo Contacto</f:facet>
+                    #{tipoContacto.nombre}
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Estatus</f:facet>
+                    #{tipoContacto.estatus}
+                </p:column>
+
+            </p:dataTable>
+        </p:column-->
+        
+        <p:column>    				
+        	<f:facet name = "header">Estatus</f:facet>    				
+             #{contacto.estatus}
         </p:column>
 	</p:dataTable>
 
