@@ -1,0 +1,41 @@
+<!--
+    Copyright (c) 2014, 2019 Oracle and/or its affiliates. All rights reserved.
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+    SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>Listado Viajes</h:head>
+  <h:body>
+    <h:outputStylesheet name="css/stylesheet.css" target="head" />
+
+    <!--h:form id="listaEmpleados" value="#{agenciaBean.empleados}" var="empleado"-->
+      <h1>Gestión de empleados.</h1>
+
+      <div id="divEmpleados">
+
+        <p:dataTable value="#{cargaViaje}" var="viaje" paginator="true" rows="10">
+
+            <p:column>
+                <f:facet name="header">Id viaje</f:facet>
+                #{viaje.idViaje}
+            </p:column>
+
+        </p:dataTable>
+
+
+        <br />
+        <br />
+        <h:commandButton id="back" value="Atras" action="index" />
+      </div>
+    <!--/h:form-->
+  </h:body>
+</html>

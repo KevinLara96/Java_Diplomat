@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Copyright (c) 2014, 2019 Oracle and/or its affiliates. All rights reserved.
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+    SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+>
+  <h:head>
+    <title>Empleado formulario</title>
+  </h:head>
+
+  <h:body>
+    <h:outputStylesheet name="css/stylesheet.css" target="head" />
+
+
+    <h:form id="empleadosList" value="#{agenciaBean.empleados}" >
+      <h1>Registro de empleados</h1>
+      <p>Ingrese los datos del nuevo empleado</p>
+
+      <div id="datosLabel">
+        <label>Id Empleado:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="idEmpeadoTxt" value="#{empleadoBean.idEmpleado}" />
+        </label>
+      </div>
+
+      <br />
+      <div id="datosLabel">
+        <label>Nombre completo:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="nombreTxt" value="#{empleadoBean.nombre}" />
+        </label>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>Correo electrónico:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="correoTxt" value="#{empleadoBean.correo}" />
+        </label>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>Contraseña:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="contrasenaTxt" value="#{empleadoBean.contrasena}" />
+        </label>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>RFC:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="rfcTxt" value="#{empleadoBean.rfc}" />
+        </label>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>Salario:</label>
+      </div>
+      <div id="datosInput">
+        <label>
+            <h:inputText id="salarioTxt" value="#{empleadoBean.salario}" />
+        </label>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>Agencia:</label>
+      </div>
+      <div id="datosInput">
+        <h:selectOneMenu value="#{agenciaBean.ubicacion}" width="20px">
+            <f:selectItem itemValue="Ciudad de México" itemLabel="Ciudad de México" />
+            <f:selectItem itemValue="Monterrey" itemLabel="Monterrey" />
+            <f:selectItem itemValue="Guadalajara" itemLabel="Guadalajara" />
+        </h:selectOneMenu>
+      </div>
+      <br />
+
+      <div id="datosLabel">
+        <label>Puesto:</label>
+      </div>
+      <div id="datosInput">
+        <h:selectOneMenu value="#{puestoBean.puesto}" width="20px">
+            <f:selectItem itemValue="Administrador" itemLabel="Administrador" />
+            <f:selectItem itemValue="Conductor" itemLabel="Conductor" />
+            <f:selectItem itemValue="Programador" itemLabel="Programador" />
+            <f:selectItem itemValue="Recursos Humanos" itemLabel="Recursos Humanos" />
+        </h:selectOneMenu>
+      </div>
+      <br />
+
+      <div id="datosInput">
+        <h:commandButton value="Agregar empleado" action="#{agenciaBean.agregarEmpleado(empleadoBean, puestoBean)}"/>
+        <h:commandButton value="Limpiar" type="reset" />
+        <h:commandButton value="Atras" action="index" immediate="true"/>
+      </div>
+    </h:form>
+  </h:body>
+</html>
+
+
