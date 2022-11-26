@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
-import jakarta.persistence.TypedQuery;
 import unam.dgtic.diplomado.m1100base.dominio.Employee;
 
 public class EmployeeService {
@@ -27,35 +26,12 @@ public class EmployeeService {
         return (Collection<Employee>) query.getResultList();
     }
 
-    // @SuppressWarnings("unchecked")
-    public Collection<Employee> findAllEmployeesVacations() {
-        TypedQuery<Employee> query = em.createQuery("SELECT e FROM Employee e", Employee.class);
-        Collection<Employee> employees = query.getResultList();
-
-        for (Employee e : employees) {
-            e.getVacationBookings().size();
-            e.getNickNames().size();
-        }
-
-        return employees;
-    }
-
-    public Employee addEmployeeNickname(Integer id, String nickname) {
-        Employee employee = findEmployee(id);
-        if (employee != null) {
-            employee.getNickNames().add(nickname);
-            updateEmployee(employee);
-        }
-
-        return employee;
-    }
-
     public Employee createEmployee(Integer id, String name, Long salary) {
         Employee employee = new Employee();
 
         employee.setId(id);
         employee.setName(name);
-        employee.setSalary(salary);
+        // employee.setSalary(salary);
 
         em.getTransaction().begin();
         em.persist(employee);
