@@ -1,9 +1,13 @@
 package unam.dgtic.diplomado.m1100base.dominio;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "CONTRACT_EMP")
+@DiscriminatorValue("1")
 public class ContractEmployee extends Employee {
 
     @Column(name = "D_RATE")

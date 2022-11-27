@@ -4,6 +4,7 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
@@ -14,8 +15,8 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "EMP")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "EMP_TYPE")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "EMP_TYPE", discriminatorType = DiscriminatorType.INTEGER)
 public class Employee extends CachedEntity {
 
     @Id

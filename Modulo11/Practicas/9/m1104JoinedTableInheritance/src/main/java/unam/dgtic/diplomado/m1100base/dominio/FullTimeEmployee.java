@@ -1,15 +1,15 @@
 package unam.dgtic.diplomado.m1100base.dominio;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
-@DiscriminatorValue("FTEmp")
+@Table(name = "FT_EMP")
+@DiscriminatorValue("2")
 public class FullTimeEmployee extends CompanyEmployee {
 
     private Long salary;
-    @Column(name = "PENSION")
     private Long pension;
 
     public Long getSalary() {

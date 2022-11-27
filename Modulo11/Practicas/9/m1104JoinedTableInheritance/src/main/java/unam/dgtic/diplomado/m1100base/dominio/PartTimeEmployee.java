@@ -1,11 +1,16 @@
 package unam.dgtic.diplomado.m1100base.dominio;
 
+import jakarta.persistence.AssociationOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
 
 @Entity
-@DiscriminatorValue("PTEmp")
+@Table(name = "PT_EMP")
+@DiscriminatorValue("3")
+@AssociationOverride(name = "manager", joinColumns = @JoinColumn(name = "MGR"))
 public class PartTimeEmployee extends CompanyEmployee {
 
     @Column(name = "H_RATE")
