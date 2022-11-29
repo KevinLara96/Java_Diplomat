@@ -1,0 +1,11 @@
+mx/unam/diplomado/agencia/db/JDBCUtil.class
+mx/unam/diplomado/agendafaces/vo/Agencia.class
+mx/unam/diplomado/agendafaces/vo/TipoViaje.class
+mx/unam/diplomado/ejb/IAgenciaEJBLocal.class
+mx/unam/diplomado/agencia/dao/IAgenciaDAO.class
+mx/unam/diplomado/agencia/db/DBConnection.class
+mx/unam/diplomado/agendafaces/bean/AgenciaBean.class
+mx/unam/diplomado/agencia/dao/AgenciaDAOJDBC.class
+mx/unam/diplomado/Main.class
+mx/unam/diplomado/ejb/AgenciaEJB.class
+mx/unam/diplomado/agendafaces/vo/Viaje.class

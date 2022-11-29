@@ -1,0 +1,9 @@
+mx/unam/diplomado/agenda/dao/AgendaDAOJDBC.class
+mx/unam/diplomado/agenda/dao/IAgendaDAO.class
+mx/unam/diplomado/ejb/AgendaEJB.class
+mx/unam/diplomado/ejb/IAgendaEJBLocal.class
+mx/unam/diplomado/agenda/db/DBConnection.class
+mx/unam/diplomado/agendafaces/bean/AgendaBean.class
+mx/unam/diplomado/agenda/db/JDBCUtil.class
+mx/unam/diplomado/agendafaces/vo/TipoContacto.class
+mx/unam/diplomado/agendafaces/vo/Contacto.class

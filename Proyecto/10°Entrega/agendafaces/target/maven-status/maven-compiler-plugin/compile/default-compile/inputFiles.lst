@@ -1,9 +1,0 @@
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Modulo10/Practicas/agendafaces/src/main/java/mx/unam/diplomado/agendafaces/vo/Contacto.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Modulo10/Practicas/agendafaces/src/main/java/mx/unam/diplomado/agenda/db/DBConnection.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Modulo10/Practicas/agendafaces/src/main/java/mx/unam/diplomado/ejb/AgendaEJB.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Modulo10/Practicas/agendafaces/src/main/java/mx/unam/diplomado/ejb/IAgendaEJBLocal.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Modulo10/Practicas/agendafaces/src/main/java/mx/unam/diplomado/agenda/db/JDBCUtil.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Modulo10/Practicas/agendafaces/src/main/java/mx/unam/diplomado/agenda/dao/IAgendaDAO.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Modulo10/Practicas/agendafaces/src/main/java/mx/unam/diplomado/agenda/dao/AgendaDAOJDBC.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Modulo10/Practicas/agendafaces/src/main/java/mx/unam/diplomado/agendafaces/vo/TipoContacto.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Modulo10/Practicas/agendafaces/src/main/java/mx/unam/diplomado/agendafaces/bean/AgendaBean.java
