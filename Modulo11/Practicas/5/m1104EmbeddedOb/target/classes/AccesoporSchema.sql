@@ -1,40 +1,60 @@
--- Acceso por Schema
-CREATE DATABASE modulo11RH;
-CREATE TABLE modulo11RH.RH_Employee (
-  id INTEGER NOT NULL,
-  name VARCHAR(255),
-  salary BIGINT,
-  PRIMARY KEY (id)
+DROP TABLE IF EXISTS EMPLOYEE_PROJECT;
+DROP TABLE IF EXISTS EMP_PROJ;
+DROP TABLE IF EXISTS PROJECT;
+DROP TABLE IF EXISTS EMPLOYEE;
+CREATE TABLE EMPLOYEE (
+  ID INTEGER NOT NULL AUTO_INCREMENT,
+  NAME VARCHAR(255),
+  SALARY BIGINT,
+  STREET VARCHAR(255),
+  CITY VARCHAR(255),
+  STATE VARCHAR(255),
+  ZIP_CODE VARCHAR(255),
+  PRIMARY KEY (ID)
+);
+DROP TABLE IF EXISTS COMPANY;
+CREATE TABLE COMPANY (
+  ID INTEGER NOT NULL,
+  STREET VARCHAR(255),
+  CITY VARCHAR(255),
+  STATE VARCHAR(255),
+  ZIP_CODE VARCHAR(255),
+  PRIMARY KEY (ID)
 );
 INSERT INTO
-  modulo11RH.RH_Employee
+  Employee
 VALUES
-  ('1', 'Oscar', '1000');
-INSERT INTO
-  modulo11RH.RH_Employee
-VALUES
-  ('2', 'Paula', '2000');
-INSERT INTO
-  modulo11RH.RH_Employee
-VALUES
-  ('3', 'Nadia', '3000');
-DROP TABLE if exists Employee;
-CREATE TABLE Employee (
-    ID INTEGER NOT NULL,
-    PHONE VARCHAR(255),
-    NAME VARCHAR(255),
-    SALARY BIGINT,
-    PRIMARY KEY (ID)
+  (
+    '100',
+    'OSCAR',
+    '1000',
+    'RANCHO SECO S/N',
+    'CDMX',
+    'CDMX',
+    '56200'
+  ),(
+    '200',
+    'PAULA',
+    '2000',
+    'AV. TECNOLOGICO 100',
+    'MORELIA',
+    'MICH',
+    '58000'
+  ),(
+    '300',
+    'NADIA',
+    '3000',
+    'AV. UNIVERSIDAD 3000',
+    'GUADALAJARA',
+    'JAL',
+    '44100'
+  ),
+  (
+    '400',
+    'MARCO',
+    '4000',
+    'PASEO ALTO 456',
+    'MONTERREY',
+    'NL',
+    '64000'
   );
-INSERT INTO
-  Employee
-VALUES
-  ('100', '667788', 'Oscar', '1000');
-INSERT INTO
-  Employee
-VALUES
-  ('200', '778899', 'Paula', '2000');
-INSERT INTO
-  Employee
-VALUES
-  ('300', '998877', 'Nadia', '3000');

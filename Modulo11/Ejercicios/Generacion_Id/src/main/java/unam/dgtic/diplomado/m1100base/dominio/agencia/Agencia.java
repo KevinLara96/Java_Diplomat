@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import unam.dgtic.diplomado.m1100base.dominio.viaje.Viaje;
 
@@ -18,6 +19,7 @@ public class Agencia {
     private String nombreAgencia;
     private String ubicacion;
 
+    @OneToMany
     private List<Viaje> destinos;
 
     public Agencia() {
