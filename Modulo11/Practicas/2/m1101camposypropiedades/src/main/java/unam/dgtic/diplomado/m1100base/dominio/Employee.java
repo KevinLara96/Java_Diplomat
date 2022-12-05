@@ -3,12 +3,7 @@ package unam.dgtic.diplomado.m1100base.dominio;
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 
 @Access(AccessType.FIELD)
 @Entity
@@ -76,7 +71,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", department=" + department + "]";
+        return "Employee [id=" + id + ", name=" + name + ", salary=" + salary;
     }
 
 }

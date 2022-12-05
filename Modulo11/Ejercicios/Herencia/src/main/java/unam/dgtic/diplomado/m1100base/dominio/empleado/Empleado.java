@@ -1,15 +1,14 @@
 package unam.dgtic.diplomado.m1100base.dominio.empleado;
 
-import jakarta.persistence.Access;
-import jakarta.persistence.AccessType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import unam.dgtic.diplomado.m1100base.dominio.agencia.Agencia;
+import unam.dgtic.diplomado.m1100base.dominio.puesto.Puesto;
 
-@Access(AccessType.FIELD)
 @Entity
 @Table(name = "empleado")
 public class Empleado {
@@ -26,7 +25,9 @@ public class Empleado {
     @JoinColumn(name = "idAgencia")
     private Agencia agencia;
 
-    private String puesto;
+    @OneToOne // (mappedBy = "empleado")
+    @JoinColumn(name = "idPuesto")
+    private Puesto puesto;
 
     public Empleado() {
     }
@@ -96,11 +97,11 @@ public class Empleado {
         this.agencia = agencia;
     }
 
-    public String getPuesto() {
+    public Puesto getPuesto() {
         return puesto;
     }
 
-    public void setPuesto(String puesto) {
+    public void setPuesto(Puesto puesto) {
         this.puesto = puesto;
     }
 
@@ -132,7 +133,7 @@ public class Empleado {
     @Override
     public String toString() {
         return "Empleado [idEmpleado=" + idEmpleado + ", nombre=" + nombre + ", correo=" + correo + ", contrasena="
-                + contrasena + ", rfc=" + rfc + ", salario=" + salario + ", puesto: " + puesto
+                + contrasena + ", rfc=" + rfc + ", salario=" + salario + ", puesto: " + puesto.getPuesto()
                 + ", agencia=" + agencia.getUbicacion() + "]";
     }
 

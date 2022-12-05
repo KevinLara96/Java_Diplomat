@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import unam.dgtic.diplomado.m1100base.dominio.cliente.Cliente;
 import unam.dgtic.diplomado.m1100base.dominio.empleado.Empleado;
 
 @Entity
@@ -20,6 +21,9 @@ public class Agencia {
 
     @OneToMany(mappedBy = "agencia")
     private List<Empleado> empleados;
+
+    @OneToMany(mappedBy = "agencia")
+    private List<Cliente> clientes;
 
     public Agencia() {
     }
@@ -73,6 +77,14 @@ public class Agencia {
 
     public void setEmpleados(List<Empleado> empleados) {
         this.empleados = empleados;
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
     }
 
     @Override

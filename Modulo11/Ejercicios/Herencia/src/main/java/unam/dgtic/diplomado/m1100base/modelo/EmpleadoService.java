@@ -13,6 +13,8 @@ public class EmpleadoService {
     protected EntityManager em;
     @Autowired
     private AgenciaService agenciaService;
+    @Autowired
+    private PuestoService puestoService;
 
     public EmpleadoService(EntityManager em) {
         this.em = em;
@@ -48,6 +50,7 @@ public class EmpleadoService {
         empleado.setSalario(salario);
 
         empleado.setAgencia(agenciaService.findAgencia(idAgencia));
+        empleado.setPuesto(puestoService.findPuesto(idPuesto));
 
         em.getTransaction().begin();
         em.persist(empleado);
