@@ -7,7 +7,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import unam.dgtic.diplomado.m1100base.dominio.cliente.Cliente;
 import unam.dgtic.diplomado.m1100base.dominio.empleado.Empleado;
+import unam.dgtic.diplomado.m1100base.dominio.transporte.Transporte;
 
 @Entity
 @Table(name = "agencia")
@@ -20,6 +22,12 @@ public class Agencia {
 
     @OneToMany(mappedBy = "agencia")
     private List<Empleado> empleados;
+
+    @OneToMany(mappedBy = "agencia")
+    private List<Cliente> clientes;
+
+    @OneToMany(mappedBy = "agencia")
+    private List<Transporte> transportes;
 
     public Agencia() {
     }
@@ -75,6 +83,22 @@ public class Agencia {
         this.empleados = empleados;
     }
 
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    public List<Transporte> getTransportes() {
+        return transportes;
+    }
+
+    public void setTransportes(List<Transporte> transportes) {
+        this.transportes = transportes;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -118,7 +142,11 @@ public class Agencia {
         StringBuilder str = new StringBuilder("");
         str.append("Agencia ").append(nombreAgencia);
         str.append("\nUbicación: ").append(ubicacion);
-        str.append("\nempleados: ").append(empleados);
+        str.append("\nEmpleados: ").append(empleados);
+        str.append("\nClientes: ").append(clientes);
+        str.append("\nTransportes: ").append(transportes).append("\n\n");
+
         return str.toString();
     }
+
 }

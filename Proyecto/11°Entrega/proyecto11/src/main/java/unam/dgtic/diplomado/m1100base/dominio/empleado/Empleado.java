@@ -129,9 +129,9 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado [idEmpleado=" + idEmpleado + ", nombre=" + nombre + ", correo=" + correo + ", contrasena="
+        return "[idEmpleado=" + idEmpleado + ", nombre=" + nombre + ", correo=" + correo + ", contrasena="
                 + contrasena + ", rfc=" + rfc + ", salario=" + salario + ", puesto: " + puesto.getPuesto()
-                + ", agencia=" + agencia.getUbicacion() + "]";
+                + ", agencia=" + agencia.getUbicacion() + "]\n";
     }
 
 }

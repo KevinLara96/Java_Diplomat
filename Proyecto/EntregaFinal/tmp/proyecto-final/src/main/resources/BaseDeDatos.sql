@@ -55,6 +55,7 @@ CREATE TABLE viaje(
 );
 CREATE TABLE transporte (
   idTransporte INT NOT NULL AUTO_INCREMENT,
+  tipoTransporte VARCHAR(10) NOT NULL,
   marca VARCHAR(30),
   modelo VARCHAR(30),
   capacidadUsuarios INT,

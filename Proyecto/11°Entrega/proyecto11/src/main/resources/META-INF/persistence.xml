@@ -8,8 +8,12 @@
         <class>unam.dgtic.diplomado.m1100base.dominio.agencia.Agencia</class>
         <class>unam.dgtic.diplomado.m1100base.dominio.empleado.Empleado</class>
         <class>unam.dgtic.diplomado.m1100base.dominio.puesto.Puesto</class>
-        <class>unam.dgtic.diplomado.m1100base.dominio.viaje.Viaje</class>
-        <class>unam.dgtic.diplomado.m1100base.dominio.viaje.TipoViaje</class>
+        <class>unam.dgtic.diplomado.m1100base.dominio.transporte.Transporte</class>
+        <class>unam.dgtic.diplomado.m1100base.dominio.transporte.Avion</class>
+        <class>unam.dgtic.diplomado.m1100base.dominio.transporte.Autobus</class>
+        <class>unam.dgtic.diplomado.m1100base.dominio.cliente.Cliente</class>
+        <class>unam.dgtic.diplomado.m1100base.dominio.cliente.Orden</class>
+        <class>unam.dgtic.diplomado.m1100base.dominio.cliente.ClienteOrden</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/modulo11" />
