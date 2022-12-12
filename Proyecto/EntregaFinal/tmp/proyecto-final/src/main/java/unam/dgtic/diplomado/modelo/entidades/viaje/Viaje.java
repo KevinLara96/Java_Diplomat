@@ -2,6 +2,8 @@ package unam.dgtic.diplomado.modelo.entidades.viaje;
 
 import java.util.Date;
 
+import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+
 public class Viaje {
 
     private Integer idViaje;
@@ -23,56 +25,84 @@ public class Viaje {
         return idViaje;
     }
 
-    public void setIdViaje(Integer idViaje) {
-        this.idViaje = idViaje;
+    public void setIdViaje(Integer idViaje) throws Exception {
+        if (idViaje == null || idViaje <= 0) {
+            throw new ExcepcionAtributos("ERROR. Id de viaje inválido.");
+        } else {
+            this.idViaje = idViaje;
+        }
     }
 
     public String getOrigen() {
         return origen;
     }
 
-    public void setOrigen(String origen) {
-        this.origen = origen;
+    public void setOrigen(String origen) throws Exception {
+        if (origen == null || origen.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Origen de viaje inválido.");
+        } else {
+            this.origen = origen;
+        }
     }
 
     public String getDestino() {
         return destino;
     }
 
-    public void setDestino(String destino) {
-        this.destino = destino;
+    public void setDestino(String destino) throws Exception {
+        if (destino == null || destino.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Destino de viaje inválido.");
+        } else {
+            this.destino = destino;
+        }
     }
 
     public Float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Float precio) {
-        this.precio = precio;
+    public void setPrecio(Float precio) throws Exception {
+        if (precio == null || precio <= 0) {
+            throw new ExcepcionAtributos("ERROR. Precio de viaje inválido.");
+        } else {
+            this.precio = precio;
+        }
     }
 
     public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFecha(Date fecha) throws Exception {
+        if (fecha == null || fecha.toString().isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Fecha de viaje inválido.");
+        } else {
+            this.fecha = fecha;
+        }
     }
 
     public TipoViajeAutobus getTipoViajeAutobus() {
         return tipoViajeAutobus;
     }
 
-    public void setTipoViajeAutobus(TipoViajeAutobus tipoViajeAutobus) {
-        this.tipoViajeAutobus = tipoViajeAutobus;
+    public void setTipoViajeAutobus(TipoViajeAutobus tipoViajeAutobus) throws Exception {
+        if (tipoViajeAutobus == null) {
+            throw new ExcepcionAtributos("ERROR. Tipo de viaje en autoús inválido.");
+        } else {
+            this.tipoViajeAutobus = tipoViajeAutobus;
+        }
     }
 
     public TipoViajeAvion getTipoViajeAvion() {
         return tipoViajeAvion;
     }
 
-    public void setTipoViajeAvion(TipoViajeAvion tipoViajeAvion) {
-        this.tipoViajeAvion = tipoViajeAvion;
+    public void setTipoViajeAvion(TipoViajeAvion tipoViajeAvion) throws Exception {
+        if (tipoViajeAvion == null) {
+            throw new ExcepcionAtributos("ERROR. Tipo de viaje en avión inválido.");
+        } else {
+            this.tipoViajeAvion = tipoViajeAvion;
+        }
     }
 
     @Override
@@ -127,7 +157,7 @@ public class Viaje {
             this.viaje = viaje;
         }
 
-        public BuildViajeAvion setTipoViajeAvion(TipoViajeAvion tipoViajeAvion) {
+        public BuildViajeAvion setTipoViajeAvion(TipoViajeAvion tipoViajeAvion) throws Exception {
             this.viaje.setTipoViajeAvion(tipoViajeAvion);
             return this;
         }
@@ -144,7 +174,7 @@ public class Viaje {
             this.viaje = viaje;
         }
 
-        public BuildViajeAutobus setTipoViajeAutobus(TipoViajeAutobus tipoViajeAutobus) {
+        public BuildViajeAutobus setTipoViajeAutobus(TipoViajeAutobus tipoViajeAutobus) throws Exception {
             this.viaje.setTipoViajeAutobus(tipoViajeAutobus);
             return this;
         }

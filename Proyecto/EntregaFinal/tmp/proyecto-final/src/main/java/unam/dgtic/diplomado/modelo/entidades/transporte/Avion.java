@@ -2,6 +2,8 @@ package unam.dgtic.diplomado.modelo.entidades.transporte;
 
 import java.util.Date;
 
+import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+
 public class Avion extends Transporte {
 
     private Integer numeroTurbinas;
@@ -22,16 +24,25 @@ public class Avion extends Transporte {
         return numeroTurbinas;
     }
 
-    public void setNumeroTurbinas(Integer numeroTurbinas) {
-        this.numeroTurbinas = numeroTurbinas;
+    public void setNumeroTurbinas(Integer numeroTurbinas) throws Exception {
+        if (numeroTurbinas == null || numeroTurbinas < 2) {
+            throw new ExcepcionAtributos("ERROR. Número de turbinas inválido.");
+        } else {
+            this.numeroTurbinas = numeroTurbinas;
+
+        }
     }
 
     public String getPuertoAsignado() {
         return puertoAsignado;
     }
 
-    public void setPuertoAsignado(String puertoAsignado) {
-        this.puertoAsignado = puertoAsignado;
+    public void setPuertoAsignado(String puertoAsignado) throws Exception {
+        if (puertoAsignado == null || puertoAsignado.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Puerto de avión inválido.");
+        } else {
+            this.puertoAsignado = puertoAsignado;
+        }
     }
 
     @Override

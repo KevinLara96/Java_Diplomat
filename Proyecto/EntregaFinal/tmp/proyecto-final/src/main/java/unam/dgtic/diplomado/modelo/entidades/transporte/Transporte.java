@@ -2,6 +2,8 @@ package unam.dgtic.diplomado.modelo.entidades.transporte;
 
 import java.util.Date;
 
+import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+
 public class Transporte {
 
     private Integer idTransporte;
@@ -29,48 +31,72 @@ public class Transporte {
         return idTransporte;
     }
 
-    public void setIdTransporte(Integer idTransporte) {
-        this.idTransporte = idTransporte;
+    public void setIdTransporte(Integer idTransporte) throws Exception {
+        if (idTransporte == null || idTransporte <= 0) {
+            throw new ExcepcionAtributos("ERROR. Id de transporte inválido.");
+        } else {
+            this.idTransporte = idTransporte;
+        }
     }
 
     public String getMarca() {
         return marca;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setMarca(String marca) throws Exception {
+        if (marca == null || marca.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Marca de transporte inválida.");
+        } else {
+            this.marca = marca;
+        }
     }
 
     public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setModelo(String modelo) throws Exception {
+        if (modelo == null || modelo.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Modelo de transporte inválida.");
+        } else {
+            this.modelo = modelo;
+        }
     }
 
     public Integer getCapacidadUsuarios() {
         return capacidadUsuarios;
     }
 
-    public void setCapacidadUsuarios(Integer capacidadUsuarios) {
-        this.capacidadUsuarios = capacidadUsuarios;
+    public void setCapacidadUsuarios(Integer capacidadUsuarios) throws Exception {
+        if (capacidadUsuarios == null || capacidadUsuarios <= 20) {
+            throw new ExcepcionAtributos("ERROR. Capacidad de usuarios inválida.");
+        } else {
+            this.capacidadUsuarios = capacidadUsuarios;
+        }
     }
 
     public Integer getCapacidadCombustible() {
         return capacidadCombustible;
     }
 
-    public void setCapacidadCombustible(Integer capacidadCombustible) {
-        this.capacidadCombustible = capacidadCombustible;
+    public void setCapacidadCombustible(Integer capacidadCombustible) throws Exception {
+        if (capacidadCombustible == null || capacidadCombustible <= 30) {
+            throw new ExcepcionAtributos("ERROR. Capacidad de combustible inválida.");
+        } else {
+            this.capacidadCombustible = capacidadCombustible;
+        }
     }
 
     public Date getFechaAdquisicion() {
         return fechaAdquisicion;
     }
 
-    public void setFechaAdquisicion(Date fechaAdquisicion) {
-        this.fechaAdquisicion = fechaAdquisicion;
+    public void setFechaAdquisicion(Date fechaAdquisicion) throws Exception {
+        if (fechaAdquisicion == null || fechaAdquisicion.toString().isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Fecha de adquisición de transporte inválida.");
+        } else {
+            this.fechaAdquisicion = fechaAdquisicion;
+        }
     }
 
     @Override

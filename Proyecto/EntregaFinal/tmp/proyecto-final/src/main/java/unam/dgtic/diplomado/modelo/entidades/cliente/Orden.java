@@ -3,6 +3,8 @@ package unam.dgtic.diplomado.modelo.entidades.cliente;
 import java.util.Date;
 import java.util.List;
 
+import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+
 public class Orden {
 
     private Integer idOrden;
@@ -27,24 +29,37 @@ public class Orden {
         return idOrden;
     }
 
-    public void setIdOrden(Integer idOrden) {
-        this.idOrden = idOrden;
+    public void setIdOrden(Integer idOrden) throws Exception {
+        if (idOrden == null || idOrden <= 0) {
+            throw new ExcepcionAtributos("ERROR. Id de orden inválida.");
+        } else {
+            this.idOrden = idOrden;
+
+        }
     }
 
     public Date getFechaEmision() {
         return fechaEmision;
     }
 
-    public void setFechaEmision(Date fechaEmision) {
-        this.fechaEmision = fechaEmision;
+    public void setFechaEmision(Date fechaEmision) throws Exception {
+        if (fechaEmision == null || fechaEmision.toString().isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Fecha de orden inválida.");
+        } else {
+            this.fechaEmision = fechaEmision;
+        }
     }
 
     public Float getMonto() {
         return monto;
     }
 
-    public void setMonto(Float monto) {
-        this.monto = monto;
+    public void setMonto(Float monto) throws Exception {
+        if (monto == null || monto == 0) {
+            throw new ExcepcionAtributos("ERROR. Monto de orden inválida.");
+        } else {
+            this.monto = monto;
+        }
     }
 
     public String getDescripcion() {

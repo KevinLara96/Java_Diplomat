@@ -1,5 +1,7 @@
 package unam.dgtic.diplomado.modelo.entidades.viaje;
 
+import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+
 public class TipoViajeAvion {
 
     private Integer idTipoViajeAvion;
@@ -17,16 +19,24 @@ public class TipoViajeAvion {
         return idTipoViajeAvion;
     }
 
-    public void setIdTipoViaje(Integer idTipoViajeAvion) {
-        this.idTipoViajeAvion = idTipoViajeAvion;
+    public void setIdTipoViaje(Integer idTipoViajeAvion) throws Exception {
+        if (idTipoViajeAvion == null || idTipoViajeAvion <= 0) {
+            throw new ExcepcionAtributos("ERROR. Id del tipo de viaje en avión inválido.");
+        } else {
+            this.idTipoViajeAvion = idTipoViajeAvion;
+        }
     }
 
     public String getTipoViaje() {
         return tipoViajeAvion;
     }
 
-    public void setTipoViaje(String tipoViajeAvion) {
-        this.tipoViajeAvion = tipoViajeAvion;
+    public void setTipoViaje(String tipoViajeAvion) throws Exception {
+        if (tipoViajeAvion == null || tipoViajeAvion.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Tipo de viaje en avión inválido.");
+        } else {
+            this.tipoViajeAvion = tipoViajeAvion;
+        }
     }
 
     @Override

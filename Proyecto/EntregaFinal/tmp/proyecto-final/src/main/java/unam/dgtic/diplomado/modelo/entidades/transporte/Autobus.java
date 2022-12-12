@@ -2,6 +2,8 @@ package unam.dgtic.diplomado.modelo.entidades.transporte;
 
 import java.util.Date;
 
+import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+
 public class Autobus extends Transporte {
 
     private Integer numeroLlantas;
@@ -23,16 +25,24 @@ public class Autobus extends Transporte {
         return numeroLlantas;
     }
 
-    public void setNumeroLlantas(Integer numeroLlantas) {
-        this.numeroLlantas = numeroLlantas;
+    public void setNumeroLlantas(Integer numeroLlantas) throws Exception {
+        if (numeroLlantas == null || numeroLlantas < 4) {
+            throw new ExcepcionAtributos("ERROR. Número de llantas inválido.");
+        } else {
+            this.numeroLlantas = numeroLlantas;
+        }
     }
 
     public String getEstacionamientoAsignado() {
         return estacionamientoAsignado;
     }
 
-    public void setEstacionamientoAsignado(String estacionamientoAsignado) {
-        this.estacionamientoAsignado = estacionamientoAsignado;
+    public void setEstacionamientoAsignado(String estacionamientoAsignado) throws Exception {
+        if (estacionamientoAsignado == null || estacionamientoAsignado.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Estacionamiento de autobús inválido.");
+        } else {
+            this.estacionamientoAsignado = estacionamientoAsignado;
+        }
     }
 
     @Override

@@ -1,5 +1,7 @@
 package unam.dgtic.diplomado.modelo.entidades.empleado;
 
+import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+
 public class Puesto {
 
     private Integer idPuesto;
@@ -17,16 +19,24 @@ public class Puesto {
         return idPuesto;
     }
 
-    public void setIdPuesto(Integer idPuesto) {
-        this.idPuesto = idPuesto;
+    public void setIdPuesto(Integer idPuesto) throws Exception {
+        if (idPuesto == null || idPuesto <= 0) {
+            throw new ExcepcionAtributos("ERROR. Id de puesto inválido.");
+        } else {
+            this.idPuesto = idPuesto;
+        }
     }
 
     public String getPuesto() {
         return puesto;
     }
 
-    public void setPuesto(String puesto) {
-        this.puesto = puesto;
+    public void setPuesto(String puesto) throws Exception {
+        if (puesto == null || puesto.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Nombre de puesto inválido.");
+        } else {
+            this.puesto = puesto;
+        }
     }
 
     @Override

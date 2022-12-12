@@ -1,5 +1,9 @@
 package unam.dgtic.diplomado.modelo.entidades.empleado;
 
+import java.util.regex.Pattern;
+
+import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+
 public class Empleado {
 
     private Integer idEmpleado;
@@ -30,64 +34,101 @@ public class Empleado {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(Integer idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setIdEmpleado(Integer idEmpleado) throws Exception {
+        if (idEmpleado == null || idEmpleado <= 0) {
+            throw new ExcepcionAtributos("ERROR. Id de cliente inválido.");
+        } else {
+            this.idEmpleado = idEmpleado;
+        }
     }
 
     public String getNombres() {
         return nombres;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombres(String nombres) throws Exception {
+        if (nombres == null || nombres.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Nombre(s) de empleado inválido(s).");
+        } else {
+            this.nombres = nombres;
+        }
     }
 
     public String getApellidos() {
         return apellidos;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setApellidos(String apellidos) throws Exception {
+        if (apellidos == null || apellidos.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Apellidos de empleado inválidos.");
+        } else {
+            this.apellidos = apellidos;
+        }
     }
 
     public String getCorreo() {
         return correo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCorreo(String correo) throws Exception {
+        Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
+        boolean correoRegex = pattern.matcher(correo).matches();
+        if (correoRegex) {
+            this.correo = correo;
+        } else if (correo == null || correo == "") {
+            throw new ExcepcionAtributos("ERROR. Correo electrónico de empleado vacío.");
+        } else {
+            throw new ExcepcionAtributos("ERROR. Correo no válido de empleado.");
+        }
     }
 
     public String getContrasena() {
         return contrasena;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setContrasena(String contrasena) throws Exception {
+        if (contrasena == null || contrasena.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Contrasena de empleado inválido.");
+        } else {
+            this.contrasena = contrasena;
+        }
     }
 
     public String getRfc() {
         return rfc;
     }
 
-    public void setRfc(String rfc) {
-        this.rfc = rfc;
+    public void setRfc(String rfc) throws Exception {
+        if (rfc == null || rfc.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. RFC de empleado inválido.");
+        } else {
+            this.rfc = rfc;
+        }
     }
 
     public Float getSalario() {
         return salario;
     }
 
-    public void setSalario(Float salario) {
-        this.salario = salario;
+    public void setSalario(Float salario) throws Exception {
+        if (salario == null || salario <= 0) {
+            throw new ExcepcionAtributos("ERROR. Salario de empleado inválido.");
+        } else {
+            this.salario = salario;
+        }
     }
 
     public Puesto getPuesto() {
         return puesto;
     }
 
-    public void setPuesto(Puesto puesto) {
-        this.puesto = puesto;
+    public void setPuesto(Puesto puesto) throws Exception {
+        if (puesto == null) {
+            throw new ExcepcionAtributos("ERROR. PUesto de empleado inválido.");
+        } else {
+            this.puesto = puesto;
+        }
     }
 
     @Override
