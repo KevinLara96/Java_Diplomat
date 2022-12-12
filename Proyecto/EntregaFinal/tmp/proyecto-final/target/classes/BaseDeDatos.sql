@@ -1,9 +1,6 @@
 DROP DATABASE IF EXISTS proyecto_final;
 CREATE DATABASE proyecto_final DEFAULT CHARACTER SET = 'utf8mb4';
 USE proyecto_final;
-CREATE SEQUENCE secuencia_puesto MINVALUE 1 START WITH 10 INCREMENT BY 10;
-CREATE SEQUENCE secuencia_tipoVAutobus MINVALUE 10 START WITH 10 INCREMENT BY 50;
-CREATE SEQUENCE secuencia_tipoVAvion MINVALUE 10 START WITH 10 INCREMENT BY 50;
 CREATE TABLE agencia(
   idAgencia INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(30) NOT NULL,
@@ -11,7 +8,7 @@ CREATE TABLE agencia(
   CONSTRAINT agencia_pk PRIMARY KEY (idAgencia)
 );
 CREATE TABLE puesto(
-  idPuesto INT NOT NULL,
+  idPuesto INT NOT NULL AUTO_INCREMENT,
   puesto VARCHAR(20),
   CONSTRAINT puesto_pk PRIMARY KEY(idPuesto)
 );
@@ -19,7 +16,7 @@ CREATE TABLE empleado(
   idEmpleado INT NOT NULL AUTO_INCREMENT,
   nombres VARCHAR(40) NOT NULL,
   apellidos VARCHAR(40) NOT NULL,
-  correro VARCHAR(40) NOT NULL,
+  correo VARCHAR(40) NOT NULL,
   contrasena VARCHAR(40) NOT NULL,
   rfc VARCHAR(20) NOT NULL,
   salario FLOAT NOT NULL,
@@ -27,15 +24,16 @@ CREATE TABLE empleado(
   idPuesto INT NOT NULL,
   CONSTRAINT empleado_pk PRIMARY KEY(idEmpleado),
   CONSTRAINT empleado_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia),
-  CONSTRAINT empleado_puesto_fk FOREIGN KEY (idPuesto) REFERENCES puesto(idPuesto)
+  CONSTRAINT empleado_puesto_fk FOREIGN KEY (idPuesto) REFERENCES puesto(idPuesto),
+  CONSTRAINT empleado_correo_ck CHECK (correo LIKE "%@avk.com")
 );
 CREATE TABLE tipoViajeAutobus (
-  idTipoViajeAutobus INT NOT NULL,
+  idTipoViajeAutobus INT NOT NULL AUTO_INCREMENT,
   tipoViajeAutobus VARCHAR(20) NOT NULL,
   CONSTRAINT tipoViajeAutobus_pk PRIMARY KEY (idTipoViajeAutobus)
 );
 CREATE TABLE tipoViajeAvion (
-  idTipoViajeAvion INT NOT NULL,
+  idTipoViajeAvion INT NOT NULL AUTO_INCREMENT,
   tipoViajeAvion VARCHAR(20) NOT NULL,
   CONSTRAINT tipoViajeAvion_pk PRIMARY KEY (idTipoViajeAvion)
 );
@@ -72,7 +70,7 @@ CREATE TABLE cliente (
   nombres VARCHAR(50) NOT NULL,
   apellidos VARCHAR(50) NOT NULL,
   calle VARCHAR(30) NOT NULL,
-  colonia VARCHAR(30) NOT NULL,
+  colonia VARCHAR(50) NOT NULL,
   codigoPostal VARCHAR(30) NOT NULL,
   telefono VARCHAR(15) NOT NULL,
   rfc VARCHAR(20) NOT NULL,
