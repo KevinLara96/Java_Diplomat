@@ -25,9 +25,178 @@ VALUES
   );
 INSERT INTO
   empleado
+VALUES(
+    3,
+    'Ana Laura',
+    'Gómez López',
+    'laura@avk.com',
+    'bE151Puge7@%',
+    'GOLA940712FD0',
+    2400.0,
+    2,
+    6
+  );
+INSERT INTO
+  empleado
+VALUES(
+    4,
+    'Jóse Luis',
+    'Duarte Sosa',
+    'duarte@avk.com',
+    '39X4cs86I*^m',
+    ' DUSL9104244H10',
+    4500.0,
+    1,
+    4
+  );
+INSERT INTO
+  empleado
+VALUES(
+    5,
+    'Antonio',
+    'Navarro Ruíz',
+    'antonio@avk.com',
+    'I7^Xzyx2%d2U',
+    'NARA950615FZ7',
+    3000.0,
+    3,
+    5
+  );
+INSERT INTO
+  empleado
+VALUES(
+    6,
+    'María Lucía',
+    'Torres Pesa',
+    'lucia@avk.com',
+    'jpnnU77Hi5H*',
+    'TOPL960815JN5',
+    3500.0,
+    1,
+    2
+  );
+INSERT INTO
+  empleado
+VALUES(
+    7,
+    'Vicente',
+    'Gutiérrez Nieto',
+    'vicente@avk.com',
+    'n5Bz7036j#A3',
+    'GUNV900405P67',
+    4500.0,
+    3,
+    4
+  );
+INSERT INTO
+  empleado
+VALUES(
+    8,
+    'Jóse Antonio',
+    'Arellano Asenjo',
+    'arellano@avk.com',
+    'Us6zGxl62#i#',
+    'AEAA951029UI3',
+    2400.0,
+    2,
+    5
+  );
+INSERT INTO
+  empleado
+VALUES(
+    9,
+    'Rodrigo',
+    'Cruz Domínguez',
+    'rodrigo@avk.com',
+    'jzd7U0oZ!d06',
+    'CUDR9505149H4',
+    3800.0,
+    1,
+    3
+  );
+INSERT INTO
+  empleado
+VALUES(
+    10,
+    'Lixy Fernanda',
+    'Pérez Mora',
+    'lixy@avk.com',
+    '0FnZ#f*n11P5',
+    'PEML920925Q52',
+    3800.0,
+    2,
+    3
+  );
+INSERT INTO
+  empleado
+VALUES(
+    11,
+    'Adrián',
+    'Toledo Sierra',
+    'adrian@avk.com',
+    'M9Ii4$^U00i0',
+    'TOSA9304078H7',
+    2400.0,
+    3,
+    6
+  );
+INSERT INTO
+  empleado
+VALUES(
+    12,
+    'Luisa Ximena',
+    'Garrido Pinol',
+    'ximena@avk.com',
+    '5K!IsI1B3#W6',
+    'GAPL950829RLA',
+    3000.0,
+    1,
+    5
+  );
+INSERT INTO
+  empleado
+VALUES(
+    13,
+    'Juan Carlos',
+    'Escamilla Campos',
+    'carlos@avk.com',
+    '0p4ti6FaR^n1',
+    'EACJ961211L46',
+    3800.0,
+    3,
+    4
+  );
+INSERT INTO
+  empleado
+VALUES(
+    14,
+    'Josefa',
+    'Bustamante Vara',
+    'josefa@avk.com',
+    'p!u5EG920ScJ',
+    'BUVJ911110MB2',
+    3900.0,
+    2,
+    4
+  );
+INSERT INTO
+  empleado
+VALUES(
+    15,
+    'María Jóse',
+    'Baraja Hernández',
+    'baraja@avk.com',
+    '608WI0HfTWe&',
+    'BAH931212P45',
+    3000.0,
+    1,
+    3
+  );
+INSERT INTO
+  empleado
 VALUES
   (
-    3,
+    16,
     'Carlos Crispín',
     'Aliñado Asturias',
     'vopusseuttehi-2697@avk.com',
@@ -305,13 +474,13 @@ VALUES
   (
     '1996-03-08',
     2400.0,
-    'Compra de 2 boletos de avión de la Ciudad de México a ... por medio de pago con tarjeta'
+    'Compra de 2 boletos de avión de la Ciudad de México a Berlín, pago con tarjeta'
   );
 INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1995-01-27',
+    '2010-01-27',
     3400.0,
     'Compra tres boletos de avión de Monterrey a Yucatán, pago en efectivo'
   );
@@ -319,7 +488,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1990-04-30',
+    '2011-04-30',
     1500.0,
     'Compra un boleto de autobús de la Ciudad de México a Veracruz, pago con tarjeta'
   );
@@ -327,7 +496,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1998-11-27',
+    '2012-11-27',
     5800.0,
     'Compra 3 boletos de avión de Guadalajara a Los Ángeles , pago con tarjeta'
   );
@@ -335,7 +504,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1994-03-14',
+    '2013-03-14',
     1400.0,
     'Compra un boleto autobús de Monterrey a Chihuahua, pago en efetivo'
   );
@@ -343,7 +512,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1989-12-20',
+    '2015-12-20',
     4500.0,
     'Compra dos boletos de avión de Ciudad de México a Quintana Roo, pago con tarjeta'
   );
@@ -351,7 +520,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1991-10-11',
+    '2014-11-10',
     8500.0,
     'Compra dos boletos de avión de Monterrey a Bogotá, pago con tarjeta'
   );
@@ -359,7 +528,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1995-07-28',
+    '2014-07-28',
     2400.0,
     'Compra dos boletos de autobús de Guadalajara a Oaxaca , pago en efectivo'
   );
@@ -367,7 +536,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1988-03-06',
+    '2016-06-03',
     3500.0,
     'Compra tres boletos de autobús de Monterrey a Colima, pago con tarjeta'
   );
@@ -375,7 +544,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1997-10-21',
+    '2017-10-21',
     1400.0,
     'Compra un boleto de autobús de Ciudad de México a Campeche, pago en efectivo'
   );
@@ -383,7 +552,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1994-07-07',
+    '2018-07-07',
     2800.0,
     'Compra dos boletos de autobús de Monterrey a Veracruz, pago con tarjeta'
   );
@@ -391,7 +560,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1997-02-05',
+    '2018-05-02',
     2500.0,
     'Compra dos boletos de autobús de Ciudad de México a Guerrero, pago con tarjeta'
   );
@@ -399,7 +568,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1985-06-27',
+    '2019-06-27',
     1800.0,
     'Compra un boleto de avión de Ciudad de México a Chihuahua, pago en efectivo'
   );
@@ -407,7 +576,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1999-09-15',
+    '2020-09-15',
     3500.0,
     'Compra tres boletos de avión de Guadalajara a Yucatán, pago con tarjeta'
   );
@@ -415,7 +584,7 @@ INSERT INTO
   orden (fechaEmision, monto, descripcion)
 VALUES
   (
-    '1993-07-04',
+    '2020-10-07',
     2400.0,
     'Compra un boleto de avión de Ciudad de México a Bostón, pago con tarjeta'
   );
@@ -480,3 +649,478 @@ INSERT INTO
   cliente_orden
 VALUES
   (3, 15);
+---------------------------------------------Tipos de viaje-------------------------------------------------
+INSERT INTO
+  tipoViajeAutobus
+VALUES
+  (1, 'VIAJE CORTO'),
+  (2, 'VIAJE MEDIO'),
+  (3, 'VIAJE LARGO'),
+  (4, 'N.A');
+INSERT INTO
+  tipoViajeAvion
+VALUES
+  (1, 'VUELO NACIONAL'),
+  (2, 'VUELO INTERNACIONAL'),
+  (3, 'VUELVO INTERCONTINENTAL'),
+  (4, 'N.A');
+----------------------------------------------Viaje--------------------------------------------------------
+INSERT INTO
+  viaje
+VALUES
+  (
+    1,
+    'Ciudad de México',
+    'Berlín',
+    22000.0,
+    '1996-03-08',
+    1,
+    4,
+    3
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    2,
+    'Monterrey',
+    'Yucatán',
+    900.0,
+    '2010-01-27',
+    3,
+    3,
+    4
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    3,
+    'Ciudad de México',
+    'Veracruz',
+    400.0,
+    '2011-04-30',
+    1,
+    2,
+    4
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    4,
+    'Guadalajara',
+    'Los Ángeles',
+    15000.0,
+    '2012-11-27',
+    2,
+    4,
+    2
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    5,
+    'Monterrey',
+    'Chihuahua',
+    600.0,
+    '2013-03-14',
+    3,
+    2,
+    4
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    6,
+    'Ciudad de México',
+    'Quintana Roo',
+    2900.0,
+    '2015-12-20',
+    1,
+    4,
+    1
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    7,
+    'Monterrey',
+    'Bogotá',
+    6700.0,
+    '2014-11-10',
+    3,
+    4,
+    2
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    8,
+    'Guadalajara',
+    'Oaxaca',
+    900.0,
+    '2014-07-28',
+    2,
+    2,
+    4
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    9,
+    'Monterrey',
+    'Colima',
+    800.0,
+    '2016-06-03',
+    3,
+    2,
+    4
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    10,
+    'Ciudad de México',
+    'Campeche',
+    1500.0,
+    '2017-10-21',
+    1,
+    3,
+    4
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    11,
+    'Monterrey',
+    'Veracruz',
+    1200.0,
+    '2018-07-07',
+    3,
+    3,
+    4
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    12,
+    'Ciudad de México',
+    'Guerrero',
+    1000.0,
+    '2018-05-02',
+    1,
+    2,
+    4
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    13,
+    'Ciudad de México',
+    'Chihuahua',
+    2200.0,
+    '2019-06-27',
+    1,
+    4,
+    1
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    14,
+    'Guadalaja',
+    'Yucatán',
+    2500.0,
+    '2020-09-15',
+    2,
+    4,
+    1
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    15,
+    'Ciudad de México',
+    'Boston',
+    22000.0,
+    '2020-10-07',
+    1,
+    4,
+    2
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    16,
+    'Ciudad de México',
+    'Bora Bora',
+    45000.0,
+    '2022-12-23',
+    1,
+    4,
+    3
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    17,
+    'Guadalajara',
+    'Miami',
+    15000.0,
+    '2022-12-28',
+    2,
+    4,
+    2
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    18,
+    'Monterrey',
+    'Vancouver',
+    18000.0,
+    '2023-01-05',
+    3,
+    4,
+    2
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    19,
+    'Ciudad de México',
+    'Cuernavaca',
+    700.0,
+    '2023-01-20',
+    1,
+    1,
+    4
+  );
+INSERT INTO
+  viaje
+VALUES
+  (
+    20,
+    'Guadalajara',
+    'Puerto Vallarta',
+    500.0,
+    '2023-02-12',
+    2,
+    1,
+    4
+  );
+----------------------------------------------Transportes------------------------------------------------
+INSERT INTO
+  transporte (
+    tipoTransporte,
+    marca,
+    modelo,
+    capacidadUsuarios,
+    capacidadCombustible,
+    fechaAdquisicion,
+    numeroLlantas,
+    estacionamientoAsignado
+  )
+VALUES
+  (
+    'Autobús',
+    'Mercedes Benz',
+    'Zafiro',
+    40,
+    65,
+    '2014-05-19',
+    6,
+    'Estacionamiento 2'
+  );
+INSERT INTO
+  transporte (
+    tipoTransporte,
+    marca,
+    modelo,
+    capacidadUsuarios,
+    capacidadCombustible,
+    fechaAdquisicion,
+    numeroLlantas,
+    estacionamientoAsignado
+  )
+VALUES
+  (
+    'Autobús',
+    'Volvo',
+    '9800',
+    55,
+    80,
+    '2019-10-09',
+    10,
+    'Estacionamiento 3'
+  );
+INSERT INTO
+  transporte (
+    tipoTransporte,
+    marca,
+    modelo,
+    capacidadUsuarios,
+    capacidadCombustible,
+    fechaAdquisicion,
+    numeroLlantas,
+    estacionamientoAsignado
+  )
+VALUES
+  (
+    'Autobús',
+    'Volvo',
+    'Access',
+    50,
+    70,
+    '2018-11-10',
+    4,
+    'Estacionamiento 4'
+  );
+INSERT INTO
+  transporte (
+    tipoTransporte,
+    marca,
+    modelo,
+    capacidadUsuarios,
+    capacidadCombustible,
+    fechaAdquisicion,
+    numeroLlantas,
+    estacionamientoAsignado
+  )
+VALUES
+  (
+    'Autobús',
+    'Volvo',
+    '9700 US/CAN',
+    70,
+    150,
+    '2022-08-03',
+    10,
+    'Estacionamiento 5'
+  );
+INSERT INTO
+  transporte (
+    tipoTransporte,
+    marca,
+    modelo,
+    capacidadUsuarios,
+    capacidadCombustible,
+    fechaAdquisicion,
+    numeroTurbinas,
+    puertoAsignado
+  )
+VALUES
+  (
+    'Avión',
+    'Boeing',
+    '747',
+    190,
+    120,
+    '2015-12-24',
+    4,
+    'Puerto 1'
+  );
+INSERT INTO
+  transporte (
+    tipoTransporte,
+    marca,
+    modelo,
+    capacidadUsuarios,
+    capacidadCombustible,
+    fechaAdquisicion,
+    numeroTurbinas,
+    puertoAsignado
+  )
+VALUES
+  (
+    'Avión',
+    'Boeing',
+    '777',
+    300,
+    180,
+    '2017-08-03',
+    2,
+    'Puerto 2'
+  );
+INSERT INTO
+  transporte (
+    tipoTransporte,
+    marca,
+    modelo,
+    capacidadUsuarios,
+    capacidadCombustible,
+    fechaAdquisicion,
+    numeroTurbinas,
+    puertoAsignado
+  )
+VALUES
+  (
+    'Avión',
+    'Boeing',
+    '737',
+    180,
+    150,
+    '2009-05-24',
+    2,
+    'Puerto 3'
+  );
+INSERT INTO
+  transporte (
+    tipoTransporte,
+    marca,
+    modelo,
+    capacidadUsuarios,
+    capacidadCombustible,
+    fechaAdquisicion,
+    numeroTurbinas,
+    puertoAsignado
+  )
+VALUES
+  (
+    'Avión',
+    'Boeing',
+    '787 Dreamliner',
+    120,
+    90,
+    '2010-03-12',
+    2,
+    'Puerto 4'
+  );
+INSERT INTO
+  transporte (
+    tipoTransporte,
+    marca,
+    modelo,
+    capacidadUsuarios,
+    capacidadCombustible,
+    fechaAdquisicion,
+    numeroTurbinas,
+    puertoAsignado
+  )
+VALUES
+  (
+    'Avión',
+    'Airbus',
+    'A320',
+    100,
+    140,
+    '2012-01-01',
+    2,
+    'Puerto 5'
+  );

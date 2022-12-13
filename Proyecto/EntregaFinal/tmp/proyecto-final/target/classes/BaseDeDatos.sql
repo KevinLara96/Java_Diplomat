@@ -29,12 +29,12 @@ CREATE TABLE empleado(
 );
 CREATE TABLE tipoViajeAutobus (
   idTipoViajeAutobus INT NOT NULL AUTO_INCREMENT,
-  tipoViajeAutobus VARCHAR(20) NOT NULL,
+  tipoViajeAutobus VARCHAR(30) NOT NULL,
   CONSTRAINT tipoViajeAutobus_pk PRIMARY KEY (idTipoViajeAutobus)
 );
 CREATE TABLE tipoViajeAvion (
   idTipoViajeAvion INT NOT NULL AUTO_INCREMENT,
-  tipoViajeAvion VARCHAR(20) NOT NULL,
+  tipoViajeAvion VARCHAR(30) NOT NULL,
   CONSTRAINT tipoViajeAvion_pk PRIMARY KEY (idTipoViajeAvion)
 );
 CREATE TABLE viaje(
@@ -59,10 +59,10 @@ CREATE TABLE transporte (
   capacidadUsuarios INT,
   capacidadCombustible INT,
   fechaAdquisicion DATE,
-  numeroTurbina INT,
+  numeroTurbinas INT,
   numeroLlantas INT,
   puertoAsignado VARCHAR(10),
-  estacionamientoAsignado VARCHAR(10),
+  estacionamientoAsignado VARCHAR(20),
   CONSTRAINT transporte_pk PRIMARY KEY (idTransporte)
 );
 CREATE TABLE cliente (
