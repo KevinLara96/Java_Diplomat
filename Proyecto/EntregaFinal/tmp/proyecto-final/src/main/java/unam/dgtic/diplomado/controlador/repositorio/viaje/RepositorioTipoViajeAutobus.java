@@ -4,11 +4,13 @@ import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAutobus;
 
 public interface RepositorioTipoViajeAutobus {
 
-    public Iterable<TipoViajeAutobus> obtenerTipoViajeAutobuss();
+    public Iterable<TipoViajeAutobus> obtenerTiposViajeAutobus();
 
     public TipoViajeAutobus obtenerTipoViajeAutobus(Integer idTipoViajeAutobus);
 
-    public void crearTipoViajeAutobus(TipoViajeAutobus agenciaNueva) throws Exception;
+    public void guardarTipoViajeAutobus(TipoViajeAutobus tipoViajeAutobus) throws Exception;
 
-    public void eliminarTipoViajeAutobus();
+    public void eliminarTipoViajeAutobus(Integer idTipoViajeAutobus);
+
+    public void actualizarTipoViajeAutobus(TipoViajeAutobus tipoViajeAutobusParam);
 }

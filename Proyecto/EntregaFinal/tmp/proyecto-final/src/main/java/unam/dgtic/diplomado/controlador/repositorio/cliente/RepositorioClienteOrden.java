@@ -4,12 +4,13 @@ import unam.dgtic.diplomado.modelo.entidades.cliente.ClienteOrden;
 
 public interface RepositorioClienteOrden {
 
-    public Iterable<ClienteOrden> obtenerClienteOrdenes();
+    public Iterable<ClienteOrden> obtenerClientesOrdenes();
 
     public ClienteOrden obtenerClienteOrden(Integer idCliente, Integer idOrden);
 
-    public void crearClienteOrden(ClienteOrden agenciaNueva) throws Exception;
+    public void guardarClienteOrden(ClienteOrden agenciaNueva) throws Exception;
 
-    public void eliminarClienteOrden();
+    public void eliminarClienteOrden(Integer idCliente, Integer idOrden);
 
+    public void actualizarClienteOrden(ClienteOrden clienteOrdenParam);
 }

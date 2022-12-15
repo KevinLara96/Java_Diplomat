@@ -3,21 +3,42 @@ package unam.dgtic.diplomado.modelo.entidades.agencia;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import unam.dgtic.diplomado.modelo.entidades.cliente.Cliente;
 import unam.dgtic.diplomado.modelo.entidades.empleado.Empleado;
 import unam.dgtic.diplomado.modelo.entidades.transporte.Transporte;
 import unam.dgtic.diplomado.modelo.entidades.viaje.Viaje;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
+@Entity
+@Table(name = "agencia")
 public class Agencia {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAgencia;
+    @Column(name = "nombre")
     private String nombreAgencia;
+    @Column(name = "ubicacion")
     private String ubicacionAgencia;
 
+    @OneToMany(mappedBy = "agencia")
     private List<Empleado> empleados;
+
+    @Transient
     private List<Viaje> viajes;
+
+    @OneToMany(mappedBy = "agencia")
     private List<Cliente> clientes;
+
+    @Transient
     private List<Transporte> transportes;
 
     public Agencia() {

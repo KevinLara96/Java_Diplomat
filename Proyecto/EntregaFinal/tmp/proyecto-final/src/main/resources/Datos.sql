@@ -1,4 +1,4 @@
-use proyecto_final;
+use proyectofinal;
 -----------------------------------------------Puestos-----------------------------------------------------
 INSERT INTO
   puesto

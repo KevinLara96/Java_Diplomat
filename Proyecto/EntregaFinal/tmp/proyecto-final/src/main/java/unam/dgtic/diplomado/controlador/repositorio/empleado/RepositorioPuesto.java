@@ -8,7 +8,9 @@ public interface RepositorioPuesto {
 
     public Puesto obtenerPuesto(Integer idPuesto);
 
-    public void crearPuesto(Puesto agenciaNueva) throws Exception;
+    public void guardarPuesto(Puesto puesto) throws Exception;
 
-    public void eliminarPuesto();
+    public void eliminarPuesto(Integer idPuesto);
+
+    public void actualizarPuesto(Puesto puestoParam);
 }

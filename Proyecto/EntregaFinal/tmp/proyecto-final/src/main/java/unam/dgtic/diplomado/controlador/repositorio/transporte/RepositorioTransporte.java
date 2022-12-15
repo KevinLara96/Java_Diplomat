@@ -8,7 +8,9 @@ public interface RepositorioTransporte {
 
     public Transporte obtenerTransporte(Integer idTransporte);
 
-    public void crearTransporte(Transporte agenciaNueva) throws Exception;
+    public void guardarTransporte(Transporte transporte) throws Exception;
 
-    public void eliminarTransporte();
+    public void eliminarTransporte(Integer idTransporte);
+
+    public void actualizarTransporte(Transporte transporteParam);
 }

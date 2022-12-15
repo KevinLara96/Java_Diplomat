@@ -3,10 +3,24 @@ package unam.dgtic.diplomado.modelo.entidades.cliente;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
+@Entity
+@Table(name = "cliente")
 public class Cliente {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCliente;
     private String nombres;
     private String apellidos;
@@ -18,6 +32,12 @@ public class Cliente {
     private String correo;
     private String contrasena;
 
+    @ManyToOne
+    @JoinColumn(name = "idAgencia")
+    private Agencia agencia;
+
+    @ManyToMany
+    @JoinTable(name = "cliente_orden", joinColumns = @JoinColumn(name = "idCliente"), inverseJoinColumns = @JoinColumn(name = "idOrden"))
     private List<Orden> ordenes;
 
     public Cliente() {
@@ -172,6 +192,14 @@ public class Cliente {
         }
     }
 
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -199,9 +227,11 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente [idCliente=" + idCliente + ", nombres=" + nombres + ", apellidos=" + apellidos + ", calle="
+        return "[idCliente=" + idCliente + ", nombres=" + nombres + ", apellidos=" + apellidos + ", calle="
                 + calle + ", colonia=" + colonia + ", codigoPostal=" + codigoPostal + ", telefono=" + telefono
-                + ", rfc=" + rfc + ", correo=" + correo + ", contrasena=" + contrasena + ", ordenes=" + ordenes + "]";
+                + ", rfc=" + rfc + ", correo=" + correo + ", contrasena=" + contrasena + ", agencia="
+                + agencia.getUbicacionAgencia()
+                + ", ordenes=" + ordenes + "]";
     }
 
 }

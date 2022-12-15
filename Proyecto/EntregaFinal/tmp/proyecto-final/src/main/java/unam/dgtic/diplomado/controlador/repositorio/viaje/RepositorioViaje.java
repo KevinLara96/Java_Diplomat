@@ -8,7 +8,9 @@ public interface RepositorioViaje {
 
     public Viaje obtenerViaje(Integer idViaje);
 
-    public void crearViaje(Viaje agenciaNueva) throws Exception;
+    public void guardarViaje(Viaje viaje) throws Exception;
 
-    public void eliminarViaje();
+    public void eliminarViaje(Integer idViaje);
+
+    public void actualizarViaje(Viaje viajeParam);
 }

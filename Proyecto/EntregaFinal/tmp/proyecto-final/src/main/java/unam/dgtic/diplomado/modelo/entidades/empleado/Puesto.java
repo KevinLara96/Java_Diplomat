@@ -1,9 +1,18 @@
 package unam.dgtic.diplomado.modelo.entidades.empleado;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
+@Entity
+@Table(name = "puesto")
 public class Puesto {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPuesto;
     private String puesto;
 
@@ -66,7 +75,7 @@ public class Puesto {
 
     @Override
     public String toString() {
-        return "Puesto [idPuesto=" + idPuesto + ", puesto=" + puesto + "]";
+        return "[idPuesto=" + idPuesto + ", puesto=" + puesto + "]";
     }
 
 }

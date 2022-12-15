@@ -2,10 +2,22 @@ package unam.dgtic.diplomado.modelo.entidades.empleado;
 
 import java.util.regex.Pattern;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
+@Entity
+@Table(name = "empleado")
 public class Empleado {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEmpleado;
     private String nombres;
     private String apellidos;
@@ -13,6 +25,13 @@ public class Empleado {
     private String contrasena;
     private String rfc;
     private Float salario;
+
+    @ManyToOne
+    @JoinColumn(name = "idAgencia")
+    private Agencia agencia;
+
+    @ManyToOne
+    @JoinColumn(name = "idPuesto")
     private Puesto puesto;
 
     public Empleado() {
@@ -119,13 +138,21 @@ public class Empleado {
         }
     }
 
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
+    }
+
     public Puesto getPuesto() {
         return puesto;
     }
 
     public void setPuesto(Puesto puesto) throws Exception {
         if (puesto == null) {
-            throw new ExcepcionAtributos("ERROR. PUesto de empleado inválido.");
+            throw new ExcepcionAtributos("ERROR. Puesto de empleado inválido.");
         } else {
             this.puesto = puesto;
         }

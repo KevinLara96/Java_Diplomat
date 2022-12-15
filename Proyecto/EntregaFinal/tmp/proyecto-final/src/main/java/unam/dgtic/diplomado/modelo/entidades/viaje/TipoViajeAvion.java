@@ -15,11 +15,11 @@ public class TipoViajeAvion {
         this.tipoViajeAvion = tipoViajeAvion;
     }
 
-    public Integer getIdTipoViaje() {
+    public Integer getIdTipoViajeAvion() {
         return idTipoViajeAvion;
     }
 
-    public void setIdTipoViaje(Integer idTipoViajeAvion) throws Exception {
+    public void setIdTipoViajeAvion(Integer idTipoViajeAvion) throws Exception {
         if (idTipoViajeAvion == null || idTipoViajeAvion <= 0) {
             throw new ExcepcionAtributos("ERROR. Id del tipo de viaje en avión inválido.");
         } else {
@@ -27,11 +27,11 @@ public class TipoViajeAvion {
         }
     }
 
-    public String getTipoViaje() {
+    public String getTipoViajeAvion() {
         return tipoViajeAvion;
     }
 
-    public void setTipoViaje(String tipoViajeAvion) throws Exception {
+    public void setTipoViajeAvion(String tipoViajeAvion) throws Exception {
         if (tipoViajeAvion == null || tipoViajeAvion.isEmpty()) {
             throw new ExcepcionAtributos("ERROR. Tipo de viaje en avión inválido.");
         } else {
@@ -66,7 +66,7 @@ public class TipoViajeAvion {
 
     @Override
     public String toString() {
-        return "TipoViaje [idTipoViajeAvion=" + idTipoViajeAvion + ", tipoViajeAvion=" + tipoViajeAvion + "]";
+        return "TipoViajeAvion [idTipoViajeAvion=" + idTipoViajeAvion + ", tipoViajeAvion=" + tipoViajeAvion + "]";
     }
 
 }

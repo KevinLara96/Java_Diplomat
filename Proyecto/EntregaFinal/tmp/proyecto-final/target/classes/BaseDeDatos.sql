@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS proyecto_final;
-CREATE DATABASE proyecto_final DEFAULT CHARACTER SET = 'utf8mb4';
-USE proyecto_final;
+DROP DATABASE IF EXISTS proyectofinal;
+CREATE DATABASE proyectofinal DEFAULT CHARACTER SET = 'utf8mb4';
+USE proyectofinal;
 CREATE TABLE agencia(
   idAgencia INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(30) NOT NULL,

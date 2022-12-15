@@ -8,7 +8,9 @@ public interface RepositorioEmpleado {
 
     public Empleado obtenerEmpleado(Integer idEmpleado);
 
-    public void crearEmpleado(Empleado agenciaNueva) throws Exception;
+    public void guardarEmpleado(Empleado empleado) throws Exception;
 
-    public void eliminarEmpleado();
+    public void eliminarEmpleado(Integer idEmpleado);
+
+    public void actualizarEmpleado(Empleado empleadoParam);
 }

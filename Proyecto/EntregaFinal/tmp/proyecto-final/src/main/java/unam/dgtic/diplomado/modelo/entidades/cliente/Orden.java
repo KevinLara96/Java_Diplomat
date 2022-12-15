@@ -3,15 +3,23 @@ package unam.dgtic.diplomado.modelo.entidades.cliente;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
+@Entity
+@Table(name = "orden")
 public class Orden {
 
+    @Id
     private Integer idOrden;
     private Date fechaEmision;
     private Float monto;
     private String descripcion;
 
+    @ManyToMany(mappedBy = "ordenes")
     private List<Cliente> clientesAsociados;
 
     public Orden() {
@@ -105,7 +113,7 @@ public class Orden {
 
     @Override
     public String toString() {
-        return "Orden [idOrden=" + idOrden + ", fechaEmision=" + fechaEmision + ", monto=" + monto + ", descripcion="
+        return "[idOrden=" + idOrden + ", fechaEmision=" + fechaEmision + ", monto=" + monto + ", descripcion="
                 + descripcion + "]";
     }
 

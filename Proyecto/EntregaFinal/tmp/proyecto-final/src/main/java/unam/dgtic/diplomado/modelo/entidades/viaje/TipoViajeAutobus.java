@@ -15,11 +15,11 @@ public class TipoViajeAutobus {
         this.tipoViajeAutobus = tipoViajeAutobus;
     }
 
-    public Integer getIdTipoViaje() {
+    public Integer getIdTipoViajeAutobus() {
         return idTipoViajeAutobus;
     }
 
-    public void setIdTipoViaje(Integer idTipoViajeAutobus) throws Exception {
+    public void setIdTipoViajeAutobus(Integer idTipoViajeAutobus) throws Exception {
         if (idTipoViajeAutobus == null || idTipoViajeAutobus <= 0) {
             throw new ExcepcionAtributos("ERROR. Id del tipo de viaje en autobús inválido.");
         } else {
@@ -27,11 +27,11 @@ public class TipoViajeAutobus {
         }
     }
 
-    public String getTipoViaje() {
+    public String getTipoViajeAutobus() {
         return tipoViajeAutobus;
     }
 
-    public void setTipoViaje(String tipoViajeAutobus) throws Exception {
+    public void setTipoViajeAutobus(String tipoViajeAutobus) throws Exception {
         if (tipoViajeAutobus == null || tipoViajeAutobus.isEmpty()) {
             throw new ExcepcionAtributos("ERROR. Tipo de viaje en autobús inválido.");
         } else {

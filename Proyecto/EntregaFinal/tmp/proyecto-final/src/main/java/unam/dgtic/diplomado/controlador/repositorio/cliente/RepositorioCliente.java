@@ -8,7 +8,9 @@ public interface RepositorioCliente {
 
     public Cliente obtenerCliente(Integer idCliente);
 
-    public void crearCliente(Cliente agenciaNueva) throws Exception;
+    public void guardarCliente(Cliente cliente) throws Exception;
 
-    public void eliminarCliente();
+    public void eliminarCliente(Integer idCliente);
+
+    public void actualizarCliente(Cliente clienteParam);
 }
