@@ -1,12 +1,15 @@
-package unam.dgtic.diplomado.modelo.entidades.cliente;
+package unam.dgtic.diplomado.modelo.entidades.orden;
 
 import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import unam.dgtic.diplomado.modelo.entidades.cliente.Cliente;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
 @Entity
@@ -19,8 +22,12 @@ public class Orden {
     private Float monto;
     private String descripcion;
 
-    @ManyToMany(mappedBy = "ordenes")
-    private List<Cliente> clientesAsociados;
+    @ManyToOne
+    @JoinColumn(name = "idCliente")
+    private Cliente cliente;
+
+    @JoinTable(name = "orden_producto", joinColumns = @JoinColumn(name = "idOrden"), inverseJoinColumns = @JoinColumn(name = "idProducto"))
+    private List<Producto> productos;
 
     public Orden() {
 
@@ -78,12 +85,12 @@ public class Orden {
         this.descripcion = descripcion;
     }
 
-    public List<Cliente> getClientesAsociados() {
-        return clientesAsociados;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClientesAsociados(List<Cliente> clientesAsociados) {
-        this.clientesAsociados = clientesAsociados;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     @Override

@@ -1,9 +1,18 @@
 package unam.dgtic.diplomado.modelo.entidades.viaje;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
+@Entity
+@Table(name = "tipoViajeAvion")
 public class TipoViajeAvion {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTipoViajeAvion;
     private String tipoViajeAvion;
 

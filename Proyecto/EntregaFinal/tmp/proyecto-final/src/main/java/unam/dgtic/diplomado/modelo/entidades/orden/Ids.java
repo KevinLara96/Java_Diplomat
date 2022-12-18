@@ -1,18 +1,18 @@
-package unam.dgtic.diplomado.modelo.entidades.cliente;
+package unam.dgtic.diplomado.modelo.entidades.orden;
 
 import java.io.Serializable;
 
 public class Ids implements Serializable {
 
-    private Integer idCliente;
+    private Integer idProducto;
     private Integer idOrden;
 
-    public Integer getIdCliente() {
-        return idCliente;
+    public Integer getIdProducto() {
+        return idProducto;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
     }
 
     public Integer getIdOrden() {

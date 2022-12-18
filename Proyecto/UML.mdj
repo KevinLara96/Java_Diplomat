@@ -47,10 +47,11 @@
 												"$ref": "AAAAAAGE8DS9J/pg/EQ="
 											},
 											"visible": false,
-											"font": "Arial;13;0",
+											"fillColor": "#ffadd6",
+											"font": "Arial;24;0",
 											"left": 2248,
 											"top": -1592,
-											"height": 13
+											"height": 24
 										},
 										{
 											"_type": "LabelView",
@@ -58,11 +59,12 @@
 											"_parent": {
 												"$ref": "AAAAAAGE8DS9J/pg/EQ="
 											},
-											"font": "Arial;13;1",
+											"fillColor": "#ffadd6",
+											"font": "Arial;24;1",
 											"left": 45,
 											"top": 46,
 											"width": 1095,
-											"height": 13,
+											"height": 24,
 											"text": "Modelo"
 										},
 										{
@@ -72,11 +74,12 @@
 												"$ref": "AAAAAAGE8DS9J/pg/EQ="
 											},
 											"visible": false,
-											"font": "Arial;13;0",
+											"fillColor": "#ffadd6",
+											"font": "Arial;24;0",
 											"left": 2248,
 											"top": -1592,
-											"width": 106.1962890625,
-											"height": 13,
+											"width": 136.01953125,
+											"height": 24,
 											"text": "(from Model)"
 										},
 										{
@@ -86,18 +89,20 @@
 												"$ref": "AAAAAAGE8DS9J/pg/EQ="
 											},
 											"visible": false,
-											"font": "Arial;13;0",
+											"fillColor": "#ffadd6",
+											"font": "Arial;24;0",
 											"left": 2248,
 											"top": -1592,
-											"height": 13,
+											"height": 24,
 											"horizontalAlignment": 1
 										}
 									],
-									"font": "Arial;13;0",
+									"fillColor": "#ffadd6",
+									"font": "Arial;24;0",
 									"left": 40,
 									"top": 39,
 									"width": 1105,
-									"height": 25,
+									"height": 36,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGE8DS9J/phixI="
 									},
@@ -112,7 +117,8 @@
 									}
 								}
 							],
-							"font": "Arial;13;0",
+							"fillColor": "#ffadd6",
+							"font": "Arial;24;0",
 							"containerChangeable": true,
 							"left": 40,
 							"top": 24,
@@ -12081,7 +12087,8 @@
 										"$ref": "AAAAAAGE9ny+SdpSs5M="
 									},
 									"name": "idAgencia",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12090,7 +12097,8 @@
 										"$ref": "AAAAAAGE9ny+SdpSs5M="
 									},
 									"name": "nombreAgencia",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12099,7 +12107,8 @@
 										"$ref": "AAAAAAGE9ny+SdpSs5M="
 									},
 									"name": "ubicacion",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12274,7 +12283,8 @@
 										"$ref": "AAAAAAGE9obrmdrK0O0="
 									},
 									"name": "salario",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12283,7 +12293,8 @@
 										"$ref": "AAAAAAGE9obrmdrK0O0="
 									},
 									"name": "puesto",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								}
 							],
 							"operations": [
@@ -12520,7 +12531,8 @@
 										"$ref": "AAAAAAGE9pAf8dzAmpg="
 									},
 									"name": "tipoViajeAutobus",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12529,7 +12541,8 @@
 										"$ref": "AAAAAAGE9pAf8dzAmpg="
 									},
 									"name": "tipoViajeAvion",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								}
 							],
 							"operations": [
@@ -12602,7 +12615,8 @@
 										"$ref": "AAAAAAGE9pEkXt0mY3o="
 									},
 									"name": "idTipoViajeAutobus",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12611,7 +12625,8 @@
 										"$ref": "AAAAAAGE9pEkXt0mY3o="
 									},
 									"name": "tipoViajeAutobus",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12705,7 +12720,8 @@
 										"$ref": "AAAAAAGE9pLLI92Ks80="
 									},
 									"name": "marca",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12714,7 +12730,8 @@
 										"$ref": "AAAAAAGE9pLLI92Ks80="
 									},
 									"name": "modelo",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12723,7 +12740,8 @@
 										"$ref": "AAAAAAGE9pLLI92Ks80="
 									},
 									"name": "capacidadUsuarios",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12732,7 +12750,8 @@
 										"$ref": "AAAAAAGE9pLLI92Ks80="
 									},
 									"name": "capacidadCombustible",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12741,7 +12760,8 @@
 										"$ref": "AAAAAAGE9pLLI92Ks80="
 									},
 									"name": "fechaAdquisicion",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -13067,7 +13087,8 @@
 										"$ref": "AAAAAAGE9w53J8TqM7k="
 									},
 									"name": "ordenes[]",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								}
 							],
 							"operations": [
@@ -13167,7 +13188,8 @@
 										"$ref": "AAAAAAGE9xDkUcV09D4="
 									},
 									"name": "clientesAsociados[]",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								}
 							],
 							"operations": [
@@ -13258,7 +13280,8 @@
 										"$ref": "AAAAAAGE+j5wqwDRfgY="
 									},
 									"name": "idTipoViajeAvion",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								},
 								{
 									"_type": "UMLAttribute",
@@ -13267,7 +13290,8 @@
 										"$ref": "AAAAAAGE+j5wqwDRfgY="
 									},
 									"name": "tipoViajeAvion",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								}
 							],
 							"operations": [
@@ -13431,7 +13455,8 @@
 												"$ref": "AAAAAAGE+lASBTRmBIU="
 											},
 											"name": "viaje",
-											"visibility": "private"
+											"visibility": "private",
+											"type": ""
 										}
 									],
 									"operations": [
@@ -13487,7 +13512,8 @@
 												"$ref": "AAAAAAGE+k/vATNqpZ4="
 											},
 											"name": "viaje",
-											"visibility": "private"
+											"visibility": "private",
+											"type": ""
 										}
 									],
 									"operations": [
@@ -13539,7 +13565,8 @@
 										"$ref": "AAAAAAGE+kwOESnPI5o="
 									},
 									"name": "viaje",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								}
 							],
 							"operations": [
@@ -13763,7 +13790,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGE+vYCSOxF/bg="
 							},
-							"name": "entityManager"
+							"name": "entityManager",
+							"type": ""
 						}
 					]
 				},
@@ -13827,7 +13855,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGE+vlOAQeXTCM="
 									},
-									"name": "idEpleado"
+									"name": "idEpleado",
+									"type": ""
 								}
 							]
 						},
@@ -13889,7 +13918,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGE+vpWug+6gFw="
 							},
-							"name": "entityManager"
+							"name": "entityManager",
+							"type": ""
 						}
 					]
 				},
@@ -14016,7 +14046,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGE+vwpiCdKcEM="
 							},
-							"name": "entityManager"
+							"name": "entityManager",
+							"type": ""
 						}
 					]
 				},
@@ -14143,7 +14174,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGE+v5UtkO5Vos="
 							},
-							"name": "entityManager"
+							"name": "entityManager",
+							"type": ""
 						}
 					]
 				},
@@ -14253,7 +14285,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGE+wK3sl64PWU="
 									},
-									"name": "idCliente"
+									"name": "idCliente",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -14261,7 +14294,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGE+wK3sl64PWU="
 									},
-									"name": "idOrden"
+									"name": "idOrden",
+									"type": ""
 								}
 							]
 						}
@@ -14390,7 +14424,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGE+wWAIIKoaX0="
 							},
-							"name": "entityManager"
+							"name": "entityManager",
+							"type": ""
 						}
 					]
 				},
@@ -14423,7 +14458,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGE+wdyp4uKvD4="
 							},
-							"name": "entityManager"
+							"name": "entityManager",
+							"type": ""
 						}
 					]
 				},
@@ -14550,7 +14586,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGE+wspNa/QZsM="
 							},
-							"name": "entityManager"
+							"name": "entityManager",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -14687,7 +14724,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGE+xf4nOftI9E="
 							},
-							"name": "entityManager"
+							"name": "entityManager",
+							"type": ""
 						}
 					]
 				},
@@ -14721,7 +14759,8 @@
 								"$ref": "AAAAAAGE/EJY9xHdqnY="
 							},
 							"name": "idTipoViajeAvion",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -14730,7 +14769,8 @@
 								"$ref": "AAAAAAGE/EJY9xHdqnY="
 							},
 							"name": "tipoViajeAvion",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [

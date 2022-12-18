@@ -142,8 +142,12 @@ public class Empleado {
         return agencia;
     }
 
-    public void setAgencia(Agencia agencia) {
-        this.agencia = agencia;
+    public void setAgencia(Agencia agencia) throws Exception {
+        if (agencia == null) {
+            throw new ExcepcionAtributos("ERROR. Agencia de empleado inválida.");
+        } else {
+            this.agencia = agencia;
+        }
     }
 
     public Puesto getPuesto() {
@@ -186,7 +190,8 @@ public class Empleado {
     @Override
     public String toString() {
         return "Empleado [idEmpleado=" + idEmpleado + ", nombres=" + nombres + ", apellidos=" + apellidos + ", correo="
-                + correo + ", contrasena=" + contrasena + ", rfc=" + rfc + ", salario=" + salario + ", puesto=" + puesto
+                + correo + ", contrasena=" + contrasena + ", rfc=" + rfc + ", salario=" + salario
+                + ", agencia=" + agencia.getUbicacionAgencia() + ", puesto=" + puesto.getPuesto()
                 + "]";
     }
 

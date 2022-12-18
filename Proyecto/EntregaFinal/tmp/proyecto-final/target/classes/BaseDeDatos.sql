@@ -56,11 +56,10 @@ CREATE TABLE transporte (
   tipoTransporte VARCHAR(10) NOT NULL,
   marca VARCHAR(30),
   modelo VARCHAR(30),
-  capacidadUsuarios INT,
   capacidadCombustible INT,
   fechaAdquisicion DATE,
-  numeroTurbinas INT,
-  numeroLlantas INT,
+  asientosBasicos INT NOT NULL,
+  asientosPrimeraClase INT NOT NULL,
   puertoAsignado VARCHAR(10),
   estacionamientoAsignado VARCHAR(20),
   CONSTRAINT transporte_pk PRIMARY KEY (idTransporte)
@@ -82,15 +81,36 @@ CREATE TABLE cliente (
 );
 CREATE TABLE orden(
   idOrden INT NOT NULL AUTO_INCREMENT,
+  idCliente INT NOT NULL,
   fechaEmision DATE NOT NULL,
   monto FLOAT NOT NULL,
   descripcion TEXT NULL,
-  CONSTRAINT orden_pk PRIMARY KEY (idOrden)
+  CONSTRAINT orden_pk PRIMARY KEY (idOrden),
+  CONSTRAINT oden_cliente_fk FOREIGN KEY (idCliente) REFERENCES cliente(idCliente)
 );
-CREATE TABLE cliente_orden (
-  idCliente INT NOT NULL,
+CREATE TABLE producto(
+  idProducto INT NOT NULL AUTO_INCREMENT,
+  nombreProducto VARCHAR(50) NOT NULL,
+  CONSTRAINT producto_pk PRIMARY KEY (idProducto)
+);
+CREATE TABLE orden_producto (
   idOrden INT NOT NULL,
-  CONSTRAINT cliente_orden_pk PRIMARY KEY (idCliente, idOrden),
-  CONSTRAINT cliente_orden_pk1 FOREIGN KEY (idCliente) REFERENCES cliente (idCliente),
-  CONSTRAINT cliente_orden_pk2 FOREIGN KEY (idOrden) REFERENCES orden (idOrden)
+  idProducto INT NOT NULL,
+  CONSTRAINT orden_producto_pk PRIMARY KEY (idOrden, idProducto),
+  CONSTRAINT op_orden_fk FOREIGN KEY (idOrden) REFERENCES orden(idOrden),
+  CONSTRAINT op_producto_fk FOREIGN KEY (idProducto) REFERENCES producto (idProducto)
+);
+CREATE TABLE asignacionAvionViaje(
+  idAvion INT NOT NULL,
+  idViaje INT NOT NULL,
+  idAgencia INT NOT NULL,
+  CONSTRAINT asignacionAvion_pk PRIMARY KEY (idAvion, idViaje),
+  CONSTRAINT aisgnacionAvion_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia)
+);
+CREATE TABLE asignacionAutobusViaje(
+  idAutobus INT NOT NULL,
+  idViaje INT NOT NULL,
+  idAgencia INT NOT NULL,
+  CONSTRAINT asignacionAutobus_pk PRIMARY KEY (idAutobus, idViaje),
+  CONSTRAINT aisgnacionAutobus_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia(idAgencia)
 );

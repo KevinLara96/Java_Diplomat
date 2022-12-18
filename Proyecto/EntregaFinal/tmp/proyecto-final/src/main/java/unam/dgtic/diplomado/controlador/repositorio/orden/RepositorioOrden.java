@@ -1,6 +1,6 @@
-package unam.dgtic.diplomado.controlador.repositorio.cliente;
+package unam.dgtic.diplomado.controlador.repositorio.orden;
 
-import unam.dgtic.diplomado.modelo.entidades.cliente.Orden;
+import unam.dgtic.diplomado.modelo.entidades.orden.Orden;
 
 public interface RepositorioOrden {
 

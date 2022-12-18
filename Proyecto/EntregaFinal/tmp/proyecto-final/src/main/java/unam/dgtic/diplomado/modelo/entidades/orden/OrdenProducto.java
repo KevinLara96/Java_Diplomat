@@ -1,4 +1,4 @@
-package unam.dgtic.diplomado.modelo.entidades.cliente;
+package unam.dgtic.diplomado.modelo.entidades.orden;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -7,33 +7,33 @@ import jakarta.persistence.Table;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
 @Entity
-@Table(name = "cliente_orden")
+@Table(name = "orden_producto")
 @IdClass(Ids.class)
-public class ClienteOrden {
+public class OrdenProducto {
 
     @Id
-    private Integer idCliente;
+    private Integer idProducto;
     @Id
     private Integer idOrden;
 
-    public ClienteOrden() {
+    public OrdenProducto() {
 
     }
 
-    public ClienteOrden(Integer idCliente, Integer idOrden) {
-        this.idCliente = idCliente;
+    public OrdenProducto(Integer idProducto, Integer idOrden) {
+        this.idProducto = idProducto;
         this.idOrden = idOrden;
     }
 
-    public Integer getIdCliente() {
-        return this.idCliente;
+    public Integer getIdProducto() {
+        return this.idProducto;
     }
 
-    public void setIdCliente(Integer idCliente) throws Exception {
-        if (idCliente == null || idCliente <= 0) {
-            throw new ExcepcionAtributos("IdCliente inválido.");
+    public void setIdProducto(Integer idProducto) throws Exception {
+        if (idProducto == null || idProducto <= 0) {
+            throw new ExcepcionAtributos("IdProducto inválido.");
         } else {
-            this.idCliente = idCliente;
+            this.idProducto = idProducto;
         }
     }
 

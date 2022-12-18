@@ -10,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import unam.dgtic.diplomado.modelo.entidades.cliente.Cliente;
 import unam.dgtic.diplomado.modelo.entidades.empleado.Empleado;
 import unam.dgtic.diplomado.modelo.entidades.transporte.Transporte;
@@ -32,13 +31,13 @@ public class Agencia {
     @OneToMany(mappedBy = "agencia")
     private List<Empleado> empleados;
 
-    @Transient
+    @OneToMany(mappedBy = "agencia")
     private List<Viaje> viajes;
 
     @OneToMany(mappedBy = "agencia")
     private List<Cliente> clientes;
 
-    @Transient
+    @OneToMany(mappedBy = "agencia")
     private List<Transporte> transportes;
 
     public Agencia() {
@@ -99,7 +98,7 @@ public class Agencia {
     }
 
     public void setEmpleados(List<Empleado> empleados) throws Exception {
-        if (empleados == null || empleados.isEmpty()) {
+        if (empleados == null) {
             throw new ExcepcionAtributos("ERROR. Lista de empleados vacía.");
         } else {
             this.empleados = empleados;
@@ -112,7 +111,7 @@ public class Agencia {
     }
 
     public void setViajes(List<Viaje> viajes) throws Exception {
-        if (viajes == null || viajes.isEmpty()) {
+        if (viajes == null) {
             throw new ExcepcionAtributos("ERROR. Lista de viajes vacía.");
         } else {
             this.viajes = viajes;
@@ -124,7 +123,7 @@ public class Agencia {
     }
 
     public void setClientes(List<Cliente> clientes) throws Exception {
-        if (clientes == null || clientes.isEmpty()) {
+        if (clientes == null) {
             throw new ExcepcionAtributos("ERROR. Lista de clientes vacía.");
         } else {
             this.clientes = clientes;
@@ -136,7 +135,7 @@ public class Agencia {
     }
 
     public void setTransportes(List<Transporte> transportes) throws Exception {
-        if (transportes == null || transportes.isEmpty()) {
+        if (transportes == null) {
             throw new ExcepcionAtributos("ERROR. Lista de transportes vacía.");
         } else {
             this.transportes = transportes;

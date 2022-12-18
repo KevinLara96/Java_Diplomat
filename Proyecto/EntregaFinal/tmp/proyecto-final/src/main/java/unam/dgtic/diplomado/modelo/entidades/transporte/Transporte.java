@@ -2,16 +2,34 @@ package unam.dgtic.diplomado.modelo.entidades.transporte;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
+@Entity
+@Table(name = "transporte")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipoTransporte")
 public class Transporte {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idTransporte")
     private Integer idTransporte;
     private String marca;
     private String modelo;
     private Integer capacidadUsuarios;
     private Integer capacidadCombustible;
     private Date fechaAdquisicion;
+    private Integer asientosBasicos;
+    private Integer asientosPrimeraClase;
 
     public Transporte() {
 
@@ -99,6 +117,30 @@ public class Transporte {
         }
     }
 
+    public Integer getAsientosBasicos() {
+        return asientosBasicos;
+    }
+
+    public void setAsientosBasicos(Integer asientosBasicos) throws Exception {
+        if (asientosBasicos == null || asientosBasicos <= 0) {
+            throw new ExcepcionAtributos("ERROR. Número de asientos básicos inválido.");
+        } else {
+            this.asientosBasicos = asientosBasicos;
+        }
+    }
+
+    public Integer getAsientosPrimeraClase() {
+        return asientosPrimeraClase;
+    }
+
+    public void setAsientosPrimeraClase(Integer asientosPrimeraClase) throws Exception {
+        if (asientosPrimeraClase == null || asientosPrimeraClase <= 0) {
+            throw new ExcepcionAtributos("ERROR. Número de asientos de primera clase inválido.");
+        } else {
+            this.asientosPrimeraClase = asientosPrimeraClase;
+        }
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -126,7 +168,8 @@ public class Transporte {
 
     @Override
     public String toString() {
-        return "Transporte [idTransporte=" + idTransporte + ", marca=" + marca + ", modelo=" + modelo
+        return "[idTransporte=" + idTransporte + ", tipoTransporte=" +
+                ", marca=" + marca + ", modelo=" + modelo
                 + ", capacidadUsuarios=" + capacidadUsuarios + ", capacidadCombustible=" + capacidadCombustible
                 + ", fechaAdquisicion=" + fechaAdquisicion;
     }

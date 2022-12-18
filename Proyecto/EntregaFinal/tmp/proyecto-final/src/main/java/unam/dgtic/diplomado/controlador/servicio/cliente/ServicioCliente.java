@@ -6,7 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.cliente.RepositorioCliente;
 import unam.dgtic.diplomado.modelo.entidades.cliente.Cliente;
-import unam.dgtic.diplomado.modelo.entidades.cliente.Orden;
+import unam.dgtic.diplomado.modelo.entidades.orden.Orden;
 
 public class ServicioCliente implements RepositorioCliente {
 

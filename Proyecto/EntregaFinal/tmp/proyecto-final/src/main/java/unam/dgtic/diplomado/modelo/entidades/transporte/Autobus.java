@@ -2,11 +2,14 @@ package unam.dgtic.diplomado.modelo.entidades.transporte;
 
 import java.util.Date;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
+@Entity(name = "autobus")
+@DiscriminatorValue("Autobús")
 public class Autobus extends Transporte {
 
-    private Integer numeroLlantas;
     private String estacionamientoAsignado;
 
     public Autobus() {
@@ -14,23 +17,9 @@ public class Autobus extends Transporte {
     }
 
     public Autobus(Integer idTransporte, String marca, String modelo, Integer capacidadUsuarios,
-            Integer capacidadCombustible, Date fechaAdquisicion, Integer numeroLlantas,
-            String estacionamientoAsignado) {
+            Integer capacidadCombustible, Date fechaAdquisicion, String estacionamientoAsignado) {
         super(idTransporte, marca, modelo, capacidadUsuarios, capacidadCombustible, fechaAdquisicion);
-        this.numeroLlantas = numeroLlantas;
         this.estacionamientoAsignado = estacionamientoAsignado;
-    }
-
-    public Integer getNumeroLlantas() {
-        return numeroLlantas;
-    }
-
-    public void setNumeroLlantas(Integer numeroLlantas) throws Exception {
-        if (numeroLlantas == null || numeroLlantas < 4) {
-            throw new ExcepcionAtributos("ERROR. Número de llantas inválido.");
-        } else {
-            this.numeroLlantas = numeroLlantas;
-        }
     }
 
     public String getEstacionamientoAsignado() {
@@ -47,7 +36,8 @@ public class Autobus extends Transporte {
 
     @Override
     public String toString() {
-        return "Autobus [numeroLlantas=" + numeroLlantas + ", estacionamientoAsignado=" + estacionamientoAsignado + "]";
+        String tmp = super.toString();
+        return tmp + ", estacionamientoAsignado=" + estacionamientoAsignado + "]";
     }
 
 }

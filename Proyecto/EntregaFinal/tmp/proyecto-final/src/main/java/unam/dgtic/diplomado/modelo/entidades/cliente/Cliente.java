@@ -8,11 +8,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
+import unam.dgtic.diplomado.modelo.entidades.orden.Orden;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
 @Entity
@@ -36,8 +36,8 @@ public class Cliente {
     @JoinColumn(name = "idAgencia")
     private Agencia agencia;
 
-    @ManyToMany
-    @JoinTable(name = "cliente_orden", joinColumns = @JoinColumn(name = "idCliente"), inverseJoinColumns = @JoinColumn(name = "idOrden"))
+    @OneToMany(mappedBy = "cliente")
+
     private List<Orden> ordenes;
 
     public Cliente() {
@@ -185,7 +185,7 @@ public class Cliente {
     }
 
     public void setOrdenes(List<Orden> ordenes) throws Exception {
-        if (ordenes == null || ordenes.isEmpty()) {
+        if (ordenes == null) {
             throw new ExcepcionAtributos("ERROR. Lista de órdenes vacía.");
         } else {
             this.ordenes = ordenes;

@@ -1,12 +1,9 @@
-package unam.dgtic.diplomado.controlador.servicio.cliente;
-
-import java.util.List;
+package unam.dgtic.diplomado.controlador.servicio.orden;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
-import unam.dgtic.diplomado.controlador.repositorio.cliente.RepositorioOrden;
-import unam.dgtic.diplomado.modelo.entidades.cliente.Cliente;
-import unam.dgtic.diplomado.modelo.entidades.cliente.Orden;
+import unam.dgtic.diplomado.controlador.repositorio.orden.RepositorioOrden;
+import unam.dgtic.diplomado.modelo.entidades.orden.Orden;
 
 public class ServicioOrden implements RepositorioOrden {
 
@@ -24,16 +21,6 @@ public class ServicioOrden implements RepositorioOrden {
                 "ORDER BY o.idOrden");
 
         Iterable<Orden> ordenes = (Iterable<Orden>) query.getResultList();
-
-        for (Orden c : ordenes) {
-            try {
-                c.setClientesAsociados(ordenJoinCliente(c.getIdOrden()));
-
-            } catch (Exception e) {
-                return null;
-            }
-        }
-
         return ordenes;
     }
 
@@ -72,12 +59,4 @@ public class ServicioOrden implements RepositorioOrden {
 
     }
 
-    @SuppressWarnings("unchecked")
-    private List<Cliente> ordenJoinCliente(Integer idOrden) {
-        Query query = em.createQuery("SELECT c from Cliente c\n" +
-                "JOIN ClienteOrden co on c.idCliente = co.idCliente\n" +
-                "JOIN Orden o on o.idOrden = co.idOrden\n" +
-                "WHERE o.idOrden = " + idOrden);
-        return query.getResultList();
-    }
 }

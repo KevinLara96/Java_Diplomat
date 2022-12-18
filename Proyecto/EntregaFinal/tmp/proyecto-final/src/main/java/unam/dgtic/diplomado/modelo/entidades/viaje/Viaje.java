@@ -2,16 +2,37 @@ package unam.dgtic.diplomado.modelo.entidades.viaje;
 
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
+@Entity
+@Table(name = "viaje")
 public class Viaje {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idViaje;
     private String origen;
     private String destino;
     private Float precio;
     private Date fecha;
+
+    @ManyToOne
+    @JoinColumn(name = "idAgencia")
+    private Agencia agencia;
+
+    @ManyToOne
+    @JoinColumn(name = "idTipoViajeAutobus")
     private TipoViajeAutobus tipoViajeAutobus;
+    @ManyToOne
+    @JoinColumn(name = "idTipoViajeAvion")
     private TipoViajeAvion tipoViajeAvion;
 
     public Viaje() {
@@ -71,6 +92,14 @@ public class Viaje {
 
     public Date getFecha() {
         return fecha;
+    }
+
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
     }
 
     public void setFecha(Date fecha) throws Exception {
