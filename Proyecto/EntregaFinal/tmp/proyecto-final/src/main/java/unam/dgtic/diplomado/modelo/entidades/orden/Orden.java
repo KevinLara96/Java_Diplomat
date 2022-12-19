@@ -4,12 +4,15 @@ import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import unam.dgtic.diplomado.modelo.entidades.cliente.Cliente;
+import unam.dgtic.diplomado.modelo.entidades.producto.Producto;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
 @Entity
@@ -17,6 +20,7 @@ import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 public class Orden {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idOrden;
     private Date fechaEmision;
     private Float monto;
@@ -81,16 +85,36 @@ public class Orden {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcion(String descripcion) throws Exception {
+        if (descripcion == null || descripcion.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Descripción inválida.");
+        } else {
+            this.descripcion = descripcion;
+        }
     }
 
     public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(Cliente cliente) throws Exception {
+        if (cliente == null) {
+            throw new ExcepcionAtributos("ERROR. Cliente inválido.");
+        } else {
+            this.cliente = cliente;
+        }
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) throws Exception {
+        if (productos == null || productos.isEmpty()) {
+            throw new ExcepcionAtributos("ERROR. Lista de productos inválida.");
+        } else {
+            this.productos = productos;
+        }
     }
 
     @Override
@@ -121,7 +145,7 @@ public class Orden {
     @Override
     public String toString() {
         return "[idOrden=" + idOrden + ", fechaEmision=" + fechaEmision + ", monto=" + monto + ", descripcion="
-                + descripcion + "]";
+                + descripcion + ", cliente=" + cliente.getIdCliente() + ", productos: ";
     }
 
 }

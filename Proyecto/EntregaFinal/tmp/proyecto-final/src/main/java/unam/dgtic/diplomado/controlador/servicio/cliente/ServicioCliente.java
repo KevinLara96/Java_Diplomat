@@ -1,12 +1,9 @@
 package unam.dgtic.diplomado.controlador.servicio.cliente;
 
-import java.util.List;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.cliente.RepositorioCliente;
 import unam.dgtic.diplomado.modelo.entidades.cliente.Cliente;
-import unam.dgtic.diplomado.modelo.entidades.orden.Orden;
 
 public class ServicioCliente implements RepositorioCliente {
 
@@ -24,16 +21,6 @@ public class ServicioCliente implements RepositorioCliente {
                 "ORDER BY c.idCliente");
 
         Iterable<Cliente> clientes = (Iterable<Cliente>) query.getResultList();
-
-        for (Cliente c : clientes) {
-            try {
-                c.setOrdenes(clienteJoinOrden(c.getIdCliente()));
-
-            } catch (Exception e) {
-                return null;
-            }
-        }
-
         return clientes;
     }
 
@@ -67,16 +54,9 @@ public class ServicioCliente implements RepositorioCliente {
         if (cliente != null) {
             em.getTransaction().begin();
             cliente = em.merge(clienteParam);
+            em.flush();
             em.getTransaction().commit();
         }
     }
 
-    @SuppressWarnings("unchecked")
-    private List<Orden> clienteJoinOrden(Integer idCliente) {
-        Query query = em.createQuery("SELECT o from Orden o\n" +
-                "JOIN ClienteOrden co on o.idOrden = co.idOrden\n" +
-                "JOIN Cliente c on c.idCliente = co.idCliente\n" +
-                "WHERE c.idCliente = " + idCliente);
-        return query.getResultList();
-    }
 }

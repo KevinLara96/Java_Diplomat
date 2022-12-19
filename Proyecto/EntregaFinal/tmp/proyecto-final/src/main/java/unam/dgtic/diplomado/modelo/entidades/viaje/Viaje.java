@@ -159,6 +159,14 @@ public class Viaje {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "[idViaje=" + idViaje + ", origen=" + origen + ", destino=" + destino + ", precio=" + precio
+                + ", fecha=" + fecha + ", agencia=" + agencia.getUbicacionAgencia() + ", tipoViajeAutobus="
+                + tipoViajeAutobus.getTipoViajeAutobus()
+                + ", tipoViajeAvion=" + tipoViajeAvion.getTipoViajeAvion() + "]";
+    }
+
     // Clases internas.
     public static class Builder {
 

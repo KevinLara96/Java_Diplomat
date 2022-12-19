@@ -1,19 +1,26 @@
-package unam.dgtic.diplomado.modelo.entidades.orden;
+package unam.dgtic.diplomado.modelo.entidades.producto;
 
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import unam.dgtic.diplomado.modelo.entidades.orden.Orden;
+import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
 @Entity
 @Table(name = "producto")
 public class Producto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProducto;
     private String nombreProducto;
+    private Float multiplicador;
+    private String estatus;
 
     @ManyToMany(mappedBy = "productos")
     private List<Orden> ordenes;
@@ -40,6 +47,34 @@ public class Producto {
 
     public void setNombreProducto(String nombreProducto) {
         this.nombreProducto = nombreProducto;
+    }
+
+    public Float getMultiplicador() {
+        return multiplicador;
+    }
+
+    public void setMultiplicador(Float multiplicador) throws Exception {
+        if (multiplicador == null || multiplicador < 1) {
+            throw new ExcepcionAtributos("ERROR. Multiplicador inválido.");
+        } else {
+            this.multiplicador = multiplicador;
+        }
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    public List<Orden> getOrdenes() {
+        return ordenes;
+    }
+
+    public void setOrdenes(List<Orden> ordenes) {
+        this.ordenes = ordenes;
     }
 
     @Override
@@ -69,7 +104,8 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "[idProducto=" + idProducto + ", nombreProducto=" + nombreProducto + "]";
+        return "[idProducto=" + idProducto + ", nombreProducto=" + nombreProducto +
+                ", estatus=" + estatus + "]]";
     }
 
 }

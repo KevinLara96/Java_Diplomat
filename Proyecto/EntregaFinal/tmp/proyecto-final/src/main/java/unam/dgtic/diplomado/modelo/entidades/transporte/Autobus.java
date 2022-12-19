@@ -16,9 +16,11 @@ public class Autobus extends Transporte {
         super();
     }
 
-    public Autobus(Integer idTransporte, String marca, String modelo, Integer capacidadUsuarios,
-            Integer capacidadCombustible, Date fechaAdquisicion, String estacionamientoAsignado) {
-        super(idTransporte, marca, modelo, capacidadUsuarios, capacidadCombustible, fechaAdquisicion);
+    public Autobus(Integer idTransporte, String marca, String modelo, Integer capacidadCombustible,
+            Date fechaAdquisicion, String estacionamientoAsignado, Integer asientosBasicos,
+            Integer asientosPrimeraClase) {
+        super(idTransporte, marca, modelo, capacidadCombustible, fechaAdquisicion, asientosBasicos,
+                asientosPrimeraClase);
         this.estacionamientoAsignado = estacionamientoAsignado;
     }
 

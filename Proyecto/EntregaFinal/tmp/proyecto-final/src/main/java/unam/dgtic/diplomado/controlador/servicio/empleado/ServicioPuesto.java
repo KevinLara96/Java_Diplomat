@@ -53,6 +53,7 @@ public class ServicioPuesto implements RepositorioPuesto {
         if (puesto != null) {
             em.getTransaction().begin();
             puesto = em.merge(puestoParam);
+            em.flush();
             em.getTransaction().commit();
         }
 

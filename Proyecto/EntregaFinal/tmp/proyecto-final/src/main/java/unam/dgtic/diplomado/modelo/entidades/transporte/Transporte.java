@@ -10,7 +10,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
 @Entity
@@ -25,24 +28,28 @@ public class Transporte {
     private Integer idTransporte;
     private String marca;
     private String modelo;
-    private Integer capacidadUsuarios;
     private Integer capacidadCombustible;
     private Date fechaAdquisicion;
     private Integer asientosBasicos;
     private Integer asientosPrimeraClase;
 
+    @ManyToOne
+    @JoinColumn(name = "idAgencia")
+    private Agencia agencia;
+
     public Transporte() {
 
     }
 
-    public Transporte(Integer idTransporte, String marca, String modelo, Integer capacidadUsuarios,
-            Integer capacidadCombustible, Date fechaAdquisicion) {
+    public Transporte(Integer idTransporte, String marca, String modelo, Integer capacidadCombustible,
+            Date fechaAdquisicion, Integer asientosBasicos, Integer asientosPrimeraClase) {
         this.idTransporte = idTransporte;
         this.marca = marca;
         this.modelo = modelo;
-        this.capacidadUsuarios = capacidadUsuarios;
         this.capacidadCombustible = capacidadCombustible;
         this.fechaAdquisicion = fechaAdquisicion;
+        this.asientosBasicos = asientosBasicos;
+        this.asientosPrimeraClase = asientosPrimeraClase;
     }
 
     public Integer getIdTransporte() {
@@ -78,18 +85,6 @@ public class Transporte {
             throw new ExcepcionAtributos("ERROR. Modelo de transporte inválida.");
         } else {
             this.modelo = modelo;
-        }
-    }
-
-    public Integer getCapacidadUsuarios() {
-        return capacidadUsuarios;
-    }
-
-    public void setCapacidadUsuarios(Integer capacidadUsuarios) throws Exception {
-        if (capacidadUsuarios == null || capacidadUsuarios <= 20) {
-            throw new ExcepcionAtributos("ERROR. Capacidad de usuarios inválida.");
-        } else {
-            this.capacidadUsuarios = capacidadUsuarios;
         }
     }
 
@@ -141,6 +136,18 @@ public class Transporte {
         }
     }
 
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) throws Exception {
+        if (agencia == null) {
+            throw new ExcepcionAtributos("ERROR. Agencia inválida.");
+        } else {
+            this.agencia = agencia;
+        }
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -170,8 +177,8 @@ public class Transporte {
     public String toString() {
         return "[idTransporte=" + idTransporte + ", tipoTransporte=" +
                 ", marca=" + marca + ", modelo=" + modelo
-                + ", capacidadUsuarios=" + capacidadUsuarios + ", capacidadCombustible=" + capacidadCombustible
-                + ", fechaAdquisicion=" + fechaAdquisicion;
+                + ", capacidadCombustible=" + capacidadCombustible
+                + ", fechaAdquisicion=" + fechaAdquisicion + ", agencia=" + agencia.getUbicacionAgencia();
     }
 
 }

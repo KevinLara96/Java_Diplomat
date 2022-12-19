@@ -62,7 +62,9 @@ CREATE TABLE transporte (
   asientosPrimeraClase INT NOT NULL,
   puertoAsignado VARCHAR(10),
   estacionamientoAsignado VARCHAR(20),
-  CONSTRAINT transporte_pk PRIMARY KEY (idTransporte)
+  idAgencia INT NOT NULL,
+  CONSTRAINT transporte_pk PRIMARY KEY (idTransporte),
+  CONSTRAINT transporte_agencia_fk FOREIGN KEY(idAgencia) REFERENCES agencia(idAgencia)
 );
 CREATE TABLE cliente (
   idCliente INT NOT NULL AUTO_INCREMENT,
@@ -84,13 +86,15 @@ CREATE TABLE orden(
   idCliente INT NOT NULL,
   fechaEmision DATE NOT NULL,
   monto FLOAT NOT NULL,
-  descripcion TEXT NULL,
+  descripcion TEXT NOT NULL,
   CONSTRAINT orden_pk PRIMARY KEY (idOrden),
   CONSTRAINT oden_cliente_fk FOREIGN KEY (idCliente) REFERENCES cliente(idCliente)
 );
 CREATE TABLE producto(
   idProducto INT NOT NULL AUTO_INCREMENT,
   nombreProducto VARCHAR(50) NOT NULL,
+  multiplicador FLOAT NOT NULL,
+  estatus VARCHAR(10) NOT NULL,
   CONSTRAINT producto_pk PRIMARY KEY (idProducto)
 );
 CREATE TABLE orden_producto (

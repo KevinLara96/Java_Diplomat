@@ -604,21 +604,21 @@ VALUES
     'Compra un boleto de avión de Ciudad de México a Bostón, pago con tarjeta'
   );
 INSERT INTO
-  producto (nombreProducto)
+  producto (nombreProducto, multiplicador, estatus)
 VALUES
-  ('Asiento básico autobús');
+  ('Asiento básico autobús', 1.0, 'ACTIVO');
 INSERT INTO
-  producto (nombreProducto)
+  producto (nombreProducto, multiplicador, estatus)
 VALUES
-  ('Asiento primera clase autobús');
+  ('Asiento primera clase autobús', 2.0, 'ACTIVO');
 INSERT INTO
-  producto (nombreProducto)
+  producto (nombreProducto, multiplicador, estatus)
 VALUES
-  ('Asiento básico avión');
+  ('Asiento básico avión', 1.5, 'ACTIVO');
 INSERT INTO
-  producto (nombreProducto)
+  producto (nombreProducto, multiplicador, estatus)
 VALUES
-  ('Asiento primera clase avión');
+  ('Asiento primera clase avión', 2.5, 'ACTIVO');
 -----------------------------------------Orden Producto------------------------------------------------------
 INSERT INTO
   orden_producto
@@ -966,7 +966,8 @@ INSERT INTO
     fechaAdquisicion,
     asientosBasicos,
     asientosPrimeraClase,
-    estacionamientoAsignado
+    estacionamientoAsignado,
+    idAgencia
   )
 VALUES
   (
@@ -977,7 +978,8 @@ VALUES
     '2014-05-19',
     10,
     30,
-    'Estacionamiento 2'
+    'Estacionamiento 2',
+    1
   );
 INSERT INTO
   transporte (
@@ -988,7 +990,8 @@ INSERT INTO
     fechaAdquisicion,
     asientosBasicos,
     asientosPrimeraClase,
-    estacionamientoAsignado
+    estacionamientoAsignado,
+    idAgencia
   )
 VALUES
   (
@@ -999,7 +1002,8 @@ VALUES
     '2019-10-09',
     20,
     30,
-    'Estacionamiento 3'
+    'Estacionamiento 3',
+    2
   );
 INSERT INTO
   transporte (
@@ -1010,7 +1014,8 @@ INSERT INTO
     fechaAdquisicion,
     asientosBasicos,
     asientosPrimeraClase,
-    estacionamientoAsignado
+    estacionamientoAsignado,
+    idAgencia
   )
 VALUES
   (
@@ -1021,7 +1026,8 @@ VALUES
     '2018-11-10',
     15,
     25,
-    'Estacionamiento 4'
+    'Estacionamiento 4',
+    3
   );
 INSERT INTO
   transporte (
@@ -1032,7 +1038,8 @@ INSERT INTO
     fechaAdquisicion,
     asientosBasicos,
     asientosPrimeraClase,
-    estacionamientoAsignado
+    estacionamientoAsignado,
+    idAgencia
   )
 VALUES
   (
@@ -1043,7 +1050,8 @@ VALUES
     '2022-08-03',
     10,
     40,
-    'Estacionamiento 5'
+    'Estacionamiento 5',
+    1
   );
 INSERT INTO
   transporte (
@@ -1054,7 +1062,8 @@ INSERT INTO
     fechaAdquisicion,
     asientosBasicos,
     asientosPrimeraClase,
-    puertoAsignado
+    puertoAsignado,
+    idAgencia
   )
 VALUES
   (
@@ -1065,7 +1074,8 @@ VALUES
     '2015-12-24',
     25,
     60,
-    'Puerto 1'
+    'Puerto 1',
+    2
   );
 INSERT INTO
   transporte (
@@ -1076,7 +1086,8 @@ INSERT INTO
     fechaAdquisicion,
     asientosBasicos,
     asientosPrimeraClase,
-    puertoAsignado
+    puertoAsignado,
+    idAgencia
   )
 VALUES
   (
@@ -1087,7 +1098,8 @@ VALUES
     '2017-08-03',
     100,
     200,
-    'Puerto 2'
+    'Puerto 2',
+    3
   );
 INSERT INTO
   transporte (
@@ -1098,7 +1110,8 @@ INSERT INTO
     fechaAdquisicion,
     asientosBasicos,
     asientosPrimeraClase,
-    puertoAsignado
+    puertoAsignado,
+    idAgencia
   )
 VALUES
   (
@@ -1109,7 +1122,8 @@ VALUES
     '2009-05-24',
     50,
     130,
-    'Puerto 3'
+    'Puerto 3',
+    1
   );
 INSERT INTO
   transporte (
@@ -1120,7 +1134,8 @@ INSERT INTO
     fechaAdquisicion,
     asientosBasicos,
     asientosPrimeraClase,
-    puertoAsignado
+    puertoAsignado,
+    idAgencia
   )
 VALUES
   (
@@ -1131,7 +1146,8 @@ VALUES
     '2010-03-12',
     80,
     120,
-    'Puerto 4'
+    'Puerto 4',
+    2
   );
 INSERT INTO
   transporte (
@@ -1142,7 +1158,8 @@ INSERT INTO
     fechaAdquisicion,
     asientosBasicos,
     asientosPrimeraClase,
-    puertoAsignado
+    puertoAsignado,
+    idAgencia
   )
 VALUES
   (
@@ -1153,5 +1170,6 @@ VALUES
     '2012-01-01',
     20,
     120,
-    'Puerto 5'
+    'Puerto 5',
+    3
   );

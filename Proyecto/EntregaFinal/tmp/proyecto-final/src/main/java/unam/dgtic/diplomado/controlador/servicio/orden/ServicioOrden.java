@@ -38,17 +38,6 @@ public class ServicioOrden implements RepositorioOrden {
     }
 
     @Override
-    public void eliminarOrden(Integer idOrden) {
-        Orden orden = obtenerOrden(idOrden);
-        if (orden != null) {
-            em.getTransaction().begin();
-            em.remove(orden);
-            em.flush();
-            em.getTransaction().commit();
-        }
-    }
-
-    @Override
     public void actualizarOrden(Orden ordenParam) {
         Orden orden = obtenerOrden(ordenParam.getIdOrden());
         if (orden != null) {
@@ -59,4 +48,12 @@ public class ServicioOrden implements RepositorioOrden {
 
     }
 
+    @SuppressWarnings("unchecked")
+    public Iterable<Orden> ordenJoinProducto(Integer idOrden) {
+        Query query = em.createQuery("SELECT p from Producto p\n" +
+                "JOIN OrdenProducto op on p.idProducto = op.idProducto\n" +
+                "JOIN Orden o on o.idOrden = op.idOrden\n" +
+                "WHERE o.idOrden = " + idOrden);
+        return (Iterable<Orden>) query.getResultList();
+    }
 }

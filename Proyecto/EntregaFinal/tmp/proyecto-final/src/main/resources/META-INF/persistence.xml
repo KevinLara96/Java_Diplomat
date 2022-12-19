@@ -8,8 +8,10 @@
         <class>unam.dgtic.diplomado.modelo.entidades.agencia.Agencia</class>
 
         <class>unam.dgtic.diplomado.modelo.entidades.cliente.Cliente</class>
-        <class>unam.dgtic.diplomado.modelo.entidades.cliente.ClienteOrden</class>
-        <class>unam.dgtic.diplomado.modelo.entidades.cliente.Orden</class>
+
+        <class>unam.dgtic.diplomado.modelo.entidades.orden.Orden</class>
+
+        <class>unam.dgtic.diplomado.modelo.entidades.producto.Producto</class>
 
         <class>unam.dgtic.diplomado.modelo.entidades.empleado.Empleado</class>
         <class>unam.dgtic.diplomado.modelo.entidades.empleado.Puesto</class>

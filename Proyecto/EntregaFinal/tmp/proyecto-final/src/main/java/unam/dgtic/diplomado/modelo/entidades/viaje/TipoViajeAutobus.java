@@ -75,7 +75,7 @@ public class TipoViajeAutobus {
 
     @Override
     public String toString() {
-        return "TipoViaje [idTipoViajeAutobus=" + idTipoViajeAutobus + ", tipoViajeAutobus=" + tipoViajeAutobus + "]";
+        return "[idTipoViajeAutobus=" + idTipoViajeAutobus + ", tipoViajeAutobus=" + tipoViajeAutobus + "]";
     }
 
 }

@@ -53,6 +53,7 @@ public class ServicioTransporte implements RepositorioTransporte {
         if (transporte != null) {
             em.getTransaction().begin();
             transporte = em.merge(transporteParam);
+            em.flush();
             em.getTransaction().commit();
         }
 

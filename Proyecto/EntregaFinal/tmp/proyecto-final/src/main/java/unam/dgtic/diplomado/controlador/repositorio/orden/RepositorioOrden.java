@@ -10,7 +10,5 @@ public interface RepositorioOrden {
 
     public void guardarOrden(Orden orden) throws Exception;
 
-    public void eliminarOrden(Integer idOrden);
-
     public void actualizarOrden(Orden ordenParam);
 }

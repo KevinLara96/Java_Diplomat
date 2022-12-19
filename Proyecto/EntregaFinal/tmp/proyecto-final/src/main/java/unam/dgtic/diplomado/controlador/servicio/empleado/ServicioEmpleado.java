@@ -53,6 +53,7 @@ public class ServicioEmpleado implements RepositorioEmpleado {
         if (empleado != null) {
             em.getTransaction().begin();
             empleado = em.merge(empleadoParam);
+            em.flush();
             em.getTransaction().commit();
         }
 

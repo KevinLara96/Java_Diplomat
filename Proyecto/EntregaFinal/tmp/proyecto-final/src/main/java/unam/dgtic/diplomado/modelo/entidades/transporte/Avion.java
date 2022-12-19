@@ -16,9 +16,10 @@ public class Avion extends Transporte {
         super();
     }
 
-    public Avion(Integer idTransporte, String marca, String modelo, Integer capacidadUsuarios,
-            Integer capacidadCombustible, Date fechaAdquisicion, String puertoAsignado) {
-        super(idTransporte, marca, modelo, capacidadUsuarios, capacidadCombustible, fechaAdquisicion);
+    public Avion(Integer idTransporte, String marca, String modelo, Integer capacidadCombustible,
+            Date fechaAdquisicion, String puertoAsignado, Integer asientosBasicos, Integer asientosPrimeraClase) {
+        super(idTransporte, marca, modelo, capacidadCombustible, fechaAdquisicion, asientosBasicos,
+                asientosPrimeraClase);
         this.puertoAsignado = puertoAsignado;
     }
 

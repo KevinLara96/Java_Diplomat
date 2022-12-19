@@ -1,15 +1,18 @@
 package unam.dgtic.diplomado;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import unam.dgtic.diplomado.controlador.servicio.agencia.ServicioAgencia;
-import unam.dgtic.diplomado.controlador.servicio.cliente.ServicioCliente;
-//import unam.dgtic.diplomado.controlador.servicio.cliente.ServicioOrden;
-import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
-import unam.dgtic.diplomado.modelo.entidades.cliente.*;
+import unam.dgtic.diplomado.controlador.servicio.viaje.ServicioTipoViajeAutobus;
+import unam.dgtic.diplomado.controlador.servicio.viaje.ServicioTipoViajeAvion;
+import unam.dgtic.diplomado.controlador.servicio.viaje.ServicioViaje;
+import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAutobus;
+import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAvion;
+import unam.dgtic.diplomado.modelo.entidades.viaje.Viaje;
 
 public class Pruebas {
 
@@ -19,9 +22,10 @@ public class Pruebas {
         EntityManager em = emf.createEntityManager();
 
         Scanner input = new Scanner(System.in);
-        ServicioCliente servicioCliente = new ServicioCliente(em);
+        ServicioViaje servicioViaje = new ServicioViaje(em);
         ServicioAgencia servicioAgencia = new ServicioAgencia(em);
-        // ServicioOrden servicioOrden = new ServicioOrden(em);
+        ServicioTipoViajeAvion servicioTipoViajeAvion = new ServicioTipoViajeAvion(em);
+        ServicioTipoViajeAutobus servicioTipoViajeAutobus = new ServicioTipoViajeAutobus(em);
 
         while (true) {
             System.out.println("\nMenú principal:\n");
@@ -36,9 +40,9 @@ public class Pruebas {
 
             switch (opcion) {
                 case 1:
-                    Iterable<Cliente> iterable = servicioCliente.obtenerClientes();
-                    for (Cliente a : iterable) {
-                        System.out.println(a);
+                    Iterable<Viaje> iterable = servicioViaje.obtenerViajes();
+                    for (Viaje o : iterable) {
+                        System.out.println(o);
                         System.out.println();
                     }
 
@@ -47,7 +51,7 @@ public class Pruebas {
                 case 2: {
                     System.out.print("Ingrese el id: ");
                     int id = Integer.parseInt(input.nextLine());
-                    Cliente consulta = servicioCliente.obtenerCliente(id);
+                    Viaje consulta = servicioViaje.obtenerViaje(id);
                     System.out.println(consulta);
                     System.out.println();
 
@@ -55,62 +59,49 @@ public class Pruebas {
                 }
 
                 case 3: {
+                    System.out.println("1. Viaje avión.");
+                    System.out.println("2. Viaje autobús.");
+                    int opcionViaje = Integer.parseInt(input.nextLine());
 
-                    try {
-                        Cliente nuevo = new Cliente();
-                        System.out.print("Nombres: ");
-                        String a = input.nextLine();
-                        nuevo.setNombres(a);
+                    switch (opcionViaje) {
+                        case 1:
+                            TipoViajeAvion tipoViajeAvion = servicioTipoViajeAvion.obtenerTipoViajeAvion(2);
+                            Viaje viaje1 = new Viaje.Builder().setViajeAvion(tipoViajeAvion).build();
+                            try {
+                                viaje1.setOrigen("null");
+                                viaje1.setDestino("null");
+                                viaje1.setPrecio(110.0f);
+                                viaje1.setFecha(Calendar.getInstance().getTime());
+                                viaje1.setAgencia(servicioAgencia.obtenerAgencia(1));
+                                viaje1.setTipoViajeAutobus(servicioTipoViajeAutobus.obtenerTipoViajeAutobus(4));
+                                servicioViaje.guardarViaje(viaje1);
 
-                        System.out.print("Apellidos: ");
-                        String b = input.nextLine();
-                        nuevo.setApellidos(b);
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                            }
 
-                        System.out.print("calle: ");
-                        String c = input.nextLine();
-                        nuevo.setCalle(c);
+                            break;
 
-                        System.out.print("colonia: ");
-                        String d = input.nextLine();
-                        nuevo.setColonia(d);
+                        case 2:
+                            TipoViajeAutobus tipoViajeAutobus = servicioTipoViajeAutobus.obtenerTipoViajeAutobus(2);
+                            Viaje viaje2 = new Viaje.Builder().setViajeAutobus(tipoViajeAutobus).build();
+                            try {
+                                viaje2.setOrigen("null");
+                                viaje2.setDestino("null");
+                                viaje2.setPrecio(110.0f);
+                                viaje2.setFecha(Calendar.getInstance().getTime());
+                                viaje2.setAgencia(servicioAgencia.obtenerAgencia(1));
+                                viaje2.setTipoViajeAvion(servicioTipoViajeAvion.obtenerTipoViajeAvion(4));
+                                servicioViaje.guardarViaje(viaje2);
 
-                        System.out.print("cp: ");
-                        String e = input.nextLine();
-                        nuevo.setCodigoPostal(e);
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                            }
 
-                        System.out.print("telefono: ");
-                        String f = input.nextLine();
-                        nuevo.setTelefono(f);
+                            break;
 
-                        System.out.print("rfc: ");
-                        String g = input.nextLine();
-                        nuevo.setRfc(g);
-
-                        System.out.print("correo: ");
-                        String h = input.nextLine();
-                        nuevo.setCorreo(h);
-
-                        System.out.print("contrasena: ");
-                        String i = input.nextLine();
-                        nuevo.setContrasena(i);
-
-                        System.out.print("idAgencia: ");
-                        String j = input.nextLine();
-                        if (j == null) {
-                            throw new NumberFormatException("ERROR. Id de Agencia inválido.");
-                        } else {
-                            Integer j2 = Integer.parseInt(j);
-                            Agencia agencia = servicioAgencia.obtenerAgencia(j2);
-                            nuevo.setAgencia(agencia);
-                        }
-
-                        servicioCliente.guardarCliente(nuevo);
-
-                    } catch (NumberFormatException e) {
-                        System.out.println(e.getMessage());
-                        e.printStackTrace();
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                        default:
+                            break;
                     }
 
                     break;
@@ -119,22 +110,13 @@ public class Pruebas {
                 case 4: {
                     System.out.print("Id: ");
                     int id = Integer.parseInt(input.nextLine());
-                    Cliente actualizar = servicioCliente.obtenerCliente(id);
-
-                    if (actualizar == null) {
-                        System.out.println("Cliente no encontrada");
-                    } else {
-                        try {
-                            System.out.print("RFC: ");
-                            String a = input.nextLine();
-
-                            actualizar.setRfc(a);
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                            break;
-                        }
-                        servicioCliente.actualizarCliente(actualizar);
+                    Viaje actualizar = servicioViaje.obtenerViaje(id);
+                    try {
+                        actualizar.setPrecio(500000.0f);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
                     }
+                    servicioViaje.actualizarViaje(actualizar);
 
                     break;
                 }
@@ -142,14 +124,7 @@ public class Pruebas {
                 case 5: {
 
                     System.out.print("Id: ");
-                    int id = Integer.parseInt(input.nextLine());
-                    Cliente agenciaElim = servicioCliente.obtenerCliente(id);
-
-                    if (agenciaElim != null) {
-                        servicioCliente.eliminarCliente(agenciaElim.getIdCliente());
-                    } else {
-                        System.out.println("No se encuentra dicha agencia");
-                    }
+                    servicioViaje.eliminarViaje(Integer.parseInt(input.nextLine()));
 
                     break;
                 }
