@@ -134,6 +134,19 @@ public class Viaje {
         }
     }
 
+    public Boolean verificaTipoViaje() {
+        // Si es viaje de autobús, avión debe ser 4.
+        if (tipoViajeAutobus.getIdTipoViajeAutobus() != 4 && tipoViajeAvion.getIdTipoViajeAvion() == 4) {
+            return true;
+        }
+        // Si es viaje de avión, autobúse debe ser 4.
+        if (tipoViajeAvion.getIdTipoViajeAvion() != 4 && tipoViajeAutobus.getIdTipoViajeAutobus() == 4) {
+            return true;
+        }
+
+        return false;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

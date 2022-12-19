@@ -73,7 +73,11 @@ public class Pruebas {
                                 viaje1.setPrecio(110.0f);
                                 viaje1.setFecha(Calendar.getInstance().getTime());
                                 viaje1.setAgencia(servicioAgencia.obtenerAgencia(1));
-                                viaje1.setTipoViajeAutobus(servicioTipoViajeAutobus.obtenerTipoViajeAutobus(4));
+                                viaje1.setTipoViajeAutobus(servicioTipoViajeAutobus.obtenerTipoViajeAutobus(1));
+
+                                if (!viaje1.verificaTipoViaje()) {
+                                    throw new Exception("ERROR. Tipos de viaje incompatibles.");
+                                }
                                 servicioViaje.guardarViaje(viaje1);
 
                             } catch (Exception e) {
@@ -92,6 +96,10 @@ public class Pruebas {
                                 viaje2.setFecha(Calendar.getInstance().getTime());
                                 viaje2.setAgencia(servicioAgencia.obtenerAgencia(1));
                                 viaje2.setTipoViajeAvion(servicioTipoViajeAvion.obtenerTipoViajeAvion(4));
+
+                                if (!viaje2.verificaTipoViaje()) {
+                                    throw new Exception("ERROR. Tipos de viaje incompatibles.");
+                                }
                                 servicioViaje.guardarViaje(viaje2);
 
                             } catch (Exception e) {
