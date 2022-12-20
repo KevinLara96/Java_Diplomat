@@ -1,12 +1,19 @@
 package unam.dgtic.diplomado.controlador.servicio.agencia;
 
+import java.io.Serializable;
+
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.agencia.RepositorioAgencia;
-import unam.dgtic.diplomado.modelo.beans.agencia.Agencia;
+import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
 
-public class ServicioAgencia implements RepositorioAgencia {
+@Named
+@SessionScoped
+public class ServicioAgencia implements RepositorioAgencia, Serializable {
 
+    private static final long serialVersionUID = -7258677092121565613L;
     protected EntityManager em;
 
     public ServicioAgencia(EntityManager em) {
@@ -16,20 +23,20 @@ public class ServicioAgencia implements RepositorioAgencia {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<Agencia> obtenerAgencias() {
+    public Iterable<AgenciaBean> obtenerAgencias() {
         Query query = em.createQuery("SELECT a from Agencia a\n" +
                 "ORDER BY a.idAgencia");
 
-        return (Iterable<Agencia>) query.getResultList();
+        return (Iterable<AgenciaBean>) query.getResultList();
     }
 
     @Override
-    public Agencia obtenerAgencia(Integer idAgencia) {
-        return em.find(Agencia.class, idAgencia);
+    public AgenciaBean obtenerAgencia(Integer idAgencia) {
+        return em.find(AgenciaBean.class, idAgencia);
     }
 
     @Override
-    public void guardarAgencia(Agencia agencia) throws Exception {
+    public void guardarAgencia(AgenciaBean agencia) throws Exception {
         em.getTransaction().begin();
         em.persist(agencia);
         em.flush();
@@ -38,7 +45,7 @@ public class ServicioAgencia implements RepositorioAgencia {
 
     @Override
     public void eliminarAgencia(Integer idAgencia) {
-        Agencia agencia = obtenerAgencia(idAgencia);
+        AgenciaBean agencia = obtenerAgencia(idAgencia);
         if (agencia != null) {
             em.getTransaction().begin();
             em.remove(agencia);
@@ -49,8 +56,8 @@ public class ServicioAgencia implements RepositorioAgencia {
     }
 
     @Override
-    public void actualizarAgencia(Agencia agenciaParam) {
-        Agencia agencia = obtenerAgencia(agenciaParam.getIdAgencia());
+    public void actualizarAgencia(AgenciaBean agenciaParam) {
+        AgenciaBean agencia = obtenerAgencia(agenciaParam.getIdAgencia());
 
         if (agencia != null) {
             em.getTransaction().begin();

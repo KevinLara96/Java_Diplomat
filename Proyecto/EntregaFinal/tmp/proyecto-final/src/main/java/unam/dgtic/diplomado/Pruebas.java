@@ -1,18 +1,12 @@
 package unam.dgtic.diplomado;
 
-import java.util.Calendar;
 import java.util.Scanner;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import unam.dgtic.diplomado.controlador.servicio.agencia.ServicioAgencia;
-import unam.dgtic.diplomado.controlador.servicio.viaje.ServicioTipoViajeAutobus;
-import unam.dgtic.diplomado.controlador.servicio.viaje.ServicioTipoViajeAvion;
-import unam.dgtic.diplomado.controlador.servicio.viaje.ServicioViaje;
-import unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAutobus;
-import unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAvion;
-import unam.dgtic.diplomado.modelo.beans.viaje.Viaje;
+import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
 
 public class Pruebas {
 
@@ -22,10 +16,7 @@ public class Pruebas {
         EntityManager em = emf.createEntityManager();
 
         Scanner input = new Scanner(System.in);
-        ServicioViaje servicioViaje = new ServicioViaje(em);
         ServicioAgencia servicioAgencia = new ServicioAgencia(em);
-        ServicioTipoViajeAvion servicioTipoViajeAvion = new ServicioTipoViajeAvion(em);
-        ServicioTipoViajeAutobus servicioTipoViajeAutobus = new ServicioTipoViajeAutobus(em);
 
         while (true) {
             System.out.println("\nMenú principal:\n");
@@ -40,8 +31,8 @@ public class Pruebas {
 
             switch (opcion) {
                 case 1:
-                    Iterable<Viaje> iterable = servicioViaje.obtenerViajes();
-                    for (Viaje o : iterable) {
+                    Iterable<AgenciaBean> iterable = servicioAgencia.obtenerAgencias();
+                    for (AgenciaBean o : iterable) {
                         System.out.println(o);
                         System.out.println();
                     }
@@ -51,7 +42,7 @@ public class Pruebas {
                 case 2: {
                     System.out.print("Ingrese el id: ");
                     int id = Integer.parseInt(input.nextLine());
-                    Viaje consulta = servicioViaje.obtenerViaje(id);
+                    AgenciaBean consulta = servicioAgencia.obtenerAgencia(id);
                     System.out.println(consulta);
                     System.out.println();
 
@@ -59,72 +50,25 @@ public class Pruebas {
                 }
 
                 case 3: {
-                    System.out.println("1. Viaje avión.");
-                    System.out.println("2. Viaje autobús.");
-                    int opcionViaje = Integer.parseInt(input.nextLine());
 
-                    switch (opcionViaje) {
-                        case 1:
-                            TipoViajeAvion tipoViajeAvion = servicioTipoViajeAvion.obtenerTipoViajeAvion(2);
-                            Viaje viaje1 = new Viaje.Builder().setViajeAvion(tipoViajeAvion).build();
-                            try {
-                                viaje1.setOrigen("null");
-                                viaje1.setDestino("null");
-                                viaje1.setPrecio(110.0f);
-                                viaje1.setFecha(Calendar.getInstance().getTime());
-                                viaje1.setAgencia(servicioAgencia.obtenerAgencia(1));
-                                viaje1.setTipoViajeAutobus(servicioTipoViajeAutobus.obtenerTipoViajeAutobus(1));
+                    AgenciaBean agenciaBean = new AgenciaBean();
+                    try {
+                        servicioAgencia.guardarAgencia(agenciaBean);
+                    } catch (Exception e) {
 
-                                if (!viaje1.verificaTipoViaje()) {
-                                    throw new Exception("ERROR. Tipos de viaje incompatibles.");
-                                }
-                                servicioViaje.guardarViaje(viaje1);
-
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-
-                            break;
-
-                        case 2:
-                            TipoViajeAutobus tipoViajeAutobus = servicioTipoViajeAutobus.obtenerTipoViajeAutobus(2);
-                            Viaje viaje2 = new Viaje.Builder().setViajeAutobus(tipoViajeAutobus).build();
-                            try {
-                                viaje2.setOrigen("null");
-                                viaje2.setDestino("null");
-                                viaje2.setPrecio(110.0f);
-                                viaje2.setFecha(Calendar.getInstance().getTime());
-                                viaje2.setAgencia(servicioAgencia.obtenerAgencia(1));
-                                viaje2.setTipoViajeAvion(servicioTipoViajeAvion.obtenerTipoViajeAvion(4));
-
-                                if (!viaje2.verificaTipoViaje()) {
-                                    throw new Exception("ERROR. Tipos de viaje incompatibles.");
-                                }
-                                servicioViaje.guardarViaje(viaje2);
-
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                            }
-
-                            break;
-
-                        default:
-                            break;
                     }
-
-                    break;
                 }
 
                 case 4: {
                     System.out.print("Id: ");
                     int id = Integer.parseInt(input.nextLine());
-                    Viaje actualizar = servicioViaje.obtenerViaje(id);
+                    AgenciaBean actualizar = servicioAgencia.obtenerAgencia(id);
                     try {
-                        actualizar.setPrecio(500000.0f);
+                        actualizar.setUbicacionAgencia("Hola");
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
-                    servicioViaje.actualizarViaje(actualizar);
+                    servicioAgencia.actualizarAgencia(actualizar);
 
                     break;
                 }
@@ -132,7 +76,7 @@ public class Pruebas {
                 case 5: {
 
                     System.out.print("Id: ");
-                    servicioViaje.eliminarViaje(Integer.parseInt(input.nextLine()));
+                    servicioAgencia.eliminarAgencia(Integer.parseInt(input.nextLine()));
 
                     break;
                 }

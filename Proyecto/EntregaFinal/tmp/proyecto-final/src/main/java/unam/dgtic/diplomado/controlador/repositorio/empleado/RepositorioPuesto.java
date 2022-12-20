@@ -1,16 +1,16 @@
 package unam.dgtic.diplomado.controlador.repositorio.empleado;
 
-import unam.dgtic.diplomado.modelo.beans.empleado.Puesto;
+import unam.dgtic.diplomado.modelo.beans.empleado.PuestoBean;
 
 public interface RepositorioPuesto {
 
-    public Iterable<Puesto> obtenerPuestos();
+    public Iterable<PuestoBean> obtenerPuestos();
 
-    public Puesto obtenerPuesto(Integer idPuesto);
+    public PuestoBean obtenerPuesto(Integer idPuesto);
 
-    public void guardarPuesto(Puesto puesto) throws Exception;
+    public void guardarPuesto(PuestoBean puesto) throws Exception;
 
     public void eliminarPuesto(Integer idPuesto);
 
-    public void actualizarPuesto(Puesto puestoParam);
+    public void actualizarPuesto(PuestoBean puestoParam);
 }

@@ -1,17 +1,17 @@
 package unam.dgtic.diplomado.controlador.repositorio.producto;
 
-import unam.dgtic.diplomado.modelo.beans.producto.Producto;
+import unam.dgtic.diplomado.modelo.beans.producto.ProductoBean;
 
 public interface RepositorioProducto {
 
-    public Iterable<Producto> obtenerProductos();
+    public Iterable<ProductoBean> obtenerProductos();
 
-    public Producto obtenerProducto(Integer idProducto);
+    public ProductoBean obtenerProducto(Integer idProducto);
 
-    public void guardarProducto(Producto producto) throws Exception;
+    public void guardarProducto(ProductoBean producto) throws Exception;
 
     public void eliminarProducto(Integer idProducto);
 
-    public void actualizarProducto(Producto productoParam);
+    public void actualizarProducto(ProductoBean productoParam);
 
 }

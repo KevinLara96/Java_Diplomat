@@ -1,16 +1,16 @@
 package unam.dgtic.diplomado.controlador.repositorio.viaje;
 
-import unam.dgtic.diplomado.modelo.beans.viaje.Viaje;
+import unam.dgtic.diplomado.modelo.beans.viaje.ViajeBean;
 
 public interface RepositorioViaje {
 
-    public Iterable<Viaje> obtenerViajes();
+    public Iterable<ViajeBean> obtenerViajes();
 
-    public Viaje obtenerViaje(Integer idViaje);
+    public ViajeBean obtenerViaje(Integer idViaje);
 
-    public void guardarViaje(Viaje viaje) throws Exception;
+    public void guardarViaje(ViajeBean viaje) throws Exception;
 
     public void eliminarViaje(Integer idViaje);
 
-    public void actualizarViaje(Viaje viajeParam);
+    public void actualizarViaje(ViajeBean viajeParam);
 }

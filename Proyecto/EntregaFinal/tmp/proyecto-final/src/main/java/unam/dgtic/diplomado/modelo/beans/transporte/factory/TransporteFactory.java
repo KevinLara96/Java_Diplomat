@@ -1,13 +1,13 @@
 package unam.dgtic.diplomado.modelo.beans.transporte.factory;
 
-import unam.dgtic.diplomado.modelo.beans.transporte.Transporte;
+import unam.dgtic.diplomado.modelo.beans.transporte.TransporteBean;
 
 public abstract class TransporteFactory {
 
-    public Transporte crear() {
+    public TransporteBean crear() {
 
         return crearTransporte();
     }
 
-    protected abstract Transporte crearTransporte();
+    protected abstract TransporteBean crearTransporte();
 }

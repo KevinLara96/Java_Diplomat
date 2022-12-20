@@ -46,6 +46,15 @@ public class AgenciaBean implements Serializable {
         empleados.add(emp);
     }
 
+    public List<EmpleadoBean> hola() {
+        List<EmpleadoBean> tmp = new ArrayList<>();
+        EmpleadoBean a = new EmpleadoBean();
+        a.setNombre("NULL");
+        tmp.add(a);
+
+        return tmp;
+    }
+
     public Integer getIdAgencia() {
         return idAgencia;
     }

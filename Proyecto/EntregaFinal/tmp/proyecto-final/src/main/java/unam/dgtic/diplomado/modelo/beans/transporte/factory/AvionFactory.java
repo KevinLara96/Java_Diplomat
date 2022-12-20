@@ -1,13 +1,13 @@
 package unam.dgtic.diplomado.modelo.beans.transporte.factory;
 
-import unam.dgtic.diplomado.modelo.beans.transporte.Avion;
-import unam.dgtic.diplomado.modelo.beans.transporte.Transporte;
+import unam.dgtic.diplomado.modelo.beans.transporte.AvionBean;
+import unam.dgtic.diplomado.modelo.beans.transporte.TransporteBean;
 
 public class AvionFactory extends TransporteFactory {
 
     @Override
-    protected Transporte crearTransporte() {
-        return new Avion();
+    protected TransporteBean crearTransporte() {
+        return new AvionBean();
     }
 
 }

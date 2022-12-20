@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.transporte;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.transporte.RepositorioTransporte;
-import unam.dgtic.diplomado.modelo.beans.transporte.Transporte;
+import unam.dgtic.diplomado.modelo.beans.transporte.TransporteBean;
 
 public class ServicioTransporte implements RepositorioTransporte {
 
@@ -16,20 +16,20 @@ public class ServicioTransporte implements RepositorioTransporte {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<Transporte> obtenerTransportes() {
+    public Iterable<TransporteBean> obtenerTransportes() {
         Query query = em.createQuery("SELECT t from Transporte t\n" +
                 "ORDER BY t.idTransporte");
 
-        return (Iterable<Transporte>) query.getResultList();
+        return (Iterable<TransporteBean>) query.getResultList();
     }
 
     @Override
-    public Transporte obtenerTransporte(Integer idTransporte) {
-        return em.find(Transporte.class, idTransporte);
+    public TransporteBean obtenerTransporte(Integer idTransporte) {
+        return em.find(TransporteBean.class, idTransporte);
     }
 
     @Override
-    public void guardarTransporte(Transporte transporte) throws Exception {
+    public void guardarTransporte(TransporteBean transporte) throws Exception {
         em.getTransaction().begin();
         em.persist(transporte);
         em.flush();
@@ -38,7 +38,7 @@ public class ServicioTransporte implements RepositorioTransporte {
 
     @Override
     public void eliminarTransporte(Integer idTransporte) {
-        Transporte transporte = obtenerTransporte(idTransporte);
+        TransporteBean transporte = obtenerTransporte(idTransporte);
         if (transporte != null) {
             em.getTransaction().begin();
             em.remove(transporte);
@@ -48,8 +48,8 @@ public class ServicioTransporte implements RepositorioTransporte {
     }
 
     @Override
-    public void actualizarTransporte(Transporte transporteParam) {
-        Transporte transporte = obtenerTransporte(transporteParam.getIdTransporte());
+    public void actualizarTransporte(TransporteBean transporteParam) {
+        TransporteBean transporte = obtenerTransporte(transporteParam.getIdTransporte());
         if (transporte != null) {
             em.getTransaction().begin();
             transporte = em.merge(transporteParam);

@@ -1,16 +1,16 @@
 package unam.dgtic.diplomado.controlador.repositorio.viaje;
 
-import unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAutobus;
+import unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAutobusBean;
 
 public interface RepositorioTipoViajeAutobus {
 
-    public Iterable<TipoViajeAutobus> obtenerTiposViajeAutobus();
+    public Iterable<TipoViajeAutobusBean> obtenerTiposViajeAutobus();
 
-    public TipoViajeAutobus obtenerTipoViajeAutobus(Integer idTipoViajeAutobus);
+    public TipoViajeAutobusBean obtenerTipoViajeAutobus(Integer idTipoViajeAutobus);
 
-    public void guardarTipoViajeAutobus(TipoViajeAutobus tipoViajeAutobus) throws Exception;
+    public void guardarTipoViajeAutobus(TipoViajeAutobusBean tipoViajeAutobus) throws Exception;
 
     public void eliminarTipoViajeAutobus(Integer idTipoViajeAutobus);
 
-    public void actualizarTipoViajeAutobus(TipoViajeAutobus tipoViajeAutobusParam);
+    public void actualizarTipoViajeAutobus(TipoViajeAutobusBean tipoViajeAutobusParam);
 }

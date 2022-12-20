@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.viaje;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.viaje.RepositorioViaje;
-import unam.dgtic.diplomado.modelo.beans.viaje.Viaje;
+import unam.dgtic.diplomado.modelo.beans.viaje.ViajeBean;
 
 public class ServicioViaje implements RepositorioViaje {
 
@@ -16,20 +16,20 @@ public class ServicioViaje implements RepositorioViaje {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<Viaje> obtenerViajes() {
+    public Iterable<ViajeBean> obtenerViajes() {
         Query query = em.createQuery("SELECT v from Viaje v\n" +
                 "ORDER BY v.idViaje");
 
-        return (Iterable<Viaje>) query.getResultList();
+        return (Iterable<ViajeBean>) query.getResultList();
     }
 
     @Override
-    public Viaje obtenerViaje(Integer idViaje) {
-        return em.find(Viaje.class, idViaje);
+    public ViajeBean obtenerViaje(Integer idViaje) {
+        return em.find(ViajeBean.class, idViaje);
     }
 
     @Override
-    public void guardarViaje(Viaje viaje) throws Exception {
+    public void guardarViaje(ViajeBean viaje) throws Exception {
         em.getTransaction().begin();
         em.persist(viaje);
         em.flush();
@@ -38,7 +38,7 @@ public class ServicioViaje implements RepositorioViaje {
 
     @Override
     public void eliminarViaje(Integer idViaje) {
-        Viaje viaje = obtenerViaje(idViaje);
+        ViajeBean viaje = obtenerViaje(idViaje);
         if (viaje != null) {
             em.getTransaction().begin();
             em.remove(viaje);
@@ -48,8 +48,8 @@ public class ServicioViaje implements RepositorioViaje {
     }
 
     @Override
-    public void actualizarViaje(Viaje viajeParam) {
-        Viaje viaje = obtenerViaje(viajeParam.getIdViaje());
+    public void actualizarViaje(ViajeBean viajeParam) {
+        ViajeBean viaje = obtenerViaje(viajeParam.getIdViaje());
         if (viaje != null) {
             em.getTransaction().begin();
             viaje = em.merge(viajeParam);
