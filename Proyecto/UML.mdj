@@ -6971,7 +6971,7 @@
 							"left": 48,
 							"top": 840,
 							"width": 769,
-							"height": 392
+							"height": 545
 						},
 						{
 							"_type": "UMLTextView",
@@ -15391,7 +15391,8 @@
 								"$ref": "AAAAAAGFJ6HQX1hnVQo="
 							},
 							"name": "idProducto",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -15400,7 +15401,8 @@
 								"$ref": "AAAAAAGFJ6HQX1hnVQo="
 							},
 							"name": "nombreProducto",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [

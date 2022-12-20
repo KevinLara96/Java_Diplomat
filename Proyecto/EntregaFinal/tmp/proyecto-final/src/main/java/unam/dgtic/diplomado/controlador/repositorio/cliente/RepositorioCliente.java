@@ -1,6 +1,6 @@
 package unam.dgtic.diplomado.controlador.repositorio.cliente;
 
-import unam.dgtic.diplomado.modelo.entidades.cliente.Cliente;
+import unam.dgtic.diplomado.modelo.beans.cliente.Cliente;
 
 public interface RepositorioCliente {
 

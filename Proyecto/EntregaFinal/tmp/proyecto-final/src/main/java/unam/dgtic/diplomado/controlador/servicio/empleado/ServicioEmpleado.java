@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.empleado;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.empleado.RepositorioEmpleado;
-import unam.dgtic.diplomado.modelo.entidades.empleado.Empleado;
+import unam.dgtic.diplomado.modelo.beans.empleado.Empleado;
 
 public class ServicioEmpleado implements RepositorioEmpleado {
 

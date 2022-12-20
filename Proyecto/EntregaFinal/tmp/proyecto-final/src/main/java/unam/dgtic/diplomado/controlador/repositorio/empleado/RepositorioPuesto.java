@@ -1,6 +1,6 @@
 package unam.dgtic.diplomado.controlador.repositorio.empleado;
 
-import unam.dgtic.diplomado.modelo.entidades.empleado.Puesto;
+import unam.dgtic.diplomado.modelo.beans.empleado.Puesto;
 
 public interface RepositorioPuesto {
 

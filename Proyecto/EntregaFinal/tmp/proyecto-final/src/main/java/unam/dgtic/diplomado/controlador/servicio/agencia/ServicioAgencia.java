@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.agencia;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.agencia.RepositorioAgencia;
-import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
+import unam.dgtic.diplomado.modelo.beans.agencia.Agencia;
 
 public class ServicioAgencia implements RepositorioAgencia {
 

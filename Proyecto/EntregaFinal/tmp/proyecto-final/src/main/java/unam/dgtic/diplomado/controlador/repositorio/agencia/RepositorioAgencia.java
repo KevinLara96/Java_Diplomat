@@ -1,6 +1,6 @@
 package unam.dgtic.diplomado.controlador.repositorio.agencia;
 
-import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
+import unam.dgtic.diplomado.modelo.beans.agencia.Agencia;
 
 public interface RepositorioAgencia {
 

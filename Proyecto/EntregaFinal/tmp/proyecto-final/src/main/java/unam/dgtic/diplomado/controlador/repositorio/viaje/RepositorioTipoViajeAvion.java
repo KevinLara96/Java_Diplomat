@@ -1,6 +1,6 @@
 package unam.dgtic.diplomado.controlador.repositorio.viaje;
 
-import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAvion;
+import unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAvion;
 
 public interface RepositorioTipoViajeAvion {
 

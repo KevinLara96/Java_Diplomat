@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.orden;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.orden.RepositorioOrden;
-import unam.dgtic.diplomado.modelo.entidades.orden.Orden;
+import unam.dgtic.diplomado.modelo.beans.orden.Orden;
 
 public class ServicioOrden implements RepositorioOrden {
 

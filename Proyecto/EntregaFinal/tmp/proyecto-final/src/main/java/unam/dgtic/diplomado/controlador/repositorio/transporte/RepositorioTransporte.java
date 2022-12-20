@@ -1,6 +1,6 @@
 package unam.dgtic.diplomado.controlador.repositorio.transporte;
 
-import unam.dgtic.diplomado.modelo.entidades.transporte.Transporte;
+import unam.dgtic.diplomado.modelo.beans.transporte.Transporte;
 
 public interface RepositorioTransporte {
 

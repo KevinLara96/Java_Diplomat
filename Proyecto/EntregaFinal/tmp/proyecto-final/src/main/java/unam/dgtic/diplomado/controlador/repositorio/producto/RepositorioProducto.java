@@ -1,6 +1,6 @@
 package unam.dgtic.diplomado.controlador.repositorio.producto;
 
-import unam.dgtic.diplomado.modelo.entidades.producto.Producto;
+import unam.dgtic.diplomado.modelo.beans.producto.Producto;
 
 public interface RepositorioProducto {
 

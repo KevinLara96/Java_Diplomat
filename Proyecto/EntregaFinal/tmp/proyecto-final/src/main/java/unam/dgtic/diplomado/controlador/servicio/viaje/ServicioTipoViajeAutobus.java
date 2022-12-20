@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.viaje;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.viaje.RepositorioTipoViajeAutobus;
-import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAutobus;
+import unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAutobus;
 
 public class ServicioTipoViajeAutobus implements RepositorioTipoViajeAutobus {
 

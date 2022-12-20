@@ -10,9 +10,9 @@ import unam.dgtic.diplomado.controlador.servicio.agencia.ServicioAgencia;
 import unam.dgtic.diplomado.controlador.servicio.viaje.ServicioTipoViajeAutobus;
 import unam.dgtic.diplomado.controlador.servicio.viaje.ServicioTipoViajeAvion;
 import unam.dgtic.diplomado.controlador.servicio.viaje.ServicioViaje;
-import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAutobus;
-import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAvion;
-import unam.dgtic.diplomado.modelo.entidades.viaje.Viaje;
+import unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAutobus;
+import unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAvion;
+import unam.dgtic.diplomado.modelo.beans.viaje.Viaje;
 
 public class Pruebas {
 

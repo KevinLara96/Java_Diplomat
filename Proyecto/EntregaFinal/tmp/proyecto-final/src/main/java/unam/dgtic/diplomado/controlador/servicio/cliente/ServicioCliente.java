@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.cliente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.cliente.RepositorioCliente;
-import unam.dgtic.diplomado.modelo.entidades.cliente.Cliente;
+import unam.dgtic.diplomado.modelo.beans.cliente.Cliente;
 
 public class ServicioCliente implements RepositorioCliente {
 
