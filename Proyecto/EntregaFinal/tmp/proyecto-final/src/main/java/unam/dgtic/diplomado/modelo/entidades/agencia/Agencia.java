@@ -16,18 +16,14 @@ import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 @SessionScoped
 public class Agencia implements Serializable {
 
-    private Integer idAgencia;
-    private String nombreAgencia = "Hola";
-    private String ubicacionAgencia = "PRUEBA";
+    private Integer idAgencia = 3;
+    private String nombreAgencia;
+    private String ubicacionAgencia;
 
     private List<Empleado> empleados;
     private List<Viaje> viajes;
     private List<Cliente> clientes;
     private List<Transporte> transportes;
-
-    public Agencia() {
-
-    }
 
     public void hola() {
         this.idAgencia = 10000;

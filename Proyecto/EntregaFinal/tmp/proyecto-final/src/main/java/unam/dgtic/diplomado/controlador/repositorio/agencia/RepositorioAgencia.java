@@ -1,11 +1,10 @@
 package unam.dgtic.diplomado.controlador.repositorio.agencia;
 
 import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
-import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
 
 public interface RepositorioAgencia {
 
-    public Iterable<Agencia> obtenerAgencias();
+    public Iterable<AgenciaBean> obtenerAgencias();
 
     public AgenciaBean obtenerAgencia(Integer idAgencia);
 

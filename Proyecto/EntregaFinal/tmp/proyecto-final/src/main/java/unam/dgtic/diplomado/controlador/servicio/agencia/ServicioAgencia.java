@@ -4,7 +4,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.agencia.RepositorioAgencia;
 import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
-import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
 
 public class ServicioAgencia implements RepositorioAgencia {
 
@@ -21,11 +20,11 @@ public class ServicioAgencia implements RepositorioAgencia {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<Agencia> obtenerAgencias() {
+    public Iterable<AgenciaBean> obtenerAgencias() {
         Query query = em.createQuery("SELECT a from AgenciaBean a\n" +
                 "ORDER BY a.idAgencia");
 
-        return (Iterable<Agencia>) query.getResultList();
+        return (Iterable<AgenciaBean>) query.getResultList();
     }
 
     @Override

@@ -257,10 +257,10 @@
 												"$ref": "AAAAAAGE8DVUBvqX7R0="
 											},
 											"visible": false,
-											"font": "Arial;13;0",
+											"font": "Arial;20;0",
 											"left": -560,
 											"top": 304,
-											"height": 13
+											"height": 20
 										},
 										{
 											"_type": "LabelView",
@@ -268,11 +268,11 @@
 											"_parent": {
 												"$ref": "AAAAAAGE8DVUBvqX7R0="
 											},
-											"font": "Arial;13;1",
+											"font": "Arial;20;1",
 											"left": 45,
 											"top": 822,
 											"width": 1743,
-											"height": 13,
+											"height": 20,
 											"text": "Controlador"
 										},
 										{
@@ -282,11 +282,11 @@
 												"$ref": "AAAAAAGE8DVUBvqX7R0="
 											},
 											"visible": false,
-											"font": "Arial;13;0",
+											"font": "Arial;20;0",
 											"left": -560,
 											"top": 304,
-											"width": 73.67724609375,
-											"height": 13,
+											"width": 124.6845703125,
+											"height": 20,
 											"text": "(from Model)"
 										},
 										{
@@ -296,18 +296,18 @@
 												"$ref": "AAAAAAGE8DVUBvqX7R0="
 											},
 											"visible": false,
-											"font": "Arial;13;0",
+											"font": "Arial;20;0",
 											"left": -560,
 											"top": 304,
-											"height": 13,
+											"height": 20,
 											"horizontalAlignment": 1
 										}
 									],
-									"font": "Arial;13;0",
+									"font": "Arial;20;0",
 									"left": 40,
 									"top": 815,
 									"width": 1753,
-									"height": 25,
+									"height": 32,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGE8DVUBvqYVkI="
 									},
@@ -322,7 +322,7 @@
 									}
 								}
 							],
-							"font": "Arial;13;0",
+							"font": "Arial;20;0",
 							"containerChangeable": true,
 							"left": 40,
 							"top": 800,

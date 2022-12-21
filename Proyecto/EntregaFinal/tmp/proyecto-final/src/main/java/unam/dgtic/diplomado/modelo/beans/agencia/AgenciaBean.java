@@ -1,8 +1,11 @@
 package unam.dgtic.diplomado.modelo.beans.agencia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +21,9 @@ import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
 @Entity
 @Table(name = "agencia")
-public class AgenciaBean {
+@Named
+@SessionScoped
+public class AgenciaBean implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -6,7 +6,6 @@ unam/dgtic/diplomado/controlador/servicio/orden/ServicioOrden.class
 unam/dgtic/diplomado/modelo/entidades/transporte/factory/AutobusFactory.class
 unam/dgtic/diplomado/modelo/beans/agencia/AgenciaBean.class
 unam/dgtic/diplomado/controlador/repositorio/empleado/RepositorioPuesto.class
-unam/dgtic/diplomado/controlador/rest/RestAgencia.class
 unam/dgtic/diplomado/modelo/entidades/viaje/Viaje$BuildViajeAutobus.class
 unam/dgtic/diplomado/modelo/entidades/viaje/TipoViajeAvion.class
 unam/dgtic/diplomado/controlador/repositorio/agencia/RepositorioAgencia.class
@@ -49,7 +48,9 @@ unam/dgtic/diplomado/modelo/beans/transporte/factory/AvionFactory.class
 unam/dgtic/diplomado/modelo/entidades/agencia/Agencia.class
 unam/dgtic/diplomado/controlador/servicio/viaje/ServicioTipoViajeAutobus.class
 unam/dgtic/diplomado/modelo/beans/transporte/factory/AutobusFactory.class
+unam/dgtic/diplomado/controlador/rest/agencia/RestAgencia.class
 unam/dgtic/diplomado/modelo/entidades/transporte/Avion.class
+unam/dgtic/diplomado/controlador/rest/agencia/AgenciaEJB.class
 unam/dgtic/diplomado/modelo/entidades/cliente/Cliente.class
 unam/dgtic/diplomado/modelo/beans/viaje/ViajeBean$BuildViajeAvion.class
 unam/dgtic/diplomado/controlador/repositorio/orden/RepositorioOrden.class

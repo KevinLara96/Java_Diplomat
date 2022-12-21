@@ -15,6 +15,7 @@
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
   xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 >
   <h:head></h:head>
   <h:body>
@@ -28,7 +29,7 @@
         <h:dataTable
           id="agenciasList"
           value="#{restAgencia.getAgencias()}"
-          var="agenciaBean"
+          var="agenciaEntity"
           styleClass="tablaEmpleados"
           headerClass="cabeceraEmpleados"
           rowClasses="empleadoPar, empleadoImpar"
@@ -36,17 +37,37 @@
         >
           <h:column>
             <f:facet name="header">Idagencia</f:facet>
-            #{agenciaBean.idAgencia}
+            #{agenciaEntity.idAgencia}
           </h:column>
 
           <h:column>
             <f:facet name="header">Nombre Agencia</f:facet>
-            #{agenciaBean.nombreAgencia}
+            #{agenciaEntity.nombreAgencia}
           </h:column>
 
           <h:column>
             <f:facet name="header">Ubicación agencia</f:facet>
-            #{agenciaBean.ubicacionAgencia}
+            #{agenciaEntity.ubicacionAgencia}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Número empleados</f:facet>
+            #{agenciaEntity.empleados.size()}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Destinos disponibles</f:facet>
+            #{agenciaEntity.clientes.size()}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Número clientes</f:facet>
+            #{agenciaEntity.clientes.size()}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Número transportes</f:facet>
+            #{agenciaEntity.transportes.size()}
           </h:column>
 
 
@@ -56,5 +77,69 @@
         </h:dataTable>
       </div>
     </h:form>
+
+    <div class="center">
+        <button class="buttonModificar" onClick="ShowAndHideModificar()">Modificar agencia</button>
+        <button class="buttonNuevo" onClick="ShowAndHideNueva()">Nueva agencia</button>
+        <button class="buttonEliminar" onClick="ShowAndHideEliminar()">Eliminar agencia</button>
+    </div>
+
+    <div ID="SeccionModificar" class="datosInput" style="display:none">
+        <h:form id="modificarAgencia" >
+            <p> 
+                <h:inputText id="idAgenciaInput" styleClass="inputForm" value="#{restAgencia.idAgencia}" 
+                        required="true" a:placeholder="Id Agencia"/>
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Buscar" action="restAgencia.destroy()">
+                    <f:ajax execute="idAgenciaInput" render="prueba"/>
+                </h:commandButton>
+                <br />
+                <br />
+                <h:outputText id="prueba" value="#{restAgencia.idAgencia}"/>
+
+            </p>
+
+        </h:form>
+    </div>
+
+    <div ID="SeccionNueva" class="center" style="display:none">
+        Hola
+    </div>
+
+    <div ID="SeccionEliminar" class="center" style="display:none">
+        Text to be shown and hidden
+    </div>
+
+    <script>
+        function ShowAndHideModificar() {
+            var x = document.getElementById('SeccionModificar');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideEliminar() {
+            var x = document.getElementById('SeccionNueva');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideNueva() {
+            var x = document.getElementById('SeccionEliminar');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+    </script>
+
   </h:body>
 </html>
