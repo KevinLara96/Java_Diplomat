@@ -5,24 +5,24 @@
     version="3.0">
     <!-- Unidad donde se persistirán las unidades-->
     <persistence-unit name="proyectofinal">
-        <class>unam.dgtic.diplomado.modelo.entidades.agencia.Agencia</class>
+        <class>unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean</class>
 
-        <class>unam.dgtic.diplomado.modelo.entidades.cliente.Cliente</class>
+        <class>unam.dgtic.diplomado.modelo.beans.cliente.ClienteBean</class>
 
-        <class>unam.dgtic.diplomado.modelo.entidades.orden.Orden</class>
+        <class>unam.dgtic.diplomado.modelo.beans.orden.OrdenBean</class>
 
-        <class>unam.dgtic.diplomado.modelo.entidades.producto.Producto</class>
+        <class>unam.dgtic.diplomado.modelo.beans.producto.ProductoBean</class>
 
-        <class>unam.dgtic.diplomado.modelo.entidades.empleado.Empleado</class>
-        <class>unam.dgtic.diplomado.modelo.entidades.empleado.Puesto</class>
+        <class>unam.dgtic.diplomado.modelo.beans.empleado.EmpleadoBean</class>
+        <class>unam.dgtic.diplomado.modelo.beans.empleado.PuestoBean</class>
 
-        <class>unam.dgtic.diplomado.modelo.entidades.transporte.Transporte</class>
-        <class>unam.dgtic.diplomado.modelo.entidades.transporte.Avion</class>
-        <class>unam.dgtic.diplomado.modelo.entidades.transporte.Autobus</class>
+        <class>unam.dgtic.diplomado.modelo.beans.transporte.TransporteBean</class>
+        <class>unam.dgtic.diplomado.modelo.beans.transporte.AvionBean</class>
+        <class>unam.dgtic.diplomado.modelo.beans.transporte.AutobusBean</class>
 
-        <class>unam.dgtic.diplomado.modelo.entidades.viaje.Viaje</class>
-        <class>unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAvion</class>
-        <class>unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAutobus</class>
+        <class>unam.dgtic.diplomado.modelo.beans.viaje.ViajeBean</class>
+        <class>unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAvionBean</class>
+        <class>unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAutobusBean</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
             <property name="jakarta.persistence.jdbc.url"

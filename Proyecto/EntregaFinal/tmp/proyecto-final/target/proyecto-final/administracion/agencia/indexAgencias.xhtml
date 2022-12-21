@@ -20,14 +20,15 @@
   <h:body>
     <h:outputStylesheet name="css/stylesheet.css" target="head" />
 
-    <h:form id="listaEmpleados" >
+    <h:form id="listaEmpleados"  >
       <h1>Gestión de agencias.</h1>
 
 
       <div id="divagencias">
         <h:dataTable
           id="agenciasList"
-          value="#{agencia}"
+          value="#{restAgencia.getAgencias()}"
+          var="agenciaBean"
           styleClass="tablaEmpleados"
           headerClass="cabeceraEmpleados"
           rowClasses="empleadoPar, empleadoImpar"
@@ -35,17 +36,17 @@
         >
           <h:column>
             <f:facet name="header">Idagencia</f:facet>
-            #{agencia.idAgencia}
+            #{agenciaBean.idAgencia}
           </h:column>
 
           <h:column>
             <f:facet name="header">Nombre Agencia</f:facet>
-            #{agencia.nombreAgencia}
+            #{agenciaBean.nombreAgencia}
           </h:column>
 
           <h:column>
             <f:facet name="header">Ubicación agencia</f:facet>
-            #{agencia.ubicacionAgencia}
+            #{agenciaBean.ubicacionAgencia}
           </h:column>
 
 

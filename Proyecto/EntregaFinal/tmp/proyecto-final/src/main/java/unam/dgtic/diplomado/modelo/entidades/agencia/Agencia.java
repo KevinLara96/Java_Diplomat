@@ -29,18 +29,8 @@ public class Agencia implements Serializable {
 
     }
 
-    public List<Empleado> hola() {
-        this.empleados = new ArrayList<>();
-        Empleado empleado = new Empleado();
-        try {
-            empleado.setNombres("HOla");
-            empleado.setApellidos("nombreAgencia");
-        } catch (Exception e) {
-
-        }
-        this.empleados.add(empleado);
-
-        return this.empleados;
+    public void hola() {
+        this.idAgencia = 10000;
     }
 
     public Agencia(Integer idAgencia) {

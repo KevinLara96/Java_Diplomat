@@ -31,11 +31,6 @@ public class Pruebas {
 
             switch (opcion) {
                 case 1:
-                    Iterable<AgenciaBean> iterable = servicioAgencia.obtenerAgencias();
-                    for (AgenciaBean o : iterable) {
-                        System.out.println(o);
-                        System.out.println();
-                    }
 
                     break;
 

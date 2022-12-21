@@ -1,17 +1,17 @@
 package unam.dgtic.diplomado.controlador.servicio.agencia;
 
-import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.agencia.RepositorioAgencia;
 import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
+import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
 
-@Stateless
 public class ServicioAgencia implements RepositorioAgencia {
 
     protected EntityManager em;
 
-    ServicioAgencia() {
+    public ServicioAgencia() {
+
     }
 
     public ServicioAgencia(EntityManager em) {
@@ -21,11 +21,11 @@ public class ServicioAgencia implements RepositorioAgencia {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<AgenciaBean> obtenerAgencias() {
-        Query query = em.createQuery("SELECT a from Agencia a\n" +
+    public Iterable<Agencia> obtenerAgencias() {
+        Query query = em.createQuery("SELECT a from AgenciaBean a\n" +
                 "ORDER BY a.idAgencia");
 
-        return (Iterable<AgenciaBean>) query.getResultList();
+        return (Iterable<Agencia>) query.getResultList();
     }
 
     @Override
