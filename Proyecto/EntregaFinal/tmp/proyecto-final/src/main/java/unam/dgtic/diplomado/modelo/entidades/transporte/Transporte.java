@@ -1,30 +1,17 @@
 package unam.dgtic.diplomado.modelo.entidades.transporte;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "transporte")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipoTransporte")
-public class Transporte {
+@Named
+@SessionScoped
+public class Transporte implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTransporte")
     private Integer idTransporte;
     private String marca;
     private String modelo;
@@ -33,9 +20,7 @@ public class Transporte {
     private Integer asientosBasicos;
     private Integer asientosPrimeraClase;
 
-    @ManyToOne
-    @JoinColumn(name = "idAgencia")
-    private AgenciaBean agencia;
+    private Agencia agencia;
 
     public Transporte() {
 
@@ -136,11 +121,11 @@ public class Transporte {
         }
     }
 
-    public AgenciaBean getAgencia() {
+    public Agencia getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(AgenciaBean agencia) throws Exception {
+    public void setAgencia(Agencia agencia) throws Exception {
         if (agencia == null) {
             throw new ExcepcionAtributos("ERROR. Agencia inválida.");
         } else {

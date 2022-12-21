@@ -1,23 +1,17 @@
 package unam.dgtic.diplomado.modelo.entidades.empleado;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "empleado")
-public class Empleado {
+@Named
+@SessionScoped
+public class Empleado implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEmpleado;
     private String nombres;
     private String apellidos;
@@ -26,12 +20,8 @@ public class Empleado {
     private String rfc;
     private Float salario;
 
-    @ManyToOne
-    @JoinColumn(name = "idAgencia")
-    private AgenciaBean agencia;
+    private Agencia agencia;
 
-    @ManyToOne
-    @JoinColumn(name = "idPuesto")
     private Puesto puesto;
 
     public Empleado() {
@@ -139,11 +129,11 @@ public class Empleado {
         }
     }
 
-    public AgenciaBean getAgencia() {
+    public Agencia getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(AgenciaBean agencia) throws Exception {
+    public void setAgencia(Agencia agencia) throws Exception {
         if (agencia == null) {
             throw new ExcepcionAtributos("ERROR. Agencia de empleado inválida.");
         } else {

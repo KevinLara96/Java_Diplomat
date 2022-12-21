@@ -1,28 +1,22 @@
 package unam.dgtic.diplomado.modelo.entidades.producto;
 
+import java.io.Serializable;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import unam.dgtic.diplomado.modelo.beans.orden.OrdenBean;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "producto")
-public class Producto {
+@Named
+@SessionScoped
+public class Producto implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProducto;
     private String nombreProducto;
     private Float multiplicador;
     private String estatus;
 
-    @ManyToMany(mappedBy = "productos")
     private List<OrdenBean> ordenes;
 
     public Producto() {

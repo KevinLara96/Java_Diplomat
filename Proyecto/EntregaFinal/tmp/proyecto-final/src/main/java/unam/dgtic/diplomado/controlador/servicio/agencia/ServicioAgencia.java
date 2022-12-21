@@ -1,20 +1,18 @@
 package unam.dgtic.diplomado.controlador.servicio.agencia;
 
-import java.io.Serializable;
-
-import jakarta.enterprise.context.SessionScoped;
-import jakarta.inject.Named;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.agencia.RepositorioAgencia;
 import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
 
-@Named
-@SessionScoped
-public class ServicioAgencia implements RepositorioAgencia, Serializable {
+@Stateless
+public class ServicioAgencia implements RepositorioAgencia {
 
-    private static final long serialVersionUID = -7258677092121565613L;
     protected EntityManager em;
+
+    ServicioAgencia() {
+    }
 
     public ServicioAgencia(EntityManager em) {
         super();

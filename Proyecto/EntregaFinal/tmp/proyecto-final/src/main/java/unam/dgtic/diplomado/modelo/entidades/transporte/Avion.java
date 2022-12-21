@@ -2,12 +2,12 @@ package unam.dgtic.diplomado.modelo.entidades.transporte;
 
 import java.util.Date;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity(name = "avion")
-@DiscriminatorValue("Avión")
+@Named
+@SessionScoped
 public class Avion extends Transporte {
 
     private String puertoAsignado;

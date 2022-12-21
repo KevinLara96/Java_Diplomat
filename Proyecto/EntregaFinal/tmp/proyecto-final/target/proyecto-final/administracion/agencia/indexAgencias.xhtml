@@ -20,15 +20,14 @@
   <h:body>
     <h:outputStylesheet name="css/stylesheet.css" target="head" />
 
-    <h:form id="listaEmpleados" value="#{agencia.empleados}" var="empleado">
+    <h:form id="listaEmpleados" >
       <h1>Gestión de agencias.</h1>
 
 
       <div id="divagencias">
         <h:dataTable
           id="agenciasList"
-          value="#{agencia.hola()}"
-          var="empleado"
+          value="#{agencia}"
           styleClass="tablaEmpleados"
           headerClass="cabeceraEmpleados"
           rowClasses="empleadoPar, empleadoImpar"
@@ -36,7 +35,7 @@
         >
           <h:column>
             <f:facet name="header">Idagencia</f:facet>
-            #{empleado.nombres}
+            #{agencia.idAgencia}
           </h:column>
 
           <h:column>

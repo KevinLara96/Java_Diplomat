@@ -1,37 +1,27 @@
 package unam.dgtic.diplomado.modelo.entidades.orden;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import unam.dgtic.diplomado.modelo.beans.cliente.ClienteBean;
-import unam.dgtic.diplomado.modelo.beans.producto.ProductoBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import unam.dgtic.diplomado.modelo.entidades.cliente.Cliente;
+import unam.dgtic.diplomado.modelo.entidades.producto.Producto;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "orden")
-public class Orden {
+@Named
+@SessionScoped
+public class Orden implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idOrden;
     private Date fechaEmision;
     private Float monto;
     private String descripcion;
 
-    @ManyToOne
-    @JoinColumn(name = "idCliente")
-    private ClienteBean cliente;
+    private Cliente cliente;
 
-    @JoinTable(name = "orden_producto", joinColumns = @JoinColumn(name = "idOrden"), inverseJoinColumns = @JoinColumn(name = "idProducto"))
-    private List<ProductoBean> productos;
+    private List<Producto> productos;
 
     public Orden() {
 
@@ -93,11 +83,11 @@ public class Orden {
         }
     }
 
-    public ClienteBean getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(ClienteBean cliente) throws Exception {
+    public void setCliente(Cliente cliente) throws Exception {
         if (cliente == null) {
             throw new ExcepcionAtributos("ERROR. Cliente inválido.");
         } else {
@@ -105,11 +95,11 @@ public class Orden {
         }
     }
 
-    public List<ProductoBean> getProductos() {
+    public List<Producto> getProductos() {
         return productos;
     }
 
-    public void setProductos(List<ProductoBean> productos) throws Exception {
+    public void setProductos(List<Producto> productos) throws Exception {
         if (productos == null || productos.isEmpty()) {
             throw new ExcepcionAtributos("ERROR. Lista de productos inválida.");
         } else {

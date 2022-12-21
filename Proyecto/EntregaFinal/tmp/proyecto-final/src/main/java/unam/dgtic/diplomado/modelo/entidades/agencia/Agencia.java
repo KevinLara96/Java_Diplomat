@@ -17,8 +17,8 @@ import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 public class Agencia implements Serializable {
 
     private Integer idAgencia;
-    private String nombreAgencia;
-    private String ubicacionAgencia;
+    private String nombreAgencia = "Hola";
+    private String ubicacionAgencia = "PRUEBA";
 
     private List<Empleado> empleados;
     private List<Viaje> viajes;
@@ -34,6 +34,7 @@ public class Agencia implements Serializable {
         Empleado empleado = new Empleado();
         try {
             empleado.setNombres("HOla");
+            empleado.setApellidos("nombreAgencia");
         } catch (Exception e) {
 
         }

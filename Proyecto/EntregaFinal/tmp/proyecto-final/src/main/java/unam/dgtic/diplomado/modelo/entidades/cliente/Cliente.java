@@ -1,26 +1,19 @@
 package unam.dgtic.diplomado.modelo.entidades.cliente;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
-import unam.dgtic.diplomado.modelo.beans.orden.OrdenBean;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+import unam.dgtic.diplomado.modelo.entidades.agencia.Agencia;
+import unam.dgtic.diplomado.modelo.entidades.orden.Orden;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "cliente")
-public class Cliente {
+@Named
+@SessionScoped
+public class Cliente implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCliente;
     private String nombres;
     private String apellidos;
@@ -32,13 +25,9 @@ public class Cliente {
     private String correo;
     private String contrasena;
 
-    @ManyToOne
-    @JoinColumn(name = "idAgencia")
-    private AgenciaBean agencia;
+    private Agencia agencia;
 
-    @OneToMany(mappedBy = "cliente")
-
-    private List<OrdenBean> ordenes;
+    private List<Orden> ordenes;
 
     public Cliente() {
     }
@@ -180,11 +169,11 @@ public class Cliente {
         }
     }
 
-    public List<OrdenBean> getOrdenes() {
+    public List<Orden> getOrdenes() {
         return ordenes;
     }
 
-    public void setOrdenes(List<OrdenBean> ordenes) throws Exception {
+    public void setOrdenes(List<Orden> ordenes) throws Exception {
         if (ordenes == null) {
             throw new ExcepcionAtributos("ERROR. Lista de órdenes vacía.");
         } else {
@@ -192,11 +181,11 @@ public class Cliente {
         }
     }
 
-    public AgenciaBean getAgencia() {
+    public Agencia getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(AgenciaBean agencia) {
+    public void setAgencia(Agencia agencia) {
         this.agencia = agencia;
     }
 
