@@ -7,13 +7,13 @@ import jakarta.ejb.Stateless;
 
 @Stateless
 public class StatelessEJB {
-	
-	private Integer contador = 0;
+
+    private Integer contador = 0;
 
     public Map<String, Object> saludar(String nombre) {
-    	Map<String, Object> datos = new HashMap<>();    	
-    	datos.put("contador", contador++);
-    	datos.put("saludo", "Hola que tal " + nombre);
+        Map<String, Object> datos = new HashMap<>();
+        datos.put("contador", contador++);
+        datos.put("saludo", "Hola que tal " + nombre);
         System.out.println("imprimiendo dentro del ejb con instancia: " + this);
         return datos;
     }

@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.orden;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.orden.RepositorioOrden;
-import unam.dgtic.diplomado.modelo.beans.orden.OrdenBean;
+import unam.dgtic.diplomado.modelo.entidades.orden.OrdenEntity;
 
 public class ServicioOrden implements RepositorioOrden {
 
@@ -16,21 +16,21 @@ public class ServicioOrden implements RepositorioOrden {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<OrdenBean> obtenerOrdenes() {
+    public Iterable<OrdenEntity> obtenerOrdenes() {
         Query query = em.createQuery("SELECT o from Orden o\n" +
                 "ORDER BY o.idOrden");
 
-        Iterable<OrdenBean> ordenes = (Iterable<OrdenBean>) query.getResultList();
+        Iterable<OrdenEntity> ordenes = (Iterable<OrdenEntity>) query.getResultList();
         return ordenes;
     }
 
     @Override
-    public OrdenBean obtenerOrden(Integer idOrden) {
-        return em.find(OrdenBean.class, idOrden);
+    public OrdenEntity obtenerOrden(Integer idOrden) {
+        return em.find(OrdenEntity.class, idOrden);
     }
 
     @Override
-    public void guardarOrden(OrdenBean orden) throws Exception {
+    public void guardarOrden(OrdenEntity orden) throws Exception {
         em.getTransaction().begin();
         em.persist(orden);
         em.flush();
@@ -38,8 +38,8 @@ public class ServicioOrden implements RepositorioOrden {
     }
 
     @Override
-    public void actualizarOrden(OrdenBean ordenParam) {
-        OrdenBean orden = obtenerOrden(ordenParam.getIdOrden());
+    public void actualizarOrden(OrdenEntity ordenParam) {
+        OrdenEntity orden = obtenerOrden(ordenParam.getIdOrden());
         if (orden != null) {
             em.getTransaction().begin();
             orden = em.merge(ordenParam);
@@ -49,11 +49,11 @@ public class ServicioOrden implements RepositorioOrden {
     }
 
     @SuppressWarnings("unchecked")
-    public Iterable<OrdenBean> ordenJoinProducto(Integer idOrden) {
+    public Iterable<OrdenEntity> ordenJoinProducto(Integer idOrden) {
         Query query = em.createQuery("SELECT p from Producto p\n" +
                 "JOIN OrdenProducto op on p.idProducto = op.idProducto\n" +
                 "JOIN Orden o on o.idOrden = op.idOrden\n" +
                 "WHERE o.idOrden = " + idOrden);
-        return (Iterable<OrdenBean>) query.getResultList();
+        return (Iterable<OrdenEntity>) query.getResultList();
     }
 }

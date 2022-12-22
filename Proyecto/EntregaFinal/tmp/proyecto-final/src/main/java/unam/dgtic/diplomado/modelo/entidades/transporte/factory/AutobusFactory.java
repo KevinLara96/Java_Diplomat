@@ -1,12 +1,12 @@
 package unam.dgtic.diplomado.modelo.entidades.transporte.factory;
 
-import unam.dgtic.diplomado.modelo.beans.transporte.AutobusBean;
-import unam.dgtic.diplomado.modelo.beans.transporte.TransporteBean;
+import unam.dgtic.diplomado.modelo.entidades.transporte.AutobusEntity;
+import unam.dgtic.diplomado.modelo.entidades.transporte.TransporteEntity;
 
 public class AutobusFactory extends TransporteFactory {
 
     @Override
-    protected TransporteBean crearTransporte() {
-        return new AutobusBean();
+    protected TransporteEntity crearTransporte() {
+        return new AutobusEntity();
     }
 }

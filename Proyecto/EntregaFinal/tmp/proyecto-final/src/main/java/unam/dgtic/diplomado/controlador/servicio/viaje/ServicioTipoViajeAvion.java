@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.viaje;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.viaje.RepositorioTipoViajeAvion;
-import unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAvionBean;
+import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAvionEntity;
 
 public class ServicioTipoViajeAvion implements RepositorioTipoViajeAvion {
 
@@ -16,20 +16,20 @@ public class ServicioTipoViajeAvion implements RepositorioTipoViajeAvion {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<TipoViajeAvionBean> obtenerTiposViajeAvion() {
+    public Iterable<TipoViajeAvionEntity> obtenerTiposViajeAvion() {
         Query query = em.createQuery("SELECT tv from TipoViajeAvion tv\n" +
                 "ORDER BY tv.idTipoViajeAvion");
 
-        return (Iterable<TipoViajeAvionBean>) query.getResultList();
+        return (Iterable<TipoViajeAvionEntity>) query.getResultList();
     }
 
     @Override
-    public TipoViajeAvionBean obtenerTipoViajeAvion(Integer idTipoViajeAvion) {
-        return em.find(TipoViajeAvionBean.class, idTipoViajeAvion);
+    public TipoViajeAvionEntity obtenerTipoViajeAvion(Integer idTipoViajeAvion) {
+        return em.find(TipoViajeAvionEntity.class, idTipoViajeAvion);
     }
 
     @Override
-    public void guardarTipoViajeAvion(TipoViajeAvionBean tipoViajeAvion) throws Exception {
+    public void guardarTipoViajeAvion(TipoViajeAvionEntity tipoViajeAvion) throws Exception {
         em.getTransaction().begin();
         em.persist(tipoViajeAvion);
         em.flush();
@@ -38,7 +38,7 @@ public class ServicioTipoViajeAvion implements RepositorioTipoViajeAvion {
 
     @Override
     public void eliminarTipoViajeAvion(Integer idTipoViajeAvion) {
-        TipoViajeAvionBean tipoViajeAvion = obtenerTipoViajeAvion(idTipoViajeAvion);
+        TipoViajeAvionEntity tipoViajeAvion = obtenerTipoViajeAvion(idTipoViajeAvion);
         if (tipoViajeAvion != null) {
             em.getTransaction().begin();
             em.remove(tipoViajeAvion);
@@ -48,8 +48,8 @@ public class ServicioTipoViajeAvion implements RepositorioTipoViajeAvion {
     }
 
     @Override
-    public void actualizarTipoViajeAvion(TipoViajeAvionBean tipoViajeAvionParam) {
-        TipoViajeAvionBean tipoViajeAvion = obtenerTipoViajeAvion(tipoViajeAvionParam.getIdTipoViajeAvion());
+    public void actualizarTipoViajeAvion(TipoViajeAvionEntity tipoViajeAvionParam) {
+        TipoViajeAvionEntity tipoViajeAvion = obtenerTipoViajeAvion(tipoViajeAvionParam.getIdTipoViajeAvion());
         if (tipoViajeAvion != null) {
             em.getTransaction().begin();
             tipoViajeAvion = em.merge(tipoViajeAvion);

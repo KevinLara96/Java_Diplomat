@@ -5,24 +5,24 @@
     version="3.0">
     <!-- Unidad donde se persistirán las unidades-->
     <persistence-unit name="proyectofinal">
-        <class>unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.agencia.AgenciaEntity</class>
 
-        <class>unam.dgtic.diplomado.modelo.beans.cliente.ClienteBean</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.cliente.ClienteEntity</class>
 
-        <class>unam.dgtic.diplomado.modelo.beans.orden.OrdenBean</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.orden.OrdenEntity</class>
 
-        <class>unam.dgtic.diplomado.modelo.beans.producto.ProductoBean</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.producto.ProductoEntity</class>
 
-        <class>unam.dgtic.diplomado.modelo.beans.empleado.EmpleadoBean</class>
-        <class>unam.dgtic.diplomado.modelo.beans.empleado.PuestoBean</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.empleado.EmpleadoEntity</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.empleado.PuestoEntity</class>
 
-        <class>unam.dgtic.diplomado.modelo.beans.transporte.TransporteBean</class>
-        <class>unam.dgtic.diplomado.modelo.beans.transporte.AvionBean</class>
-        <class>unam.dgtic.diplomado.modelo.beans.transporte.AutobusBean</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.transporte.TransporteEntity</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.transporte.AvionEntity</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.transporte.AutobusEntity</class>
 
-        <class>unam.dgtic.diplomado.modelo.beans.viaje.ViajeBean</class>
-        <class>unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAvionBean</class>
-        <class>unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAutobusBean</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.viaje.ViajeEntity</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAvionEntity</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAutobusEntity</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
             <property name="jakarta.persistence.jdbc.url"

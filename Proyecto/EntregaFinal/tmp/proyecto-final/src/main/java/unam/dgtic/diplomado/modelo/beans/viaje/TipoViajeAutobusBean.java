@@ -1,18 +1,15 @@
 package unam.dgtic.diplomado.modelo.beans.viaje;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.io.Serializable;
+
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "tipoViajeAutobus")
-public class TipoViajeAutobusBean {
+@Named
+@SessionScoped
+public class TipoViajeAutobusBean implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTipoViajeAutobus;
     private String tipoViajeAutobus;
 

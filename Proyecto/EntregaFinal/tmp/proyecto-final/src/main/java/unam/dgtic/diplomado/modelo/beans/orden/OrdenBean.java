@@ -1,36 +1,25 @@
 package unam.dgtic.diplomado.modelo.beans.orden;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import unam.dgtic.diplomado.modelo.beans.cliente.ClienteBean;
 import unam.dgtic.diplomado.modelo.beans.producto.ProductoBean;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "orden")
-public class OrdenBean {
+@Named
+@SessionScoped
+public class OrdenBean implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idOrden;
     private Date fechaEmision;
     private Float monto;
     private String descripcion;
 
-    @ManyToOne
-    @JoinColumn(name = "idCliente")
     private ClienteBean cliente;
-
-    @JoinTable(name = "orden_producto", joinColumns = @JoinColumn(name = "idOrden"), inverseJoinColumns = @JoinColumn(name = "idProducto"))
     private List<ProductoBean> productos;
 
     public OrdenBean() {

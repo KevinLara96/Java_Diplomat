@@ -1,16 +1,16 @@
 package unam.dgtic.diplomado.controlador.repositorio.cliente;
 
-import unam.dgtic.diplomado.modelo.beans.cliente.ClienteBean;
+import unam.dgtic.diplomado.modelo.entidades.cliente.ClienteEntity;
 
 public interface RepositorioCliente {
 
-    public Iterable<ClienteBean> obtenerClientes();
+    public Iterable<ClienteEntity> obtenerClientes();
 
-    public ClienteBean obtenerCliente(Integer idCliente);
+    public ClienteEntity obtenerCliente(Integer idCliente);
 
-    public void guardarCliente(ClienteBean cliente) throws Exception;
+    public void guardarCliente(ClienteEntity cliente) throws Exception;
 
     public void eliminarCliente(Integer idCliente);
 
-    public void actualizarCliente(ClienteBean clienteParam);
+    public void actualizarCliente(ClienteEntity clienteParam);
 }

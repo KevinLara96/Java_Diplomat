@@ -1,6 +1,5 @@
 package mx.unam.diplomado.servlets;
 
-
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

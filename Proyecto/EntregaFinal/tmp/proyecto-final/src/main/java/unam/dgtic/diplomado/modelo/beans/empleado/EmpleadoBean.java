@@ -1,23 +1,17 @@
 package unam.dgtic.diplomado.modelo.beans.empleado;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "empleado")
-public class EmpleadoBean {
+@Named
+@SessionScoped
+public class EmpleadoBean implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEmpleado;
     private String nombres;
     private String apellidos;
@@ -26,12 +20,7 @@ public class EmpleadoBean {
     private String rfc;
     private Float salario;
 
-    @ManyToOne
-    @JoinColumn(name = "idAgencia")
     private AgenciaBean agencia;
-
-    @ManyToOne
-    @JoinColumn(name = "idPuesto")
     private PuestoBean puesto;
 
     public EmpleadoBean() {

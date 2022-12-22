@@ -30,8 +30,8 @@ SPDX-License-Identifier: BSD-3-Clause
     </parent>
 
     <properties>
+        <maven.compiler.release>9</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>18</java.version>
         <!--start-class>unam.dgtic.diplomado.Pruebas</start-class-->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <jakartaee.api.version>9.0.0</jakartaee.api.version>
@@ -127,17 +127,7 @@ SPDX-License-Identifier: BSD-3-Clause
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>springloaded</artifactId>
-                        <version>${spring-loaded.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
+
         </plugins>
     </build>
 

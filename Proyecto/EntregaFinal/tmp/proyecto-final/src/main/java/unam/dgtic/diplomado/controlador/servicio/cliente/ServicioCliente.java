@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.cliente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.cliente.RepositorioCliente;
-import unam.dgtic.diplomado.modelo.beans.cliente.ClienteBean;
+import unam.dgtic.diplomado.modelo.entidades.cliente.ClienteEntity;
 
 public class ServicioCliente implements RepositorioCliente {
 
@@ -16,21 +16,21 @@ public class ServicioCliente implements RepositorioCliente {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<ClienteBean> obtenerClientes() {
+    public Iterable<ClienteEntity> obtenerClientes() {
         Query query = em.createQuery("SELECT c from Cliente c\n" +
                 "ORDER BY c.idCliente");
 
-        Iterable<ClienteBean> clientes = (Iterable<ClienteBean>) query.getResultList();
+        Iterable<ClienteEntity> clientes = (Iterable<ClienteEntity>) query.getResultList();
         return clientes;
     }
 
     @Override
-    public ClienteBean obtenerCliente(Integer idCliente) {
-        return em.find(ClienteBean.class, idCliente);
+    public ClienteEntity obtenerCliente(Integer idCliente) {
+        return em.find(ClienteEntity.class, idCliente);
     }
 
     @Override
-    public void guardarCliente(ClienteBean cliente) throws Exception {
+    public void guardarCliente(ClienteEntity cliente) throws Exception {
         em.getTransaction().begin();
         em.persist(cliente);
         em.flush();
@@ -39,7 +39,7 @@ public class ServicioCliente implements RepositorioCliente {
 
     @Override
     public void eliminarCliente(Integer idCliente) {
-        ClienteBean cliente = obtenerCliente(idCliente);
+        ClienteEntity cliente = obtenerCliente(idCliente);
         if (cliente != null) {
             em.getTransaction().begin();
             em.remove(cliente);
@@ -49,8 +49,8 @@ public class ServicioCliente implements RepositorioCliente {
     }
 
     @Override
-    public void actualizarCliente(ClienteBean clienteParam) {
-        ClienteBean cliente = obtenerCliente(clienteParam.getIdCliente());
+    public void actualizarCliente(ClienteEntity clienteParam) {
+        ClienteEntity cliente = obtenerCliente(clienteParam.getIdCliente());
         if (cliente != null) {
             em.getTransaction().begin();
             cliente = em.merge(clienteParam);

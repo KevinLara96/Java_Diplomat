@@ -1,30 +1,17 @@
 package unam.dgtic.diplomado.modelo.beans.transporte;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "transporte")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipoTransporte")
-public class TransporteBean {
+@Named
+@SessionScoped
+public class TransporteBean implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTransporte")
     private Integer idTransporte;
     private String marca;
     private String modelo;
@@ -33,8 +20,6 @@ public class TransporteBean {
     private Integer asientosBasicos;
     private Integer asientosPrimeraClase;
 
-    @ManyToOne
-    @JoinColumn(name = "idAgencia")
     private AgenciaBean agencia;
 
     public TransporteBean() {

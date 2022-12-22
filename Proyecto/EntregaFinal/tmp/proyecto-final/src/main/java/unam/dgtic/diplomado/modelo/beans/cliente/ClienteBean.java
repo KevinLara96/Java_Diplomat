@@ -1,26 +1,19 @@
 package unam.dgtic.diplomado.modelo.beans.cliente;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
 import unam.dgtic.diplomado.modelo.beans.orden.OrdenBean;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "cliente")
-public class ClienteBean {
+@Named
+@SessionScoped
+public class ClienteBean implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCliente;
     private String nombres;
     private String apellidos;
@@ -32,12 +25,7 @@ public class ClienteBean {
     private String correo;
     private String contrasena;
 
-    @ManyToOne
-    @JoinColumn(name = "idAgencia")
     private AgenciaBean agencia;
-
-    @OneToMany(mappedBy = "cliente")
-
     private List<OrdenBean> ordenes;
 
     public ClienteBean() {

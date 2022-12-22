@@ -1,16 +1,16 @@
 package unam.dgtic.diplomado.controlador.repositorio.transporte;
 
-import unam.dgtic.diplomado.modelo.beans.transporte.TransporteBean;
+import unam.dgtic.diplomado.modelo.entidades.transporte.TransporteEntity;
 
 public interface RepositorioTransporte {
 
-    public Iterable<TransporteBean> obtenerTransportes();
+    public Iterable<TransporteEntity> obtenerTransportes();
 
-    public TransporteBean obtenerTransporte(Integer idTransporte);
+    public TransporteEntity obtenerTransporte(Integer idTransporte);
 
-    public void guardarTransporte(TransporteBean transporte) throws Exception;
+    public void guardarTransporte(TransporteEntity transporte) throws Exception;
 
     public void eliminarTransporte(Integer idTransporte);
 
-    public void actualizarTransporte(TransporteBean transporteParam);
+    public void actualizarTransporte(TransporteEntity transporteParam);
 }

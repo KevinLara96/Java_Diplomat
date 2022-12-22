@@ -1,16 +1,16 @@
 package unam.dgtic.diplomado.controlador.repositorio.empleado;
 
-import unam.dgtic.diplomado.modelo.beans.empleado.EmpleadoBean;
+import unam.dgtic.diplomado.modelo.entidades.empleado.EmpleadoEntity;
 
 public interface RepositorioEmpleado {
 
-    public Iterable<EmpleadoBean> obtenerEmpleados();
+    public Iterable<EmpleadoEntity> obtenerEmpleados();
 
-    public EmpleadoBean obtenerEmpleado(Integer idEmpleado);
+    public EmpleadoEntity obtenerEmpleado(Integer idEmpleado);
 
-    public void guardarEmpleado(EmpleadoBean empleado) throws Exception;
+    public void guardarEmpleado(EmpleadoEntity empleado) throws Exception;
 
     public void eliminarEmpleado(Integer idEmpleado);
 
-    public void actualizarEmpleado(EmpleadoBean empleadoParam);
+    public void actualizarEmpleado(EmpleadoEntity empleadoParam);
 }

@@ -2,12 +2,12 @@ package unam.dgtic.diplomado.modelo.beans.transporte;
 
 import java.util.Date;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity(name = "autobus")
-@DiscriminatorValue("Autobús")
+@Named
+@SessionScoped
 public class AutobusBean extends TransporteBean {
 
     private String estacionamientoAsignado;

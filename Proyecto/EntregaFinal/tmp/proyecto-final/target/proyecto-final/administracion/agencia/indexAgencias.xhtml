@@ -28,7 +28,7 @@
       <div id="divagencias">
         <h:dataTable
           id="agenciasList"
-          value="#{restAgencia.getAgencias()}"
+          value="#{agenciaBean.obtenerAgencias()}"
           var="agenciaEntity"
           styleClass="tablaEmpleados"
           headerClass="cabeceraEmpleados"
@@ -87,24 +87,46 @@
     <div ID="SeccionModificar" class="datosInput" style="display:none">
         <h:form id="modificarAgencia" >
             <p> 
-                <h:inputText id="idAgenciaInput" styleClass="inputForm" value="#{restAgencia.idAgencia}" 
+                <h:inputText id="idAgenciaInput" styleClass="inputForm" value="#{agenciaBean.idAgencia}" 
                         required="true" a:placeholder="Id Agencia"/>
                 <br />
                 <br />
-                <h:commandButton class="botonConfirmar" value="Buscar" action="restAgencia.destroy()">
-                    <f:ajax execute="idAgenciaInput" render="prueba"/>
+                <h:commandButton class="botonConfirmar" value="Buscar" >
+                    <f:ajax execute="idAgenciaInput" render="inputNombre inputUbicacion" listener="#{agenciaBean.obtenerAgencia()}"/>
                 </h:commandButton>
                 <br />
                 <br />
-                <h:outputText id="prueba" value="#{restAgencia.idAgencia}"/>
-
+                <h:inputText id="inputNombre" styleClass="inputForm" a:placeholder="Nombre agencia." value="#{agenciaBean.agenciaEntity.nombreAgencia}"/>
+                <br />
+                <br />
+                <h:inputText id="inputUbicacion" styleClass="inputForm" a:placeholder="Ubicación agencia." value="#{agenciaBean.agenciaEntity.ubicacionAgencia}"/>
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax execute="inputNombre inputUbicacion" render="agenciasList" listener="#{agenciaBean.actualizarAgencia()}"/>
+                    <f:ajax listener="#{agenciaBean.obtenerAgencias()}"/>
+                </h:commandButton>
             </p>
 
         </h:form>
     </div>
 
-    <div ID="SeccionNueva" class="center" style="display:none">
-        Hola
+    <div ID="SeccionNueva" class="datosInput" style="display:none">
+        <h:form id="nuevaAgencia" >
+            <p> 
+                <h:inputText id="inputNombreNuevo" styleClass="inputForm" a:placeholder="Nombre agencia." value="#{agenciaBean.nombreAgencia}"/>
+                <br />
+                <br />
+                <h:inputText id="inputUbicacionNueva" styleClass="inputForm" a:placeholder="Ubicación agencia." value="#{agenciaBean.ubicacionAgencia}"/>
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax execute="inputNombre inputUbicacion" render="agenciasList" listener="#{agenciaBean.nuevaAgencia()}"/>
+                    <f:ajax listener="#{agenciaBean.nuevaAgencia()}"/>
+                </h:commandButton>
+            </p>
+
+        </h:form>
     </div>
 
     <div ID="SeccionEliminar" class="center" style="display:none">
@@ -122,7 +144,7 @@
         }
 
         function ShowAndHideEliminar() {
-            var x = document.getElementById('SeccionNueva');
+            var x = document.getElementById('SeccionEliminar');
             if (x.style.display == 'none') {
                 x.style.display = 'block';
             } else {
@@ -131,7 +153,7 @@
         }
 
         function ShowAndHideNueva() {
-            var x = document.getElementById('SeccionEliminar');
+            var x = document.getElementById('SeccionNueva');
             if (x.style.display == 'none') {
                 x.style.display = 'block';
             } else {

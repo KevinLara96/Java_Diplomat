@@ -1,18 +1,15 @@
 package unam.dgtic.diplomado.modelo.beans.empleado;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.io.Serializable;
+
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
-@Entity
-@Table(name = "puesto")
-public class PuestoBean {
+@Named
+@SessionScoped
+public class PuestoBean implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPuesto;
     private String puesto;
 

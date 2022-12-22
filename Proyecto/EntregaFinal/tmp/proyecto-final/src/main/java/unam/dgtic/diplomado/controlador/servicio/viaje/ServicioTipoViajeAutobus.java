@@ -3,7 +3,7 @@ package unam.dgtic.diplomado.controlador.servicio.viaje;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.viaje.RepositorioTipoViajeAutobus;
-import unam.dgtic.diplomado.modelo.beans.viaje.TipoViajeAutobusBean;
+import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAutobusEntity;
 
 public class ServicioTipoViajeAutobus implements RepositorioTipoViajeAutobus {
 
@@ -16,20 +16,20 @@ public class ServicioTipoViajeAutobus implements RepositorioTipoViajeAutobus {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<TipoViajeAutobusBean> obtenerTiposViajeAutobus() {
+    public Iterable<TipoViajeAutobusEntity> obtenerTiposViajeAutobus() {
         Query query = em.createQuery("SELECT tv from TipoViajeAutobus tv\n" +
                 "ORDER BY tv.idTipoViajeAutobus");
 
-        return (Iterable<TipoViajeAutobusBean>) query.getResultList();
+        return (Iterable<TipoViajeAutobusEntity>) query.getResultList();
     }
 
     @Override
-    public TipoViajeAutobusBean obtenerTipoViajeAutobus(Integer idTipoViajeAutobus) {
-        return em.find(TipoViajeAutobusBean.class, idTipoViajeAutobus);
+    public TipoViajeAutobusEntity obtenerTipoViajeAutobus(Integer idTipoViajeAutobus) {
+        return em.find(TipoViajeAutobusEntity.class, idTipoViajeAutobus);
     }
 
     @Override
-    public void guardarTipoViajeAutobus(TipoViajeAutobusBean viaje) throws Exception {
+    public void guardarTipoViajeAutobus(TipoViajeAutobusEntity viaje) throws Exception {
         em.getTransaction().begin();
         em.persist(viaje);
         em.flush();
@@ -38,7 +38,7 @@ public class ServicioTipoViajeAutobus implements RepositorioTipoViajeAutobus {
 
     @Override
     public void eliminarTipoViajeAutobus(Integer idTipoViajeAutobus) {
-        TipoViajeAutobusBean tipoViajeAutobus = obtenerTipoViajeAutobus(idTipoViajeAutobus);
+        TipoViajeAutobusEntity tipoViajeAutobus = obtenerTipoViajeAutobus(idTipoViajeAutobus);
         if (tipoViajeAutobus != null) {
             em.getTransaction().begin();
             em.remove(tipoViajeAutobus);
@@ -48,8 +48,8 @@ public class ServicioTipoViajeAutobus implements RepositorioTipoViajeAutobus {
     }
 
     @Override
-    public void actualizarTipoViajeAutobus(TipoViajeAutobusBean viajeParam) {
-        TipoViajeAutobusBean tipoViajeAutobus = obtenerTipoViajeAutobus(viajeParam.getIdTipoViajeAutobus());
+    public void actualizarTipoViajeAutobus(TipoViajeAutobusEntity viajeParam) {
+        TipoViajeAutobusEntity tipoViajeAutobus = obtenerTipoViajeAutobus(viajeParam.getIdTipoViajeAutobus());
         if (tipoViajeAutobus != null) {
             em.getTransaction().begin();
             tipoViajeAutobus = em.merge(viajeParam);

@@ -1,14 +1,14 @@
 package unam.dgtic.diplomado.controlador.repositorio.orden;
 
-import unam.dgtic.diplomado.modelo.beans.orden.OrdenBean;
+import unam.dgtic.diplomado.modelo.entidades.orden.OrdenEntity;
 
 public interface RepositorioOrden {
 
-    public Iterable<OrdenBean> obtenerOrdenes();
+    public Iterable<OrdenEntity> obtenerOrdenes();
 
-    public OrdenBean obtenerOrden(Integer idOrden);
+    public OrdenEntity obtenerOrden(Integer idOrden);
 
-    public void guardarOrden(OrdenBean orden) throws Exception;
+    public void guardarOrden(OrdenEntity orden) throws Exception;
 
-    public void actualizarOrden(OrdenBean ordenParam);
+    public void actualizarOrden(OrdenEntity ordenParam);
 }
