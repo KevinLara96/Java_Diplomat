@@ -1,60 +1,94 @@
 package unam.dgtic.diplomado.controlador.servicio.empleado;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.empleado.RepositorioPuesto;
 import unam.dgtic.diplomado.modelo.entidades.empleado.PuestoEntity;
 
 public class ServicioPuesto implements RepositorioPuesto {
 
-    protected EntityManager em;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyectofinal");
+    private EntityManager em;
 
-    public ServicioPuesto(EntityManager em) {
-        super();
-        this.em = em;
+    public ServicioPuesto() {
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public Iterable<PuestoEntity> obtenerPuestos() {
-        Query query = em.createQuery("SELECT p from Puesto p\n" +
-                "ORDER BY p.idPuesto");
+        em = emf.createEntityManager();
 
-        return (Iterable<PuestoEntity>) query.getResultList();
+        try {
+            Query query = em.createQuery("SELECT p from Puesto p\n" +
+                    "ORDER BY p.idPuesto");
+
+            return (Iterable<PuestoEntity>) query.getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public PuestoEntity obtenerPuesto(Integer idPuesto) {
-        return em.find(PuestoEntity.class, idPuesto);
+        em = emf.createEntityManager();
+
+        try {
+            return em.find(PuestoEntity.class, idPuesto);
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public void guardarPuesto(PuestoEntity puesto) throws Exception {
-        em.getTransaction().begin();
-        em.persist(puesto);
-        em.flush();
-        em.getTransaction().commit();
+        em = emf.createEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            em.persist(puesto);
+            em.flush();
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public void eliminarPuesto(Integer idPuesto) {
-        PuestoEntity puesto = obtenerPuesto(idPuesto);
-        if (puesto != null) {
+        em = emf.createEntityManager();
+
+        try {
             em.getTransaction().begin();
+            PuestoEntity puesto = em.find(PuestoEntity.class, idPuesto);
             em.remove(puesto);
             em.flush();
             em.getTransaction().commit();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            em.close();
         }
     }
 
     @Override
     public void actualizarPuesto(PuestoEntity puestoParam) {
-        PuestoEntity puesto = obtenerPuesto(puestoParam.getIdPuesto());
-        if (puesto != null) {
+        em = emf.createEntityManager();
+
+        try {
             em.getTransaction().begin();
-            puesto = em.merge(puestoParam);
+            em.merge(puestoParam);
             em.flush();
             em.getTransaction().commit();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            em.close();
         }
 
     }

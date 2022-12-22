@@ -1,19 +1,20 @@
 DROP DATABASE IF EXISTS proyectofinal;
 CREATE DATABASE proyectofinal DEFAULT CHARACTER SET = 'utf8mb4';
 USE proyectofinal;
+CREATE SEQUENCE id_seq MINVALUE 1 START WITH 50 INCREMENT BY 5;
 CREATE TABLE agencia(
-  idAgencia INT NOT NULL AUTO_INCREMENT,
+  idAgencia INT NOT NULL,
   nombre VARCHAR(30) NOT NULL,
   ubicacion VARCHAR(30) NOT NULL,
   CONSTRAINT agencia_pk PRIMARY KEY (idAgencia)
 );
 CREATE TABLE puesto(
-  idPuesto INT NOT NULL AUTO_INCREMENT,
+  idPuesto INT NOT NULL,
   puesto VARCHAR(20),
   CONSTRAINT puesto_pk PRIMARY KEY(idPuesto)
 );
 CREATE TABLE empleado(
-  idEmpleado INT NOT NULL AUTO_INCREMENT,
+  idEmpleado INT NOT NULL,
   nombres VARCHAR(40) NOT NULL,
   apellidos VARCHAR(40) NOT NULL,
   correo VARCHAR(40) NOT NULL,
@@ -28,17 +29,17 @@ CREATE TABLE empleado(
   CONSTRAINT empleado_correo_ck CHECK (correo LIKE "%@avk.com")
 );
 CREATE TABLE tipoViajeAutobus (
-  idTipoViajeAutobus INT NOT NULL AUTO_INCREMENT,
+  idTipoViajeAutobus INT NOT NULL,
   tipoViajeAutobus VARCHAR(30) NOT NULL,
   CONSTRAINT tipoViajeAutobus_pk PRIMARY KEY (idTipoViajeAutobus)
 );
 CREATE TABLE tipoViajeAvion (
-  idTipoViajeAvion INT NOT NULL AUTO_INCREMENT,
+  idTipoViajeAvion INT NOT NULL,
   tipoViajeAvion VARCHAR(30) NOT NULL,
   CONSTRAINT tipoViajeAvion_pk PRIMARY KEY (idTipoViajeAvion)
 );
 CREATE TABLE viaje(
-  idViaje INT NOT NULL AUTO_INCREMENT,
+  idViaje INT NOT NULL,
   origen VARCHAR(50) NOT NULL,
   destino VARCHAR(50) NOT NULL,
   precio FLOAT NOT NULL,
@@ -52,7 +53,7 @@ CREATE TABLE viaje(
   CONSTRAINT viaje_tipoViajeAvion_fk FOREIGN KEY (idTipoViajeAvion) REFERENCES tipoViajeAvion (idTipoViajeAvion)
 );
 CREATE TABLE transporte (
-  idTransporte INT NOT NULL AUTO_INCREMENT,
+  idTransporte INT NOT NULL,
   tipoTransporte VARCHAR(10) NOT NULL,
   marca VARCHAR(30),
   modelo VARCHAR(30),
@@ -67,7 +68,7 @@ CREATE TABLE transporte (
   CONSTRAINT transporte_agencia_fk FOREIGN KEY(idAgencia) REFERENCES agencia(idAgencia)
 );
 CREATE TABLE cliente (
-  idCliente INT NOT NULL AUTO_INCREMENT,
+  idCliente INT NOT NULL,
   nombres VARCHAR(50) NOT NULL,
   apellidos VARCHAR(50) NOT NULL,
   calle VARCHAR(30) NOT NULL,
@@ -82,7 +83,7 @@ CREATE TABLE cliente (
   CONSTRAINT cliente_agencia_fk FOREIGN KEY (idAgencia) REFERENCES agencia (idAgencia)
 );
 CREATE TABLE orden(
-  idOrden INT NOT NULL AUTO_INCREMENT,
+  idOrden INT NOT NULL,
   idCliente INT NOT NULL,
   fechaEmision DATE NOT NULL,
   monto FLOAT NOT NULL,
@@ -91,7 +92,7 @@ CREATE TABLE orden(
   CONSTRAINT oden_cliente_fk FOREIGN KEY (idCliente) REFERENCES cliente(idCliente)
 );
 CREATE TABLE producto(
-  idProducto INT NOT NULL AUTO_INCREMENT,
+  idProducto INT NOT NULL,
   nombreProducto VARCHAR(50) NOT NULL,
   multiplicador FLOAT NOT NULL,
   estatus VARCHAR(10) NOT NULL,

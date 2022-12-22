@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import unam.dgtic.diplomado.modelo.entidades.orden.OrdenEntity;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
@@ -16,7 +17,8 @@ import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 public class ProductoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
+    @SequenceGenerator(name = "seq_post", allocationSize = 5)
     private Integer idProducto;
     private String nombreProducto;
     private Float multiplicador;

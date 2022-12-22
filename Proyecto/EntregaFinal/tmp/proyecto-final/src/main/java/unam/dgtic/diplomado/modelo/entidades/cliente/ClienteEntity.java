@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import unam.dgtic.diplomado.modelo.entidades.agencia.AgenciaEntity;
 import unam.dgtic.diplomado.modelo.entidades.orden.OrdenEntity;
@@ -20,7 +21,8 @@ import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 public class ClienteEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
+    @SequenceGenerator(name = "seq_post", allocationSize = 5)
     private Integer idCliente;
     private String nombres;
     private String apellidos;

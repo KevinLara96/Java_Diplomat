@@ -8,9 +8,9 @@ public interface RepositorioAgencia {
 
     public AgenciaEntity obtenerAgencia(Integer idAgencia);
 
-    public void guardarAgencia(AgenciaEntity agencia) throws Exception;
+    public boolean guardarAgencia(AgenciaEntity agencia) throws Exception;
 
-    public void eliminarAgencia(Integer idAgencia);
+    public boolean eliminarAgencia(Integer idAgencia) throws Exception;
 
-    public void actualizarAgencia(AgenciaEntity agenciaParam);
+    public boolean actualizarAgencia(AgenciaEntity agenciaParam) throws Exception;
 }

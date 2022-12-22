@@ -1,16 +1,37 @@
 package unam.dgtic.diplomado;
 
 import unam.dgtic.diplomado.controlador.servicio.agencia.ServicioAgencia;
-import unam.dgtic.diplomado.modelo.entidades.agencia.AgenciaEntity;
+import unam.dgtic.diplomado.controlador.servicio.empleado.ServicioEmpleado;
+import unam.dgtic.diplomado.controlador.servicio.empleado.ServicioPuesto;
+import unam.dgtic.diplomado.modelo.entidades.empleado.EmpleadoEntity;
 
 public class Pruebas {
 
     public static void main(String[] args) {
 
         ServicioAgencia servicioAgencia = new ServicioAgencia();
-        Iterable<AgenciaEntity> agencias = servicioAgencia.obtenerAgencias();
+        ServicioEmpleado servicioEmpleado = new ServicioEmpleado();
+        ServicioPuesto servicioPuesto = new ServicioPuesto();
 
-        for (AgenciaEntity a : agencias) {
+        EmpleadoEntity empleadoEntity = new EmpleadoEntity();
+        try {
+            empleadoEntity.setIdEmpleado(20);
+            empleadoEntity.setNombres("Nombre");
+            empleadoEntity.setApellidos("Ubicacion");
+            empleadoEntity.setCorreo("hola@avk.com");
+            empleadoEntity.setContrasena("Hola");
+            empleadoEntity.setRfc("RFC");
+            empleadoEntity.setSalario(100.0f);
+            empleadoEntity.setAgencia(servicioAgencia.obtenerAgencia(2));
+            empleadoEntity.setPuesto(servicioPuesto.obtenerPuesto(1));
+
+            servicioEmpleado.guardarEmpleado(empleadoEntity);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        Iterable<EmpleadoEntity> empleados = servicioEmpleado.obtenerEmpleados();
+        for (EmpleadoEntity a : empleados) {
             System.out.println(a);
         }
 

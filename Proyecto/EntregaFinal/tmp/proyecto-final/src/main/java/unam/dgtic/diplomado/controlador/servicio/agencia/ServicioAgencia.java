@@ -46,7 +46,7 @@ public class ServicioAgencia implements RepositorioAgencia {
     }
 
     @Override
-    public void guardarAgencia(AgenciaEntity agencia) throws Exception {
+    public boolean guardarAgencia(AgenciaEntity agencia) throws Exception {
         em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -54,14 +54,15 @@ public class ServicioAgencia implements RepositorioAgencia {
             em.flush();
             em.getTransaction().commit();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new Exception(e.getMessage());
         } finally {
             em.close();
         }
+        return true;
     }
 
     @Override
-    public void eliminarAgencia(Integer idAgencia) {
+    public boolean eliminarAgencia(Integer idAgencia) throws Exception {
         em = emf.createEntityManager();
 
         try {
@@ -70,16 +71,20 @@ public class ServicioAgencia implements RepositorioAgencia {
             em.remove(agencia);
             em.flush();
             em.getTransaction().commit();
+            if (agencia != null) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new Exception(e.getMessage());
         } finally {
             em.close();
         }
-
     }
 
     @Override
-    public void actualizarAgencia(AgenciaEntity agenciaParam) {
+    public boolean actualizarAgencia(AgenciaEntity agenciaParam) throws Exception {
         em = emf.createEntityManager();
 
         try {
@@ -88,10 +93,11 @@ public class ServicioAgencia implements RepositorioAgencia {
             em.flush();
             em.getTransaction().commit();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new Exception(e.getMessage());
         } finally {
             em.close();
         }
 
+        return true;
     }
 }

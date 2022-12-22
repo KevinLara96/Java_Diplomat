@@ -208,20 +208,10 @@ VALUES
   );
 --------------------------------------------------Clientes-------------------------------------------------
 INSERT INTO
-  cliente (
-    nombres,
-    apellidos,
-    calle,
-    colonia,
-    codigoPostal,
-    telefono,
-    rfc,
-    correo,
-    contrasena,
-    idAgencia
-  )
+  cliente
 VALUES
   (
+    1,
     'Hicham',
     'Rivas',
     'Calle Dr Olvera 192-158',
@@ -234,20 +224,10 @@ VALUES
     1
   );
 INSERT INTO
-  cliente (
-    nombres,
-    apellidos,
-    calle,
-    colonia,
-    codigoPostal,
-    telefono,
-    rfc,
-    correo,
-    contrasena,
-    idAgencia
-  )
+  cliente
 VALUES
   (
+    2,
     'Marta',
     'Amador-Aranda',
     'Hortelanos 28-12',
@@ -260,20 +240,10 @@ VALUES
     1
   );
 INSERT INTO
-  cliente (
-    nombres,
-    apellidos,
-    calle,
-    colonia,
-    codigoPostal,
-    telefono,
-    rfc,
-    correo,
-    contrasena,
-    idAgencia
-  )
+  cliente
 VALUES
   (
+    3,
     'Heraclio',
     'Fajardo-Lasa',
     'Av. Santa Fe 482',
@@ -286,20 +256,10 @@ VALUES
     1
   );
 INSERT INTO
-  cliente (
-    nombres,
-    apellidos,
-    calle,
-    colonia,
-    codigoPostal,
-    telefono,
-    rfc,
-    correo,
-    contrasena,
-    idAgencia
-  )
+  cliente
 VALUES
   (
+    4,
     'Plácido',
     'Valverde Font',
     'Av Aleta 35-47',
@@ -312,20 +272,10 @@ VALUES
     1
   );
 INSERT INTO
-  cliente (
-    nombres,
-    apellidos,
-    calle,
-    colonia,
-    codigoPostal,
-    telefono,
-    rfc,
-    correo,
-    contrasena,
-    idAgencia
-  )
+  cliente
 VALUES
   (
+    5,
     'Nerea',
     'Serna Melero',
     '16 de Septiembre 401B',
@@ -338,20 +288,10 @@ VALUES
     3
   );
 INSERT INTO
-  cliente (
-    nombres,
-    apellidos,
-    calle,
-    colonia,
-    codigoPostal,
-    telefono,
-    rfc,
-    correo,
-    contrasena,
-    idAgencia
-  )
+  cliente
 VALUES
   (
+    6,
     'Clarisa',
     'Soto Chaves',
     'Av. Camino Real SN',
@@ -364,20 +304,10 @@ VALUES
     3
   );
 INSERT INTO
-  cliente (
-    nombres,
-    apellidos,
-    calle,
-    colonia,
-    codigoPostal,
-    telefono,
-    rfc,
-    correo,
-    contrasena,
-    idAgencia
-  )
+  cliente
 VALUES
   (
+    7,
     'Celestina',
     'Palacio Blanco',
     'C. Clavelina 237-179',
@@ -390,20 +320,10 @@ VALUES
     3
   );
 INSERT INTO
-  cliente (
-    nombres,
-    apellidos,
-    calle,
-    colonia,
-    codigoPostal,
-    telefono,
-    rfc,
-    correo,
-    contrasena,
-    idAgencia
-  )
+  cliente
 VALUES
   (
+    8,
     'Jose Carlos',
     'Roma Saez',
     'C. Joaquín Angulo 2480',
@@ -416,20 +336,10 @@ VALUES
     2
   );
 INSERT INTO
-  cliente (
-    nombres,
-    apellidos,
-    calle,
-    colonia,
-    codigoPostal,
-    telefono,
-    rfc,
-    correo,
-    contrasena,
-    idAgencia
-  )
+  cliente
 VALUES
   (
+    9,
     'Dominga',
     'Martorell Cases',
     'Turmalina 2887',
@@ -442,20 +352,10 @@ VALUES
     2
   );
 INSERT INTO
-  cliente (
-    nombres,
-    apellidos,
-    calle,
-    colonia,
-    codigoPostal,
-    telefono,
-    rfc,
-    correo,
-    contrasena,
-    idAgencia
-  )
+  cliente
 VALUES
   (
+    10,
     'Pastor',
     'Plana Perelló',
     'San Martin 74',
@@ -469,156 +369,177 @@ VALUES
   );
 ----------------------------------------- Órdenes. --------------------------------------------------
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    1,
     1,
     '1996-03-08',
     2400.0,
     'Compra de 2 boletos de avión de la Ciudad de México a Berlín, pago con tarjeta'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    2,
     2,
     '2010-01-27',
     3400.0,
     'Compra tres boletos de avión de Monterrey a Yucatán, pago en efectivo'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    3,
     3,
     '2011-04-30',
     1500.0,
     'Compra un boleto de autobús de la Ciudad de México a Veracruz, pago con tarjeta'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    4,
     3,
     '2012-11-27',
     5800.0,
     'Compra 3 boletos de avión de Guadalajara a Los Ángeles , pago con tarjeta'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    5,
     4,
     '2013-03-14',
     1400.0,
     'Compra un boleto autobús de Monterrey a Chihuahua, pago en efetivo'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    6,
     5,
     '2015-12-20',
     4500.0,
     'Compra dos boletos de avión de Ciudad de México a Quintana Roo, pago con tarjeta'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    7,
     6,
     '2014-11-10',
     8500.0,
     'Compra dos boletos de avión de Monterrey a Bogotá, pago con tarjeta'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    8,
     7,
     '2014-07-28',
     2400.0,
     'Compra dos boletos de autobús de Guadalajara a Oaxaca , pago en efectivo'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    9,
     8,
     '2016-06-03',
     3500.0,
     'Compra tres boletos de autobús de Monterrey a Colima, pago con tarjeta'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    10,
     9,
     '2017-10-21',
     1400.0,
     'Compra un boleto de autobús de Ciudad de México a Campeche, pago en efectivo'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    11,
     10,
     '2018-07-07',
     2800.0,
     'Compra dos boletos de autobús de Monterrey a Veracruz, pago con tarjeta'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    12,
     1,
     '2018-05-02',
     2500.0,
     'Compra dos boletos de autobús de Ciudad de México a Guerrero, pago con tarjeta'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    13,
     7,
     '2019-06-27',
     1800.0,
     'Compra un boleto de avión de Ciudad de México a Chihuahua, pago en efectivo'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    14,
     5,
     '2020-09-15',
     3500.0,
     'Compra tres boletos de avión de Guadalajara a Yucatán, pago con tarjeta'
   );
 INSERT INTO
-  orden (idCliente, fechaEmision, monto, descripcion)
+  orden
 VALUES
   (
+    15,
     2,
     '2020-10-07',
     2400.0,
     'Compra un boleto de avión de Ciudad de México a Bostón, pago con tarjeta'
   );
+-------------------------------------Producto------------------------------------------
 INSERT INTO
-  producto (nombreProducto, multiplicador, estatus)
+  producto
 VALUES
-  ('Asiento básico autobús', 1.0, 'ACTIVO');
+  (1, 'Asiento básico autobús', 1.0, 'ACTIVO');
 INSERT INTO
-  producto (nombreProducto, multiplicador, estatus)
+  producto
 VALUES
-  ('Asiento primera clase autobús', 2.0, 'ACTIVO');
+  (
+    2,
+    'Asiento primera clase autobús',
+    2.0,
+    'ACTIVO'
+  );
 INSERT INTO
-  producto (nombreProducto, multiplicador, estatus)
+  producto
 VALUES
-  ('Asiento básico avión', 1.5, 'ACTIVO');
+  (3, 'Asiento básico avión', 1.5, 'ACTIVO');
 INSERT INTO
-  producto (nombreProducto, multiplicador, estatus)
+  producto
 VALUES
-  ('Asiento primera clase avión', 2.5, 'ACTIVO');
+  (4, 'Asiento primera clase avión', 2.5, 'ACTIVO');
 -----------------------------------------Orden Producto------------------------------------------------------
 INSERT INTO
   orden_producto
@@ -958,19 +879,10 @@ VALUES
   );
 ----------------------------------------------Transportes------------------------------------------------
 INSERT INTO
-  transporte (
-    tipoTransporte,
-    marca,
-    modelo,
-    capacidadCombustible,
-    fechaAdquisicion,
-    asientosBasicos,
-    asientosPrimeraClase,
-    estacionamientoAsignado,
-    idAgencia
-  )
+  transporte
 VALUES
   (
+    1,
     'Autobús',
     'Mercedes Benz',
     'Zafiro',
@@ -978,23 +890,15 @@ VALUES
     '2014-05-19',
     10,
     30,
+    NULL,
     'Estacionamiento 2',
     1
   );
 INSERT INTO
-  transporte (
-    tipoTransporte,
-    marca,
-    modelo,
-    capacidadCombustible,
-    fechaAdquisicion,
-    asientosBasicos,
-    asientosPrimeraClase,
-    estacionamientoAsignado,
-    idAgencia
-  )
+  transporte
 VALUES
   (
+    2,
     'Autobús',
     'Volvo',
     '9800',
@@ -1002,23 +906,15 @@ VALUES
     '2019-10-09',
     20,
     30,
+    NULL,
     'Estacionamiento 3',
     2
   );
 INSERT INTO
-  transporte (
-    tipoTransporte,
-    marca,
-    modelo,
-    capacidadCombustible,
-    fechaAdquisicion,
-    asientosBasicos,
-    asientosPrimeraClase,
-    estacionamientoAsignado,
-    idAgencia
-  )
+  transporte
 VALUES
   (
+    3,
     'Autobús',
     'Volvo',
     'Access',
@@ -1026,23 +922,15 @@ VALUES
     '2018-11-10',
     15,
     25,
+    NULL,
     'Estacionamiento 4',
     3
   );
 INSERT INTO
-  transporte (
-    tipoTransporte,
-    marca,
-    modelo,
-    capacidadCombustible,
-    fechaAdquisicion,
-    asientosBasicos,
-    asientosPrimeraClase,
-    estacionamientoAsignado,
-    idAgencia
-  )
+  transporte
 VALUES
   (
+    4,
     'Autobús',
     'Volvo',
     '9700 US/CAN',
@@ -1050,23 +938,15 @@ VALUES
     '2022-08-03',
     10,
     40,
+    NULL,
     'Estacionamiento 5',
     1
   );
 INSERT INTO
-  transporte (
-    tipoTransporte,
-    marca,
-    modelo,
-    capacidadCombustible,
-    fechaAdquisicion,
-    asientosBasicos,
-    asientosPrimeraClase,
-    puertoAsignado,
-    idAgencia
-  )
+  transporte
 VALUES
   (
+    5,
     'Avión',
     'Boeing',
     '747',
@@ -1075,22 +955,14 @@ VALUES
     25,
     60,
     'Puerto 1',
+    NULL,
     2
   );
 INSERT INTO
-  transporte (
-    tipoTransporte,
-    marca,
-    modelo,
-    capacidadCombustible,
-    fechaAdquisicion,
-    asientosBasicos,
-    asientosPrimeraClase,
-    puertoAsignado,
-    idAgencia
-  )
+  transporte
 VALUES
   (
+    6,
     'Avión',
     'Boeing',
     '777',
@@ -1099,22 +971,14 @@ VALUES
     100,
     200,
     'Puerto 2',
+    NULL,
     3
   );
 INSERT INTO
-  transporte (
-    tipoTransporte,
-    marca,
-    modelo,
-    capacidadCombustible,
-    fechaAdquisicion,
-    asientosBasicos,
-    asientosPrimeraClase,
-    puertoAsignado,
-    idAgencia
-  )
+  transporte
 VALUES
   (
+    7,
     'Avión',
     'Boeing',
     '737',
@@ -1123,22 +987,14 @@ VALUES
     50,
     130,
     'Puerto 3',
+    NULL,
     1
   );
 INSERT INTO
-  transporte (
-    tipoTransporte,
-    marca,
-    modelo,
-    capacidadCombustible,
-    fechaAdquisicion,
-    asientosBasicos,
-    asientosPrimeraClase,
-    puertoAsignado,
-    idAgencia
-  )
+  transporte
 VALUES
   (
+    8,
     'Avión',
     'Boeing',
     '787 Dreamliner',
@@ -1147,22 +1003,14 @@ VALUES
     80,
     120,
     'Puerto 4',
+    NULL,
     2
   );
 INSERT INTO
-  transporte (
-    tipoTransporte,
-    marca,
-    modelo,
-    capacidadCombustible,
-    fechaAdquisicion,
-    asientosBasicos,
-    asientosPrimeraClase,
-    puertoAsignado,
-    idAgencia
-  )
+  transporte
 VALUES
   (
+    9,
     'Avión',
     'Airbus',
     'A320',
@@ -1171,5 +1019,6 @@ VALUES
     20,
     120,
     'Puerto 5',
+    NULL,
     3
   );

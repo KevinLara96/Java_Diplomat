@@ -21,6 +21,8 @@ public class AgenciaBean implements Serializable {
     private String ubicacionAgencia;
     private AgenciaEntity agenciaEntity;
 
+    private String estatus;
+
     /*
      * Constructores.
      */
@@ -67,6 +69,14 @@ public class AgenciaBean implements Serializable {
         this.agenciaEntity = servicioAgencia.obtenerAgencia(idAgencia);
     }
 
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setRegistro(String estatus) {
+        this.estatus = estatus;
+    }
+
     /*
      * Métodos Bean.
      */
@@ -82,29 +92,47 @@ public class AgenciaBean implements Serializable {
 
     public void actualizarAgencia() {
         servicioAgencia = new ServicioAgencia();
-        AgenciaEntity agenciaEntity = servicioAgencia.obtenerAgencia(this.idAgencia);
+        AgenciaEntity agenciaMod = servicioAgencia.obtenerAgencia(this.idAgencia);
 
         try {
-            agenciaEntity.setIdAgencia(this.idAgencia);
-            agenciaEntity.setNombreAgencia(this.agenciaEntity.getNombreAgencia());
-            agenciaEntity.setUbicacionAgencia(this.agenciaEntity.getUbicacionAgencia());
+            agenciaMod.setIdAgencia(this.idAgencia);
+            agenciaMod.setNombreAgencia(this.agenciaEntity.getNombreAgencia());
+            agenciaMod.setUbicacionAgencia(this.agenciaEntity.getUbicacionAgencia());
 
-            servicioAgencia.actualizarAgencia(agenciaEntity);
+            servicioAgencia.actualizarAgencia(agenciaMod);
+            this.estatus = "Agencia actualizada con éxito.";
         } catch (Exception e) {
-
+            this.estatus = "ERROR. No se pudo actualizar la agencia: " +
+                    e.getMessage();
         }
     }
 
     public void nuevaAgencia() {
-        servicioAgencia = new ServicioAgencia();
+        ServicioAgencia servicioAgencia = new ServicioAgencia();
         this.agenciaEntity = new AgenciaEntity();
         try {
-            this.agenciaEntity.setNombreAgencia(this.nombreAgencia);
-            this.agenciaEntity.setNombreAgencia(this.ubicacionAgencia);
+            agenciaEntity.setIdAgencia(this.idAgencia);
+            agenciaEntity.setNombreAgencia(this.nombreAgencia);
+            agenciaEntity.setUbicacionAgencia(this.ubicacionAgencia);
 
-            servicioAgencia.guardarAgencia(agenciaEntity);
+            servicioAgencia.guardarAgencia(this.agenciaEntity);
+            this.estatus = "Agencia registrada con éxito.";
         } catch (Exception e) {
+            this.estatus = "No se pudo registrar la agencia: " +
+                    e.getMessage();
+        }
+    }
 
+    public void eliminarAgencia() {
+        ServicioAgencia servicioAgencia = new ServicioAgencia();
+        try {
+            if (servicioAgencia.eliminarAgencia(this.idAgencia)) {
+                this.estatus = "Agencia eliminada con éxito.";
+            } else {
+                this.estatus = "ERROR. No se pudo eliminar la agencia: ";
+            }
+        } catch (Exception e) {
+            this.estatus = "ERROR. No se pudo eliminar la agencia: ";
         }
     }
 }

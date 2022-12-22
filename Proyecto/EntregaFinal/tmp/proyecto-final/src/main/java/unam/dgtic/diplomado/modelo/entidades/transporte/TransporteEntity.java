@@ -12,6 +12,7 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import unam.dgtic.diplomado.modelo.entidades.agencia.AgenciaEntity;
 import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
@@ -23,7 +24,8 @@ import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 public class TransporteEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
+    @SequenceGenerator(name = "seq_post", allocationSize = 5)
     @Column(name = "idTransporte")
     private Integer idTransporte;
     private String marca;
