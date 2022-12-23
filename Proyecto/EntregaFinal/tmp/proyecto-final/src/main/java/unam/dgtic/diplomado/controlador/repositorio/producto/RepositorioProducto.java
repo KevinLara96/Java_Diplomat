@@ -8,10 +8,10 @@ public interface RepositorioProducto {
 
     public ProductoEntity obtenerProducto(Integer idProducto);
 
-    public void guardarProducto(ProductoEntity producto) throws Exception;
+    public boolean guardarProducto(ProductoEntity producto) throws Exception;
 
-    public void eliminarProducto(Integer idProducto);
+    public boolean eliminarProducto(Integer idProducto) throws Exception;
 
-    public void actualizarProducto(ProductoEntity productoParam);
+    public boolean actualizarProducto(ProductoEntity productoParam) throws Exception;
 
 }

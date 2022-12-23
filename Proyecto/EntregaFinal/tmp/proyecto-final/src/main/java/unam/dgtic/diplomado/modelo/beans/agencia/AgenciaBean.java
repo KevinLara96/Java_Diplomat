@@ -73,7 +73,7 @@ public class AgenciaBean implements Serializable {
         return estatus;
     }
 
-    public void setRegistro(String estatus) {
+    public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
 
@@ -108,7 +108,7 @@ public class AgenciaBean implements Serializable {
     }
 
     public void nuevaAgencia() {
-        ServicioAgencia servicioAgencia = new ServicioAgencia();
+        servicioAgencia = new ServicioAgencia();
         this.agenciaEntity = new AgenciaEntity();
         try {
             agenciaEntity.setIdAgencia(this.idAgencia);
@@ -124,7 +124,7 @@ public class AgenciaBean implements Serializable {
     }
 
     public void eliminarAgencia() {
-        ServicioAgencia servicioAgencia = new ServicioAgencia();
+        servicioAgencia = new ServicioAgencia();
         try {
             if (servicioAgencia.eliminarAgencia(this.idAgencia)) {
                 this.estatus = "Agencia eliminada con éxito.";

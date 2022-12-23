@@ -42,7 +42,7 @@ public class ServicioEmpleado implements RepositorioEmpleado {
     }
 
     @Override
-    public void guardarEmpleado(EmpleadoEntity empleado) throws Exception {
+    public boolean guardarEmpleado(EmpleadoEntity empleado) throws Exception {
         em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -55,10 +55,11 @@ public class ServicioEmpleado implements RepositorioEmpleado {
         } finally {
             em.close();
         }
+        return true;
     }
 
     @Override
-    public void eliminarEmpleado(Integer idEmpleado) {
+    public boolean eliminarEmpleado(Integer idEmpleado) throws Exception {
         em = emf.createEntityManager();
 
         try {
@@ -67,15 +68,20 @@ public class ServicioEmpleado implements RepositorioEmpleado {
             em.remove(empleado);
             em.flush();
             em.getTransaction().commit();
+            if (empleado != null) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new Exception(e.getMessage());
         } finally {
             em.close();
         }
     }
 
     @Override
-    public void actualizarEmpleado(EmpleadoEntity empleadoParam) {
+    public boolean actualizarEmpleado(EmpleadoEntity empleadoParam) throws Exception {
         em = emf.createEntityManager();
 
         try {
@@ -84,10 +90,11 @@ public class ServicioEmpleado implements RepositorioEmpleado {
             em.flush();
             em.getTransaction().commit();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new Exception(e.getMessage());
         } finally {
             em.close();
         }
 
+        return true;
     }
 }

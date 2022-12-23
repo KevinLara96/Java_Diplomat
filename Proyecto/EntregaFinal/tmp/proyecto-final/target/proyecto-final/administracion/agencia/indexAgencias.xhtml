@@ -159,13 +159,24 @@
                 <br />
                 <h:outputText id="tmp" value="#{agenciaBean.estatus}"/>
             </p>
-
         </h:form>
+    </div>
+
+    <div id="Volver" class="center">
+        <form action="../../inicioAdministracion.xhtml">
+            <input type="submit" value="Atrás" />
+        </form>
     </div>
 
     <script>
         function ShowAndHideModificar() {
             var x = document.getElementById('SeccionModificar');
+            var y = document.getElementById('SeccionEliminar');
+            var z = document.getElementById('SeccionNueva');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
             if (x.style.display == 'none') {
                 x.style.display = 'block';
             } else {
@@ -175,6 +186,12 @@
 
         function ShowAndHideEliminar() {
             var x = document.getElementById('SeccionEliminar');
+            var y = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionNueva');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
             if (x.style.display == 'none') {
                 x.style.display = 'block';
             } else {
@@ -184,6 +201,12 @@
 
         function ShowAndHideNueva() {
             var x = document.getElementById('SeccionNueva');
+            var y = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionEliminar');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
             if (x.style.display == 'none') {
                 x.style.display = 'block';
             } else {

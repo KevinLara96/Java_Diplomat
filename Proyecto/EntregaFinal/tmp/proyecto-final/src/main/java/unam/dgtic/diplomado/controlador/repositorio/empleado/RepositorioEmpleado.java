@@ -8,9 +8,9 @@ public interface RepositorioEmpleado {
 
     public EmpleadoEntity obtenerEmpleado(Integer idEmpleado);
 
-    public void guardarEmpleado(EmpleadoEntity empleado) throws Exception;
+    public boolean guardarEmpleado(EmpleadoEntity empleado) throws Exception;
 
-    public void eliminarEmpleado(Integer idEmpleado);
+    public boolean eliminarEmpleado(Integer idEmpleado) throws Exception;
 
-    public void actualizarEmpleado(EmpleadoEntity empleadoParam);
+    public boolean actualizarEmpleado(EmpleadoEntity empleadoParam) throws Exception;
 }

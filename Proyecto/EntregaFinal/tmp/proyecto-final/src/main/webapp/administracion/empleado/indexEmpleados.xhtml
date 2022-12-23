@@ -1,0 +1,286 @@
+<!--?xml version='1.0' encoding='UTF-8' ?>
+<
+    Copyright (c) 2014, 2019 Oracle and/or its affiliates. All rights reserved.
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+    SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+>
+  <h:head></h:head>
+  <h:body>
+    <h:outputStylesheet name="css/stylesheet.css" target="head" />
+
+    <h:form id="listaEmpleados"  >
+      <h1>Gestión de empleados.</h1>
+
+
+      <div id="divEmpleados">
+        <h:dataTable
+          id="empleadosList"
+          value="#{empleadoBean.obtenerEmpleados()}"
+          var="empleadoEntity"
+          styleClass="tablaEmpleados"
+          headerClass="cabeceraEmpleados"
+          rowClasses="empleadoPar, empleadoImpar"
+          style="width: 100%"
+        >
+          <h:column>
+            <f:facet name="header">Id empleado.</f:facet>
+            #{empleadoEntity.idEmpleado}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Nombre(s) empleado</f:facet>
+            #{empleadoEntity.nombres}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Apellidos empleado</f:facet>
+            #{empleadoEntity.apellidos}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Correo empleados</f:facet>
+            #{empleadoEntity.correo}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">RFC empleado</f:facet>
+            #{empleadoEntity.rfc}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Salario</f:facet>
+            #{empleadoEntity.salario}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Agencia empleadora</f:facet>
+            #{empleadoEntity.agencia.ubicacionAgencia}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Puesto empleado</f:facet>
+            #{empleadoEntity.puesto.puesto}
+          </h:column>
+
+
+        <br />
+        <br />
+        <h:commandButton id="back" value="Atras" action="../../index.xhtml" />
+        </h:dataTable>
+      </div>
+    </h:form>
+
+    <div class="center">
+        <button class="buttonModificar" onClick="ShowAndHideModificar()">Modificar empleado</button>
+        <button class="buttonNuevo" onClick="ShowAndHideNueva()">Nuevo empleado</button>
+        <button class="buttonEliminar" onClick="ShowAndHideEliminar()">Eliminar empleado</button>
+    </div>
+
+    <div ID="SeccionModificar" class="datosInput" style="display:none">
+        <h:form id="modificarEmpleado" >
+            <p> 
+                <h:inputText id="idEmpleadoInput" styleClass="inputForm" value="#{empleadoBean.idEmpleado}" 
+                        required="true" a:placeholder="Id Empleado"/>
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Buscar" >
+                    <f:ajax execute="idEmpleadoInput"  
+                        render="iNombre iApellidos iCorreo iContrasena iRFC iSalario iAgencia iPuesto"
+                        listener="#{empleadoBean.obtenerEmpleado()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:inputText id="iNombre" styleClass="inputForm" a:placeholder="Nombre(s) empleado." value="#{empleadoBean.empleadoEntity.nombres}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iApellidos" styleClass="inputForm" a:placeholder="Apellidos empleado." value="#{empleadoBean.empleadoEntity.apellidos}" />
+
+                <br />
+                <br />
+                <h:inputText id="iCorreo" styleClass="inputForm" a:placeholder="Correo electrónico." value="#{empleadoBean.empleadoEntity.correo}" />
+
+                <br />
+                <br />
+                <h:inputSecret id="iContrasena" styleClass="inputForm" a:placeholder="Contraseña." value="#{empleadoBean.empleadoEntity.contrasena}" requiredMessage="Contraseña obligatoria"/>
+
+                <br />
+                <br />
+                <h:inputText id="iRFC" styleClass="inputForm" a:placeholder="RFC empleado." value="#{empleadoBean.empleadoEntity.rfc}" />
+
+                <br />
+                <br />
+                <h:inputText id="iSalario" styleClass="inputForm" a:placeholder="Salario." value="#{empleadoBean.empleadoEntity.salario}" />
+
+                <br />
+                <br />
+                <h:inputText id="iAgencia" styleClass="inputForm" a:placeholder="Id agencia." value="#{empleadoBean.empleadoEntity.agencia.idAgencia}" />
+
+                <br />
+                <br />
+                <h:inputText id="iPuesto" styleClass="inputForm" a:placeholder="Id puesto." value="#{empleadoBean.empleadoEntity.puesto.idPuesto}" />
+
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax
+                    execute="idEmpleadoInput iNombre iApellidos iCorreo iContrasena iRFC iSalario iAgencia iPuesto"
+                    render="tmp" 
+                    listener="#{empleadoBean.actualizarEmpleado()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{empleadoBean.estatus}"/>
+            </p>
+
+        </h:form>
+    </div>
+
+    <div ID="SeccionNueva" class="datosInput" style="display:none">
+        <h:form id="nuevoEmpleado" >
+            <p> 
+                <h:inputText id="iIdN" styleClass="inputForm" value="#{empleadoBean.idEmpleado}" 
+                        a:placeholder="Id Empleado"/>
+
+                <br />
+                <br />
+                <h:inputText id="iNombreN" styleClass="inputForm" a:placeholder="Nombre(s) empleado." value="#{empleadoBean.nombres}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iApellidosN" styleClass="inputForm" a:placeholder="Apellidos empleado." value="#{empleadoBean.apellidos}" />
+
+                <br />
+                <br />
+                <h:inputText id="iCorreoN" styleClass="inputForm" a:placeholder="Correo electrónico." value="#{empleadoBean.correo}" />
+
+                <br />
+                <br />
+                <h:inputSecret id="iContrasenaN" styleClass="inputForm" a:placeholder="Contraseña." value="#{empleadoBean.contrasena}" requiredMessage="Contraseña obligatoria"/>
+
+                <br />
+                <br />
+                <h:inputText id="iRFCN" styleClass="inputForm" a:placeholder="RFC empleado." value="#{empleadoBean.rfc}" />
+
+                <br />
+                <br />
+                <h:inputText id="iSalarioN" styleClass="inputForm" a:placeholder="Salario." value="#{empleadoBean.salario}" />
+
+                <br />
+                <br />
+                <h:inputText id="iAgenciaN" styleClass="inputForm" a:placeholder="Id agencia." value="#{empleadoBean.idAgencia}" />
+
+                <br />
+                <br />
+                <h:inputText id="iPuestoN" styleClass="inputForm" a:placeholder="Id puesto." value="#{empleadoBean.idPuesto}" />
+
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax
+                    execute="iIdN iNombreN iApellidosN iCorreoN iContrasenaN iRFCN iSalarioN iAgenciaN iPuestoN"
+                    render="tmp" 
+                    listener="#{empleadoBean.nuevoEmpleado()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{empleadoBean.estatus}"/>
+            </p>
+
+        </h:form>
+    </div>
+
+
+    <div ID="SeccionEliminar" class="center" style="display:none">
+        <h:form id="eliminaEmpleado">
+            <p>
+                <h:inputText id="inputIdEliminar" styleClass="inputForm" a:placeholder="Id. Empleado." value="#{empleadoBean.idEmpleado}" />
+                <br />
+                <br />
+
+                <h:commandButton class="botonConfirmar" value="Eliminar" >
+                    <f:ajax execute="inputIdEliminar" render="tmp" listener="#{empleadoBean.eliminarEmpleado()}"/>
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{empleadoBean.estatus}"/>
+            </p>
+        </h:form>
+    </div>
+
+    <div id="Volver" class="center">
+        <form action="../../inicioAdministracion.xhtml">
+            <input type="submit" value="Atrás" />
+        </form>
+    </div>
+
+    <script>
+        function ShowAndHideModificar() {
+            var x = document.getElementById('SeccionModificar');
+            var y = document.getElementById('SeccionEliminar');
+            var z = document.getElementById('SeccionNueva');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideEliminar() {
+            var x = document.getElementById('SeccionEliminar');
+            var y = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionNueva');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideNueva() {
+            var x = document.getElementById('SeccionNueva');
+            var y = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionEliminar');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+    </script>
+
+  </h:body>
+</html>

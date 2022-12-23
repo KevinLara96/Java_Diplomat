@@ -5,28 +5,34 @@ import java.util.List;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import unam.dgtic.diplomado.controlador.servicio.producto.ServicioProducto;
 import unam.dgtic.diplomado.modelo.beans.orden.OrdenBean;
-import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+import unam.dgtic.diplomado.modelo.entidades.producto.ProductoEntity;
 
 @Named
 @SessionScoped
 public class ProductoBean implements Serializable {
 
-    private Integer idProducto;
+    private ServicioProducto servicioProducto;
+    private ProductoEntity productoEntity;
+
+    private int idProducto;
     private String nombreProducto;
     private Float multiplicador;
     private String estatus;
 
     private List<OrdenBean> ordenes;
+    private String estatusStr;
 
+    /*
+     * Constructores
+     */
     public ProductoBean() {
     }
 
-    public ProductoBean(Integer idProducto, String nombreProducto) {
-        this.idProducto = idProducto;
-        this.nombreProducto = nombreProducto;
-    }
-
+    /*
+     * Getters & Setters.
+     */
     public Integer getIdProducto() {
         return idProducto;
     }
@@ -48,11 +54,8 @@ public class ProductoBean implements Serializable {
     }
 
     public void setMultiplicador(Float multiplicador) throws Exception {
-        if (multiplicador == null || multiplicador < 1) {
-            throw new ExcepcionAtributos("ERROR. Multiplicador inválido.");
-        } else {
-            this.multiplicador = multiplicador;
-        }
+        this.multiplicador = multiplicador;
+
     }
 
     public String getEstatus() {
@@ -71,35 +74,33 @@ public class ProductoBean implements Serializable {
         this.ordenes = ordenes;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((idProducto == null) ? 0 : idProducto.hashCode());
-        return result;
+    public ProductoEntity getProductoEntity() {
+        return productoEntity;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        ProductoBean other = (ProductoBean) obj;
-        if (idProducto == null) {
-            if (other.idProducto != null)
-                return false;
-        } else if (!idProducto.equals(other.idProducto))
-            return false;
-        return true;
+    public void setProductoEntity(ProductoEntity productoEntity) {
+        this.productoEntity = productoEntity;
     }
 
-    @Override
-    public String toString() {
-        return "[idProducto=" + idProducto + ", nombreProducto=" + nombreProducto +
-                ", estatus=" + estatus + "]]";
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public String getEstatusStr() {
+        return estatusStr;
+    }
+
+    public void setEstatusStr(String estatusStr) {
+        this.estatusStr = estatusStr;
+    }
+
+    /*
+     * Métodos bean
+     */
+    public List<ProductoEntity> obtenerProductos() {
+        servicioProducto = new ServicioProducto();
+
+        return (List<ProductoEntity>) servicioProducto.obtenerProductos();
     }
 
 }

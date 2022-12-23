@@ -24,11 +24,11 @@ public class AgenciaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
     @SequenceGenerator(name = "seq_post", allocationSize = 5)
-    private Integer idAgencia = 0;
+    private Integer idAgencia;
     @Column(name = "nombre")
-    private String nombreAgencia = "Prueba";
+    private String nombreAgencia;
     @Column(name = "ubicacion")
-    private String ubicacionAgencia = "Prueba";
+    private String ubicacionAgencia;
 
     @OneToMany(mappedBy = "agencia")
     private List<EmpleadoEntity> empleados;

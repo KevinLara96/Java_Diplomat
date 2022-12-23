@@ -1,18 +1,24 @@
 package unam.dgtic.diplomado.modelo.beans.empleado;
 
 import java.io.Serializable;
-import java.util.regex.Pattern;
+import java.util.List;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
-import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+import unam.dgtic.diplomado.controlador.servicio.agencia.ServicioAgencia;
+import unam.dgtic.diplomado.controlador.servicio.empleado.ServicioEmpleado;
+import unam.dgtic.diplomado.controlador.servicio.empleado.ServicioPuesto;
+import unam.dgtic.diplomado.modelo.entidades.empleado.EmpleadoEntity;
 
 @Named
 @SessionScoped
 public class EmpleadoBean implements Serializable {
 
-    private Integer idEmpleado;
+    private ServicioEmpleado servicioEmpleado;
+    private ServicioAgencia servicioAgencia;
+    private ServicioPuesto servicioPuesto;
+
+    private int idEmpleado;
     private String nombres;
     private String apellidos;
     private String correo;
@@ -20,169 +26,185 @@ public class EmpleadoBean implements Serializable {
     private String rfc;
     private Float salario;
 
-    private AgenciaBean agencia;
-    private PuestoBean puesto;
+    private Integer idAgencia;
+    private Integer idPuesto;
+    private EmpleadoEntity empleadoEntity;
+    private String estatus;
 
+    /*
+     * Constructores
+     */
     public EmpleadoBean() {
     }
 
-    public EmpleadoBean(Integer idEmpleado, String nombres, String apellidos, String correo, String contrasena,
-            String rfc,
-            Float salario, PuestoBean puesto) {
-        this.idEmpleado = idEmpleado;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.correo = correo;
-        this.contrasena = contrasena;
-        this.rfc = rfc;
-        this.salario = salario;
-        this.puesto = puesto;
-    }
-
+    /*
+     * Getters & Setters.
+     */
     public Integer getIdEmpleado() {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(Integer idEmpleado) throws Exception {
-        if (idEmpleado == null || idEmpleado <= 0) {
-            throw new ExcepcionAtributos("ERROR. Id de cliente inválido.");
-        } else {
-            this.idEmpleado = idEmpleado;
-        }
+    public void setIdEmpleado(Integer idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
     public String getNombres() {
         return nombres;
     }
 
-    public void setNombres(String nombres) throws Exception {
-        if (nombres == null || nombres.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Nombre(s) de empleado inválido(s).");
-        } else {
-            this.nombres = nombres;
-        }
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
     public String getApellidos() {
         return apellidos;
     }
 
-    public void setApellidos(String apellidos) throws Exception {
-        if (apellidos == null || apellidos.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Apellidos de empleado inválidos.");
-        } else {
-            this.apellidos = apellidos;
-        }
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getCorreo() {
         return correo;
     }
 
-    public void setCorreo(String correo) throws Exception {
-        Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
-                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
-        boolean correoRegex = pattern.matcher(correo).matches();
-        if (correoRegex) {
-            this.correo = correo;
-        } else if (correo == null || correo == "") {
-            throw new ExcepcionAtributos("ERROR. Correo electrónico de empleado vacío.");
-        } else {
-            throw new ExcepcionAtributos("ERROR. Correo no válido de empleado.");
-        }
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getContrasena() {
         return contrasena;
     }
 
-    public void setContrasena(String contrasena) throws Exception {
-        if (contrasena == null || contrasena.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Contrasena de empleado inválido.");
-        } else {
-            this.contrasena = contrasena;
-        }
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getRfc() {
         return rfc;
     }
 
-    public void setRfc(String rfc) throws Exception {
-        if (rfc == null || rfc.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. RFC de empleado inválido.");
-        } else {
-            this.rfc = rfc;
-        }
+    public void setRfc(String rfc) {
+        this.rfc = rfc;
     }
 
     public Float getSalario() {
         return salario;
     }
 
-    public void setSalario(Float salario) throws Exception {
-        if (salario == null || salario <= 0) {
-            throw new ExcepcionAtributos("ERROR. Salario de empleado inválido.");
-        } else {
-            this.salario = salario;
+    public void setSalario(Float salario) {
+        this.salario = salario;
+    }
+
+    public EmpleadoEntity getEmpleadoEntity() {
+        return empleadoEntity;
+    }
+
+    public void setEmpleadoEntity(EmpleadoEntity empleado) {
+        this.empleadoEntity = empleado;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    public Integer getIdAgencia() {
+        return idAgencia;
+    }
+
+    public void setIdAgencia(Integer idAgencia) {
+        this.idAgencia = idAgencia;
+    }
+
+    public Integer getIdPuesto() {
+        return idPuesto;
+    }
+
+    public void setIdPuesto(Integer idPuesto) {
+        this.idPuesto = idPuesto;
+    }
+
+    /*
+     * Métodos bean
+     */
+    public List<EmpleadoEntity> obtenerEmpleados() {
+        servicioEmpleado = new ServicioEmpleado();
+
+        return (List<EmpleadoEntity>) servicioEmpleado.obtenerEmpleados();
+    }
+
+    public void obtenerEmpleado() {
+        servicioEmpleado = new ServicioEmpleado();
+        this.empleadoEntity = servicioEmpleado.obtenerEmpleado(this.idEmpleado);
+    }
+
+    public void actualizarEmpleado() {
+        servicioEmpleado = new ServicioEmpleado();
+        servicioAgencia = new ServicioAgencia();
+        servicioPuesto = new ServicioPuesto();
+
+        EmpleadoEntity empleadoMod = servicioEmpleado.obtenerEmpleado(this.idEmpleado);
+        try {
+            empleadoMod.setIdEmpleado(this.idEmpleado);
+            empleadoMod.setNombres(empleadoEntity.getNombres());
+            empleadoMod.setApellidos(empleadoEntity.getApellidos());
+            empleadoMod.setCorreo(empleadoEntity.getCorreo());
+            empleadoMod.setContrasena(empleadoEntity.getContrasena());
+            empleadoMod.setRfc(empleadoEntity.getRfc());
+            empleadoMod.setSalario(empleadoEntity.getSalario());
+
+            empleadoMod.setPuesto(servicioPuesto.obtenerPuesto(
+                    empleadoEntity.getPuesto().getIdPuesto()));
+            empleadoMod.setAgencia(servicioAgencia.obtenerAgencia(
+                    empleadoEntity.getAgencia().getIdAgencia()));
+
+            servicioEmpleado.actualizarEmpleado(empleadoMod);
+            this.estatus = "Empleado actualizado con éxito";
+        } catch (Exception e) {
+            this.estatus = "ERROR. No se pudo actualizar el empleado: " + e.getMessage();
         }
     }
 
-    public AgenciaBean getAgencia() {
-        return agencia;
-    }
+    public void nuevoEmpleado() {
+        servicioEmpleado = new ServicioEmpleado();
+        servicioAgencia = new ServicioAgencia();
+        servicioPuesto = new ServicioPuesto();
+        this.empleadoEntity = new EmpleadoEntity();
 
-    public void setAgencia(AgenciaBean agencia) throws Exception {
-        if (agencia == null) {
-            throw new ExcepcionAtributos("ERROR. Agencia de empleado inválida.");
-        } else {
-            this.agencia = agencia;
+        try {
+            empleadoEntity.setIdEmpleado(this.idEmpleado);
+            empleadoEntity.setNombres(this.nombres);
+            empleadoEntity.setApellidos(this.apellidos);
+            empleadoEntity.setCorreo(this.correo);
+            empleadoEntity.setContrasena(this.contrasena);
+            empleadoEntity.setRfc(this.rfc);
+            empleadoEntity.setSalario(this.salario);
+
+            empleadoEntity.setAgencia(servicioAgencia.obtenerAgencia(this.idAgencia));
+            empleadoEntity.setPuesto(servicioPuesto.obtenerPuesto(this.idPuesto));
+
+            servicioEmpleado.guardarEmpleado(empleadoEntity);
+            this.estatus = "Empleado registrado con éxito.";
+        } catch (Exception e) {
+            this.estatus = "ERROR. No se pudo registrar el empleado:" +
+                    e.getMessage();
         }
     }
 
-    public PuestoBean getPuesto() {
-        return puesto;
-    }
-
-    public void setPuesto(PuestoBean puesto) throws Exception {
-        if (puesto == null) {
-            throw new ExcepcionAtributos("ERROR. Puesto de empleado inválido.");
-        } else {
-            this.puesto = puesto;
+    public void eliminarEmpleado() {
+        servicioEmpleado = new ServicioEmpleado();
+        try {
+            if (servicioEmpleado.eliminarEmpleado(this.idEmpleado)) {
+                this.estatus = "Empleado eliminado con éxito";
+            } else {
+                this.estatus = "ERROR. No se pudo eliminar el empleado";
+            }
+        } catch (Exception e) {
+            this.estatus = "ERROR. No se pudo eliminar el empleado";
         }
     }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((idEmpleado == null) ? 0 : idEmpleado.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        EmpleadoBean other = (EmpleadoBean) obj;
-        if (idEmpleado == null) {
-            if (other.idEmpleado != null)
-                return false;
-        } else if (!idEmpleado.equals(other.idEmpleado))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Empleado [idEmpleado=" + idEmpleado + ", nombres=" + nombres + ", apellidos=" + apellidos + ", correo="
-                + correo + ", contrasena=" + contrasena + ", rfc=" + rfc + ", salario=" + salario
-                + ", agencia=" + agencia.getUbicacionAgencia() + ", puesto=" + puesto.getPuesto()
-                + "]";
-    }
-
 }
