@@ -165,7 +165,7 @@ public class EmpleadoBean implements Serializable {
             servicioEmpleado.actualizarEmpleado(empleadoMod);
             this.estatus = "Empleado actualizado con éxito";
         } catch (Exception e) {
-            this.estatus = "ERROR. No se pudo actualizar el empleado: " + e.getMessage();
+            this.estatus = "No se pudo actualizar el empleado: " + e.getMessage();
         }
     }
 
@@ -190,7 +190,7 @@ public class EmpleadoBean implements Serializable {
             servicioEmpleado.guardarEmpleado(empleadoEntity);
             this.estatus = "Empleado registrado con éxito.";
         } catch (Exception e) {
-            this.estatus = "ERROR. No se pudo registrar el empleado:" +
+            this.estatus = "No se pudo registrar el empleado:" +
                     e.getMessage();
         }
     }

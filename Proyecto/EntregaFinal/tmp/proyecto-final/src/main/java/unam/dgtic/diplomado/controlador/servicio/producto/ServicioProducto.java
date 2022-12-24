@@ -107,9 +107,9 @@ public class ServicioProducto implements RepositorioProducto {
         em = emf.createEntityManager();
 
         try {
-            Query query = em.createQuery("SELECT o from Orden o\n" +
+            Query query = em.createQuery("SELECT o from OrdenEntity o\n" +
                     "JOIN OrdenProducto op on o.idOrden = op.idOrden\n" +
-                    "JOIN Producto p on op.idProducto = p.idProducto\n" +
+                    "JOIN ProductoEntity p on op.idProducto = p.idProducto\n" +
                     "WHERE p.idProducto = " + idProducto);
             return (Iterable<OrdenEntity>) query.getResultList();
 

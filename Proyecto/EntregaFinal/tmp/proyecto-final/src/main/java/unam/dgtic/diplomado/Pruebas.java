@@ -1,39 +1,30 @@
 package unam.dgtic.diplomado;
 
-import unam.dgtic.diplomado.controlador.servicio.agencia.ServicioAgencia;
-import unam.dgtic.diplomado.controlador.servicio.empleado.ServicioEmpleado;
-import unam.dgtic.diplomado.controlador.servicio.empleado.ServicioPuesto;
-import unam.dgtic.diplomado.modelo.entidades.empleado.EmpleadoEntity;
+import java.util.List;
+
+import unam.dgtic.diplomado.controlador.servicio.producto.ServicioProducto;
+import unam.dgtic.diplomado.modelo.entidades.orden.OrdenEntity;
+import unam.dgtic.diplomado.modelo.entidades.producto.ProductoEntity;
 
 public class Pruebas {
 
     public static void main(String[] args) {
 
-        ServicioAgencia servicioAgencia = new ServicioAgencia();
-        ServicioEmpleado servicioEmpleado = new ServicioEmpleado();
-        ServicioPuesto servicioPuesto = new ServicioPuesto();
+        ServicioProducto servicioProducto = new ServicioProducto();
+        ProductoEntity productoEntity = new ProductoEntity();
 
-        EmpleadoEntity empleadoEntity = new EmpleadoEntity();
         try {
-            empleadoEntity.setIdEmpleado(20);
-            empleadoEntity.setNombres("Nombre");
-            empleadoEntity.setApellidos("Ubicacion");
-            empleadoEntity.setCorreo("hola@avk.com");
-            empleadoEntity.setContrasena("Hola");
-            empleadoEntity.setRfc("RFC");
-            empleadoEntity.setSalario(100.0f);
-            empleadoEntity.setAgencia(servicioAgencia.obtenerAgencia(2));
-            empleadoEntity.setPuesto(servicioPuesto.obtenerPuesto(1));
+            productoEntity.setIdProducto(10);
+            productoEntity.setNombreProducto("tmp");
+            productoEntity.setMultiplicador(1.5f);
+            productoEntity.setEstatus("Activo");
+            productoEntity.setOrdenes((List<OrdenEntity>) servicioProducto.productoJoinCliente(10));
 
-            servicioEmpleado.guardarEmpleado(empleadoEntity);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-        Iterable<EmpleadoEntity> empleados = servicioEmpleado.obtenerEmpleados();
-        for (EmpleadoEntity a : empleados) {
-            System.out.println(a);
-        }
+        System.out.println(productoEntity);
 
         /*
          * while (true) {

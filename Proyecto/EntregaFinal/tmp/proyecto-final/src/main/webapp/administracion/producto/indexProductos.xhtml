@@ -25,7 +25,7 @@
       <h1>Gestión de productos.</h1>
 
 
-      <div id="divProductos">
+      <div id="divEmpleados">
         <h:dataTable
           id="productosList"
           value="#{productoBean.obtenerProductos()}"
@@ -55,6 +55,11 @@
             #{productoEntity.estatus}
           </h:column>
 
+          <h:column>
+            <f:facet name="header">Número veces adquirido.</f:facet>
+            #{productoEntity.ordenes.size()}
+          </h:column>
+
         <br />
         <br />
         <h:commandButton id="back" value="Atras" action="../../index.xhtml" />
@@ -78,7 +83,7 @@
                 <h:commandButton class="botonConfirmar" value="Buscar" >
                     <f:ajax execute="idProductoInput"  
                         render="iNombre iMultiplicador iEstatus "
-                        listener="#{empleadoBean.obtenerEmpleado()}"
+                        listener="#{productoBean.obtenerProducto()}"
                     />
                 </h:commandButton>
 
@@ -106,7 +111,7 @@
 
                 <br />
                 <br />
-                <h:outputText id="tmp" value="#{productoBean.estatus}"/>
+                <h:outputText id="tmp" value="#{productoBean.estatusStr}"/>
             </p>
 
         </h:form>
