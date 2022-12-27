@@ -8,9 +8,9 @@ public interface RepositorioViaje {
 
     public ViajeEntity obtenerViaje(Integer idViaje);
 
-    public void guardarViaje(ViajeEntity viaje) throws Exception;
+    public boolean guardarViaje(ViajeEntity viaje) throws Exception;
 
-    public void eliminarViaje(Integer idViaje);
+    public boolean eliminarViaje(Integer idViaje) throws Exception;
 
-    public void actualizarViaje(ViajeEntity viajeParam);
+    public boolean actualizarViaje(ViajeEntity viajeParam) throws Exception;
 }

@@ -2,15 +2,16 @@ package unam.dgtic.diplomado.modelo.entidades.transporte;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
 @Entity(name = "autobus")
 @DiscriminatorValue("Autobús")
 public class AutobusEntity extends TransporteEntity {
 
-    private String estacionamientoAsignado;
+    @Column(name = "estacionamientoAsignado", insertable = true, updatable = true)
+    private String estacionamientoAsignado = "";
 
     public AutobusEntity() {
         super();
@@ -28,12 +29,8 @@ public class AutobusEntity extends TransporteEntity {
         return estacionamientoAsignado;
     }
 
-    public void setEstacionamientoAsignado(String estacionamientoAsignado) throws Exception {
-        if (estacionamientoAsignado == null || estacionamientoAsignado.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Estacionamiento de autobús inválido.");
-        } else {
-            this.estacionamientoAsignado = estacionamientoAsignado;
-        }
+    public void setEstacionamientoAsignado(String estacionamientoAsignado) {
+        this.estacionamientoAsignado = estacionamientoAsignado;
     }
 
     @Override

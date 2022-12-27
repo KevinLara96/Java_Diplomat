@@ -7,7 +7,6 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import unam.dgtic.diplomado.controlador.servicio.producto.ServicioProducto;
 import unam.dgtic.diplomado.modelo.beans.orden.OrdenBean;
-import unam.dgtic.diplomado.modelo.entidades.orden.OrdenEntity;
 import unam.dgtic.diplomado.modelo.entidades.producto.ProductoEntity;
 
 @Named
@@ -119,7 +118,7 @@ public class ProductoBean implements Serializable {
             productoMod.setNombreProducto(productoEntity.getNombreProducto());
             productoMod.setMultiplicador(productoEntity.getMultiplicador());
             productoMod.setEstatus(productoEntity.getEstatus());
-            productoMod.setOrdenes((List<OrdenEntity>) servicioProducto.productoJoinCliente(this.getIdProducto()));
+            productoMod.setOrdenes(servicioProducto.productoJoinOrden(this.getIdProducto()));
 
             servicioProducto.actualizarProducto(productoMod);
             this.estatusStr = "Producto actualizado con éxito";
@@ -137,7 +136,7 @@ public class ProductoBean implements Serializable {
             productoEntity.setNombreProducto(this.nombreProducto);
             productoEntity.setMultiplicador(this.multiplicador);
             productoEntity.setEstatus(this.estatus);
-            productoEntity.setOrdenes((List<OrdenEntity>) servicioProducto.productoJoinCliente(this.idProducto));
+            productoEntity.setOrdenes(servicioProducto.productoJoinOrden(this.idProducto));
 
             servicioProducto.guardarProducto(productoEntity);
             this.estatusStr = "Producto agregado con éxito.";
@@ -150,12 +149,12 @@ public class ProductoBean implements Serializable {
         servicioProducto = new ServicioProducto();
         try {
             if (servicioProducto.eliminarProducto(this.idProducto)) {
-                this.estatus = "Producto eliminado con éxito";
+                this.estatusStr = "Producto eliminado con éxito";
             } else {
-                this.estatus = "ERROR. No se pudo eliminar el producto";
+                this.estatusStr = "ERROR. No se pudo eliminar el producto";
             }
         } catch (Exception e) {
-            this.estatus = "ERROR. No se pudo eliminar el producto";
+            this.estatusStr = "ERROR. No se pudo eliminar el producto";
         }
     }
 }

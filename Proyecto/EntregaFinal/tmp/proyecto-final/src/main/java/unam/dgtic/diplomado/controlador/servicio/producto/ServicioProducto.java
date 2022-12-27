@@ -1,5 +1,7 @@
 package unam.dgtic.diplomado.controlador.servicio.producto;
 
+import java.util.List;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -11,20 +13,20 @@ import unam.dgtic.diplomado.modelo.entidades.producto.ProductoEntity;
 public class ServicioProducto implements RepositorioProducto {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyectofinal");
-    protected EntityManager em;
+    private EntityManager em;
 
     public ServicioProducto() {
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<ProductoEntity> obtenerProductos() {
+    public List<ProductoEntity> obtenerProductos() {
         em = emf.createEntityManager();
         try {
             Query query = em.createQuery("SELECT p from ProductoEntity p\n" +
                     "ORDER BY p.idProducto");
 
-            return (Iterable<ProductoEntity>) query.getResultList();
+            return query.getResultList();
         } finally {
             em.close();
         }
@@ -36,7 +38,9 @@ public class ServicioProducto implements RepositorioProducto {
         em = emf.createEntityManager();
 
         try {
-            return em.find(ProductoEntity.class, idProducto);
+            ProductoEntity producto = em.find(ProductoEntity.class, idProducto);
+
+            return producto;
         } finally {
             em.close();
         }
@@ -103,15 +107,15 @@ public class ServicioProducto implements RepositorioProducto {
     }
 
     @SuppressWarnings("unchecked")
-    public Iterable<OrdenEntity> productoJoinCliente(Integer idProducto) {
+    public List<OrdenEntity> productoJoinOrden(Integer idProducto) {
         em = emf.createEntityManager();
 
         try {
             Query query = em.createQuery("SELECT o from OrdenEntity o\n" +
-                    "JOIN OrdenProducto op on o.idOrden = op.idOrden\n" +
+                    "JOIN OrdenProductoEntity op on o.idOrden = op.idOrden\n" +
                     "JOIN ProductoEntity p on op.idProducto = p.idProducto\n" +
                     "WHERE p.idProducto = " + idProducto);
-            return (Iterable<OrdenEntity>) query.getResultList();
+            return (List<OrdenEntity>) query.getResultList();
 
         } finally {
             em.close();

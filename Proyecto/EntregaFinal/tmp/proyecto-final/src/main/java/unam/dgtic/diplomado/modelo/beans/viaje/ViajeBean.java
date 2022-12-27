@@ -2,15 +2,23 @@ package unam.dgtic.diplomado.modelo.beans.viaje;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
-import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+import unam.dgtic.diplomado.controlador.servicio.viaje.ServicioViaje;
+import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAutobusEntity;
+import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAvionEntity;
+import unam.dgtic.diplomado.modelo.entidades.viaje.ViajeEntity;
 
 @Named
 @SessionScoped
 public class ViajeBean implements Serializable {
+
+    private ServicioViaje servicioViaje;
+    private ViajeEntity viajeEntity;
+    private TipoViajeAutobusEntity tipoViajeAutobusEntity;
+    private TipoViajeAvionEntity tipoViajeAvionEntity;
 
     private Integer idViaje;
     private String origen;
@@ -18,206 +26,148 @@ public class ViajeBean implements Serializable {
     private Float precio;
     private Date fecha;
 
-    private AgenciaBean agencia;
-    private TipoViajeAutobusBean tipoViajeAutobus;
-    private TipoViajeAvionBean tipoViajeAvion;
+    private Integer idAgencia;
+    private Integer idTipoViajeAvion;
+    private Integer idTipoViajeAutobus;
+    private String estatus;
 
+    /*
+     * Constructores
+     */
     public ViajeBean() {
     }
 
-    public ViajeBean(Integer idViaje) {
-        this.idViaje = idViaje;
+    /*
+     * Setters & Getters
+     */
+
+    public ViajeEntity getViajeEntity() {
+        return viajeEntity;
+    }
+
+    public void setViajeEntity(ViajeEntity viajeEntity) {
+        this.viajeEntity = viajeEntity;
+    }
+
+    public TipoViajeAutobusEntity getTipoViajeAutobusEntity() {
+        return tipoViajeAutobusEntity;
+    }
+
+    public void setTipoViajeAutobusEntity(TipoViajeAutobusEntity tipoViajeAutobusEntity) {
+        this.tipoViajeAutobusEntity = tipoViajeAutobusEntity;
+    }
+
+    public TipoViajeAvionEntity getTipoViajeAvionEntity() {
+        return tipoViajeAvionEntity;
+    }
+
+    public void setTipoViajeAvionEntity(TipoViajeAvionEntity tipoViajeAvionEntity) {
+        this.tipoViajeAvionEntity = tipoViajeAvionEntity;
     }
 
     public Integer getIdViaje() {
         return idViaje;
     }
 
-    public void setIdViaje(Integer idViaje) throws Exception {
-        if (idViaje == null || idViaje <= 0) {
-            throw new ExcepcionAtributos("ERROR. Id de viaje inválido.");
-        } else {
-            this.idViaje = idViaje;
-        }
+    public void setIdViaje(Integer idViaje) {
+        this.idViaje = idViaje;
     }
 
     public String getOrigen() {
         return origen;
     }
 
-    public void setOrigen(String origen) throws Exception {
-        if (origen == null || origen.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Origen de viaje inválido.");
-        } else {
-            this.origen = origen;
-        }
+    public void setOrigen(String origen) {
+        this.origen = origen;
     }
 
     public String getDestino() {
         return destino;
     }
 
-    public void setDestino(String destino) throws Exception {
-        if (destino == null || destino.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Destino de viaje inválido.");
-        } else {
-            this.destino = destino;
-        }
+    public void setDestino(String destino) {
+        this.destino = destino;
     }
 
     public Float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Float precio) throws Exception {
-        if (precio == null || precio <= 0) {
-            throw new ExcepcionAtributos("ERROR. Precio de viaje inválido.");
-        } else {
-            this.precio = precio;
-        }
+    public void setPrecio(Float precio) {
+        this.precio = precio;
     }
 
     public Date getFecha() {
         return fecha;
     }
 
-    public AgenciaBean getAgencia() {
-        return agencia;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public void setAgencia(AgenciaBean agencia) {
-        this.agencia = agencia;
+    public Integer getIdAgencia() {
+        return idAgencia;
     }
 
-    public void setFecha(Date fecha) throws Exception {
-        if (fecha == null || fecha.toString().isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Fecha de viaje inválido.");
-        } else {
-            this.fecha = fecha;
-        }
+    public void setIdAgencia(Integer idAgencia) {
+        this.idAgencia = idAgencia;
     }
 
-    public TipoViajeAutobusBean getTipoViajeAutobus() {
-        return tipoViajeAutobus;
+    public String getEstatus() {
+        return estatus;
     }
 
-    public void setTipoViajeAutobus(TipoViajeAutobusBean tipoViajeAutobus) throws Exception {
-        if (tipoViajeAutobus == null) {
-            throw new ExcepcionAtributos("ERROR. Tipo de viaje en autoús inválido.");
-        } else {
-            this.tipoViajeAutobus = tipoViajeAutobus;
-        }
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
     }
 
-    public TipoViajeAvionBean getTipoViajeAvion() {
-        return tipoViajeAvion;
+    public Integer getIdTipoViajeAvion() {
+        return idTipoViajeAvion;
     }
 
-    public void setTipoViajeAvion(TipoViajeAvionBean tipoViajeAvion) throws Exception {
-        if (tipoViajeAvion == null) {
-            throw new ExcepcionAtributos("ERROR. Tipo de viaje en avión inválido.");
-        } else {
-            this.tipoViajeAvion = tipoViajeAvion;
-        }
+    public void setTipoViajeAvion(Integer idTipoViajeAvion) {
+        this.idTipoViajeAvion = idTipoViajeAvion;
     }
 
-    public Boolean verificaTipoViaje() {
-        // Si es viaje de autobús, avión debe ser 4.
-        if (tipoViajeAutobus.getIdTipoViajeAutobus() != 4 && tipoViajeAvion.getIdTipoViajeAvion() == 4) {
-            return true;
-        }
-        // Si es viaje de avión, autobúse debe ser 4.
-        if (tipoViajeAvion.getIdTipoViajeAvion() != 4 && tipoViajeAutobus.getIdTipoViajeAutobus() == 4) {
-            return true;
-        }
-
-        return false;
+    public Integer getIdTipoViajeAutobus() {
+        return idTipoViajeAutobus;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((idViaje == null) ? 0 : idViaje.hashCode());
-        return result;
+    public void setTipoViajeAutobus(Integer idTipoViajeAutobus) {
+        this.idTipoViajeAutobus = idTipoViajeAutobus;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        ViajeBean other = (ViajeBean) obj;
-        if (idViaje == null) {
-            if (other.idViaje != null)
-                return false;
-        } else if (!idViaje.equals(other.idViaje))
-            return false;
-        return true;
+    /*
+     * Métodos Bean
+     */
+    public List<ViajeEntity> obtenerViajes() {
+        servicioViaje = new ServicioViaje();
+
+        return servicioViaje.obtenerViajes();
     }
 
-    @Override
-    public String toString() {
-        return "[idViaje=" + idViaje + ", origen=" + origen + ", destino=" + destino + ", precio=" + precio
-                + ", fecha=" + fecha + ", agencia=" + agencia.getUbicacionAgencia() + ", tipoViajeAutobus="
-                + tipoViajeAutobus.getTipoViajeAutobus()
-                + ", tipoViajeAvion=" + tipoViajeAvion.getTipoViajeAvion() + "]";
+    public void obtenerViaje() {
+        this.servicioViaje = new ServicioViaje();
+
+        this.viajeEntity = servicioViaje.obtenerViaje(this.idViaje);
+        this.idTipoViajeAutobus = viajeEntity.getTipoViajeAutobus().getIdTipoViajeAutobus();
+        this.idTipoViajeAvion = viajeEntity.getTipoViajeAvion().getIdTipoViajeAvion();
+        this.idAgencia = viajeEntity.getAgencia().getIdAgencia();
     }
 
-    // Clases internas.
-    public static class Builder {
-
-        private ViajeBean viaje;
-
-        public Builder() {
-            viaje = new ViajeBean();
-        }
-
-        public BuildViajeAvion setViajeAvion(TipoViajeAvionBean tipoViajeAvion) {
-            viaje.tipoViajeAvion = tipoViajeAvion;
-            return new ViajeBean.BuildViajeAvion(viaje);
-        }
-
-        public BuildViajeAutobus setViajeAutobus(TipoViajeAutobusBean tipoViajeAutobus) {
-            viaje.tipoViajeAutobus = tipoViajeAutobus;
-            return new ViajeBean.BuildViajeAutobus(viaje);
+    public void actualizarViaje() {
+        try {
+            this.viajeEntity.setOrigen("Hola");
+        } catch (Exception e) {
+            this.estatus = "Error";
         }
     }
 
-    public static class BuildViajeAvion {
-        private ViajeBean viaje;
-
-        private BuildViajeAvion(ViajeBean viaje) {
-            this.viaje = viaje;
-        }
-
-        public BuildViajeAvion setTipoViajeAvion(TipoViajeAvionBean tipoViajeAvion) throws Exception {
-            this.viaje.setTipoViajeAvion(tipoViajeAvion);
-            return this;
-        }
-
-        public ViajeBean build() {
-            return this.viaje;
-        }
+    public void nuevoViaje() {
+        this.estatus = "Nuevo";
     }
 
-    public static class BuildViajeAutobus {
-        private ViajeBean viaje;
-
-        private BuildViajeAutobus(ViajeBean viaje) {
-            this.viaje = viaje;
-        }
-
-        public BuildViajeAutobus setTipoViajeAutobus(TipoViajeAutobusBean tipoViajeAutobus) throws Exception {
-            this.viaje.setTipoViajeAutobus(tipoViajeAutobus);
-            return this;
-        }
-
-        public ViajeBean build() {
-            return this.viaje;
-        }
+    public void eliminarViaje() {
+        this.estatus = "Eliminar";
     }
 }

@@ -10,9 +10,9 @@ unam/dgtic/diplomado/modelo/entidades/transporte/factory/AutobusFactory.class
 unam/dgtic/diplomado/modelo/beans/agencia/AgenciaBean.class
 unam/dgtic/diplomado/controlador/repositorio/empleado/RepositorioPuesto.class
 unam/dgtic/diplomado/modelo/entidades/viaje/ViajeEntity$BuildViajeAvion.class
+unam/dgtic/diplomado/modelo/entidades/producto/OrdenProductoEntity.class
 unam/dgtic/diplomado/controlador/repositorio/agencia/RepositorioAgencia.class
 unam/dgtic/diplomado/modelo/beans/cliente/ClienteBean.class
-unam/dgtic/diplomado/modelo/beans/transporte/factory/TransporteFactory.class
 unam/dgtic/diplomado/controlador/servicio/agencia/ServicioAgencia.class
 unam/dgtic/diplomado/modelo/beans/viaje/TipoViajeAutobusBean.class
 unam/dgtic/diplomado/modelo/entidades/viaje/ViajeEntity$1.class
@@ -28,11 +28,9 @@ unam/dgtic/diplomado/controlador/repositorio/viaje/RepositorioViaje.class
 unam/dgtic/diplomado/modelo/beans/transporte/AutobusBean.class
 unam/dgtic/diplomado/controlador/servicio/viaje/ServicioViaje.class
 unam/dgtic/diplomado/modelo/entidades/transporte/factory/AvionFactory.class
-unam/dgtic/diplomado/modelo/beans/viaje/ViajeBean$BuildViajeAutobus.class
 unam/dgtic/diplomado/modelo/beans/transporte/TransporteBean.class
 unam/dgtic/diplomado/controlador/servicio/viaje/ServicioTipoViajeAvion.class
 unam/dgtic/diplomado/modelo/entidades/empleado/EmpleadoEntity.class
-unam/dgtic/diplomado/modelo/beans/viaje/ViajeBean$1.class
 unam/dgtic/diplomado/modelo/beans/viaje/TipoViajeAvionBean.class
 unam/dgtic/diplomado/controlador/servicio/cliente/ServicioCliente.class
 unam/dgtic/diplomado/modelo/beans/transporte/AvionBean.class
@@ -43,13 +41,10 @@ unam/dgtic/diplomado/modelo/entidades/viaje/ViajeEntity.class
 unam/dgtic/diplomado/modelo/excepciones/ExcepcionAtributos.class
 unam/dgtic/diplomado/modelo/entidades/agencia/AgenciaEntity.class
 unam/dgtic/diplomado/controlador/repositorio/empleado/RepositorioEmpleado.class
-unam/dgtic/diplomado/modelo/beans/viaje/ViajeBean$Builder.class
-unam/dgtic/diplomado/modelo/beans/transporte/factory/AvionFactory.class
 unam/dgtic/diplomado/controlador/servicio/viaje/ServicioTipoViajeAutobus.class
+unam/dgtic/diplomado/modelo/entidades/orden/Ids.class
 unam/dgtic/diplomado/modelo/entidades/transporte/AvionEntity.class
-unam/dgtic/diplomado/modelo/beans/transporte/factory/AutobusFactory.class
 unam/dgtic/diplomado/modelo/entidades/empleado/PuestoEntity.class
-unam/dgtic/diplomado/modelo/beans/viaje/ViajeBean$BuildViajeAvion.class
 unam/dgtic/diplomado/controlador/repositorio/orden/RepositorioOrden.class
 unam/dgtic/diplomado/controlador/servicio/transporte/ServicioTransporte.class
 unam/dgtic/diplomado/modelo/beans/viaje/ViajeBean.class

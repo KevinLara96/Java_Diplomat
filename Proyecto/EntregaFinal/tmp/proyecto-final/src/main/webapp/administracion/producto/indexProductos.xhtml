@@ -120,54 +120,34 @@
     <div ID="SeccionNueva" class="datosInput" style="display:none">
         <h:form id="nuevoEmpleado" >
             <p> 
-                <h:inputText id="iIdN" styleClass="inputForm" value="#{empleadoBean.idEmpleado}" 
-                        a:placeholder="Id Empleado"/>
+                <h:inputText id="iIdN" styleClass="inputForm" value="#{productoBean.idProducto}" 
+                        a:placeholder="Id Producto"/>
 
                 <br />
                 <br />
-                <h:inputText id="iNombreN" styleClass="inputForm" a:placeholder="Nombre(s) empleado." value="#{empleadoBean.nombres}"/>
+                <h:inputText id="iNombreN" styleClass="inputForm" a:placeholder="Nombre producto." value="#{productoBean.nombreProducto}"/>
 
                 <br />
                 <br />
-                <h:inputText id="iApellidosN" styleClass="inputForm" a:placeholder="Apellidos empleado." value="#{empleadoBean.apellidos}" />
+                <h:inputText id="iMultiplicadorN" styleClass="inputForm" a:placeholder="Multiplicador producto." value="#{productoBean.multiplicador}" />
 
                 <br />
                 <br />
-                <h:inputText id="iCorreoN" styleClass="inputForm" a:placeholder="Correo electrónico." value="#{empleadoBean.correo}" />
-
-                <br />
-                <br />
-                <h:inputSecret id="iContrasenaN" styleClass="inputForm" a:placeholder="Contraseña." value="#{empleadoBean.contrasena}" requiredMessage="Contraseña obligatoria"/>
-
-                <br />
-                <br />
-                <h:inputText id="iRFCN" styleClass="inputForm" a:placeholder="RFC empleado." value="#{empleadoBean.rfc}" />
-
-                <br />
-                <br />
-                <h:inputText id="iSalarioN" styleClass="inputForm" a:placeholder="Salario." value="#{empleadoBean.salario}" />
-
-                <br />
-                <br />
-                <h:inputText id="iAgenciaN" styleClass="inputForm" a:placeholder="Id agencia." value="#{empleadoBean.idAgencia}" />
-
-                <br />
-                <br />
-                <h:inputText id="iPuestoN" styleClass="inputForm" a:placeholder="Id puesto." value="#{empleadoBean.idPuesto}" />
+                <h:inputText id="iEstadoN" styleClass="inputForm" a:placeholder="Estado producto." value="#{productoBean.estatus}" />
 
                 <br />
                 <br />
                 <h:commandButton class="botonConfirmar" value="Guardar" >
                     <f:ajax
-                    execute="iIdN iNombreN iApellidosN iCorreoN iContrasenaN iRFCN iSalarioN iAgenciaN iPuestoN"
+                    execute="iIdN iNombreN iMultiplicadorN iEstadoN "
                     render="tmp" 
-                    listener="#{empleadoBean.nuevoEmpleado()}"
+                    listener="#{productoBean.nuevoProducto()}"
                     />
                 </h:commandButton>
 
                 <br />
                 <br />
-                <h:outputText id="tmp" value="#{empleadoBean.estatus}"/>
+                <h:outputText id="tmp" value="#{productoBean.estatusStr}"/>
             </p>
 
         </h:form>
@@ -177,17 +157,17 @@
     <div ID="SeccionEliminar" class="center" style="display:none">
         <h:form id="eliminaEmpleado">
             <p>
-                <h:inputText id="inputIdEliminar" styleClass="inputForm" a:placeholder="Id. Empleado." value="#{empleadoBean.idEmpleado}" />
+                <h:inputText id="inputIdEliminar" styleClass="inputForm" a:placeholder="Id. Producto." value="#{productoBean.idProducto}" />
                 <br />
                 <br />
 
                 <h:commandButton class="botonConfirmar" value="Eliminar" >
-                    <f:ajax execute="inputIdEliminar" render="tmp" listener="#{empleadoBean.eliminarEmpleado()}"/>
+                    <f:ajax execute="inputIdEliminar" render="tmp" listener="#{productoBean.eliminarProducto()}"/>
                 </h:commandButton>
 
                 <br />
                 <br />
-                <h:outputText id="tmp" value="#{empleadoBean.estatus}"/>
+                <h:outputText id="tmp" value="#{productoBean.estatusStr}"/>
             </p>
         </h:form>
     </div>

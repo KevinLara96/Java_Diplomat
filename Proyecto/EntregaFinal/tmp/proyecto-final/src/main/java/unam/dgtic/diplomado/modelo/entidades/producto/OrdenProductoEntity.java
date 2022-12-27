@@ -9,17 +9,17 @@ import unam.dgtic.diplomado.modelo.entidades.orden.Ids;
 @Entity
 @Table(name = "orden_producto")
 @IdClass(Ids.class)
-public class OrdenProducto {
+public class OrdenProductoEntity {
 
     @Id
     private Integer idOrden;
     @Id
     private Integer idProducto;
 
-    public OrdenProducto() {
+    public OrdenProductoEntity() {
     }
 
-    public OrdenProducto(Integer idOrden, Integer idProducto) {
+    public OrdenProductoEntity(Integer idOrden, Integer idProducto) {
         this.idOrden = idOrden;
         this.idProducto = idProducto;
     }
@@ -57,7 +57,7 @@ public class OrdenProducto {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        OrdenProducto other = (OrdenProducto) obj;
+        OrdenProductoEntity other = (OrdenProductoEntity) obj;
         if (idOrden == null) {
             if (other.idOrden != null)
                 return false;

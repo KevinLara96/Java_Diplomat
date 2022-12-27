@@ -12,6 +12,7 @@
         <class>unam.dgtic.diplomado.modelo.entidades.orden.OrdenEntity</class>
 
         <class>unam.dgtic.diplomado.modelo.entidades.producto.ProductoEntity</class>
+        <class>unam.dgtic.diplomado.modelo.entidades.producto.OrdenProductoEntity</class>
 
         <class>unam.dgtic.diplomado.modelo.entidades.empleado.EmpleadoEntity</class>
         <class>unam.dgtic.diplomado.modelo.entidades.empleado.PuestoEntity</class>

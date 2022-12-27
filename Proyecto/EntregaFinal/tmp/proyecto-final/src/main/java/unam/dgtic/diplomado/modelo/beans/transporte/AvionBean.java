@@ -18,8 +18,7 @@ public class AvionBean extends TransporteBean {
 
     public AvionBean(Integer idTransporte, String marca, String modelo, Integer capacidadCombustible,
             Date fechaAdquisicion, String puertoAsignado, Integer asientosBasicos, Integer asientosPrimeraClase) {
-        super(idTransporte, marca, modelo, capacidadCombustible, fechaAdquisicion, asientosBasicos,
-                asientosPrimeraClase);
+        super();
         this.puertoAsignado = puertoAsignado;
     }
 

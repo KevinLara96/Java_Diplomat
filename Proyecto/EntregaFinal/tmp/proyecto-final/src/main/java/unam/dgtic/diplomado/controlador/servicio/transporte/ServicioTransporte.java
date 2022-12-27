@@ -1,61 +1,110 @@
 package unam.dgtic.diplomado.controlador.servicio.transporte;
 
+import java.util.List;
+
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.transporte.RepositorioTransporte;
 import unam.dgtic.diplomado.modelo.entidades.transporte.TransporteEntity;
 
 public class ServicioTransporte implements RepositorioTransporte {
 
-    protected EntityManager em;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyectofinal");
+    private EntityManager em;
 
-    public ServicioTransporte(EntityManager em) {
-        super();
-        this.em = em;
+    public ServicioTransporte() {
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<TransporteEntity> obtenerTransportes() {
-        Query query = em.createQuery("SELECT t from Transporte t\n" +
-                "ORDER BY t.idTransporte");
+    public List<TransporteEntity> obtenerTransportes() {
+        em = emf.createEntityManager();
 
-        return (Iterable<TransporteEntity>) query.getResultList();
+        try {
+
+            Query query = em.createQuery("SELECT t from TransporteEntity t\n" +
+                    "ORDER BY t.idTransporte");
+
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public TransporteEntity obtenerTransporte(Integer idTransporte) {
-        return em.find(TransporteEntity.class, idTransporte);
-    }
+        em = emf.createEntityManager();
 
-    @Override
-    public void guardarTransporte(TransporteEntity transporte) throws Exception {
-        em.getTransaction().begin();
-        em.persist(transporte);
-        em.flush();
-        em.getTransaction().commit();
-    }
+        try {
+            TransporteEntity transporteEntity = em.find(TransporteEntity.class, idTransporte);
 
-    @Override
-    public void eliminarTransporte(Integer idTransporte) {
-        TransporteEntity transporte = obtenerTransporte(idTransporte);
-        if (transporte != null) {
-            em.getTransaction().begin();
-            em.remove(transporte);
-            em.flush();
-            em.getTransaction().commit();
+            return transporteEntity;
+        } finally {
+            em.close();
         }
     }
 
     @Override
-    public void actualizarTransporte(TransporteEntity transporteParam) {
-        TransporteEntity transporte = obtenerTransporte(transporteParam.getIdTransporte());
-        if (transporte != null) {
+    public boolean guardarTransporte(TransporteEntity transporte) throws Exception {
+        em = emf.createEntityManager();
+
+        try {
             em.getTransaction().begin();
-            transporte = em.merge(transporteParam);
+            em.persist(transporte);
             em.flush();
             em.getTransaction().commit();
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            em.close();
         }
 
+        return true;
+    }
+
+    @Override
+    public boolean eliminarTransporte(Integer idTransporte) throws Exception {
+        em = emf.createEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            TransporteEntity transporteEntity = em.find(TransporteEntity.class, idTransporte);
+            em.remove(transporteEntity);
+            em.flush();
+            em.getTransaction().commit();
+
+            if (transporteEntity != null) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public boolean actualizarTransporte(TransporteEntity transporteParam) throws Exception {
+        em = emf.createEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            em.merge(transporteParam);
+            em.flush();
+            em.getTransaction().commit();
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            em.close();
+        }
+
+        return true;
     }
 }

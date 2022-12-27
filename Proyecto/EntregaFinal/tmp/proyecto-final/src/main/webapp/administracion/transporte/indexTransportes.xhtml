@@ -1,0 +1,385 @@
+<!--?xml version='1.0' encoding='UTF-8' ?>
+<
+    Copyright (c) 2014, 2019 Oracle and/or its affiliates. All rights reserved.
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+    SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+>
+  <h:head></h:head>
+  <h:body>
+    <h:outputStylesheet name="css/stylesheet.css" target="head" />
+
+    <h:form id="listaTransportesAviones"  >
+      <h1>Gestión de aviones.</h1>
+
+
+      <div id="divEmpleados">
+        <h:dataTable
+          id="transportesList"
+          value="#{transporteBean.obtenerAviones()}"
+          var="avionEntity"
+          styleClass="tablaEmpleados"
+          headerClass="cabeceraEmpleados"
+          rowClasses="empleadoPar, empleadoImpar"
+          style="width: 100%"
+        >
+          <h:column>
+            <f:facet name="header">Id Transporte.</f:facet>
+            #{avionEntity.idTransporte}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Tipo Transporte.</f:facet>
+            #{avionEntity.tipoTransporte}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Marca</f:facet>
+            #{avionEntity.marca}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Modelo</f:facet>
+            #{avionEntity.modelo}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Capacidad combustible</f:facet>
+            #{avionEntity.capacidadCombustible}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Fecha adquisicion.</f:facet>
+            #{avionEntity.fechaAdquisicion}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Numero de asientos básicos.</f:facet>
+            #{avionEntity.asientosBasicos}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Número de asientos Primera Clase.</f:facet>
+            #{avionEntity.asientosPrimeraClase}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Puerto Asignado.</f:facet>
+            #{avionEntity.puertoAsignado}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Id agencia.</f:facet>
+            #{avionEntity.agencia.idAgencia}
+          </h:column>
+
+        <br />
+        <br />
+        <h:commandButton id="back" value="Atras" action="../../index.xhtml" />
+        </h:dataTable>
+      </div>
+    </h:form>
+    
+    <br />
+    <br />
+
+    <h:form id="listaTransportesAutobuses"  >
+      <h1>Gestión de autobuses.</h1>
+
+      <div id="divEmpleados">
+        <h:dataTable
+          id="transportesList"
+          value="#{transporteBean.obtenerAutobuses()}"
+          var="autobusEntity"
+          styleClass="tablaEmpleados"
+          headerClass="cabeceraEmpleados"
+          rowClasses="empleadoPar, empleadoImpar"
+          style="width: 100%"
+        >
+          <h:column>
+            <f:facet name="header">Id Transporte.</f:facet>
+            #{autobusEntity.idTransporte}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Tipo Transporte.</f:facet>
+            #{autobusEntity.tipoTransporte}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Marca</f:facet>
+            #{autobusEntity.marca}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Modelo</f:facet>
+            #{autobusEntity.modelo}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Capacidad combustible</f:facet>
+            #{autobusEntity.capacidadCombustible}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Fecha adquisicion.</f:facet>
+            #{autobusEntity.fechaAdquisicion}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Numero de asientos básicos.</f:facet>
+            #{autobusEntity.asientosBasicos}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Número de asientos Primera Clase.</f:facet>
+            #{autobusEntity.asientosPrimeraClase}
+          </h:column>
+
+
+          <h:column>
+            <f:facet name="header">Estacionamiento asignado.</f:facet>
+            #{autobusEntity.estacionamientoAsignado}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Id agencia.</f:facet>
+            #{autobusEntity.agencia.idAgencia}
+          </h:column>
+
+        <br />
+        <br />
+        <h:commandButton id="back" value="Atras" action="../../index.xhtml" />
+        </h:dataTable>
+      </div>
+    </h:form>
+
+    <div class="center">
+        <button class="buttonModificar" onClick="ShowAndHideModificar()">Modificar transporte</button>
+        <button class="buttonNuevo" onClick="ShowAndHideNueva()">Nuevo transporte</button>
+        <button class="buttonEliminar" onClick="ShowAndHideEliminar()">Eliminar transporte</button>
+    </div>
+
+    <div ID="SeccionModificar" class="datosInput" style="display:none">
+        <h:form id="modificarTransporte" >
+            <p> 
+                <h:inputText id="iId" styleClass="inputForm" value="#{transporteBean.idTransporte}" 
+                        required="true" a:placeholder="Id transporte"/>
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Buscar" >
+                    <f:ajax execute="iId"  
+                        render="iTipo iMarca iModelo iCapC iFecha iAB iPC iPuerto iEst iAgencia"
+                        listener="#{transporteBean.obtenerTransporte()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:inputText id="iTipo" styleClass="inputForm" a:placeholder="Tipo transporte." value="#{transporteBean.transporteEntity.tipoTransporte}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iMarca" styleClass="inputForm" a:placeholder="Marca." value="#{transporteBean.transporteEntity.marca}" />
+
+                <br />
+                <br />
+                <h:inputText id="iModelo" styleClass="inputForm" a:placeholder="Modelo." value="#{transporteBean.transporteEntity.modelo}" />
+
+                <br />
+                <br />
+                <h:inputText id="iCapC" styleClass="inputForm" a:placeholder="Capacidad combustible." value="#{transporteBean.transporteEntity.capacidadCombustible}" />
+
+                <br />
+                <br />
+                <h:inputText id="iFecha" styleClass="inputForm" a:placeholder="Fecha adquisición." value="#{transporteBean.fechaAdquisicion}" />
+
+                <br />
+                <br />
+                <h:inputText id="iAB" styleClass="inputForm" a:placeholder="Número asientos básicos." value="#{transporteBean.transporteEntity.asientosBasicos}" />
+
+                <br />
+                <br />
+                <h:inputText id="iPC" styleClass="inputForm" a:placeholder="Número asientos primera clase." value="#{transporteBean.transporteEntity.asientosPrimeraClase}" />
+
+                <br />
+                <br />
+                <h:inputText id="iPuerto" styleClass="inputForm" a:placeholder="Puerto asignado." value="#{transporteBean.puertoAsignado}" />
+
+                <br />
+                <br />
+                <h:inputText id="iEst" styleClass="inputForm" a:placeholder="Estacionamiento asignado." value="#{transporteBean.estacionamientoAsignado}" />
+
+                <br />
+                <br />
+                <h:inputText id="iAgencia" styleClass="inputForm" a:placeholder="Id agencia." value="#{transporteBean.idAgencia}" />
+
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax
+                    execute="iTipo iMarca iModelo iCapC iFecha iAB iPC iPuerto iEst iAgencia"
+                    render="tmp" 
+                    listener="#{transporteBean.actualizarTransporte()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{transporteBean.estatus}"/>
+            </p>
+
+        </h:form>
+    </div>
+
+    <div ID="SeccionNueva" class="datosInput" style="display:none">
+        <h:form id="nuevoTransporte" >
+            <p> 
+                <h:inputText id="iIdN" styleClass="inputForm" a:placeholder="Id transporte" value="#{transporteBean.idTransporte}" />
+
+                <br />
+                <br />
+                <h:inputText id="iTipoN" styleClass="inputForm" a:placeholder="Tipo transporte." value="#{transporteBean.tipoTransporte}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iMarcaN" styleClass="inputForm" a:placeholder="Marca." value="#{transporteBean.marca}" />
+
+                <br />
+                <br />
+                <h:inputText id="iModeloN" styleClass="inputForm" a:placeholder="Modelo." value="#{transporteBean.modelo}" />
+
+                <br />
+                <br />
+                <h:inputText id="iCapCN" styleClass="inputForm" a:placeholder="Capacidad combustible." value="#{transporteBean.capacidadCombustible}" />
+
+                <br />
+                <br />
+                <h:inputText id="iFechaN" styleClass="inputForm" a:placeholder="Fecha adquisición." value="#{transporteBean.fechaAdquisicion}" />
+
+                <br />
+                <br />
+                <h:inputText id="iABN" styleClass="inputForm" a:placeholder="Número asientos básicos." value="#{transporteBean.asientosBasicos}" />
+
+                <br />
+                <br />
+                <h:inputText id="iPCN" styleClass="inputForm" a:placeholder="Número asientos primera clase." value="#{transporteBean.asientosPrimeraClase}" />
+
+                <br />
+                <br />
+                <h:inputText id="iPuertoN" styleClass="inputForm" a:placeholder="Puerto asignado." value="#{transporteBean.puertoAsignado}" />
+
+                <br />
+                <br />
+                <h:inputText id="iEstN" styleClass="inputForm" a:placeholder="Estacionamiento asignado." value="#{transporteBean.estacionamientoAsignado}" />
+
+                <br />
+                <br />
+                <h:inputText id="iAgenciaN" styleClass="inputForm" a:placeholder="Id agencia." value="#{transporteBean.idAgencia}" />
+
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax
+                    execute="iIdN iTipoN iMarcaN iModeloN iCapCN iFechaN iABN iPCN iPuertoN iEstN iAgenciaN"
+                    render="tmp" 
+                    listener="#{transporteBean.nuevoTransporte()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{transporteBean.estatus}"/>
+            </p>
+
+        </h:form>
+
+    </div>
+
+
+    <div ID="SeccionEliminar" class="center" style="display:none">
+        <h:form id="eliminaTransporte">
+            <p>
+                <h:inputText id="inputIdEliminar" styleClass="inputForm" a:placeholder="Id. Transporte." value="#{transporteBean.idTransporte}" />
+                <br />
+                <br />
+
+                <h:commandButton class="botonConfirmar" value="Eliminar" >
+                    <f:ajax execute="inputIdEliminar" render="tmp" listener="#{transporteBean.eliminarTransporte()}"/>
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{transporteBean.estatus}"/>
+            </p>
+        </h:form>
+    </div>
+
+    <div id="Volver" class="center">
+        <form action="../../inicioAdministracion.xhtml">
+            <input type="submit" value="Atrás" />
+        </form>
+    </div>
+
+    <script>
+        function ShowAndHideModificar() {
+            var x = document.getElementById('SeccionModificar');
+            var y = document.getElementById('SeccionEliminar');
+            var z = document.getElementById('SeccionNueva');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideEliminar() {
+            var x = document.getElementById('SeccionEliminar');
+            var y = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionNueva');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideNueva() {
+            var x = document.getElementById('SeccionNueva');
+            var y = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionEliminar');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+    </script>
+
+  </h:body>
+</html>

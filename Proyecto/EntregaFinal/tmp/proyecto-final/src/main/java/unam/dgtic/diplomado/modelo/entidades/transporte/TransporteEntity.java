@@ -4,6 +4,7 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +21,7 @@ import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 @Entity
 @Table(name = "transporte")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipoTransporte")
+@DiscriminatorColumn(name = "tipoTransporte", discriminatorType = DiscriminatorType.STRING)
 public class TransporteEntity {
 
     @Id
@@ -38,6 +39,13 @@ public class TransporteEntity {
     @ManyToOne
     @JoinColumn(name = "idAgencia")
     private AgenciaEntity agencia;
+    @Column(name = "tipoTransporte", insertable = false, updatable = false)
+    private String tipoTransporte;
+
+    @Column(name = "puertoAsignado", insertable = false, updatable = false)
+    private String puertoAux;
+    @Column(name = "estacionamientoAsignado", insertable = false, updatable = false)
+    private String estacionamientoAux;
 
     public TransporteEntity() {
 
@@ -150,6 +158,34 @@ public class TransporteEntity {
         }
     }
 
+    public String getTipoTransporte() {
+        return tipoTransporte;
+    }
+
+    public void setTipoTransporte(String tipoTransporte) throws Exception {
+        if (tipoTransporte == null || tipoTransporte.isEmpty()) {
+            throw new Exception("ERROR. Tipo de transporte inválido.");
+        } else {
+            this.tipoTransporte = tipoTransporte;
+        }
+    }
+
+    public String getPuertoAux() {
+        return puertoAux;
+    }
+
+    public void setPuertoAux(String puertoAux) {
+        this.puertoAux = puertoAux;
+    }
+
+    public String getEstacionamientoAux() {
+        return estacionamientoAux;
+    }
+
+    public void setEstacionamientoAux(String estacionamientoAux) {
+        this.estacionamientoAux = estacionamientoAux;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -177,9 +213,11 @@ public class TransporteEntity {
 
     @Override
     public String toString() {
-        return "[idTransporte=" + idTransporte + ", tipoTransporte=" +
+        return "[idTransporte=" + idTransporte + ", tipoTransporte=" + this.getTipoTransporte() +
                 ", marca=" + marca + ", modelo=" + modelo
                 + ", capacidadCombustible=" + capacidadCombustible
+                + ", asientosBásicos=" + asientosBasicos
+                + ", asientosPC=" + asientosPrimeraClase
                 + ", fechaAdquisicion=" + fechaAdquisicion + ", agencia=" + agencia.getUbicacionAgencia();
     }
 

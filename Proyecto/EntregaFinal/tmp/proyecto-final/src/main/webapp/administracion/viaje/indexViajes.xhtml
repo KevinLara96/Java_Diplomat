@@ -1,0 +1,288 @@
+<!--?xml version='1.0' encoding='UTF-8' ?>
+<
+    Copyright (c) 2014, 2019 Oracle and/or its affiliates. All rights reserved.
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+    SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+>
+  <h:head></h:head>
+  <h:body>
+    <h:outputStylesheet name="css/stylesheet.css" target="head" />
+
+    <h:form id="listaViajes"  >
+      <h1>Gestión de viajes.</h1>
+
+      <div id="divEmpleados">
+        <h:dataTable
+          id="viajesList"
+          value="#{viajeBean.obtenerViajes()}"
+          var="viajeEntity"
+          styleClass="tablaEmpleados"
+          headerClass="cabeceraEmpleados"
+          rowClasses="empleadoPar, empleadoImpar"
+          style="width: 100%"
+        >
+          <h:column>
+            <f:facet name="header">Id viaje</f:facet>
+            #{viajeEntity.idViaje}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Origen</f:facet>
+            #{viajeEntity.origen}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Destino</f:facet>
+            #{viajeEntity.destino}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Precio</f:facet>
+            #{viajeEntity.precio}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Fecha</f:facet>
+            #{viajeEntity.fecha}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Tipo Viaje Autobús</f:facet>
+            #{viajeEntity.tipoViajeAutobus.tipoViajeAutobus}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Tipo Viaje Avión</f:facet>
+            #{viajeEntity.tipoViajeAvion.tipoViajeAvion}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Agencia</f:facet>
+            #{viajeEntity.agencia.ubicacionAgencia}
+          </h:column>
+
+        <br />
+        <br />
+        <h:commandButton id="back" value="Atras" action="../../index.xhtml" />
+        </h:dataTable>
+      </div>
+    </h:form>
+
+    <div class="center">
+        <button class="buttonModificar" onClick="ShowAndHideModificar()">Modificar Viaje</button>
+        <button class="buttonNuevo" onClick="ShowAndHideNueva()">Nuevo viaje</button>
+        <button class="buttonEliminar" onClick="ShowAndHideEliminar()">Eliminar viaje</button>
+    </div>
+
+    <div ID="SeccionModificar" class="datosInput" style="display:none">
+        <h:form id="modificarViaje" >
+            <p> 
+                <h:inputText id="iId" styleClass="inputForm" value="#{viajeBean.idViaje}" 
+                        required="true" a:placeholder="Id Viaje"/>
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Buscar" >
+                    <f:ajax execute="iId"  
+                        render="iOrigen iDestino iPrecio iFecha iAgencia iTipoAuto iTipoAvion"
+                        listener="#{viajeBean.obtenerViaje()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:inputText id="iOrigen" styleClass="inputForm" a:placeholder="Origen." value="#{viajeBean.viajeEntity.origen}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iDestino" styleClass="inputForm" a:placeholder="Destino." value="#{viajeBean.viajeEntity.destino}" />
+
+                <br />
+                <br />
+                <h:inputText id="iPrecio" styleClass="inputForm" a:placeholder="Precio." value="#{viajeBean.viajeEntity.precio}" />
+
+                <br />
+                <br />
+                <h:inputText id="iFecha" styleClass="inputForm" a:placeholder="Fecha." value="#{viajeBean.viajeEntity.fecha}" />
+
+                <br />
+                <br />
+                <h:inputText id="iAgencia" styleClass="inputForm" a:placeholder="Id agencia." value="#{viajeBean.idAgencia}" />
+
+                <br />
+                <br />
+                <h:inputText id="iTipoAuto" styleClass="inputForm" a:placeholder="Id Tipo Viaje Autobús." value="#{viajeBean.idTipoViajeAutobus}" />
+
+                <br />
+                <br />
+                <h:inputText id="iTipoAvion" styleClass="inputForm" a:placeholder="Id Tipo Viaje Avión." value="#{viajeBean.idTipoViajeAvion}" />
+
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax
+                    execute="iOrigen iDestino iPrecio iFecha iAgencia iTipoAuto iTipoAvion"
+                    render="tmp" 
+                    listener="#{viajeBean.actualizarViaje()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{viajeBean.viajeEntity.origen}"/>
+            </p>
+
+        </h:form>
+    </div>
+
+    <div ID="SeccionNueva" class="datosInput" style="display:none">
+        <h:form id="nuevoTransporte" >
+            <p> 
+                <h:inputText id="iIdN" styleClass="inputForm" a:placeholder="Id transporte" value="#{transporteBean.idTransporte}" />
+
+                <br />
+                <br />
+                <h:inputText id="iTipoN" styleClass="inputForm" a:placeholder="Tipo transporte." value="#{transporteBean.tipoTransporte}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iMarcaN" styleClass="inputForm" a:placeholder="Marca." value="#{transporteBean.marca}" />
+
+                <br />
+                <br />
+                <h:inputText id="iModeloN" styleClass="inputForm" a:placeholder="Modelo." value="#{transporteBean.modelo}" />
+
+                <br />
+                <br />
+                <h:inputText id="iCapCN" styleClass="inputForm" a:placeholder="Capacidad combustible." value="#{transporteBean.capacidadCombustible}" />
+
+                <br />
+                <br />
+                <h:inputText id="iFechaN" styleClass="inputForm" a:placeholder="Fecha adquisición." value="#{transporteBean.fechaAdquisicion}" />
+
+                <br />
+                <br />
+                <h:inputText id="iABN" styleClass="inputForm" a:placeholder="Número asientos básicos." value="#{transporteBean.asientosBasicos}" />
+
+                <br />
+                <br />
+                <h:inputText id="iPCN" styleClass="inputForm" a:placeholder="Número asientos primera clase." value="#{transporteBean.asientosPrimeraClase}" />
+
+                <br />
+                <br />
+                <h:inputText id="iPuertoN" styleClass="inputForm" a:placeholder="Puerto asignado." value="#{transporteBean.puertoAsignado}" />
+
+                <br />
+                <br />
+                <h:inputText id="iEstN" styleClass="inputForm" a:placeholder="Estacionamiento asignado." value="#{transporteBean.estacionamientoAsignado}" />
+
+                <br />
+                <br />
+                <h:inputText id="iAgenciaN" styleClass="inputForm" a:placeholder="Id agencia." value="#{transporteBean.idAgencia}" />
+
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax
+                    execute="iIdN iTipoN iMarcaN iModeloN iCapCN iFechaN iABN iPCN iPuertoN iEstN iAgenciaN"
+                    render="tmp" 
+                    listener="#{transporteBean.nuevoTransporte()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{transporteBean.estatus}"/>
+            </p>
+
+        </h:form>
+
+    </div>
+
+
+    <div ID="SeccionEliminar" class="center" style="display:none">
+        <h:form id="eliminaTransporte">
+            <p>
+                <h:inputText id="inputIdEliminar" styleClass="inputForm" a:placeholder="Id. Transporte." value="#{transporteBean.idTransporte}" />
+                <br />
+                <br />
+
+                <h:commandButton class="botonConfirmar" value="Eliminar" >
+                    <f:ajax execute="inputIdEliminar" render="tmp" listener="#{transporteBean.eliminarTransporte()}"/>
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{transporteBean.estatus}"/>
+            </p>
+        </h:form>
+    </div>
+
+    <div id="Volver" class="center">
+        <form action="../../inicioAdministracion.xhtml">
+            <input type="submit" value="Atrás" />
+        </form>
+    </div>
+
+    <script>
+        function ShowAndHideModificar() {
+            var x = document.getElementById('SeccionModificar');
+            var y = document.getElementById('SeccionEliminar');
+            var z = document.getElementById('SeccionNueva');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideEliminar() {
+            var x = document.getElementById('SeccionEliminar');
+            var y = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionNueva');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideNueva() {
+            var x = document.getElementById('SeccionNueva');
+            var y = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionEliminar');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+    </script>
+
+  </h:body>
+</html>

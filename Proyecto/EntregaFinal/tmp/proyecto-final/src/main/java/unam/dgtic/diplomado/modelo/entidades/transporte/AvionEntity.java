@@ -2,15 +2,16 @@ package unam.dgtic.diplomado.modelo.entidades.transporte;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
 
 @Entity(name = "avion")
 @DiscriminatorValue("Avión")
 public class AvionEntity extends TransporteEntity {
 
-    private String puertoAsignado;
+    @Column(name = "puertoAsignado", insertable = true, updatable = true)
+    private String puertoAsignado = "";
 
     public AvionEntity() {
         super();
@@ -27,12 +28,8 @@ public class AvionEntity extends TransporteEntity {
         return puertoAsignado;
     }
 
-    public void setPuertoAsignado(String puertoAsignado) throws Exception {
-        if (puertoAsignado == null || puertoAsignado.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Puerto de avión inválido.");
-        } else {
-            this.puertoAsignado = puertoAsignado;
-        }
+    public void setPuertoAsignado(String puertoAsignado) {
+        this.puertoAsignado = puertoAsignado;
     }
 
     @Override

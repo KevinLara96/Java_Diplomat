@@ -19,8 +19,7 @@ public class AutobusBean extends TransporteBean {
     public AutobusBean(Integer idTransporte, String marca, String modelo, Integer capacidadCombustible,
             Date fechaAdquisicion, String estacionamientoAsignado, Integer asientosBasicos,
             Integer asientosPrimeraClase) {
-        super(idTransporte, marca, modelo, capacidadCombustible, fechaAdquisicion, asientosBasicos,
-                asientosPrimeraClase);
+        super();
         this.estacionamientoAsignado = estacionamientoAsignado;
     }
 
