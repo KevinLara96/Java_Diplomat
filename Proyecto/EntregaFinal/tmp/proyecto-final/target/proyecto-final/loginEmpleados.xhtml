@@ -28,17 +28,29 @@
 
             <div class="container">
                 <label for="uname"><b>Correo electrónico</b></label>
+                <br />
                 <h:inputText id="iCorreo" a:placeholder="Correo" value="#{beanLogin.correo}"/>
 
+                <br />
+                <br />
                 <label for="psw"><b>Contraseña</b></label>
-                <h:inputSecret id="iCont" a:placeholder="Contraseña" value="#{beanLogin.contrasena}"/>
+                <br />
+                <h:inputText id="iCont" a:placeholder="Contraseña" value="#{beanLogin.contrasena}"/>
 
-                <h:commandButton value="Iniciar Sesión">
 
+                <br />
+                <br />
+                <h:commandButton value="Iniciar Sesión" action="#{beanLogin.login()}">
                 </h:commandButton>
+                <br />
+                <br />
+                <br />
+
+                <h:outputText id="tmp" value="#{beanLogin.estatus}"/>
             </div>
 
         </h:form> 
+
         <h:form>
             <div class="container" style="background-color:#f1f1f1">
                 <h:commandButton styleClass="cancelbtn" value="Cancelar" action="index.xhtml"/>

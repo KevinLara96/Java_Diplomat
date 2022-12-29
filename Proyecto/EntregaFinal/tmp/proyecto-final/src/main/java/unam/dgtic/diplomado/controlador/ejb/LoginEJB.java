@@ -9,7 +9,13 @@ public class LoginEJB {
 
     private ServicioEmpleado servicioEmpleado;
 
-    public EmpleadoEntity login(String correo, String contrasena) {
-        return servicioEmpleado.login(correo, contrasena);
+    public EmpleadoEntity login(String correo, String contrasena) throws Exception {
+        try {
+            this.servicioEmpleado = new ServicioEmpleado();
+            return servicioEmpleado.login(correo, contrasena);
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }

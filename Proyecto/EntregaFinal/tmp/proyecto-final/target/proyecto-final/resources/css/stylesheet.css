@@ -91,37 +91,64 @@ p{
   height: 200px;
 }
 
-.buttonEliminar{
+.buttonEliminar {
   background-color: red; /* Green */
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
   border: none;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
   margin: auto;
+  width: 20%;
 }
-.buttonModificar{
+.buttonModificar {
   background-color:dodgerblue; /* Green */
-  color: black;
-  padding: 15px 32px;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  outline: none;
+  color: black;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
   margin: auto;
+  width: 20%;
 }
 .buttonNuevo{
   background-color:lightgreen; /* Green */
-  color: black;
-  padding: 15px 32px;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  outline: none;
+  color: black;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
   margin: auto;
+  width: 20%;
 }
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
 
 .inputForm{
     width: 25%;
@@ -144,7 +171,7 @@ form {
 
 /* Full-width inputs */
 input[type=text], input[type=password] {
-  width: 100%;
+  width: 25%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -160,7 +187,7 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 20%;
 }
 
 /* Add a hover effect for buttons */
