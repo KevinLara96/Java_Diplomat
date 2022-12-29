@@ -97,4 +97,15 @@ public class ServicioEmpleado implements RepositorioEmpleado {
 
         return true;
     }
+
+    public EmpleadoEntity login(String correo, String contrasena) {
+        em = emf.createEntityManager();
+
+        Query query = em.createQuery("SELECT e\n" +
+                "from EmpleadoEntity e\n" +
+                "WHERE e.correo = '" + correo + "'\n" +
+                "AND e.contrasena = '" + contrasena + "'");
+
+        return (EmpleadoEntity) query.getSingleResult();
+    }
 }

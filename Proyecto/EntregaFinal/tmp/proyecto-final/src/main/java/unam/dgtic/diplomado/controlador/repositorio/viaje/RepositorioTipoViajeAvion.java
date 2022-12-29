@@ -8,9 +8,9 @@ public interface RepositorioTipoViajeAvion {
 
     public TipoViajeAvionEntity obtenerTipoViajeAvion(Integer idTipoViajeAvion);
 
-    public void guardarTipoViajeAvion(TipoViajeAvionEntity tipoViajeAvion) throws Exception;
+    public boolean guardarTipoViajeAvion(TipoViajeAvionEntity tipoViajeAvion) throws Exception;
 
-    public void eliminarTipoViajeAvion(Integer idTipoViajeAvion);
+    public boolean eliminarTipoViajeAvion(Integer idTipoViajeAvion) throws Exception;
 
-    public void actualizarTipoViajeAvion(TipoViajeAvionEntity tipoViajeAvionParam);
+    public boolean actualizarTipoViajeAvion(TipoViajeAvionEntity tipoViajeAvionParam) throws Exception;
 }

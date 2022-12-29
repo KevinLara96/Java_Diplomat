@@ -115,7 +115,7 @@
 
                 <br />
                 <br />
-                <h:inputText id="iFecha" styleClass="inputForm" a:placeholder="Fecha." value="#{viajeBean.viajeEntity.fecha}" />
+                <h:inputText id="iFecha" styleClass="inputForm" a:placeholder="Fecha." value="#{viajeBean.fecha}" />
 
                 <br />
                 <br />
@@ -123,11 +123,11 @@
 
                 <br />
                 <br />
-                <h:inputText id="iTipoAuto" styleClass="inputForm" a:placeholder="Id Tipo Viaje Autobús." value="#{viajeBean.idTipoViajeAutobus}" />
+                <h:inputText id="iTipoAuto" styleClass="inputForm" a:placeholder="Id Tipo Viaje Autobús." value="#{viajeBean.tipoAuto}" />
 
                 <br />
                 <br />
-                <h:inputText id="iTipoAvion" styleClass="inputForm" a:placeholder="Id Tipo Viaje Avión." value="#{viajeBean.idTipoViajeAvion}" />
+                <h:inputText id="iTipoAvion" styleClass="inputForm" a:placeholder="Id Tipo Viaje Avión." value="#{viajeBean.tipoAvion}" />
 
                 <br />
                 <br />
@@ -141,70 +141,58 @@
 
                 <br />
                 <br />
-                <h:outputText id="tmp" value="#{viajeBean.viajeEntity.origen}"/>
+                <h:outputText id="tmp" value="#{viajeBean.estatus}"/>
             </p>
 
         </h:form>
     </div>
 
     <div ID="SeccionNueva" class="datosInput" style="display:none">
-        <h:form id="nuevoTransporte" >
+        <h:form id="nuevoViaje" >
             <p> 
-                <h:inputText id="iIdN" styleClass="inputForm" a:placeholder="Id transporte" value="#{transporteBean.idTransporte}" />
+                <h:inputText id="iIdN" styleClass="inputForm" a:placeholder="Id Viaje" value="#{viajeBean.idViaje}" />
 
                 <br />
                 <br />
-                <h:inputText id="iTipoN" styleClass="inputForm" a:placeholder="Tipo transporte." value="#{transporteBean.tipoTransporte}"/>
+                <h:inputText id="iOrigenN" styleClass="inputForm" a:placeholder="Origen" value="#{viajeBean.origen}"/>
 
                 <br />
                 <br />
-                <h:inputText id="iMarcaN" styleClass="inputForm" a:placeholder="Marca." value="#{transporteBean.marca}" />
+                <h:inputText id="iDestinoN" styleClass="inputForm" a:placeholder="Destino" value="#{viajeBean.destino}" />
 
                 <br />
                 <br />
-                <h:inputText id="iModeloN" styleClass="inputForm" a:placeholder="Modelo." value="#{transporteBean.modelo}" />
+                <h:inputText id="iPrecioN" styleClass="inputForm" a:placeholder="Precio" value="#{viajeBean.precio}" />
 
                 <br />
                 <br />
-                <h:inputText id="iCapCN" styleClass="inputForm" a:placeholder="Capacidad combustible." value="#{transporteBean.capacidadCombustible}" />
+                <h:inputText id="iFechaN" styleClass="inputForm" a:placeholder="Fecha" value="#{viajeBean.fecha}" />
 
                 <br />
                 <br />
-                <h:inputText id="iFechaN" styleClass="inputForm" a:placeholder="Fecha adquisición." value="#{transporteBean.fechaAdquisicion}" />
+                <h:inputText id="iAgenciaN" styleClass="inputForm" a:placeholder="Id Agencia" value="#{viajeBean.idAgencia}" />
 
                 <br />
                 <br />
-                <h:inputText id="iABN" styleClass="inputForm" a:placeholder="Número asientos básicos." value="#{transporteBean.asientosBasicos}" />
+                <h:inputText id="iTipoAutoN" styleClass="inputForm" a:placeholder="Id tipo viaje Autobús" value="#{viajeBean.tipoAuto}" />
 
                 <br />
                 <br />
-                <h:inputText id="iPCN" styleClass="inputForm" a:placeholder="Número asientos primera clase." value="#{transporteBean.asientosPrimeraClase}" />
-
-                <br />
-                <br />
-                <h:inputText id="iPuertoN" styleClass="inputForm" a:placeholder="Puerto asignado." value="#{transporteBean.puertoAsignado}" />
-
-                <br />
-                <br />
-                <h:inputText id="iEstN" styleClass="inputForm" a:placeholder="Estacionamiento asignado." value="#{transporteBean.estacionamientoAsignado}" />
-
-                <br />
-                <br />
-                <h:inputText id="iAgenciaN" styleClass="inputForm" a:placeholder="Id agencia." value="#{transporteBean.idAgencia}" />
+                <h:inputText id="iTipoAvionN" styleClass="inputForm" a:placeholder="Id tipo viaje Avión" value="#{viajeBean.tipoAvion}" />
 
                 <br />
                 <br />
                 <h:commandButton class="botonConfirmar" value="Guardar" >
                     <f:ajax
-                    execute="iIdN iTipoN iMarcaN iModeloN iCapCN iFechaN iABN iPCN iPuertoN iEstN iAgenciaN"
+                    execute="iIdN iOrigenN iDestinoN iPrecioN iFechaN iAgenciaN iTipoAutoN iTipoAvionN"
                     render="tmp" 
-                    listener="#{transporteBean.nuevoTransporte()}"
+                    listener="#{viajeBean.nuevoViaje()}"
                     />
                 </h:commandButton>
 
                 <br />
                 <br />
-                <h:outputText id="tmp" value="#{transporteBean.estatus}"/>
+                <h:outputText id="tmp" value="#{viajeBean.estatus}"/>
             </p>
 
         </h:form>
@@ -213,19 +201,19 @@
 
 
     <div ID="SeccionEliminar" class="center" style="display:none">
-        <h:form id="eliminaTransporte">
+        <h:form id="eliminaViaje">
             <p>
-                <h:inputText id="inputIdEliminar" styleClass="inputForm" a:placeholder="Id. Transporte." value="#{transporteBean.idTransporte}" />
+                <h:inputText id="inputIdEliminar" styleClass="inputForm" a:placeholder="Id. Viaje" value="#{viajeBean.idViaje}" />
                 <br />
                 <br />
 
                 <h:commandButton class="botonConfirmar" value="Eliminar" >
-                    <f:ajax execute="inputIdEliminar" render="tmp" listener="#{transporteBean.eliminarTransporte()}"/>
+                    <f:ajax execute="inputIdEliminar" render="tmp" listener="#{viajeBean.eliminarViaje()}"/>
                 </h:commandButton>
 
                 <br />
                 <br />
-                <h:outputText id="tmp" value="#{transporteBean.estatus}"/>
+                <h:outputText id="tmp" value="#{viajeBean.estatus}"/>
             </p>
         </h:form>
     </div>

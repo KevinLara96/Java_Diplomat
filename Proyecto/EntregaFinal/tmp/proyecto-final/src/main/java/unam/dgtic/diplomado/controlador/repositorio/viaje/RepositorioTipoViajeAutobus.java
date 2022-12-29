@@ -8,9 +8,9 @@ public interface RepositorioTipoViajeAutobus {
 
     public TipoViajeAutobusEntity obtenerTipoViajeAutobus(Integer idTipoViajeAutobus);
 
-    public void guardarTipoViajeAutobus(TipoViajeAutobusEntity tipoViajeAutobus) throws Exception;
+    public boolean guardarTipoViajeAutobus(TipoViajeAutobusEntity tipoViajeAutobus) throws Exception;
 
-    public void eliminarTipoViajeAutobus(Integer idTipoViajeAutobus);
+    public boolean eliminarTipoViajeAutobus(Integer idTipoViajeAutobus) throws Exception;
 
-    public void actualizarTipoViajeAutobus(TipoViajeAutobusEntity tipoViajeAutobusParam);
+    public boolean actualizarTipoViajeAutobus(TipoViajeAutobusEntity tipoViajeAutobusParam) throws Exception;
 }

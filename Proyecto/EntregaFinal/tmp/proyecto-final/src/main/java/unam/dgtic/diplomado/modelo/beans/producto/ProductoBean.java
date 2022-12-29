@@ -6,7 +6,6 @@ import java.util.List;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import unam.dgtic.diplomado.controlador.servicio.producto.ServicioProducto;
-import unam.dgtic.diplomado.modelo.beans.orden.OrdenBean;
 import unam.dgtic.diplomado.modelo.entidades.producto.ProductoEntity;
 
 @Named
@@ -16,12 +15,11 @@ public class ProductoBean implements Serializable {
     private ServicioProducto servicioProducto;
     private ProductoEntity productoEntity;
 
-    private int idProducto;
+    private Integer idProducto;
     private String nombreProducto;
     private Float multiplicador;
     private String estatus;
 
-    private List<OrdenBean> ordenes;
     private String estatusStr;
 
     /*
@@ -64,14 +62,6 @@ public class ProductoBean implements Serializable {
 
     public void setEstatus(String estatus) {
         this.estatus = estatus;
-    }
-
-    public List<OrdenBean> getOrdenes() {
-        return ordenes;
-    }
-
-    public void setOrdenes(List<OrdenBean> ordenes) {
-        this.ordenes = ordenes;
     }
 
     public ProductoEntity getProductoEntity() {

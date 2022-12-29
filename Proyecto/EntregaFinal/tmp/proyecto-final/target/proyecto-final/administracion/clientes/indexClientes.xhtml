@@ -1,0 +1,311 @@
+<!--?xml version='1.0' encoding='UTF-8' ?>
+<
+    Copyright (c) 2014, 2019 Oracle and/or its affiliates. All rights reserved.
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+    SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+>
+  <h:head></h:head>
+  <h:body>
+    <h:outputStylesheet name="css/stylesheet.css" target="head" />
+
+    <h:form id="listaClientes"  >
+      <h1>Gestión de clientes.</h1>
+
+
+      <div id="divEmpleados">
+        <h:dataTable
+          id="clientesList"
+          value="#{clienteBean.obtenerClientes()}"
+          var="clienteEntity"
+          styleClass="tablaEmpleados"
+          headerClass="cabeceraEmpleados"
+          rowClasses="empleadoPar, empleadoImpar"
+          style="width: 100%"
+        >
+          <h:column>
+            <f:facet name="header">Id cliente.</f:facet>
+            #{clienteEntity.idCliente}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Nombre(s)</f:facet>
+            #{clienteEntity.nombres}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Apellidos</f:facet>
+            #{clienteEntity.apellidos}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Calle</f:facet>
+            #{clienteEntity.calle}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Colonia</f:facet>
+            #{clienteEntity.colonia}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Código Postal</f:facet>
+            #{clienteEntity.codigoPostal}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Teléfono</f:facet>
+            #{clienteEntity.telefono}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">RFC</f:facet>
+            #{clienteEntity.rfc}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Correo electrónico</f:facet>
+            #{clienteEntity.correo}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Agencia asociada</f:facet>
+            #{clienteEntity.agencia.ubicacionAgencia}
+          </h:column>
+
+        <br />
+        <br />
+        <h:commandButton id="back" value="Atras" action="../../index.xhtml" />
+        </h:dataTable>
+      </div>
+    </h:form>
+
+    <div class="center">
+        <button class="buttonModificar" onClick="ShowAndHideModificar()">Modificar cliente</button>
+        <button class="buttonNuevo" onClick="ShowAndHideNueva()">Nuevo cliente</button>
+        <button class="buttonEliminar" onClick="ShowAndHideEliminar()">Eliminar cliente</button>
+    </div>
+
+    <div ID="SeccionModificar" class="datosInput" style="display:none">
+        <h:form id="modificarCliente" >
+            <p> 
+                <h:inputText id="idCliente" styleClass="inputForm" value="#{clienteBean.idCliente}" 
+                        required="true" a:placeholder="Id Cliente"/>
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Buscar" >
+                    <f:ajax execute="idCliente"  
+                        render="iNom iAp iCall iCol iCP iTel iRFC iCorr iCont iAgencia"
+                        listener="#{clienteBean.obtenerCliente()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:inputText id="iNom" styleClass="inputForm" a:placeholder="Nombre(s)" value="#{clienteBean.clienteEntity.nombres}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iAp" styleClass="inputForm" a:placeholder="Apellidos" value="#{clienteBean.clienteEntity.apellidos}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iCall" styleClass="inputForm" a:placeholder="Calle" value="#{clienteBean.clienteEntity.calle}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iCol" styleClass="inputForm" a:placeholder="Colonia" value="#{clienteBean.clienteEntity.colonia}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iCP" styleClass="inputForm" a:placeholder="Código Postal" value="#{clienteBean.clienteEntity.codigoPostal}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iTel" styleClass="inputForm" a:placeholder="Teléfono" value="#{clienteBean.clienteEntity.telefono}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iRFC" styleClass="inputForm" a:placeholder="RFC" value="#{clienteBean.clienteEntity.rfc}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iCorr" styleClass="inputForm" a:placeholder="Correo electrónico" value="#{clienteBean.clienteEntity.correo}"/>
+
+                <br />
+                <br />
+                <h:inputSecret id="iCont" styleClass="inputForm" a:placeholder="Contraseña" value="#{clienteBean.clienteEntity.contrasena}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iAgencia" styleClass="inputForm" a:placeholder="Id Agencia" value="#{clienteBean.idAgencia}"/>
+
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax
+                    execute="idCliente iNom iAp iCall iCol iCP iTel iRFC iCorr iCont iAgencia"
+                    render="tmp" 
+                    listener="#{clienteBean.actualizarCliente()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{clienteBean.estatus}"/>
+            </p>
+
+        </h:form>
+    </div>
+
+    <div ID="SeccionNueva" class="datosInput" style="display:none">
+        <h:form id="nuevoEmpleado" >
+            <p> 
+                <h:inputText id="iIdN" styleClass="inputForm" value="#{clienteBean.idCliente}" 
+                        required="true" a:placeholder="Id Cliente"/>
+
+                <br />
+                <br />
+                <h:inputText id="iNomN" styleClass="inputForm" a:placeholder="Nombre(s)" value="#{clienteBean.nombres}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iApN" styleClass="inputForm" a:placeholder="Apellidos" value="#{clienteBean.apellidos}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iCallN" styleClass="inputForm" a:placeholder="Calle" value="#{clienteBean.calle}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iColN" styleClass="inputForm" a:placeholder="Colonia" value="#{clienteBean.colonia}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iCPN" styleClass="inputForm" a:placeholder="Código Postal" value="#{clienteBean.codigoPostal}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iTelN" styleClass="inputForm" a:placeholder="Teléfono" value="#{clienteBean.telefono}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iRFCN" styleClass="inputForm" a:placeholder="RFC" value="#{clienteBean.rfc}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iCorrN" styleClass="inputForm" a:placeholder="Correo electrónico" value="#{clienteBean.correo}"/>
+
+                <br />
+                <br />
+                <h:inputSecret id="iContN" styleClass="inputForm" a:placeholder="Contraseña" value="#{clienteBean.contrasena}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iAgenciaN" styleClass="inputForm" a:placeholder="Id Agencia" value="#{clienteBean.idAgencia}"/>
+
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax
+                    execute="iIdN iNomN iApN iCallN iColN iCPN iTelN iRFCN iCorrN iContN iAgenciaN"
+                    render="tmp" 
+                    listener="#{clienteBean.nuevoCliente()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{clienteBean.estatus}"/>
+            </p>
+
+        </h:form>
+    </div>
+
+
+    <div ID="SeccionEliminar" class="center" style="display:none">
+        <h:form id="eliminaCliente">
+            <p>
+                <h:inputText id="inputIdEliminar" styleClass="inputForm" a:placeholder="Id. Cliente." value="#{clienteBean.idCliente}" />
+                <br />
+                <br />
+
+                <h:commandButton class="botonConfirmar" value="Eliminar" >
+                    <f:ajax execute="inputIdEliminar" render="tmp" listener="#{clienteBean.eliminarCliente()}"/>
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{clienteBean.estatus}"/>
+            </p>
+        </h:form>
+    </div>
+
+    <div id="Volver" class="center">
+        <form action="../../inicioAdministracion.xhtml">
+            <input type="submit" value="Atrás" />
+        </form>
+    </div>
+
+    <script>
+        function ShowAndHideModificar() {
+            var x = document.getElementById('SeccionModificar');
+            var y = document.getElementById('SeccionEliminar');
+            var z = document.getElementById('SeccionNueva');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideEliminar() {
+            var x = document.getElementById('SeccionEliminar');
+            var y = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionNueva');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideNueva() {
+            var x = document.getElementById('SeccionNueva');
+            var y = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionEliminar');
+            
+            y.style.display = 'none';
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+    </script>
+
+  </h:body>
+</html>

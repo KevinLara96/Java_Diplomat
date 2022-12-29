@@ -8,9 +8,9 @@ public interface RepositorioCliente {
 
     public ClienteEntity obtenerCliente(Integer idCliente);
 
-    public void guardarCliente(ClienteEntity cliente) throws Exception;
+    public boolean guardarCliente(ClienteEntity cliente) throws Exception;
 
-    public void eliminarCliente(Integer idCliente);
+    public boolean eliminarCliente(Integer idCliente) throws Exception;
 
-    public void actualizarCliente(ClienteEntity clienteParam);
+    public boolean actualizarCliente(ClienteEntity clienteParam) throws Exception;
 }

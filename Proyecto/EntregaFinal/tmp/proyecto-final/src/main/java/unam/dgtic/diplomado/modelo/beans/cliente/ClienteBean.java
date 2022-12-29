@@ -2,17 +2,20 @@ package unam.dgtic.diplomado.modelo.beans.cliente;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import unam.dgtic.diplomado.modelo.beans.agencia.AgenciaBean;
-import unam.dgtic.diplomado.modelo.beans.orden.OrdenBean;
-import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+import unam.dgtic.diplomado.controlador.servicio.agencia.ServicioAgencia;
+import unam.dgtic.diplomado.controlador.servicio.cliente.ServicioCliente;
+import unam.dgtic.diplomado.modelo.entidades.cliente.ClienteEntity;
 
 @Named
 @SessionScoped
 public class ClienteBean implements Serializable {
+
+    private ServicioCliente servicioCliente;
+    private ServicioAgencia servicioAgencia;
+    private ClienteEntity clienteEntity;
 
     private Integer idCliente;
     private String nombres;
@@ -25,56 +28,47 @@ public class ClienteBean implements Serializable {
     private String correo;
     private String contrasena;
 
-    private AgenciaBean agencia;
-    private List<OrdenBean> ordenes;
+    private Integer idAgencia;
+    private String estatus;
 
+    /*
+     * Constructores
+     */
     public ClienteBean() {
     }
 
-    public ClienteBean(Integer idCliente) {
-        this.idCliente = idCliente;
+    /*
+     * Getters & Setters
+     */
+    public ClienteEntity getClienteEntity() {
+        return clienteEntity;
     }
 
-    public ClienteBean(Integer idCliente, String nombres, String apellidos) {
-        this.idCliente = idCliente;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
+    public void setClienteEntity(ClienteEntity clienteEntity) {
+        this.clienteEntity = clienteEntity;
     }
 
     public Integer getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Integer idCliente) throws Exception {
-        if (idCliente == null || idCliente <= 0) {
-            throw new ExcepcionAtributos("ERROR. Id de cliente inválido.");
-        } else {
-            this.idCliente = idCliente;
-        }
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNombres() {
         return nombres;
     }
 
-    public void setNombres(String nombres) throws Exception {
-        if (nombres == null || nombres.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Nombre(s) de cliente inválido(s).");
-        } else {
-            this.nombres = nombres;
-        }
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
     public String getApellidos() {
         return apellidos;
     }
 
-    public void setApellidos(String apellidos) throws Exception {
-        if (apellidos == null || apellidos.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Apellidos de cliente inválidos.");
-        } else {
-            this.apellidos = apellidos;
-        }
+    public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
@@ -82,144 +76,150 @@ public class ClienteBean implements Serializable {
         return calle;
     }
 
-    public void setCalle(String calle) throws Exception {
-        if (calle == null || calle.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Calle de cliente inválida.");
-        } else {
-            this.calle = calle;
-        }
+    public void setCalle(String calle) {
+        this.calle = calle;
     }
 
     public String getColonia() {
         return colonia;
     }
 
-    public void setColonia(String colonia) throws Exception {
-        if (colonia == null || colonia.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Colonia de cliente inválida.");
-        } else {
-            this.colonia = colonia;
-        }
+    public void setColonia(String colonia) {
+        this.colonia = colonia;
     }
 
     public String getCodigoPostal() {
         return codigoPostal;
     }
 
-    public void setCodigoPostal(String codigoPostal) throws Exception {
-        if (codigoPostal == null || codigoPostal.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Código Postal de cliente inválido.");
-        } else {
-            this.codigoPostal = codigoPostal;
-        }
+    public void setCodigoPostal(String codigoPostal) {
+        this.codigoPostal = codigoPostal;
     }
 
     public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) throws Exception {
-        if (telefono == null || telefono.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Teléfono de cliente inválido.");
-        } else {
-            this.telefono = telefono;
-        }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getRfc() {
         return rfc;
     }
 
-    public void setRfc(String rfc) throws Exception {
-        if (rfc == null || rfc.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. RFC de cliente inválido.");
-        } else {
-            this.rfc = rfc;
-        }
+    public void setRfc(String rfc) {
+        this.rfc = rfc;
     }
 
     public String getCorreo() {
         return correo;
     }
 
-    public void setCorreo(String correo) throws Exception {
-        Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
-                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
-        boolean correoRegex = pattern.matcher(correo).matches();
-        if (correoRegex) {
-            this.correo = correo;
-        } else if (correo == null || correo == "") {
-            throw new ExcepcionAtributos("ERROR. Correo electrónico de cliente vacío.");
-        } else {
-            throw new ExcepcionAtributos("ERROR. Correo no válido de cliente.");
-        }
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getContrasena() {
         return contrasena;
     }
 
-    public void setContrasena(String contrasena) throws Exception {
-        if (contrasena == null || contrasena.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Contraseña de cliente inválida.");
-        } else {
-            this.contrasena = contrasena;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
 
+    public Integer getIdAgencia() {
+        return idAgencia;
+    }
+
+    public void setIdAgencia(Integer idAgencia) {
+        this.idAgencia = idAgencia;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    /*
+     * Métodos Bean
+     */
+    public List<ClienteEntity> obtenerClientes() {
+        servicioCliente = new ServicioCliente();
+
+        return servicioCliente.obtenerClientes();
+    }
+
+    public void obtenerCliente() {
+        servicioCliente = new ServicioCliente();
+
+        this.clienteEntity = servicioCliente.obtenerCliente(this.idCliente);
+    }
+
+    public void actualizarCliente() {
+        servicioCliente = new ServicioCliente();
+        servicioAgencia = new ServicioAgencia();
+
+        ClienteEntity clienteMod = servicioCliente.obtenerCliente(this.idCliente);
+        try {
+            clienteMod.setIdCliente(this.idCliente);
+            clienteMod.setNombres(this.clienteEntity.getNombres());
+            clienteMod.setApellidos(this.clienteEntity.getApellidos());
+            clienteMod.setCalle(this.clienteEntity.getCalle());
+            clienteMod.setColonia(this.clienteEntity.getColonia());
+            clienteMod.setCodigoPostal(this.clienteEntity.getCodigoPostal());
+            clienteMod.setTelefono(this.clienteEntity.getTelefono());
+            clienteMod.setRfc(this.clienteEntity.getRfc());
+            clienteMod.setCorreo(this.clienteEntity.getCorreo());
+            clienteMod.setContrasena(this.clienteEntity.getContrasena());
+
+            clienteMod.setAgencia(servicioAgencia.obtenerAgencia(this.idAgencia));
+            servicioCliente.actualizarCliente(clienteMod);
+            this.estatus = "Cliente actualizado con éxito";
+        } catch (Exception e) {
+            this.estatus = "No se pudo actualizar el cliente: " + e.getMessage();
         }
     }
 
-    public List<OrdenBean> getOrdenes() {
-        return ordenes;
-    }
+    public void nuevoCliente() {
+        servicioCliente = new ServicioCliente();
+        servicioAgencia = new ServicioAgencia();
 
-    public void setOrdenes(List<OrdenBean> ordenes) throws Exception {
-        if (ordenes == null) {
-            throw new ExcepcionAtributos("ERROR. Lista de órdenes vacía.");
-        } else {
-            this.ordenes = ordenes;
+        this.clienteEntity = new ClienteEntity();
+        try {
+            clienteEntity.setIdCliente(this.idCliente);
+            clienteEntity.setNombres(this.nombres);
+            clienteEntity.setApellidos(this.apellidos);
+            clienteEntity.setCalle(this.calle);
+            clienteEntity.setColonia(this.colonia);
+            clienteEntity.setCodigoPostal(this.codigoPostal);
+            clienteEntity.setTelefono(this.telefono);
+            clienteEntity.setRfc(this.rfc);
+            clienteEntity.setCorreo(this.correo);
+            clienteEntity.setContrasena(this.contrasena);
+
+            clienteEntity.setAgencia(servicioAgencia.obtenerAgencia(this.idAgencia));
+            servicioCliente.actualizarCliente(clienteEntity);
+            this.estatus = "Cliente registrado con éxito";
+        } catch (Exception e) {
+            this.estatus = "No se pudo registrar el cliente: " + e.getMessage();
         }
     }
 
-    public AgenciaBean getAgencia() {
-        return agencia;
-    }
+    public void eliminarCliente() {
+        servicioCliente = new ServicioCliente();
 
-    public void setAgencia(AgenciaBean agencia) {
-        this.agencia = agencia;
+        try {
+            if (servicioCliente.eliminarCliente(this.idCliente)) {
+                this.estatus = "Cliente eliminado con éxito";
+            } else {
+                this.estatus = "ERROR. No se pudo eliminar el cliente";
+            }
+        } catch (Exception e) {
+            this.estatus = "ERROR. No se pudo eliminar el cliente";
+        }
     }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((idCliente == null) ? 0 : idCliente.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        ClienteBean other = (ClienteBean) obj;
-        if (idCliente == null) {
-            if (other.idCliente != null)
-                return false;
-        } else if (!idCliente.equals(other.idCliente))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "[idCliente=" + idCliente + ", nombres=" + nombres + ", apellidos=" + apellidos + ", calle="
-                + calle + ", colonia=" + colonia + ", codigoPostal=" + codigoPostal + ", telefono=" + telefono
-                + ", rfc=" + rfc + ", correo=" + correo + ", contrasena=" + contrasena + ", agencia="
-                + agencia.getUbicacionAgencia()
-                + ", ordenes=" + ordenes + "]";
-    }
-
 }

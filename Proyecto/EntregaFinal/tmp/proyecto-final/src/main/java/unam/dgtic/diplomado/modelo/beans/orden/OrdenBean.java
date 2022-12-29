@@ -1,140 +1,157 @@
 package unam.dgtic.diplomado.modelo.beans.orden;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import unam.dgtic.diplomado.modelo.beans.cliente.ClienteBean;
-import unam.dgtic.diplomado.modelo.beans.producto.ProductoBean;
-import unam.dgtic.diplomado.modelo.excepciones.ExcepcionAtributos;
+import unam.dgtic.diplomado.controlador.servicio.cliente.ServicioCliente;
+import unam.dgtic.diplomado.controlador.servicio.orden.ServicioOrden;
+import unam.dgtic.diplomado.modelo.entidades.orden.OrdenEntity;
 
 @Named
 @SessionScoped
 public class OrdenBean implements Serializable {
 
+    private ServicioOrden servicioOrden;
+    private ServicioCliente servicioCliente;
+    private OrdenEntity ordenEntity;
+
     private Integer idOrden;
-    private Date fechaEmision;
+    private String fechaEmision;
     private Float monto;
     private String descripcion;
 
-    private ClienteBean cliente;
-    private List<ProductoBean> productos;
+    private Integer idCliente;
+    private String estatus;
 
+    /*
+     * Constructores
+     */
     public OrdenBean() {
 
     }
 
-    public OrdenBean(Integer idOrden, Date fechaEmision, Float monto, String descripcion) {
-        this.idOrden = idOrden;
-        this.fechaEmision = fechaEmision;
-        this.monto = monto;
-        this.descripcion = descripcion;
+    /*
+     * Getters & Setters
+     */
+    public OrdenEntity getOrdenEntity() {
+        return ordenEntity;
+    }
+
+    public void setOrdenEntity(OrdenEntity ordenEntity) {
+        this.ordenEntity = ordenEntity;
     }
 
     public Integer getIdOrden() {
         return idOrden;
     }
 
-    public void setIdOrden(Integer idOrden) throws Exception {
-        if (idOrden == null || idOrden <= 0) {
-            throw new ExcepcionAtributos("ERROR. Id de orden inválida.");
-        } else {
-            this.idOrden = idOrden;
-
-        }
+    public void setIdOrden(Integer idOrden) {
+        this.idOrden = idOrden;
     }
 
-    public Date getFechaEmision() {
+    public String getFechaEmision() {
         return fechaEmision;
     }
 
-    public void setFechaEmision(Date fechaEmision) throws Exception {
-        if (fechaEmision == null || fechaEmision.toString().isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Fecha de orden inválida.");
-        } else {
-            this.fechaEmision = fechaEmision;
-        }
+    public void setFechaEmision(String fechaEmision) {
+        this.fechaEmision = fechaEmision;
     }
 
     public Float getMonto() {
         return monto;
     }
 
-    public void setMonto(Float monto) throws Exception {
-        if (monto == null || monto == 0) {
-            throw new ExcepcionAtributos("ERROR. Monto de orden inválida.");
-        } else {
-            this.monto = monto;
-        }
+    public void setMonto(Float monto) {
+        this.monto = monto;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) throws Exception {
-        if (descripcion == null || descripcion.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Descripción inválida.");
-        } else {
-            this.descripcion = descripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Integer getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    /*
+     * Métodos Bean
+     */
+    public List<OrdenEntity> obtenerOrdenes() {
+        servicioOrden = new ServicioOrden();
+
+        return servicioOrden.obtenerOrdenes();
+    }
+
+    public void obtenerOrden() {
+        servicioOrden = new ServicioOrden();
+
+        this.ordenEntity = servicioOrden.obtenerOrden(this.idOrden);
+    }
+
+    public void actualizarOrden() {
+        servicioOrden = new ServicioOrden();
+        servicioCliente = new ServicioCliente();
+
+        OrdenEntity ordenMod = servicioOrden.obtenerOrden(this.idOrden);
+        try {
+            ordenMod.setIdOrden(this.idOrden);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyy");
+            Date date = sdf.parse(this.fechaEmision);
+            ordenMod.setFechaEmision(date);
+
+            ordenMod.setMonto(this.ordenEntity.getMonto());
+            ordenMod.setDescripcion(this.ordenEntity.getDescripcion());
+            ordenMod.setCliente(servicioCliente.obtenerCliente(this.idCliente));
+
+            servicioOrden.actualizarOrden(ordenMod);
+            this.estatus = "Orden actualizada con éxito";
+        } catch (Exception e) {
+            this.estatus = "No se pudo actualizar la orden: " + e.getMessage();
         }
     }
 
-    public ClienteBean getCliente() {
-        return cliente;
-    }
+    public void nuevaOrden() {
+        servicioOrden = new ServicioOrden();
+        servicioCliente = new ServicioCliente();
 
-    public void setCliente(ClienteBean cliente) throws Exception {
-        if (cliente == null) {
-            throw new ExcepcionAtributos("ERROR. Cliente inválido.");
-        } else {
-            this.cliente = cliente;
+        this.ordenEntity = new OrdenEntity();
+        try {
+            this.ordenEntity.setIdOrden(this.idOrden);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyy");
+            Date date = sdf.parse(this.fechaEmision);
+            this.ordenEntity.setFechaEmision(date);
+
+            this.ordenEntity.setMonto(this.monto);
+            this.ordenEntity.setDescripcion(this.descripcion);
+            this.ordenEntity.setCliente(servicioCliente.obtenerCliente(this.idCliente));
+
+            servicioOrden.guardarOrden(ordenEntity);
+            this.estatus = "Orden registrada con éxito";
+        } catch (Exception e) {
+            this.estatus = "No se pudo registrar la orden: " + e.getMessage();
         }
-    }
-
-    public List<ProductoBean> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<ProductoBean> productos) throws Exception {
-        if (productos == null || productos.isEmpty()) {
-            throw new ExcepcionAtributos("ERROR. Lista de productos inválida.");
-        } else {
-            this.productos = productos;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((idOrden == null) ? 0 : idOrden.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        OrdenBean other = (OrdenBean) obj;
-        if (idOrden == null) {
-            if (other.idOrden != null)
-                return false;
-        } else if (!idOrden.equals(other.idOrden))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "[idOrden=" + idOrden + ", fechaEmision=" + fechaEmision + ", monto=" + monto + ", descripcion="
-                + descripcion + ", cliente=" + cliente.getIdCliente() + ", productos: ";
     }
 
 }

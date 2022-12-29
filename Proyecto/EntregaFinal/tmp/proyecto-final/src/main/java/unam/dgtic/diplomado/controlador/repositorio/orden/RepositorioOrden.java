@@ -8,7 +8,7 @@ public interface RepositorioOrden {
 
     public OrdenEntity obtenerOrden(Integer idOrden);
 
-    public void guardarOrden(OrdenEntity orden) throws Exception;
+    public boolean guardarOrden(OrdenEntity orden) throws Exception;
 
-    public void actualizarOrden(OrdenEntity ordenParam);
+    public boolean actualizarOrden(OrdenEntity ordenParam) throws Exception;
 }

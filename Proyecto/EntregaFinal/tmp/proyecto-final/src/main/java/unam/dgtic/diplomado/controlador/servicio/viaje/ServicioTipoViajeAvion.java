@@ -1,60 +1,104 @@
 package unam.dgtic.diplomado.controlador.servicio.viaje;
 
+import java.util.List;
+
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 import unam.dgtic.diplomado.controlador.repositorio.viaje.RepositorioTipoViajeAvion;
 import unam.dgtic.diplomado.modelo.entidades.viaje.TipoViajeAvionEntity;
 
 public class ServicioTipoViajeAvion implements RepositorioTipoViajeAvion {
 
-    protected EntityManager em;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyectofinal");
+    private EntityManager em;
 
-    public ServicioTipoViajeAvion(EntityManager em) {
-        super();
-        this.em = em;
+    public ServicioTipoViajeAvion() {
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public Iterable<TipoViajeAvionEntity> obtenerTiposViajeAvion() {
-        Query query = em.createQuery("SELECT tv from TipoViajeAvion tv\n" +
-                "ORDER BY tv.idTipoViajeAvion");
+    public List<TipoViajeAvionEntity> obtenerTiposViajeAvion() {
+        em = emf.createEntityManager();
 
-        return (Iterable<TipoViajeAvionEntity>) query.getResultList();
+        try {
+            Query query = em.createQuery("SELECT tv from TipoViajeAvionEntity tv\n" +
+                    "ORDER BY tv.idTipoViajeAvion");
+
+            return query.getResultList();
+
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public TipoViajeAvionEntity obtenerTipoViajeAvion(Integer idTipoViajeAvion) {
-        return em.find(TipoViajeAvionEntity.class, idTipoViajeAvion);
+        em = emf.createEntityManager();
+
+        try {
+            return em.find(TipoViajeAvionEntity.class, idTipoViajeAvion);
+        } finally {
+            em.close();
+        }
     }
 
     @Override
-    public void guardarTipoViajeAvion(TipoViajeAvionEntity tipoViajeAvion) throws Exception {
-        em.getTransaction().begin();
-        em.persist(tipoViajeAvion);
-        em.flush();
-        em.getTransaction().commit();
-    }
-
-    @Override
-    public void eliminarTipoViajeAvion(Integer idTipoViajeAvion) {
-        TipoViajeAvionEntity tipoViajeAvion = obtenerTipoViajeAvion(idTipoViajeAvion);
-        if (tipoViajeAvion != null) {
+    public boolean guardarTipoViajeAvion(TipoViajeAvionEntity viaje) throws Exception {
+        em = emf.createEntityManager();
+        try {
             em.getTransaction().begin();
+            em.persist(viaje);
+            em.flush();
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            em.close();
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean eliminarTipoViajeAvion(Integer idTipoViajeAvion) throws Exception {
+        em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            TipoViajeAvionEntity tipoViajeAvion = em.find(TipoViajeAvionEntity.class, idTipoViajeAvion);
             em.remove(tipoViajeAvion);
             em.flush();
             em.getTransaction().commit();
+            if (tipoViajeAvion != null) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            em.close();
         }
     }
 
     @Override
-    public void actualizarTipoViajeAvion(TipoViajeAvionEntity tipoViajeAvionParam) {
-        TipoViajeAvionEntity tipoViajeAvion = obtenerTipoViajeAvion(tipoViajeAvionParam.getIdTipoViajeAvion());
-        if (tipoViajeAvion != null) {
+    public boolean actualizarTipoViajeAvion(TipoViajeAvionEntity viajeParam) throws Exception {
+        em = emf.createEntityManager();
+
+        try {
             em.getTransaction().begin();
-            tipoViajeAvion = em.merge(tipoViajeAvion);
+            em.merge(viajeParam);
+            em.flush();
             em.getTransaction().commit();
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            em.close();
         }
 
+        return true;
     }
 }

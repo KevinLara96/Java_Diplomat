@@ -1,4 +1,3 @@
-unam/dgtic/diplomado/controlador/servlet/AgenciaServlet.class
 unam/dgtic/diplomado/controlador/repositorio/viaje/RepositorioTipoViajeAutobus.class
 unam/dgtic/diplomado/modelo/entidades/viaje/TipoViajeAvionEntity.class
 unam/dgtic/diplomado/controlador/repositorio/producto/RepositorioProducto.class
@@ -34,8 +33,10 @@ unam/dgtic/diplomado/modelo/entidades/empleado/EmpleadoEntity.class
 unam/dgtic/diplomado/modelo/beans/viaje/TipoViajeAvionBean.class
 unam/dgtic/diplomado/controlador/servicio/cliente/ServicioCliente.class
 unam/dgtic/diplomado/modelo/beans/transporte/AvionBean.class
+unam/dgtic/diplomado/controlador/servlet/LoginEmpleados.class
 unam/dgtic/diplomado/modelo/entidades/transporte/factory/TransporteFactory.class
 unam/dgtic/diplomado/modelo/beans/producto/ProductoBean.class
+unam/dgtic/diplomado/modelo/beans/login/BeanLogin.class
 unam/dgtic/diplomado/modelo/entidades/viaje/ViajeEntity$BuildViajeAutobus.class
 unam/dgtic/diplomado/modelo/entidades/viaje/ViajeEntity.class
 unam/dgtic/diplomado/modelo/excepciones/ExcepcionAtributos.class

@@ -1,0 +1,200 @@
+<!--?xml version='1.0' encoding='UTF-8' ?>
+<
+    Copyright (c) 2014, 2019 Oracle and/or its affiliates. All rights reserved.
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Distribution License v. 1.0, which is available at
+    http://www.eclipse.org/org/documents/edl-v10.php.
+    SPDX-License-Identifier: BSD-3-Clause
+-->
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+>
+  <h:head></h:head>
+  <h:body>
+    <h:outputStylesheet name="css/stylesheet.css" target="head" />
+
+    <h:form id="listaOrdenes"  >
+      <h1>Gestión de órdenes.</h1>
+
+
+      <div id="divEmpleados">
+        <h:dataTable
+          id="ordenesList"
+          value="#{ordenBean.obtenerOrdenes()}"
+          var="ordenEntity"
+          styleClass="tablaEmpleados"
+          headerClass="cabeceraEmpleados"
+          rowClasses="empleadoPar, empleadoImpar"
+          style="width: 100%"
+        >
+          <h:column>
+            <f:facet name="header">Id orden.</f:facet>
+            #{ordenEntity.idOrden}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Fecha emisión</f:facet>
+            #{ordenEntity.fechaEmision}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Monto</f:facet>
+            #{ordenEntity.monto}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Descripción</f:facet>
+            #{ordenEntity.descripcion}
+          </h:column>
+
+          <h:column>
+            <f:facet name="header">Cliente</f:facet>
+            #{ordenEntity.cliente.idCliente}
+          </h:column>
+
+        <br />
+        <br />
+        <h:commandButton id="back" value="Atras" action="../../index.xhtml" />
+        </h:dataTable>
+      </div>
+    </h:form>
+
+    <div class="center">
+        <button class="buttonModificar" onClick="ShowAndHideModificar()">Modificar orden</button>
+        <button class="buttonNuevo" onClick="ShowAndHideNueva()">Nueva orden</button>
+    </div>
+
+    <div ID="SeccionModificar" class="datosInput" style="display:none">
+        <h:form id="modificarOrden" >
+            <p> 
+                <h:inputText id="idOrden" styleClass="inputForm" value="#{ordenBean.idOrden}" 
+                        required="true" a:placeholder="Id Orden"/>
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Buscar" >
+                    <f:ajax execute="idOrden"  
+                        render="iFecha iMonto iDesc iCliente"
+                        listener="#{ordenBean.obtenerOrden()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:inputText id="iFecha" styleClass="inputForm" a:placeholder="Fecha emisión." value="#{ordenBean.fechaEmision}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iMonto" styleClass="inputForm" a:placeholder="Monto." value="#{ordenBean.ordenEntity.monto}" />
+
+                <br />
+                <br />
+                <h:inputText id="iDesc" styleClass="inputForm" a:placeholder="Descripción." value="#{ordenBean.ordenEntity.descripcion}" />
+
+                <br />
+                <br />
+                <h:inputText id="iCliente" styleClass="inputForm" a:placeholder="Cliente." value="#{ordenBean.idCliente}" />
+
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax
+                    execute="idOrden iFecha iMonto iDesc iCliente"
+                    render="tmp" 
+                    listener="#{ordenBean.actualizarOrden()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{ordenBean.estatus}"/>
+            </p>
+
+        </h:form>
+    </div>
+
+    <div ID="SeccionNueva" class="datosInput" style="display:none">
+        <h:form id="nuevoEmpleado" >
+            <p> 
+                <h:inputText id="iIdN" styleClass="inputForm" value="#{ordenBean.idOrden}" 
+                        a:placeholder="Id Orden"/>
+
+                <br />
+                <br />
+                <h:inputText id="iFechaN" styleClass="inputForm" a:placeholder="Fecha emisión" value="#{ordenBean.fechaEmision}"/>
+
+                <br />
+                <br />
+                <h:inputText id="iMontoN" styleClass="inputForm" a:placeholder="Monto total." value="#{ordenBean.monto}" />
+
+                <br />
+                <br />
+                <h:inputText id="iDescN" styleClass="inputForm" a:placeholder="Descripción." value="#{ordenBean.descripcion}" />
+
+                <br />
+                <br />
+                <h:inputText id="iClienteN" styleClass="inputForm" a:placeholder="Id. cliente" value="#{ordenBean.idCliente}" />
+
+                <br />
+                <br />
+                <h:commandButton class="botonConfirmar" value="Guardar" >
+                    <f:ajax
+                    execute="iIdN iFechaN iMontoN iDescN iClienteN"
+                    render="tmp" 
+                    listener="#{ordenBean.nuevaOrden()}"
+                    />
+                </h:commandButton>
+
+                <br />
+                <br />
+                <h:outputText id="tmp" value="#{ordenBean.estatus}"/>
+            </p>
+
+        </h:form>
+    </div>
+
+
+    <div id="Volver" class="center">
+        <form action="../../inicioAdministracion.xhtml">
+            <input type="submit" value="Atrás" />
+        </form>
+    </div>
+
+    <script>
+        function ShowAndHideModificar() {
+            var x = document.getElementById('SeccionModificar');
+            var z = document.getElementById('SeccionNueva');
+            
+            z.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+        function ShowAndHideNueva() {
+            var x = document.getElementById('SeccionNueva');
+            var y = document.getElementById('SeccionModificar');
+            
+            y.style.display = 'none';
+
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+
+    </script>
+
+  </h:body>
+</html>
