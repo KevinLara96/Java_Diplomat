@@ -16,7 +16,7 @@ public class AgenciaBean implements Serializable {
     // @EJB
     private ServicioAgencia servicioAgencia;
 
-    private int idAgencia;
+    private Integer idAgencia;
     private String nombreAgencia;
     private String ubicacionAgencia;
     private AgenciaEntity agenciaEntity;
@@ -33,11 +33,11 @@ public class AgenciaBean implements Serializable {
     /*
      * Getters y Setters
      */
-    public int getIdAgencia() {
+    public Integer getIdAgencia() {
         return idAgencia;
     }
 
-    public void setIdAgencia(int idAgencia) {
+    public void setIdAgencia(Integer idAgencia) {
         this.idAgencia = idAgencia;
     }
 

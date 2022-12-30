@@ -1,11 +1,13 @@
 package unam.dgtic.diplomado.modelo.beans.login;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import unam.dgtic.diplomado.controlador.ejb.LoginEJB;
+import unam.dgtic.diplomado.modelo.entidades.empleado.EmpleadoEntity;
 
 @Named
 @SessionScoped
@@ -49,8 +51,16 @@ public class BeanLogin implements Serializable {
     public String login() {
         this.servicioEJB = new LoginEJB();
         try {
-            servicioEJB.login(this.correo, this.contrasena);
-            return "inicioAdministracion";
+            EmpleadoEntity tmp = servicioEJB.login(this.correo, this.contrasena);
+            String puesto = tmp.getPuesto().getPuesto();
+            if (puesto.equals("SYS") || puesto.equals("ADMINISTRADOR") || puesto.equals("PROGRAMADOR")) {
+                return "inicioAdministracion";
+            } else {
+                throw new IOException("Permisos no suficientes");
+            }
+        } catch (IOException e) {
+            this.estatus = e.getMessage();
+            return "loginEmpleados";
         } catch (Exception e) {
             this.estatus = "Correo / Contraseña erróneos : ";
             return "loginEmpleados";

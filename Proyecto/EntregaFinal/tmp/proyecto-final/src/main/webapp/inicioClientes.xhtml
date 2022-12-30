@@ -4,7 +4,8 @@
   xmlns:f="http://xmlns.jcp.org/jsf/core"
   xmlns:h="http://xmlns.jcp.org/jsf/html"
   xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-  xmlns:jsf="http://xmlns.jcp.org/jsf">
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -223,19 +224,10 @@ https://templatemo.com/tm-557-grad-school
                   Regístrate y <em>reserva </em>
                 </h6>
               </div>
-              <form id="contact" action="" method="get">
+              <h:form id="contact" action="" method="get">
                 <div class="row">
                   <div class="col-md-12">
-                    <fieldset>
-                      <input
-                        name="name"
-                        type="text"
-                        class="form-control"
-                        id="name"
-                        placeholder="Nombres:"
-                        required=""
-                      />
-                    </fieldset>
+                    <h:inputText id="iNom" styleClass="form-control" a:placeholder="Nombres: " value="#{clienteBean.nombres}"/>
                   </div>
                   <div class="col-md-12">
                     <fieldset>
@@ -341,7 +333,7 @@ https://templatemo.com/tm-557-grad-school
                     </fieldset>
                   </div>
                 </div>
-              </form>
+              </h:form>
             </div>
           </div>
           <div class="col-md-5">

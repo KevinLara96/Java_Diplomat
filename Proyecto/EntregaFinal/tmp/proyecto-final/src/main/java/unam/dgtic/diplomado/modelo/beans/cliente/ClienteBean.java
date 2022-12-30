@@ -2,6 +2,7 @@ package unam.dgtic.diplomado.modelo.beans.cliente;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Random;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -190,7 +191,12 @@ public class ClienteBean implements Serializable {
 
         this.clienteEntity = new ClienteEntity();
         try {
-            clienteEntity.setIdCliente(this.idCliente);
+            if (this.idCliente == 0 || this.idCliente == null) {
+                Random rand = new Random();
+                this.idCliente = rand.nextInt(Integer.MAX_VALUE);
+            } else {
+                clienteEntity.setIdCliente(this.idCliente);
+            }
             clienteEntity.setNombres(this.nombres);
             clienteEntity.setApellidos(this.apellidos);
             clienteEntity.setCalle(this.calle);

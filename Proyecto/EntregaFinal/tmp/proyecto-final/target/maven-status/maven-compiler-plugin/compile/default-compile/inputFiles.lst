@@ -1,11 +1,8 @@
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/controlador/servlet/FiltroWeb.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/modelo/beans/agencia/AgenciaBean.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/modelo/beans/cliente/ClienteBean.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/controlador/servicio/viaje/ServicioViaje.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/controlador/servlet/LoginEmpleadosServlet.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/modelo/entidades/transporte/factory/AutobusFactory.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/controlador/servicio/agencia/ServicioAgencia.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/Pruebas.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/controlador/servicio/transporte/ServicioTransporte.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/modelo/beans/login/BeanLogin.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/modelo/entidades/transporte/AutobusEntity.java
@@ -36,7 +33,6 @@
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/controlador/servicio/viaje/ServicioTipoViajeAvion.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/controlador/repositorio/transporte/RepositorioTransporte.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/modelo/entidades/empleado/PuestoEntity.java
-/media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/controlador/servlet/RequestLogin.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/modelo/excepciones/ExcepcionAtributos.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/controlador/servicio/orden/ServicioOrden.java
 /media/kevinlara/LinuxStorage1/Documents/Diplomado_Java/Java_Diplomat/Proyecto/EntregaFinal/tmp/proyecto-final/src/main/java/unam/dgtic/diplomado/modelo/entidades/orden/Ids.java

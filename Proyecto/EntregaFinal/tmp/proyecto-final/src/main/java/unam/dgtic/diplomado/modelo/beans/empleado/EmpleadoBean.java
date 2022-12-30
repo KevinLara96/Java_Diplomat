@@ -18,7 +18,7 @@ public class EmpleadoBean implements Serializable {
     private ServicioAgencia servicioAgencia;
     private ServicioPuesto servicioPuesto;
 
-    private int idEmpleado;
+    private Integer idEmpleado;
     private String nombres;
     private String apellidos;
     private String correo;

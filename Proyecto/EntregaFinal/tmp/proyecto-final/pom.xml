@@ -106,6 +106,12 @@ SPDX-License-Identifier: BSD-3-Clause
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.7</version>
+        </dependency>
+
     </dependencies>
 
     <build>
