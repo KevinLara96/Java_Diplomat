@@ -1,4 +1,4 @@
-package mx.unam.dgtic.m07s1;
+package mx.unam.dgtic.m07s2;
 
 import java.util.Properties;
 
@@ -14,10 +14,10 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @SpringBootApplication
-public class M07s1Application {
+public class M07s2Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(M07s1Application.class, args);
+        SpringApplication.run(M07s2Application.class, args);
     }
 
     @Bean

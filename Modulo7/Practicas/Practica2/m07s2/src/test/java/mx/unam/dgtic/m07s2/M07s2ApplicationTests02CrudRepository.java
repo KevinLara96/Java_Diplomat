@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class M07s1ApplicationTests02CrudRepository {
+public class M07s2ApplicationTests02CrudRepository {
 
     @Autowired
     AlumnoRepositorio repositorioAlumno;

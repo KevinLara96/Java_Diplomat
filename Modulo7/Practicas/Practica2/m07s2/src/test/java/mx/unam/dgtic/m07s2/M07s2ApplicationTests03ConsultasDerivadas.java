@@ -1,4 +1,4 @@
-package mx.unam.dgtic.m07s1;
+package mx.unam.dgtic.m07s2;
 
 //import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class M07s1ApplicationTests03ConsultasDerivadas {
+public class M07s2ApplicationTests03ConsultasDerivadas {
 
     private static String NOMBRE = "Kevin";
 

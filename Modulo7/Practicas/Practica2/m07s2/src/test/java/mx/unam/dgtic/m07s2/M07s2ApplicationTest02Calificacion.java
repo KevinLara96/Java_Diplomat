@@ -16,7 +16,7 @@ public class M07s2ApplicationTest02Calificacion {
 
     @Test
     void buscarCalificacionPorAlumnoNombreTest() {
-        Iterable<Calificacion> iterable = repositorioCalificacion.findAlumnoPorNOm();
+        Iterable<Calificacion> iterable = repositorioCalificacion.findByAlumnoNombre("Kevin");
         iterable.forEach(System.out::println);
     }
 }

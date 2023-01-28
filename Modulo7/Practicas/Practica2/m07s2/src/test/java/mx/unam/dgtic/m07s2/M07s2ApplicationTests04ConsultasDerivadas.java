@@ -1,4 +1,4 @@
-package mx.unam.dgtic.m07s1;
+package mx.unam.dgtic.m07s2;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class M07s1ApplicationTests04ConsultasDerivadas {
+public class M07s2ApplicationTests04ConsultasDerivadas {
 
     private static final String NOMBRE = "Kevin";
     private static final String PATERNO = "Lara";

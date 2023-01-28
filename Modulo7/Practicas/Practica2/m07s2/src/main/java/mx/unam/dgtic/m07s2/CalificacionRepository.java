@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface CalificacionRepository extends CrudRepository<Calificacion, Integer>{
+public interface CalificacionRepository extends CrudRepository<Calificacion, Integer> {
 
     List<Calificacion> findByMateria(String materia);
-    List<Calificacion> findByCalificacion(String materia);
 
+    List<Calificacion> findByCalificacion(int calificacion);
 
-    List<Calificacion> findByAlumnoNombre(String materia);
-    List<Calificacion> findByCalificacion(String materia);
-    
+    // Busqueda de calificaciones por medio de campos de alumno
+    List<Calificacion> findByAlumnoNombre(String nombre);
+
+    List<Calificacion> findByAlumnoPaterno(String paterno);
 }
