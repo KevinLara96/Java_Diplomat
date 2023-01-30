@@ -12,8 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class M07s2ApplicationTests04ConsultasDerivadas {
 
-    private static final String NOMBRE = "Kevin";
-    private static final String PATERNO = "Lara";
+    private static final String NOMBRE = "Juan";
+    private static final String PATERNO = "Lopez";
     private static final double ESTATURA = 1.71;
 
     @Autowired

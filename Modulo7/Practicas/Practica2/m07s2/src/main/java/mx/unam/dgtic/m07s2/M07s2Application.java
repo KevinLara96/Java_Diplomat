@@ -37,7 +37,7 @@ public class M07s2Application {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setPackagesToScan("mx.unam.dgtic.m07s1");
+        entityManagerFactoryBean.setPackagesToScan("mx.unam.dgtic.m07s2");
 
         Properties jpaProperties = new Properties();
 

@@ -19,7 +19,7 @@ public class Ejercicio1Modulo7Tests {
      */
     @Test
     void pruebaIdTest() {
-        Optional<Automovil> automovil = repositorioAutomovil.findByIdAutomovil(12);
+        Optional<Automovil> automovil = repositorioAutomovil.findByIdAutomovil(10);
         System.out.println("Buscar por Id.");
         if (automovil.isPresent()) {
             System.out.println(automovil);
@@ -121,8 +121,8 @@ public class Ejercicio1Modulo7Tests {
 
     @Test
     void insertaElementoTest() {
-        Automovil automovil = new Automovil(20, "Alfa Romeo", "Giulia", "Rojo", 306, 280);
-        Optional<Automovil> optional = repositorioAutomovil.findById(20);
+        Automovil automovil = new Automovil(8, "Nueva marca", "Nuevo modelo", "Rojo", 306, 280);
+        Optional<Automovil> optional = repositorioAutomovil.findById(8);
         System.out.println("Insertar auto.");
 
         if (optional.isPresent()) {
@@ -134,7 +134,7 @@ public class Ejercicio1Modulo7Tests {
 
     @Test
     void eliminarElementoTest() {
-        repositorioAutomovil.deleteById(8);
+        repositorioAutomovil.deleteById(20);
     }
 
     @Test
@@ -142,7 +142,7 @@ public class Ejercicio1Modulo7Tests {
         Optional<Automovil> optional = repositorioAutomovil.findById(9);
 
         if (optional.isPresent()) {
-            optional.get().setColor("Negro");
+            optional.get().setColor("Café");
             repositorioAutomovil.save(optional.get());
         }
     }

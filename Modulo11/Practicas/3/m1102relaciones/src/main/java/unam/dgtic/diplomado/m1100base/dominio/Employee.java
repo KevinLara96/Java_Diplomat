@@ -5,7 +5,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
 @Entity
-// @Table(name = "EMP", schema = "modulo11")
 public class Employee {
 
     @Id

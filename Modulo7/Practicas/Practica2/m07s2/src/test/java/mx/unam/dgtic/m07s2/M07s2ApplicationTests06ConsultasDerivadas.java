@@ -55,7 +55,7 @@ public class M07s2ApplicationTests06ConsultasDerivadas {
         alumnos.forEach(System.out::println);
 
         alumnos = repositorioAlumno.findByPaternoLike("_" + PATRON + "%");
-        System.out.println("Paterno like con: _" + PATRON + "%");
+        System.out.println("Paterno like con: " + PATRON + "%");
         alumnos.forEach(System.out::println);
 
         alumnos = repositorioAlumno.findByPaternoLike("______");
