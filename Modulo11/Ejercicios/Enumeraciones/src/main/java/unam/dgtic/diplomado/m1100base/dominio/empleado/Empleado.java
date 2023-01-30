@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import unam.dgtic.diplomado.m1100base.dominio.agencia.Agencia;
 
 @Access(AccessType.FIELD)
@@ -26,6 +27,7 @@ public class Empleado {
     @JoinColumn(name = "idAgencia")
     private Agencia agencia;
 
+    @Transient
     private String puesto;
 
     public Empleado() {

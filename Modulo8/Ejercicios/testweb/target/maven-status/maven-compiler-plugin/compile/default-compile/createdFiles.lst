@@ -1,0 +1,17 @@
+mx/unam/diplomado/data/Usuario.class
+mx/unam/diplomado/service/ProductoServiceImpl.class
+mx/unam/diplomado/views/XlsView.class
+views.properties
+messages.properties
+mx/unam/diplomado/config/MvcConfiguration.class
+mx/unam/diplomado/controller/FormularioBasicoController.class
+mx/unam/diplomado/controller/ValidaFormController.class
+mx/unam/diplomado/controller/ReportesController.class
+mx/unam/diplomado/controller/HomeController.class
+mx/unam/diplomado/data/FormatoDato.class
+mx/unam/diplomado/service/ProductoService.class
+mx/unam/diplomado/data/Producto.class
+mx/unam/diplomado/controller/ProductosController.class
+mx/unam/diplomado/controller/GeneralesController.class
+mx/unam/diplomado/views/PdfView.class
+mx/unam/diplomado/controller/JsonController.class
