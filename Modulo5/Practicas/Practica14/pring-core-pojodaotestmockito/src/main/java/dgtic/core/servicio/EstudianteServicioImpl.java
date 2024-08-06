@@ -2,7 +2,6 @@ package dgtic.core.servicio;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.stereotype.Service;
 import dgtic.core.modelo.Estudiante;
 import dgtic.core.repositorio.intf.EstudianteRepositorio;
 import dgtic.core.repositorio.intf.MateriaRepositorio;
